@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abbott Laboratories — Sales Reference Guide (Draft)</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0a1628;
+  --blue: #005eb8;
+  --sky: #0095d9;
+  --teal: #00857c;
+  --amber: #f0a500;
+  --red: #c4262e;
+  --light: #f4f6f9;
+  --card: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --green: #16a34a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'DM Sans',sans-serif;color:var(--text);background:var(--light);line-height:1.7}
+
+/* NAV */
+.topnav{position:sticky;top:0;z-index:100;background:var(--navy);padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 12px rgba(0,0,0,.25)}
+.topnav .logo{font-family:'Playfair Display',serif;color:#fff;font-size:1.35rem;letter-spacing:-.02em}
+.topnav .logo span{color:var(--sky)}
+.nav-links{display:flex;gap:1.25rem;flex-wrap:wrap}
+.nav-links a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--amber)}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#122a50 100%);color:#fff;padding:4rem 2rem 3rem;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:-60px;left:-10%;width:120%;height:120px;background:var(--light);border-radius:50% 50% 0 0}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);margin-bottom:.5rem;letter-spacing:-.03em}
+.hero .subtitle{font-size:1.05rem;color:rgba(255,255,255,.75);max-width:640px;margin:0 auto}
+.badge{display:inline-block;background:var(--amber);color:var(--navy);font-weight:700;font-size:.7rem;padding:.25rem .75rem;border-radius:100px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem}
+
+/* CONTAINERS */
+.container{max-width:1120px;margin:0 auto;padding:2rem 1.5rem}
+.section-title{font-family:'Playfair Display',serif;font-size:1.85rem;margin-bottom:.35rem;color:var(--navy);letter-spacing:-.02em}
+.section-lead{color:var(--muted);margin-bottom:2rem;max-width:720px}
+
+/* CARDS */
+.card-grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.75rem;transition:box-shadow .25s,transform .25s}
+.card:hover{box-shadow:0 8px 30px rgba(0,0,0,.08);transform:translateY(-3px)}
+.card .tag{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:.2rem .6rem;border-radius:6px;margin-bottom:.75rem}
+.tag-device{background:#e0f2fe;color:#0369a1}
+.tag-pharma{background:#fef3c7;color:#92400e}
+.tag-nutrition{background:#d1fae5;color:#065f46}
+.tag-dx{background:#ede9fe;color:#5b21b6}
+.tag-cancer{background:#fce7f3;color:#9d174d}
+.card h3{font-size:1.1rem;margin-bottom:.4rem}
+.card p{font-size:.88rem;color:var(--muted)}
+.card .metric{display:flex;gap:1rem;margin-top:1rem;flex-wrap:wrap}
+.card .metric span{font-size:.78rem;background:var(--light);padding:.3rem .65rem;border-radius:6px;font-weight:500}
+
+/* TABLES */
+table{width:100%;border-collapse:collapse;margin:1.25rem 0;font-size:.85rem}
+th{background:var(--navy);color:#fff;text-align:left;padding:.65rem .75rem;font-weight:600}
+td{padding:.6rem .75rem;border-bottom:1px solid var(--border)}
+tr:nth-child(even) td{background:#f8fafc}
+
+/* GLOSSARY */
+.glossary-search{width:100%;max-width:480px;padding:.65rem 1rem;border:2px solid var(--border);border-radius:8px;font-size:.95rem;margin-bottom:1.5rem;transition:border-color .2s}
+.glossary-search:focus{outline:none;border-color:var(--sky)}
+.glossary-grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.gloss-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:1.25rem;transition:box-shadow .2s}
+.gloss-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
+.gloss-card h4{font-size:.95rem;color:var(--blue);margin-bottom:.3rem}
+.gloss-card .cat{font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:700}
+.gloss-card p{font-size:.82rem;color:var(--text);margin-top:.35rem}
+
+/* WINDS */
+.wind-grid{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}
+.wind-col h3{font-size:1.2rem;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.wind-item{background:var(--card);border-left:4px solid;padding:1rem 1.25rem;border-radius:0 10px 10px 0;margin-bottom:1rem;font-size:.88rem}
+.wind-item.tail{border-color:var(--green)}
+.wind-item.head{border-color:var(--red)}
+.wind-item strong{display:block;margin-bottom:.25rem}
+
+/* FLOW DIAGRAM */
+.flow-wrap{overflow-x:auto;padding:1rem 0}
+.flow-diagram{display:flex;align-items:flex-start;gap:0;min-width:900px;justify-content:center;padding:1rem 0}
+.flow-node{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:1.25rem;min-width:180px;max-width:210px;text-align:center;position:relative}
+.flow-node h4{font-size:.88rem;margin-bottom:.3rem}
+.flow-node p{font-size:.72rem;color:var(--muted)}
+.flow-node.core{border-color:var(--blue);background:linear-gradient(135deg,#e0f2fe,#fff)}
+.flow-arrow{display:flex;align-items:center;font-size:1.5rem;color:var(--sky);padding:0 .35rem;font-weight:700}
+
+/* VOCAB LINKS */
+a.vocab{color:var(--blue);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;cursor:pointer;font-weight:500}
+a.vocab:hover{color:var(--teal);text-decoration-style:solid}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:2rem;font-size:.78rem;margin-top:3rem}
+
+/* SCROLL-TO-TOP */
+.scroll-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;border:none;font-size:1.2rem;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.2);display:none;z-index:99;transition:background .2s}
+.scroll-top:hover{background:var(--teal)}
+
+@media(max-width:768px){
+  .topnav{flex-direction:column;gap:.5rem}
+  .nav-links{justify-content:center}
+  .flow-diagram{flex-direction:column;align-items:center;min-width:auto}
+  .flow-arrow{transform:rotate(90deg)}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="topnav">
+  <div class="logo"><span>Abbott</span> Laboratories — Sales Reference</div>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#flow">Flow Diagram</a>
+    <a href="#devices">Med Devices</a>
+    <a href="#pharma">Pharma</a>
+    <a href="#nutrition">Nutrition</a>
+    <a href="#diagnostics">Diagnostics</a>
+    <a href="#tam">TAM &amp; Rx</a>
+    <a href="#prescribers">Prescriber Uptake</a>
+    <a href="#insurance">Insurance</a>
+    <a href="#winds">Headwinds / Tailwinds</a>
+    <a href="#glossary">Glossary</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="badge">Internal Rough Draft — Q2 2026</div>
+  <h1>Abbott Laboratories<br>Sales &amp; Product Reference</h1>
+  <p class="subtitle">Comprehensive guide to Abbott's four business segments, key products, chemical profiles, addressable markets, prescriber dynamics, and competitive landscape. Prepared for sales team review.</p>
+</header>
+
+<!-- COMPANY OVERVIEW -->
+<section id="overview" class="container">
+  <h2 class="section-title">Company Overview</h2>
+  <p class="section-lead">Abbott Laboratories (NYSE: ABT) is a diversified global healthcare company headquartered in Abbott Park, Illinois. Full-year 2025 revenue reached approximately $44.3 billion across four operating segments. Medical Devices is the largest segment at ~45% of revenue.</p>
+
+  <table>
+    <thead>
+      <tr><th>Segment</th><th>FY2025 Revenue (est.)</th><th>% of Total</th><th>Organic Growth</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Medical Devices</td><td>~$20.4B</td><td>~46%</td><td>~12%</td></tr>
+      <tr><td>Diagnostics (incl. Exact Sciences post-close)</td><td>~$9.0B (legacy) + ~$3B incremental</td><td>~20% legacy</td><td>Normalizing post-COVID</td></tr>
+      <tr><td>Nutritional Products</td><td>~$8.6B</td><td>~19%</td><td>~6–7%</td></tr>
+      <tr><td>Established Pharmaceuticals (EPD)</td><td>~$5.2B</td><td>~12%</td><td>~7–8%</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:.82rem;color:var(--muted);margin-top:.5rem">Note: 2025 figures based on reported 8-K filings and management guidance. Exact Sciences ($21B acquisition) closed March 23, 2026 — expected to add ~$3B incremental revenue in 2026.</p>
+</section>
+
+<!-- FLOW DIAGRAM -->
+<section id="flow" class="container">
+  <h2 class="section-title">Problem → Product Flow Diagram</h2>
+  <p class="section-lead">How Abbott's portfolio maps to the clinical problems it targets.</p>
+
+  <div class="flow-wrap">
+    <div class="flow-diagram">
+      <div class="flow-node">
+        <h4>Clinical Problem</h4>
+        <p><a class="vocab" href="#g-diabetes">Diabetes</a> management, <a class="vocab" href="#g-afib">AFib</a>, <a class="vocab" href="#g-mr">mitral regurgitation</a>, <a class="vocab" href="#g-nec">NEC risk</a>, <a class="vocab" href="#g-crc">colorectal cancer</a>, chronic disease in emerging markets</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node core">
+        <h4>Abbott Segments</h4>
+        <p>Medical Devices · Diagnostics · Nutrition · Established Pharma</p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <h4>Key Products</h4>
+        <p><a class="vocab" href="#g-libre">FreeStyle Libre</a>, <a class="vocab" href="#g-volt">Volt PFA</a>, <a class="vocab" href="#g-mitraclip">MitraClip</a>, <a class="vocab" href="#g-cologuard">Cologuard</a>, <a class="vocab" href="#g-similac">Similac</a>, <a class="vocab" href="#g-ensure">Ensure</a>, <a class="vocab" href="#g-brufen">Brufen</a></p>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">
+        <h4>Outcomes</h4>
+        <p>Reduced finger-sticks, fewer open-heart surgeries, early cancer detection, improved nutrition, affordable generics access</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MEDICAL DEVICES -->
+<section id="devices" class="container">
+  <h2 class="section-title">Medical Devices — $20B+ Segment</h2>
+  <p class="section-lead">Abbott's largest and fastest-growing segment. Twelve consecutive quarters of double-digit organic growth through Q4 2025. Key sub-segments: Diabetes Care, Electrophysiology, Structural Heart, Heart Failure, Rhythm Management, Vascular, Neuromodulation.</p>
+
+  <div class="card-grid">
+
+    <!-- LIBRE -->
+    <div class="card">
+      <span class="tag tag-device">Diabetes Care — CGM</span>
+      <h3><a class="vocab" href="#g-libre">FreeStyle Libre</a> Platform</h3>
+      <p>Sensor-based <a class="vocab" href="#g-cgm">continuous glucose monitoring (CGM)</a> system that replaces painful finger-sticks. Measures <a class="vocab" href="#g-glucose">interstitial glucose</a> via a small subcutaneous filament using <a class="vocab" href="#g-gox">glucose oxidase</a> enzyme electrochemistry. The sensor generates an electrical signal proportional to glucose concentration, transmitted wirelessly to a reader or smartphone app.</p>
+      <p style="margin-top:.5rem"><strong>Key variants:</strong> Libre 3 (14-day wear, thinnest sensor), Libre 2 Plus, <a class="vocab" href="#g-lingo">Lingo</a> (OTC biowearable for non-diabetics), <a class="vocab" href="#g-rio">Libre Rio</a> (OTC CGM). Upcoming: dual-analyte sensor adding <a class="vocab" href="#g-ketone">ketone</a> monitoring to prevent <a class="vocab" href="#g-dka">DKA</a>.</p>
+      <div class="metric">
+        <span>FY2025 CGM: ~$7.5B+</span>
+        <span>~7M users globally</span>
+        <span>~60% US CGM share</span>
+        <span>Org growth: ~20%</span>
+      </div>
+      <p style="margin-top:.75rem;font-size:.82rem"><strong>Consumer Experience:</strong> Apply sensor to back of upper arm (painless 1-second applicator). Scan with phone or reader for real-time glucose data. 14-day wear per sensor. Libre 3 streams data continuously — no manual scans needed. Alarms for highs and lows. App provides <a class="vocab" href="#g-agp">AGP</a> reports to share with providers.</p>
+      <p style="margin-top:.5rem;font-size:.82rem"><strong>Provider Adoption:</strong> Endocrinologists are primary prescribers (~85% CGM adoption among endo patients). PCPs are fastest-growing prescriber category but still underpenetrated (~30% adoption). Key selling points for physicians: reduced <a class="vocab" href="#g-a1c">HbA1c</a>, time-in-range data, fewer hypoglycemic events, <a class="vocab" href="#g-agp">AGP</a> reports that save consultation time. Integration with <a class="vocab" href="#g-aid">AID</a> insulin pump systems is expanding (several partnerships announced for 2025).</p>
+      <p style="margin-top:.5rem;font-size:.82rem;color:var(--red)"><strong>⚠ RECALL NOTE (Nov 2025):</strong> Class I FDA recall on certain Libre 3/3 Plus sensor lots (~3M sensors) due to incorrectly low glucose readings. 860 serious injuries, 7 deaths reported as of Jan 7, 2026. Abbott says root cause identified and resolved (single production line issue). No supply disruption expected. Sales reps must be prepared to address this proactively.</p>
+    </div>
+
+    <!-- VOLT PFA -->
+    <div class="card">
+      <span class="tag tag-device">Electrophysiology — Ablation</span>
+      <h3><a class="vocab" href="#g-volt">Volt™ PFA System</a></h3>
+      <p>FDA-approved December 2025 for treating <a class="vocab" href="#g-afib">atrial fibrillation (AFib)</a>. Uses <a class="vocab" href="#g-pfa">pulsed field ablation (PFA)</a> — targeted, high-energy electrical pulses that selectively destroy cardiac tissue causing arrhythmia while sparing nearby structures (esophagus, phrenic nerve). Unique balloon-in-basket catheter design allows mapping, pacing, and ablation with a single device.</p>
+      <p style="margin-top:.5rem"><strong>Chemistry/Physics:</strong> PFA delivers nanosecond-to-microsecond electrical pulses that create irreversible <a class="vocab" href="#g-electroporation">electroporation</a> — permanent pores in cardiac cell membranes causing cell death. Unlike <a class="vocab" href="#g-rfa">radiofrequency ablation (RFA)</a> (thermal), PFA is tissue-selective for <a class="vocab" href="#g-cardiomyocyte">cardiomyocytes</a>.</p>
+      <p style="margin-top:.5rem"><strong>Works with:</strong> <a class="vocab" href="#g-ensite">EnSite™ X EP System</a> for 3D cardiac mapping.</p>
+      <div class="metric">
+        <span>US EP market: ~$10B</span>
+        <span>EP growth: ~10–13%</span>
+        <span>Limited market release 2026</span>
+      </div>
+      <p style="margin-top:.75rem;font-size:.82rem"><strong>Provider Adoption:</strong> Electrophysiologists are the sole prescribers. Selling points: single-catheter workflow (vs. multi-catheter competitors), tissue selectivity reduces collateral damage risk, real-time contact visualization. Approved for both <a class="vocab" href="#g-paf">paroxysmal</a> and <a class="vocab" href="#g-persaf">persistent</a> AFib. CE Mark obtained earlier in 2025 for European sites.</p>
+    </div>
+
+    <!-- MITRACLIP / TRICLIP -->
+    <div class="card">
+      <span class="tag tag-device">Structural Heart — TEER</span>
+      <h3><a class="vocab" href="#g-mitraclip">MitraClip</a> / <a class="vocab" href="#g-triclip">TriClip</a> / Navitor</h3>
+      <p><strong>MitraClip:</strong> Transcatheter edge-to-edge repair (<a class="vocab" href="#g-teer">TEER</a>) device for <a class="vocab" href="#g-mr">mitral regurgitation</a>. A cobalt-chromium clip delivered via catheter through the femoral vein clips the mitral valve leaflets to reduce backflow, avoiding open-heart surgery. G5 is the latest generation.</p>
+      <p style="margin-top:.5rem"><strong>TriClip:</strong> Same TEER concept applied to the <a class="vocab" href="#g-tr">tricuspid valve</a>. First-of-its-kind FDA-approved device. 15,000+ patients treated as of 2025.</p>
+      <p style="margin-top:.5rem"><strong><a class="vocab" href="#g-navitor">Navitor</a>:</strong> Transcatheter aortic valve replacement (<a class="vocab" href="#g-tavr">TAVR</a>) system — a prosthetic valve made of bovine pericardial tissue mounted on a <a class="vocab" href="#g-nitinol">nitinol</a> frame, delivered via catheter to replace a diseased <a class="vocab" href="#g-aortic">aortic valve</a>.</p>
+      <div class="metric">
+        <span>Structural Heart: ~$2.4B (2025)</span>
+        <span>Org growth: ~13%</span>
+        <span>Double-digit Navitor growth</span>
+      </div>
+      <p style="margin-top:.75rem;font-size:.82rem"><strong>Provider Adoption:</strong> Interventional cardiologists and cardiac surgeons. Selling points: avoidance of open-heart surgery, shorter recovery, growing real-world evidence for secondary MR. Procedure volumes growing double-digits in the US driven by expanded indications and surgeon training programs.</p>
+    </div>
+
+    <!-- AVEIR -->
+    <div class="card">
+      <span class="tag tag-device">Heart Failure / Rhythm</span>
+      <h3><a class="vocab" href="#g-aveir">AVEIR™</a> Leadless Pacemaker &amp; <a class="vocab" href="#g-amulet">Amplatzer™ Amulet™</a></h3>
+      <p><strong>AVEIR:</strong> Leadless pacemaker implanted directly into the heart via catheter — no surgical pocket, no transvenous leads. Titanium capsule with steroid-eluting <a class="vocab" href="#g-dex">dexamethasone</a>-coated electrode to reduce inflammation at the tissue interface.</p>
+      <p style="margin-top:.5rem"><strong>Amplatzer Amulet:</strong> Left atrial appendage closure (<a class="vocab" href="#g-laac">LAAC</a>) device for stroke prevention in AFib patients who cannot tolerate long-term <a class="vocab" href="#g-anticoagulant">anticoagulants</a>. <a class="vocab" href="#g-nitinol">Nitinol</a> mesh with polyester fabric to seal off the appendage.</p>
+      <div class="metric">
+        <span>HF sales: ~$1.4B (2025)</span>
+        <span>Rhythm Mgmt: ~$2.5B</span>
+        <span>$10B rhythm market opp.</span>
+      </div>
+    </div>
+
+    <!-- NEUROMOD -->
+    <div class="card">
+      <span class="tag tag-device">Neuromodulation</span>
+      <h3>Neuromodulation — Chronic Pain</h3>
+      <p>Spinal cord stimulation (<a class="vocab" href="#g-scs">SCS</a>) and <a class="vocab" href="#g-drg">dorsal root ganglion (DRG)</a> stimulation devices for chronic pain. Implanted pulse generators deliver electrical impulses to the spinal cord to interrupt pain signals. Uses proprietary BurstDR™ stimulation waveform.</p>
+      <div class="metric">
+        <span>Neuromod: ~$960M (2025)</span>
+        <span>Growth: ~3%</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ESTABLISHED PHARMA -->
+<section id="pharma" class="container">
+  <h2 class="section-title">Established Pharmaceuticals (EPD) — ~$5.2B</h2>
+  <p class="section-lead">Branded generic medicines sold exclusively in international and emerging markets (no US pharma sales). Key geographies: India, China, Brazil, Russia, Latin America, Southeast Asia, Middle East, Africa. Abbott separated its innovative pharma business as AbbVie in 2013; this segment focuses on high-quality branded generics and, increasingly, <a class="vocab" href="#g-biosimilar">biosimilars</a>.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="tag tag-pharma">Anti-inflammatory / Pain</span>
+      <h3><a class="vocab" href="#g-brufen">Brufen</a> (<a class="vocab" href="#g-ibuprofen">Ibuprofen</a>)</h3>
+      <p><a class="vocab" href="#g-nsaid">NSAID</a> that inhibits <a class="vocab" href="#g-cox">cyclooxygenase (COX-1/COX-2)</a> enzymes, reducing <a class="vocab" href="#g-prostaglandin">prostaglandin</a> synthesis. Used for pain, fever, and inflammation. Chemical formula: C₁₃H₁₈O₂. A <a class="vocab" href="#g-propionic">propionic acid derivative</a>.</p>
+      <p style="margin-top:.5rem;font-size:.82rem"><strong>Target brand:</strong> Advil/Motrin (J&J). Ibuprofen is long off-patent. Abbott competes on brand trust, formulation quality, and distribution reach in emerging markets. <strong>TAM:</strong> Global OTC analgesics market ~$30B+.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-pharma">Endocrine / Thyroid</span>
+      <h3><a class="vocab" href="#g-synthroid">Synthroid</a> (<a class="vocab" href="#g-levo">Levothyroxine Sodium</a>)</h3>
+      <p>Synthetic form of thyroid hormone T4 (<a class="vocab" href="#g-t4">thyroxine</a>). Chemical formula: C₁₅H₁₀I₄NNaO₄. Replaces deficient thyroid hormone in <a class="vocab" href="#g-hypothyroid">hypothyroidism</a>. Narrow <a class="vocab" href="#g-ti">therapeutic index</a> — small dose changes cause significant clinical effects.</p>
+      <p style="margin-top:.5rem;font-size:.82rem"><strong>Target brand:</strong> Synthroid itself is the reference brand (originally from Knoll/BASF, now Abbott). Generic levothyroxine competitors: Mylan, Sandoz. <strong>LOE:</strong> Long off-patent. Competition is on formulation consistency. <strong>TAM:</strong> Global hypothyroidism treatment ~$3B.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-pharma">Gastroenterology</span>
+      <h3><a class="vocab" href="#g-creon">Creon</a> (<a class="vocab" href="#g-pancreatin">Pancreatin</a>)</h3>
+      <p><a class="vocab" href="#g-pert">Pancreatic enzyme replacement therapy (PERT)</a>. Contains <a class="vocab" href="#g-lipase">lipase</a>, <a class="vocab" href="#g-protease">protease</a>, and <a class="vocab" href="#g-amylase">amylase</a> derived from porcine pancreas. Helps digest fats, proteins, and carbohydrates in patients with <a class="vocab" href="#g-epi">exocrine pancreatic insufficiency (EPI)</a> — common in <a class="vocab" href="#g-cf">cystic fibrosis</a> and chronic pancreatitis.</p>
+      <p style="margin-top:.5rem;font-size:.82rem"><strong>TAM:</strong> Global PERT market ~$2.5B. Chronic refill — patients need PERT with every meal for life. <strong>Rx renewal:</strong> Typically 90-day supply, auto-renewed indefinitely.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-pharma">GI / Laxative</span>
+      <h3><a class="vocab" href="#g-duphalac">Duphalac</a> (<a class="vocab" href="#g-lactulose">Lactulose</a>)</h3>
+      <p>Synthetic disaccharide (C₁₂H₂₂O₁₁) not absorbed in the upper GI tract. Reaches the colon where bacteria ferment it into <a class="vocab" href="#g-scfa">short-chain fatty acids</a>, drawing water into the bowel via osmotic effect. Used for constipation and <a class="vocab" href="#g-he">hepatic encephalopathy</a> (reduces ammonia absorption).</p>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-pharma">Cardiology / Lipids</span>
+      <h3><a class="vocab" href="#g-lipanthyl">Lipanthyl</a> (<a class="vocab" href="#g-fenofibrate">Fenofibrate</a>)</h3>
+      <p><a class="vocab" href="#g-fibrate">Fibrate</a> that activates <a class="vocab" href="#g-ppar">PPARα receptors</a>, increasing <a class="vocab" href="#g-lipoprotein">lipoprotein lipase</a> activity. Reduces <a class="vocab" href="#g-triglyceride">triglycerides</a> and raises <a class="vocab" href="#g-hdl">HDL cholesterol</a>. Chemical formula: C₂₀H₂₁ClO₄. Used alongside <a class="vocab" href="#g-statin">statins</a> for mixed <a class="vocab" href="#g-dyslipidemia">dyslipidemia</a>.</p>
+      <p style="margin-top:.5rem;font-size:.82rem"><strong>Target brand:</strong> Tricor/Trilipix (AbbVie). Off-patent. <strong>TAM:</strong> Global lipid-lowering drugs ~$25B (dominated by statins, but fibrates maintain niche for hypertriglyceridemia).</p>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-pharma">Biosimilars — New Growth</span>
+      <h3><a class="vocab" href="#g-biosimilar">Biosimilars</a> (mAbxience Partnership)</h3>
+      <p>Abbott partnered with mAbxience (2018, expanded 2023) to commercialize <a class="vocab" href="#g-monoclonal">monoclonal antibody</a> biosimilars in oncology and women's health across Latin America, Southeast Asia, Middle East, and Africa. First molecules launched as early as 2025. Biosimilars are manufactured using <a class="vocab" href="#g-cho">CHO cells</a> and purified to demonstrate comparable quality, safety, and efficacy to reference biologics.</p>
+      <p style="margin-top:.5rem;font-size:.82rem"><strong>Why it matters:</strong> Biosimilars are the fastest-growing segment in branded generics. They bring affordable access to complex biologic therapies (e.g., <a class="vocab" href="#g-mab">monoclonal antibodies</a> for cancer) in markets where branded biologics may be unaffordable. mAbxience manufactures at GMP facilities in Spain and Argentina.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NUTRITION -->
+<section id="nutrition" class="container">
+  <h2 class="section-title">Nutritional Products — ~$8.6B</h2>
+  <p class="section-lead">Pediatric nutrition (Similac, PediaSure) and adult nutrition (Ensure, Glucerna). Growth driven by aging demographics, chronic disease management, and emerging market expansion.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="tag tag-nutrition">Pediatric Nutrition</span>
+      <h3><a class="vocab" href="#g-similac">Similac</a> Infant Formula</h3>
+      <p>Complete infant nutrition formula based on cow's milk protein (<a class="vocab" href="#g-casein">casein</a> and <a class="vocab" href="#g-whey">whey</a>), supplemented with <a class="vocab" href="#g-dha">DHA</a> (docosahexaenoic acid, an omega-3 fatty acid), <a class="vocab" href="#g-ara">ARA</a> (arachidonic acid), <a class="vocab" href="#g-hmo">human milk oligosaccharides (HMOs)</a>, <a class="vocab" href="#g-lutein">lutein</a>, <a class="vocab" href="#g-ve">vitamin E</a>, and <a class="vocab" href="#g-prebiotic">prebiotics</a>. Lactose is the primary carbohydrate source.</p>
+      <p style="margin-top:.5rem;font-size:.82rem"><strong>Product lines:</strong> Similac Advance (standard), Similac Pro-Advance (with HMOs), Similac Sensitive (lactose-reduced), Similac Alimentum (extensively <a class="vocab" href="#g-hydrolyzed">hydrolyzed</a> for cow's milk allergy), Similac Special Care (NICU premature infants).</p>
+      <div class="metric">
+        <span>US Pediatric: ~$2.2B (2025)</span>
+        <span>Int'l Pediatric: ~$1.8B</span>
+      </div>
+      <p style="margin-top:.75rem;font-size:.82rem;color:var(--red)"><strong>⚠ NEC LAWSUIT — ONGOING:</strong> As of April 2026, ~782 lawsuits are pending in <a class="vocab" href="#g-mdl">MDL 3026</a> (Northern District of Illinois) alleging that cow's milk-based formulas (Similac, Enfamil) increase <a class="vocab" href="#g-nec">necrotizing enterocolitis (NEC)</a> risk in premature/low-birth-weight infants. NEC is a life-threatening intestinal condition. Key developments:</p>
+      <ul style="font-size:.82rem;margin-top:.35rem;padding-left:1.25rem;color:var(--text)">
+        <li>State court verdicts: $60M (Illinois, March 2024); $495M (Missouri, July 2024); $53M (Chicago, April 2026); ~$32M (Connecticut, December 2025)</li>
+        <li>Federal MDL: Abbott prevailed via summary judgment in first 3 bellwether cases (Judge Pallmeyer ruled plaintiff expert testimony insufficient). More bellwethers scheduled Aug 2026, Nov 2026, Feb 2027</li>
+        <li>No global settlement reached. Settlement talks ongoing</li>
+        <li>Sales reps should NOT discuss litigation specifics with HCPs — refer inquiries to Abbott Legal</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-nutrition">Adult Nutrition</span>
+      <h3><a class="vocab" href="#g-ensure">Ensure</a> / <a class="vocab" href="#g-glucerna">Glucerna</a></h3>
+      <p><strong>Ensure:</strong> Complete, balanced adult nutrition supplement. Provides protein (from milk protein concentrate and <a class="vocab" href="#g-soy">soy protein isolate</a>), carbohydrates, fats, vitamins, and minerals. Used for general nutrition support, post-surgical recovery, and elderly nutrition.</p>
+      <p style="margin-top:.5rem"><strong>Glucerna:</strong> Specifically designed for people with diabetes. Uses <a class="vocab" href="#g-slowdigest">slow-release carbohydrate</a> blend (modified maltodextrin, <a class="vocab" href="#g-fructose">fructose</a>) to minimize <a class="vocab" href="#g-glycemic">glycemic</a> impact. Fortified with <a class="vocab" href="#g-chromium">chromium</a> (insulin sensitivity) and <a class="vocab" href="#g-biotin">biotin</a>.</p>
+      <div class="metric">
+        <span>US Adult: ~$1.4B (2025)</span>
+        <span>Org growth: ~8–9%</span>
+        <span>Market leader</span>
+      </div>
+      <p style="margin-top:.75rem;font-size:.82rem"><strong>Administration:</strong> OTC — sold directly to consumers via retail, pharmacy, and online. No prescription required. Also used in clinical/institutional settings (hospitals, nursing homes) for tube feeding and oral supplementation.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-nutrition">Pediatric Specialty</span>
+      <h3><a class="vocab" href="#g-pediasure">PediaSure</a> / <a class="vocab" href="#g-pedialyte">Pedialyte</a></h3>
+      <p><strong>PediaSure:</strong> Nutritional supplement for children 1–13 with growth or picky eating concerns. Contains 25 vitamins/minerals, protein, <a class="vocab" href="#g-dha">DHA</a>, and <a class="vocab" href="#g-prebiotic">prebiotics</a>.</p>
+      <p style="margin-top:.5rem"><strong>Pedialyte:</strong> Oral rehydration solution containing optimal <a class="vocab" href="#g-electrolyte">electrolyte</a> balance (sodium, potassium, chloride) and glucose for rehydration during illness. Based on WHO <a class="vocab" href="#g-ors">oral rehydration salt (ORS)</a> principles. Also popular as a hangover remedy among adults.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTICS -->
+<section id="diagnostics" class="container">
+  <h2 class="section-title">Diagnostics — ~$9B Legacy + Exact Sciences</h2>
+  <p class="section-lead">Core Laboratory, Molecular, Point of Care, Rapid Diagnostics. With the March 2026 closing of the Exact Sciences acquisition ($21B), Abbott now adds a cancer screening and precision oncology diagnostics vertical valued at $60B TAM.</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <span class="tag tag-dx">Core Lab / Rapid</span>
+      <h3>Alinity Systems &amp; BinaxNOW</h3>
+      <p><strong>Alinity:</strong> Family of automated analyzers for clinical chemistry, immunoassay, hematology, and blood screening. High-throughput hospital/lab systems that run <a class="vocab" href="#g-immunoassay">immunoassays</a> using <a class="vocab" href="#g-chemiluminescence">chemiluminescence</a>.</p>
+      <p style="margin-top:.5rem"><strong>BinaxNOW:</strong> Rapid <a class="vocab" href="#g-antigen">antigen</a> tests (lateral flow <a class="vocab" href="#g-immunochromatography">immunochromatographic</a> assay) for COVID-19, influenza, RSV, strep. Point-of-care format — results in 15 minutes. COVID testing revenue normalizing post-pandemic.</p>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-cancer">Cancer Diagnostics — NEW (Exact Sciences)</span>
+      <h3><a class="vocab" href="#g-cologuard">Cologuard</a> / Oncotype DX / CancerGuard</h3>
+      <p><strong>Cologuard:</strong> Non-invasive, at-home stool-based test for <a class="vocab" href="#g-crc">colorectal cancer (CRC)</a> screening. Detects altered <a class="vocab" href="#g-dna">DNA</a> biomarkers (methylated BMP3, NDRG4 genes) and <a class="vocab" href="#g-hemoglobin">hemoglobin</a> in stool samples via <a class="vocab" href="#g-pcr">PCR</a> amplification. FDA-approved for average-risk adults 45+. Every 3 years.</p>
+      <p style="margin-top:.5rem"><strong>Oncotype DX:</strong> Genomic test analyzing expression of 21 genes in breast cancer tissue to predict recurrence risk and chemotherapy benefit. Uses <a class="vocab" href="#g-rtpcr">RT-PCR</a> on <a class="vocab" href="#g-ffpe">FFPE</a> tumor samples.</p>
+      <p style="margin-top:.5rem"><strong>CancerGuard:</strong> Multi-cancer early detection (<a class="vocab" href="#g-mced">MCED</a>) blood test. <strong>OncoDetect:</strong> Molecular residual disease (<a class="vocab" href="#g-mrd">MRD</a>) monitoring.</p>
+      <div class="metric">
+        <span>TAM: $60B US</span>
+        <span>~$3B incremental rev. 2026</span>
+        <span>Closed March 23, 2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAM & Rx -->
+<section id="tam" class="container">
+  <h2 class="section-title">Total Addressable Market &amp; Prescription Details</h2>
+  <p class="section-lead">Key market sizes, renewal expectations, and how products reach patients.</p>
+
+  <table>
+    <thead>
+      <tr><th>Product</th><th>TAM</th><th>Rx/OTC</th><th>Renewal Cycle</th><th>Administration Route</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>FreeStyle Libre (CGM)</td><td>$10B+ US (expanding); 500M diabetics globally, only ~10M on CGM</td><td>Rx (Libre 3/2); OTC (Lingo, Libre Rio)</td><td>14-day sensor; monthly Rx refill for 2 sensors; ongoing chronic management</td><td>Subcutaneous sensor (arm); self-applied</td></tr>
+      <tr><td>Volt PFA System</td><td>~$10B global EP market</td><td>Hospital procedure (physician-ordered)</td><td>One-time procedure (some patients need repeat)</td><td>Catheter-based; interventional EP lab</td></tr>
+      <tr><td>MitraClip / TriClip</td><td>~$5B+ structural heart interventions</td><td>Hospital procedure</td><td>One-time procedure</td><td>Transcatheter (femoral vein); cath lab</td></tr>
+      <tr><td>AVEIR Leadless Pacemaker</td><td>~$10B rhythm management</td><td>Hospital implant</td><td>One-time; battery life ~8–13 years</td><td>Catheter delivery to right ventricle</td></tr>
+      <tr><td>Brufen (Ibuprofen)</td><td>~$30B+ global OTC analgesics</td><td>OTC / Rx (high-dose)</td><td>As needed (acute); up to 10-day courses</td><td>Oral (tablet, liquid)</td></tr>
+      <tr><td>Synthroid (Levothyroxine)</td><td>~$3B global hypothyroid Tx</td><td>Rx</td><td>Chronic — 90-day refills indefinitely</td><td>Oral (tablet, daily AM dosing)</td></tr>
+      <tr><td>Creon (Pancreatin)</td><td>~$2.5B PERT market</td><td>Rx</td><td>Chronic — every meal for life; 30–90-day supply</td><td>Oral (enteric-coated capsules)</td></tr>
+      <tr><td>Similac</td><td>~$50B+ global infant formula</td><td>OTC / hospital supply</td><td>Continuous use 0–12 months</td><td>Oral (powder reconstituted; ready-to-feed)</td></tr>
+      <tr><td>Ensure / Glucerna</td><td>~$15B global adult nutrition</td><td>OTC</td><td>Ongoing daily use</td><td>Oral (shake, powder); tube feeding</td></tr>
+      <tr><td>Cologuard (Exact Sciences)</td><td>$60B US cancer screening/dx</td><td>Rx (ordered by physician)</td><td>Every 3 years for CRC screening</td><td>At-home stool sample; mailed to lab</td></tr>
+      <tr><td>Oncotype DX</td><td>Included in $60B</td><td>Physician-ordered lab test</td><td>One-time (at diagnosis)</td><td>Tumor tissue sample sent to central lab</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- PRESCRIBER UPTAKE -->
+<section id="prescribers" class="container">
+  <h2 class="section-title">Prescriber Uptake &amp; Sales Points</h2>
+  <p class="section-lead">Understanding which physicians drive adoption and what they care about.</p>
+
+  <table>
+    <thead>
+      <tr><th>Product Category</th><th>Primary Prescriber</th><th>Adoption Rate</th><th>Key Sales Points for Physicians</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FreeStyle Libre (CGM)</td>
+        <td>Endocrinologists, PCPs, Diabetes Educators</td>
+        <td>Endos: ~85% adoption; PCPs: ~30% and rising; Type 2 non-insulin segment underpenetrated (~75% don't have CGM in US)</td>
+        <td>Reduced HbA1c, time-in-range metrics, fewer hypoglycemic ER visits, AGP reports that save clinical time, patient engagement, insurance coverage expanding for Type 2 non-insulin users (CMS + private payer spillover)</td>
+      </tr>
+      <tr>
+        <td>Volt PFA</td>
+        <td>Electrophysiologists</td>
+        <td>Early-stage (limited market release). EP market growing ~16% globally. Abbott had EP growth of 10–13% in 2025</td>
+        <td>Single-catheter map-pace-ablate workflow, tissue-selective ablation (reduced collateral damage), real-time contact visualization, works with EnSite X mapping, approved for paroxysmal + persistent AFib</td>
+      </tr>
+      <tr>
+        <td>MitraClip / TriClip</td>
+        <td>Interventional Cardiologists, Cardiac Surgeons (heart team decision)</td>
+        <td>Growing double-digits. TriClip is first-of-its-kind for tricuspid — rapidly gaining adoption</td>
+        <td>Avoidance of open-heart surgery, strong real-world evidence, expanding indications (secondary MR), mortality benefit shown in COAPT trial, G5 system improves ease-of-use</td>
+      </tr>
+      <tr>
+        <td>Cologuard</td>
+        <td>PCPs, Gastroenterologists</td>
+        <td>Strong in primary care (non-invasive alternative to colonoscopy). Recommended by USPSTF for average-risk adults 45+</td>
+        <td>Non-invasive (mailed home), higher patient compliance vs. colonoscopy, 92% sensitivity for CRC, covered by Medicare/most insurers with no copay, every 3-year screening interval</td>
+      </tr>
+      <tr>
+        <td>EPD Generics (Brufen, Synthroid, Creon)</td>
+        <td>PCPs, Endocrinologists, Gastroenterologists (varies by drug)</td>
+        <td>High — established brands with decades of physician familiarity in emerging markets</td>
+        <td>Brand trust and formulation consistency (critical for narrow TI drugs like levothyroxine), Abbott distribution network in 160+ countries, competitive pricing vs. innovator brands</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- INSURANCE -->
+<section id="insurance" class="container">
+  <h2 class="section-title">Insurance Coverage Details</h2>
+  <p class="section-lead">How payers cover Abbott's key products — a critical factor in adoption.</p>
+
+  <table>
+    <thead>
+      <tr><th>Product</th><th>Medicare Coverage</th><th>Commercial Payer Coverage</th><th>Patient Cost Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>FreeStyle Libre (Rx CGM)</td>
+        <td>Covered under Medicare Part B for insulin-using diabetics. CMS expanding coverage for basal-only and potentially non-insulin Type 2 (ongoing rulemaking). Durable medical equipment (DME) benefit.</td>
+        <td>Broad commercial coverage. Expanding to Type 2 non-insulin users. CMS decisions typically drive private payer "spillover."</td>
+        <td>With insurance: ~$0–75/month copay. Without insurance: ~$75–150/month. Lingo (OTC): ~$49/month out-of-pocket.</td>
+      </tr>
+      <tr>
+        <td>Volt PFA / EP Procedures</td>
+        <td>Covered under Medicare Part A (inpatient) or Part B (outpatient). Existing AFib ablation reimbursement codes apply. New technology add-on payment (NTAP) may apply for PFA specifically.</td>
+        <td>Covered by most commercial plans for indicated AFib patients who have failed antiarrhythmic drugs.</td>
+        <td>Hospital procedure — patient pays deductible/coinsurance. Average total procedure cost: $30,000–$60,000.</td>
+      </tr>
+      <tr>
+        <td>MitraClip / TriClip / Navitor</td>
+        <td>Medicare covers TAVR and TEER under inpatient DRG payments. CMS National Coverage Determination for TAVR requires Heart Team evaluation and registry participation.</td>
+        <td>Covered with prior authorization. Requires documented valve disease severity and heart team recommendation.</td>
+        <td>Hospital procedure. Patient pays inpatient deductible (~$1,632 for Medicare Part A in 2025).</td>
+      </tr>
+      <tr>
+        <td>Cologuard</td>
+        <td>Covered by Medicare with $0 copay as a preventive screening for adults 45–85 every 3 years.</td>
+        <td>Covered by most commercial plans under ACA preventive care mandate (USPSTF A/B recommendation).</td>
+        <td>Typically $0 out-of-pocket for age-appropriate screening. Without insurance: ~$649 list price.</td>
+      </tr>
+      <tr>
+        <td>EPD Generics</td>
+        <td>N/A (not sold in the US)</td>
+        <td>International: varies by country. Generally on national formularies in emerging markets due to branded generic status and competitive pricing.</td>
+        <td>Priced at significant discount to innovator brands. In many countries: government subsidized or covered under national health programs.</td>
+      </tr>
+      <tr>
+        <td>Nutrition (Ensure, Similac, Glucerna)</td>
+        <td>Ensure/Glucerna not covered by Medicare as a food product. Exception: medically necessary enteral nutrition (tube feeding) covered under Part B with physician documentation.</td>
+        <td>Generally not covered (OTC food/supplement). Some commercial plans cover medical nutrition therapy when physician-prescribed for specific conditions.</td>
+        <td>Consumer out-of-pocket. Similac: ~$25–40/can. Ensure: ~$10–15/six-pack. Glucerna: ~$12–18/six-pack.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- HEADWINDS / TAILWINDS -->
+<section id="winds" class="container">
+  <h2 class="section-title">Headwinds &amp; Tailwinds</h2>
+  <p class="section-lead">What keeps us up at night — and what gets us excited.</p>
+
+  <div class="wind-grid">
+    <div class="wind-col">
+      <h3>🔴 Scary Headwinds</h3>
+
+      <div class="wind-item head">
+        <strong>FreeStyle Libre 3 Class I Recall</strong>
+        FDA linked 860 serious injuries and 7 deaths to faulty Libre 3/3 Plus sensors (falsely low glucose readings). ~3M sensors recalled. Brand equity risk in an $8B franchise. FDA also issued a warning letter citing quality system violations at the Alameda manufacturing facility.
+      </div>
+      <div class="wind-item head">
+        <strong>NEC Litigation Exposure</strong>
+        ~782 lawsuits pending in MDL 3026. State court verdicts totaling $500M+ already. If a global settlement is reached, liability could be in the billions. While Abbott has prevailed in federal bellwethers so far, the April 2026 Chicago verdict ($53M) and ongoing trials create headline risk.
+      </div>
+      <div class="wind-item head">
+        <strong>CGM Competitive Pressure</strong>
+        Dexcom G7 and Stelo (OTC), plus Medtronic's Simplera, are closing the gap. Pricing pressure as CGM becomes mass-market. Libre's US share (~60%) may face erosion.
+      </div>
+      <div class="wind-item head">
+        <strong>Diagnostics Normalization Post-COVID</strong>
+        COVID testing revenue continues to fade. Core diagnostics growing but not fast enough to fully offset. This segment underperformed in recent quarters.
+      </div>
+      <div class="wind-item head">
+        <strong>Nutrition Segment Softness</strong>
+        Q4 2025 nutrition sales missed expectations by ~7% YoY. Pricing pressure, rising input costs, and volume softness. Recovery expected in H2 2026 but uncertain timing.
+      </div>
+      <div class="wind-item head">
+        <strong>$20B Debt Load from Exact Sciences</strong>
+        Abbott raised $20B in senior notes to finance the acquisition. While manageable given Abbott's cash flow, it increases leverage and limits near-term financial flexibility. Integration execution risk.
+      </div>
+      <div class="wind-item head">
+        <strong>FX / Macro / Tariff Headwinds</strong>
+        ~55% of revenue is international. Strong dollar, emerging market currency volatility, inflation, and potential tariff impacts all weigh on margins. China regulatory delays (Libre 3 approval pending).
+      </div>
+      <div class="wind-item head">
+        <strong>Reimbursement / Medicare Risk</strong>
+        Any future CMS cuts to device reimbursement (especially DME for CGM or DRG for structural heart) would directly impact revenue. Healthcare reform uncertainty.
+      </div>
+    </div>
+
+    <div class="wind-col">
+      <h3>🟢 Exciting Tailwinds</h3>
+
+      <div class="wind-item tail">
+        <strong>CGM Expansion — Massive Underpenetration</strong>
+        500M+ people with diabetes globally; only ~10M use CGMs. 25% of intensive insulin users in the US still not on CGM; 50% internationally. Basal-only and Type 2 non-insulin coverage expansion is a huge unlock. Target: $10B in FreeStyle Libre sales by 2028.
+      </div>
+      <div class="wind-item tail">
+        <strong>Volt PFA US Launch — New EP Growth Engine</strong>
+        PFA is the next generation of AFib ablation. $10B addressable EP market. Abbott's unique single-catheter design could gain significant share. UBS expects EP reacceleration in 2026.
+      </div>
+      <div class="wind-item tail">
+        <strong>Exact Sciences — Cancer Diagnostics Vertical</strong>
+        $21B acquisition closed March 2026. Adds ~$3B incremental revenue. Entry into $60B US cancer screening/precision oncology market. Cologuard has strong PCP adoption and ACA-mandated coverage.
+      </div>
+      <div class="wind-item tail">
+        <strong>Dual-Analyte CGM Sensor (Glucose + Ketone)</strong>
+        Upcoming launch integrates ketone monitoring into CGM. First combined glucose/ketone sensor on the market. Key differentiator for intensive insulin users at risk of DKA.
+      </div>
+      <div class="wind-item tail">
+        <strong>Structural Heart Momentum</strong>
+        MitraClip, TriClip (first-of-its-kind), and Navitor all posting double-digit growth. Expanding indications. Aging population driving procedure volumes. G5 system enhances physician workflow.
+      </div>
+      <div class="wind-item tail">
+        <strong>Biosimilars in Emerging Markets</strong>
+        Fastest-growing segment of branded generics. mAbxience partnership launching oncology and women's health biosimilars. Abbott's distribution in 160+ countries provides unmatched reach.
+      </div>
+      <div class="wind-item tail">
+        <strong>OTC Biowearables (Lingo)</strong>
+        Leveraging Libre technology for wellness/non-diabetes consumers. Entirely new market segment. National expansion underway. No prescription required.
+      </div>
+      <div class="wind-item tail">
+        <strong>Dividend King Status + Cash Flow</strong>
+        54-year consecutive dividend increase streak. 2025 FCF supports ongoing share buybacks, dividend growth (7% increase in 2025), and acquisitions. 2026 guidance: EPS $5.55–$5.80 (~10% growth), organic revenue growth 6.5–7.5%.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GLOSSARY -->
+<section id="glossary" class="container">
+  <h2 class="section-title">Glossary</h2>
+  <p class="section-lead">Searchable reference for all technical terms, chemicals, products, and concepts used in this guide.</p>
+  <input type="text" class="glossary-search" id="glossarySearch" placeholder="Search glossary — type a term, chemical, or product…">
+
+  <div class="glossary-grid" id="glossaryGrid">
+
+    <!-- PRODUCTS -->
+    <div class="gloss-card" id="g-libre"><span class="cat">Product</span><h4>FreeStyle Libre</h4><p>Abbott's sensor-based continuous glucose monitoring (CGM) platform. Variants include Libre 2, Libre 2 Plus, Libre 3, Libre 3 Plus. Worn on the back of the upper arm for up to 14 days. Used by ~7 million people worldwide.</p></div>
+    <div class="gloss-card" id="g-lingo"><span class="cat">Product</span><h4>Lingo</h4><p>Abbott's OTC (over-the-counter) biowearable based on Libre technology. Targets non-diabetic consumers interested in tracking glucose for wellness, fitness, and metabolic health.</p></div>
+    <div class="gloss-card" id="g-rio"><span class="cat">Product</span><h4>Libre Rio</h4><p>Abbott's OTC continuous glucose monitoring system for diabetes management without a prescription. FDA-cleared.</p></div>
+    <div class="gloss-card" id="g-volt"><span class="cat">Product</span><h4>Volt™ PFA System</h4><p>Abbott's pulsed field ablation catheter system for treating atrial fibrillation. FDA-approved December 2025. Unique balloon-in-basket design allows mapping, pacing, and ablation with a single catheter.</p></div>
+    <div class="gloss-card" id="g-mitraclip"><span class="cat">Product</span><h4>MitraClip</h4><p>Abbott's transcatheter edge-to-edge repair (TEER) device for mitral regurgitation. Cobalt-chromium clip delivered via catheter to clip mitral valve leaflets, reducing backflow. G5 is the latest generation.</p></div>
+    <div class="gloss-card" id="g-triclip"><span class="cat">Product</span><h4>TriClip</h4><p>Abbott's TEER device for tricuspid regurgitation. First-of-its-kind FDA-approved transcatheter therapy for the tricuspid valve. Over 15,000 patients treated as of 2025.</p></div>
+    <div class="gloss-card" id="g-navitor"><span class="cat">Product</span><h4>Navitor</h4><p>Abbott's transcatheter aortic valve replacement (TAVR) system. A bovine pericardial tissue valve mounted on a nitinol frame, delivered via catheter to replace a diseased aortic valve.</p></div>
+    <div class="gloss-card" id="g-aveir"><span class="cat">Product</span><h4>AVEIR™</h4><p>Abbott's leadless pacemaker. Titanium capsule implanted directly into the heart via catheter — no surgical pocket or transvenous leads required. Steroid-eluting electrode to reduce inflammation.</p></div>
+    <div class="gloss-card" id="g-amulet"><span class="cat">Product</span><h4>Amplatzer™ Amulet™</h4><p>Left atrial appendage closure (LAAC) device for stroke prevention in AFib patients who cannot tolerate anticoagulants. Nitinol mesh with polyester fabric.</p></div>
+    <div class="gloss-card" id="g-ensite"><span class="cat">Product</span><h4>EnSite™ X EP System</h4><p>Abbott's 3D cardiac mapping system used during electrophysiology procedures. Creates real-time electrical maps of the heart to guide ablation catheter placement.</p></div>
+    <div class="gloss-card" id="g-similac"><span class="cat">Product</span><h4>Similac</h4><p>Abbott's infant formula brand. Product lines include Advance, Pro-Advance (with HMOs), Sensitive (lactose-reduced), Alimentum (hydrolyzed), and Special Care (NICU). Subject to ongoing NEC litigation.</p></div>
+    <div class="gloss-card" id="g-ensure"><span class="cat">Product</span><h4>Ensure</h4><p>Abbott's market-leading adult nutritional supplement. Complete, balanced nutrition providing protein, carbohydrates, fats, vitamins, and minerals. Available in multiple formulations (Original, Plus, Max Protein, etc.).</p></div>
+    <div class="gloss-card" id="g-glucerna"><span class="cat">Product</span><h4>Glucerna</h4><p>Abbott's nutritional supplement designed for people with diabetes. Uses slow-release carbohydrates to minimize glycemic impact. Fortified with chromium and biotin.</p></div>
+    <div class="gloss-card" id="g-pediasure"><span class="cat">Product</span><h4>PediaSure</h4><p>Abbott's nutritional supplement for children (1–13 years) with growth concerns or picky eating. Contains 25 vitamins/minerals, protein, DHA, and prebiotics.</p></div>
+    <div class="gloss-card" id="g-pedialyte"><span class="cat">Product</span><h4>Pedialyte</h4><p>Abbott's oral rehydration solution for children and adults. Optimal electrolyte balance (sodium, potassium, chloride) with glucose for rehydration during illness.</p></div>
+    <div class="gloss-card" id="g-brufen"><span class="cat">Product</span><h4>Brufen</h4><p>Abbott's branded ibuprofen sold in international markets. NSAID for pain, fever, and inflammation. Competes with Advil/Motrin in emerging markets.</p></div>
+    <div class="gloss-card" id="g-synthroid"><span class="cat">Product</span><h4>Synthroid</h4><p>Abbott's branded levothyroxine sodium. Synthetic T4 thyroid hormone replacement for hypothyroidism. Narrow therapeutic index — formulation consistency is critical.</p></div>
+    <div class="gloss-card" id="g-creon"><span class="cat">Product</span><h4>Creon</h4><p>Abbott's pancreatic enzyme replacement therapy (PERT). Contains lipase, protease, and amylase derived from porcine pancreas. Used for exocrine pancreatic insufficiency.</p></div>
+    <div class="gloss-card" id="g-duphalac"><span class="cat">Product</span><h4>Duphalac</h4><p>Abbott's branded lactulose. Osmotic laxative used for constipation and hepatic encephalopathy.</p></div>
+    <div class="gloss-card" id="g-lipanthyl"><span class="cat">Product</span><h4>Lipanthyl</h4><p>Abbott's branded fenofibrate for lipid management. Reduces triglycerides and raises HDL cholesterol.</p></div>
+    <div class="gloss-card" id="g-cologuard"><span class="cat">Product</span><h4>Cologuard</h4><p>Non-invasive stool-based colorectal cancer screening test (acquired via Exact Sciences, closed March 2026). Detects altered DNA biomarkers and hemoglobin. FDA-approved for average-risk adults 45+. Every 3 years.</p></div>
+
+    <!-- CHEMICALS / COMPOUNDS -->
+    <div class="gloss-card" id="g-ibuprofen"><span class="cat">Chemical</span><h4>Ibuprofen (C₁₃H₁₈O₂)</h4><p>A propionic acid derivative NSAID. Inhibits COX-1 and COX-2 enzymes, reducing prostaglandin synthesis and thereby decreasing pain, fever, and inflammation.</p></div>
+    <div class="gloss-card" id="g-levo"><span class="cat">Chemical</span><h4>Levothyroxine Sodium (C₁₅H₁₀I₄NNaO₄)</h4><p>Synthetic thyroid hormone T4. Contains four iodine atoms on a tyrosine backbone. Converted in the body to the active T3 (triiodothyronine) form. Narrow therapeutic index.</p></div>
+    <div class="gloss-card" id="g-pancreatin"><span class="cat">Chemical</span><h4>Pancreatin</h4><p>A mixture of digestive enzymes (lipase, protease, amylase) derived from porcine pancreas. Used as enzyme replacement in exocrine pancreatic insufficiency.</p></div>
+    <div class="gloss-card" id="g-lactulose"><span class="cat">Chemical</span><h4>Lactulose (C₁₂H₂₂O₁₁)</h4><p>Synthetic disaccharide (galactose + fructose). Not absorbed in upper GI tract. Fermented by colonic bacteria into short-chain fatty acids, creating osmotic laxative effect. Also reduces ammonia in hepatic encephalopathy.</p></div>
+    <div class="gloss-card" id="g-fenofibrate"><span class="cat">Chemical</span><h4>Fenofibrate (C₂₀H₂₁ClO₄)</h4><p>A fibric acid derivative that activates PPARα nuclear receptors. Increases lipoprotein lipase activity, reducing triglycerides and raising HDL cholesterol.</p></div>
+    <div class="gloss-card" id="g-nitinol"><span class="cat">Material</span><h4>Nitinol</h4><p>Nickel-titanium alloy with shape memory and superelastic properties. Widely used in medical devices (stents, heart valve frames, pacemaker components) because it can be compressed for catheter delivery and expand to its original shape in the body.</p></div>
+    <div class="gloss-card" id="g-dex"><span class="cat">Chemical</span><h4>Dexamethasone</h4><p>A synthetic corticosteroid used as a coating on pacemaker electrodes (like AVEIR) to reduce inflammation at the tissue interface, lowering pacing thresholds.</p></div>
+    <div class="gloss-card" id="g-gox"><span class="cat">Enzyme</span><h4>Glucose Oxidase</h4><p>Enzyme used in CGM sensor electrochemistry. Catalyzes oxidation of glucose to gluconic acid and hydrogen peroxide. The H₂O₂ generated is measured electrochemically to determine glucose concentration.</p></div>
+    <div class="gloss-card" id="g-dha"><span class="cat">Chemical</span><h4>DHA (Docosahexaenoic Acid)</h4><p>An omega-3 long-chain polyunsaturated fatty acid critical for brain and eye development. Found in breast milk; added to infant formulas. Chemical formula: C₂₂H₃₂O₂.</p></div>
+    <div class="gloss-card" id="g-ara"><span class="cat">Chemical</span><h4>ARA (Arachidonic Acid)</h4><p>An omega-6 fatty acid important for infant brain development and immune function. Added to infant formulas alongside DHA.</p></div>
+    <div class="gloss-card" id="g-chromium"><span class="cat">Mineral</span><h4>Chromium</h4><p>Trace mineral that enhances insulin sensitivity by potentiating insulin receptor signaling. Added to Glucerna products for diabetes management.</p></div>
+    <div class="gloss-card" id="g-biotin"><span class="cat">Vitamin</span><h4>Biotin (Vitamin B7)</h4><p>Water-soluble B vitamin involved in carbohydrate, fat, and protein metabolism. Added to nutritional supplements. Note: high biotin levels can interfere with certain lab assays (troponin, thyroid).</p></div>
+
+    <!-- BIOLOGICAL TERMS -->
+    <div class="gloss-card" id="g-cgm"><span class="cat">Biology / Device</span><h4>Continuous Glucose Monitoring (CGM)</h4><p>Technology that measures glucose levels continuously (typically every 1–5 minutes) via a small subcutaneous sensor. Replaces or supplements traditional finger-stick blood glucose testing.</p></div>
+    <div class="gloss-card" id="g-glucose"><span class="cat">Biology</span><h4>Interstitial Glucose</h4><p>Glucose concentration in the interstitial fluid (the fluid between cells). CGM sensors measure this rather than blood glucose directly. There is a ~5–15 minute physiological lag between blood and interstitial glucose.</p></div>
+    <div class="gloss-card" id="g-a1c"><span class="cat">Biology</span><h4>HbA1c (Glycated Hemoglobin)</h4><p>Blood test measuring average blood sugar over the past 2–3 months. Glucose binds to hemoglobin in red blood cells. Normal: &lt;5.7%; Pre-diabetes: 5.7–6.4%; Diabetes: ≥6.5%. Key outcome metric for diabetes management.</p></div>
+    <div class="gloss-card" id="g-diabetes"><span class="cat">Disease</span><h4>Diabetes</h4><p>Chronic metabolic disease characterized by elevated blood glucose. Type 1: autoimmune destruction of insulin-producing beta cells. Type 2: insulin resistance and progressive beta cell dysfunction. ~500 million people affected globally.</p></div>
+    <div class="gloss-card" id="g-dka"><span class="cat">Condition</span><h4>Diabetic Ketoacidosis (DKA)</h4><p>Life-threatening complication of diabetes (especially Type 1) where lack of insulin causes the body to break down fat for fuel, producing ketones that acidify the blood. Symptoms: nausea, vomiting, confusion, fruity breath. Requires emergency treatment.</p></div>
+    <div class="gloss-card" id="g-ketone"><span class="cat">Biology</span><h4>Ketones</h4><p>Chemicals produced when the body breaks down fat for energy. Elevated blood ketones (ketonemia) indicate insulin deficiency and can lead to DKA. Abbott's upcoming dual-analyte sensor will monitor both glucose and beta-hydroxybutyrate (the primary blood ketone).</p></div>
+    <div class="gloss-card" id="g-afib"><span class="cat">Disease</span><h4>Atrial Fibrillation (AFib)</h4><p>Most common heart arrhythmia. The atria (upper chambers) beat irregularly and rapidly due to disorganized electrical signals. Increases stroke risk 5x. Affects ~6 million Americans. Treated with medications, cardioversion, or catheter ablation.</p></div>
+    <div class="gloss-card" id="g-pfa"><span class="cat">Technology</span><h4>Pulsed Field Ablation (PFA)</h4><p>Next-generation catheter ablation technology using high-voltage, ultra-short electrical pulses to destroy cardiac tissue causing arrhythmia. Tissue-selective for cardiomyocytes — spares nerves, esophagus, and vasculature (unlike thermal ablation).</p></div>
+    <div class="gloss-card" id="g-electroporation"><span class="cat">Biology</span><h4>Electroporation</h4><p>Process by which electrical pulses create pores in cell membranes. Reversible electroporation: temporary pores (used in gene therapy). Irreversible electroporation: permanent pores causing cell death (used in PFA ablation).</p></div>
+    <div class="gloss-card" id="g-rfa"><span class="cat">Technology</span><h4>Radiofrequency Ablation (RFA)</h4><p>Traditional catheter ablation method using heat from radiofrequency energy to destroy tissue. Effective but can damage non-target structures (esophagus, phrenic nerve). PFA aims to address these limitations.</p></div>
+    <div class="gloss-card" id="g-cardiomyocyte"><span class="cat">Biology</span><h4>Cardiomyocyte</h4><p>Heart muscle cell. PFA is tissue-selective because cardiomyocytes are more susceptible to electroporation at lower energy thresholds than surrounding tissues (nerves, smooth muscle, esophageal cells).</p></div>
+    <div class="gloss-card" id="g-mr"><span class="cat">Disease</span><h4>Mitral Regurgitation (MR)</h4><p>Condition where the mitral valve (between left atrium and left ventricle) doesn't close properly, allowing blood to flow backward. Primary MR: structural valve damage. Secondary/functional MR: ventricle dilation pulls leaflets apart. Treated by MitraClip.</p></div>
+    <div class="gloss-card" id="g-tr"><span class="cat">Disease</span><h4>Tricuspid Regurgitation (TR)</h4><p>Backward blood flow through the tricuspid valve (right side of heart). Often secondary to left-heart disease or pulmonary hypertension. Treated by TriClip — the first-of-its-kind transcatheter therapy.</p></div>
+    <div class="gloss-card" id="g-teer"><span class="cat">Technology</span><h4>Transcatheter Edge-to-Edge Repair (TEER)</h4><p>Minimally invasive technique where a clip is delivered via catheter to grasp and approximate valve leaflets, reducing regurgitation without open-heart surgery. Used for both mitral (MitraClip) and tricuspid (TriClip) repair.</p></div>
+    <div class="gloss-card" id="g-tavr"><span class="cat">Technology</span><h4>TAVR (Transcatheter Aortic Valve Replacement)</h4><p>Minimally invasive procedure to replace a diseased aortic valve with a prosthetic valve delivered via catheter (usually through the femoral artery). Alternative to open-heart surgical valve replacement.</p></div>
+    <div class="gloss-card" id="g-aortic"><span class="cat">Anatomy</span><h4>Aortic Valve</h4><p>Heart valve between the left ventricle and the aorta. When it becomes stenotic (narrowed) or regurgitant, blood flow is impaired. Aortic stenosis is the most common valve disease requiring intervention in elderly patients.</p></div>
+    <div class="gloss-card" id="g-laac"><span class="cat">Technology</span><h4>LAAC (Left Atrial Appendage Closure)</h4><p>Procedure to seal off the left atrial appendage — a small pouch where blood clots tend to form in AFib patients. Eliminates the need for long-term blood thinners (anticoagulants) for stroke prevention.</p></div>
+    <div class="gloss-card" id="g-nec"><span class="cat">Disease</span><h4>Necrotizing Enterocolitis (NEC)</h4><p>Life-threatening intestinal disease primarily affecting premature infants. The intestinal wall becomes inflamed and can die. Symptoms: feeding intolerance, abdominal distension, bloody stool. Mortality rate: 20–30%. Central to the Similac/Enfamil litigation.</p></div>
+    <div class="gloss-card" id="g-crc"><span class="cat">Disease</span><h4>Colorectal Cancer (CRC)</h4><p>Cancer of the colon or rectum. Third most common cancer worldwide. Screening (colonoscopy or non-invasive tests like Cologuard) dramatically improves outcomes through early detection. USPSTF recommends screening starting at age 45.</p></div>
+    <div class="gloss-card" id="g-paf"><span class="cat">Clinical</span><h4>Paroxysmal AFib</h4><p>Atrial fibrillation that comes and goes — episodes typically last less than 7 days and resolve on their own. Earlier stage of AFib progression. Volt PFA is approved for this indication.</p></div>
+    <div class="gloss-card" id="g-persaf"><span class="cat">Clinical</span><h4>Persistent AFib</h4><p>Atrial fibrillation episodes lasting longer than 7 days, or requiring intervention (cardioversion or ablation) to restore normal rhythm. Volt PFA is also approved for this indication.</p></div>
+    <div class="gloss-card" id="g-hypothyroid"><span class="cat">Disease</span><h4>Hypothyroidism</h4><p>Underactive thyroid — insufficient production of thyroid hormones T3 and T4. Symptoms: fatigue, weight gain, cold intolerance, depression. Treated with levothyroxine (Synthroid). Affects ~5% of the global population.</p></div>
+    <div class="gloss-card" id="g-t4"><span class="cat">Biology</span><h4>Thyroxine (T4)</h4><p>Thyroid hormone produced by the thyroid gland. Contains 4 iodine atoms. Converted peripherally to T3 (triiodothyronine), the more active form. Regulates metabolism, growth, and development.</p></div>
+    <div class="gloss-card" id="g-epi"><span class="cat">Disease</span><h4>Exocrine Pancreatic Insufficiency (EPI)</h4><p>Condition where the pancreas fails to produce enough digestive enzymes. Causes maldigestion and malabsorption of fats, proteins, and carbohydrates. Common in cystic fibrosis and chronic pancreatitis. Treated with Creon (PERT).</p></div>
+    <div class="gloss-card" id="g-cf"><span class="cat">Disease</span><h4>Cystic Fibrosis (CF)</h4><p>Genetic disease caused by mutations in the CFTR gene. Produces thick, sticky mucus that clogs airways and blocks pancreatic ducts. Most CF patients require PERT (Creon) for digestion.</p></div>
+
+    <!-- SALES / MARKET TERMS -->
+    <div class="gloss-card" id="g-mdl"><span class="cat">Legal / Sales</span><h4>MDL (Multidistrict Litigation)</h4><p>A federal legal procedure that consolidates similar lawsuits from multiple districts into one court for pretrial proceedings. MDL 3026 consolidates NEC baby formula lawsuits in the Northern District of Illinois.</p></div>
+    <div class="gloss-card" id="g-biosimilar"><span class="cat">Pharma / Sales</span><h4>Biosimilar</h4><p>A biologic product that is highly similar to an already-approved reference biologic with no clinically meaningful differences. Unlike generic small-molecule drugs, biosimilars require clinical trials to demonstrate similarity. Growing rapidly as biologic patents expire.</p></div>
+    <div class="gloss-card" id="g-monoclonal"><span class="cat">Biology</span><h4>Monoclonal Antibody (mAb)</h4><p>Laboratory-made protein that mimics the immune system's ability to target specific antigens. Used in cancer, autoimmune disease, and more. Biosimilar mAbs are a key growth area for Abbott's EPD segment.</p></div>
+    <div class="gloss-card" id="g-mab"><span class="cat">Biology</span><h4>mAb (see Monoclonal Antibody)</h4><p>Abbreviation for monoclonal antibody. These large biologic molecules are produced in cell culture (often CHO cells) and require complex manufacturing.</p></div>
+    <div class="gloss-card" id="g-cho"><span class="cat">Biology</span><h4>CHO Cells (Chinese Hamster Ovary)</h4><p>The most commonly used mammalian host cells for large-scale production of therapeutic monoclonal antibodies and other biologic drugs. They add human-like post-translational modifications to proteins.</p></div>
+    <div class="gloss-card" id="g-agp"><span class="cat">Clinical / Sales</span><h4>AGP (Ambulatory Glucose Profile)</h4><p>Standardized report generated from CGM data showing glucose patterns over time. Displays time-in-range, time above/below target, and variability. Physicians use AGP to adjust treatment — saves consultation time vs. reviewing raw glucose logs.</p></div>
+    <div class="gloss-card" id="g-aid"><span class="cat">Technology</span><h4>AID (Automated Insulin Delivery)</h4><p>Closed-loop systems that automatically adjust insulin pump delivery based on real-time CGM data. Abbott is partnering to integrate Libre with multiple AID pump systems.</p></div>
+    <div class="gloss-card" id="g-ti"><span class="cat">Pharma</span><h4>Therapeutic Index (TI)</h4><p>Ratio between the toxic dose and the therapeutic dose of a drug. Narrow TI drugs (like levothyroxine, warfarin, lithium) require precise dosing — small changes cause significant clinical effects. Formulation consistency is critical for generic substitution.</p></div>
+    <div class="gloss-card" id="g-nsaid"><span class="cat">Drug Class</span><h4>NSAID (Non-Steroidal Anti-Inflammatory Drug)</h4><p>Class of drugs that reduce inflammation, pain, and fever by inhibiting cyclooxygenase (COX) enzymes. Includes ibuprofen (Brufen), naproxen, aspirin. Common side effects: GI irritation, cardiovascular risk with long-term use.</p></div>
+    <div class="gloss-card" id="g-cox"><span class="cat">Biology</span><h4>Cyclooxygenase (COX-1/COX-2)</h4><p>Enzymes that convert arachidonic acid into prostaglandins. COX-1 is constitutive (protective — gut lining, platelets). COX-2 is inducible (inflammation). NSAIDs block both; selective COX-2 inhibitors (celecoxib) target only COX-2.</p></div>
+    <div class="gloss-card" id="g-prostaglandin"><span class="cat">Biology</span><h4>Prostaglandin</h4><p>Lipid compounds with hormone-like effects. Mediate inflammation, pain, fever, and protect the gastric mucosa. Produced from arachidonic acid via COX enzymes. NSAIDs work by reducing prostaglandin synthesis.</p></div>
+    <div class="gloss-card" id="g-propionic"><span class="cat">Chemistry</span><h4>Propionic Acid Derivative</h4><p>Chemical class of NSAIDs including ibuprofen, naproxen, and ketoprofen. Named for their propionic acid backbone structure.</p></div>
+    <div class="gloss-card" id="g-fibrate"><span class="cat">Drug Class</span><h4>Fibrate</h4><p>Class of lipid-lowering drugs that activate PPARα receptors. Primarily reduce triglycerides and raise HDL. Includes fenofibrate (Lipanthyl) and gemfibrozil.</p></div>
+    <div class="gloss-card" id="g-ppar"><span class="cat">Biology</span><h4>PPARα (Peroxisome Proliferator-Activated Receptor Alpha)</h4><p>Nuclear receptor that regulates fatty acid oxidation and lipoprotein metabolism. When activated by fibrates, increases lipoprotein lipase expression and reduces triglyceride production.</p></div>
+    <div class="gloss-card" id="g-triglyceride"><span class="cat">Biology</span><h4>Triglycerides</h4><p>The main form of fat in the body and in food. High levels (>150 mg/dL) increase cardiovascular risk. Reduced by fibrates, omega-3s, statins, and lifestyle changes.</p></div>
+    <div class="gloss-card" id="g-hdl"><span class="cat">Biology</span><h4>HDL Cholesterol</h4><p>"Good" cholesterol — high-density lipoprotein. Carries cholesterol away from arteries to the liver for removal. Higher levels are associated with lower cardiovascular risk. Fibrates raise HDL.</p></div>
+    <div class="gloss-card" id="g-lipoprotein"><span class="cat">Biology</span><h4>Lipoprotein Lipase</h4><p>Enzyme that breaks down triglycerides in lipoproteins (like VLDL). Activated by PPARα agonists (fibrates). Increased activity = lower triglycerides.</p></div>
+    <div class="gloss-card" id="g-statin"><span class="cat">Drug Class</span><h4>Statin</h4><p>Class of drugs that lower LDL cholesterol by inhibiting HMG-CoA reductase (the rate-limiting enzyme in cholesterol synthesis). First-line therapy for dyslipidemia. Fibrates used adjunctively for elevated triglycerides.</p></div>
+    <div class="gloss-card" id="g-dyslipidemia"><span class="cat">Disease</span><h4>Dyslipidemia</h4><p>Abnormal levels of lipids (cholesterol, triglycerides) in the blood. Major risk factor for cardiovascular disease. Treated with statins (LDL), fibrates (triglycerides), and lifestyle modification.</p></div>
+    <div class="gloss-card" id="g-lipase"><span class="cat">Enzyme</span><h4>Lipase</h4><p>Digestive enzyme that breaks down dietary fats (triglycerides) into glycerol and fatty acids. Key component of Creon (PERT) for patients with EPI.</p></div>
+    <div class="gloss-card" id="g-protease"><span class="cat">Enzyme</span><h4>Protease</h4><p>Digestive enzyme that breaks down proteins into amino acids. Component of Creon (PERT).</p></div>
+    <div class="gloss-card" id="g-amylase"><span class="cat">Enzyme</span><h4>Amylase</h4><p>Digestive enzyme that breaks down starch into sugars. Component of Creon (PERT). Also produced by salivary glands.</p></div>
+    <div class="gloss-card" id="g-pert"><span class="cat">Therapy</span><h4>PERT (Pancreatic Enzyme Replacement Therapy)</h4><p>Oral enzyme supplements taken with meals to replace missing pancreatic enzymes in EPI patients. Dosed based on lipase units per meal. Patients take PERT with every meal for life.</p></div>
+    <div class="gloss-card" id="g-scfa"><span class="cat">Biology</span><h4>Short-Chain Fatty Acids (SCFAs)</h4><p>Metabolic byproducts of bacterial fermentation of fiber/lactulose in the colon. Include acetate, propionate, butyrate. Lower colonic pH (which reduces ammonia absorption in hepatic encephalopathy) and draw water into the bowel.</p></div>
+    <div class="gloss-card" id="g-he"><span class="cat">Disease</span><h4>Hepatic Encephalopathy</h4><p>Brain dysfunction caused by liver failure's inability to clear toxins (especially ammonia) from the blood. Symptoms range from confusion to coma. Treated with lactulose (Duphalac) and rifaximin.</p></div>
+    <div class="gloss-card" id="g-casein"><span class="cat">Biology</span><h4>Casein</h4><p>The primary protein in cow's milk (~80% of total milk protein). Forms curds during digestion. Used as the protein base in many infant formulas.</p></div>
+    <div class="gloss-card" id="g-whey"><span class="cat">Biology</span><h4>Whey</h4><p>The liquid portion of milk after curdling (~20% of total milk protein). Contains lactalbumin and lactoglobulin. More easily digestible than casein. Used in infant formulas and nutritional supplements.</p></div>
+    <div class="gloss-card" id="g-hmo"><span class="cat">Biology</span><h4>HMOs (Human Milk Oligosaccharides)</h4><p>Complex carbohydrates naturally found in breast milk that serve as prebiotics (feed beneficial gut bacteria) and support immune development. Abbott's Similac Pro-Advance includes 2'-FL HMO.</p></div>
+    <div class="gloss-card" id="g-prebiotic"><span class="cat">Biology</span><h4>Prebiotic</h4><p>Non-digestible dietary compounds (like HMOs, inulin, FOS) that selectively promote growth of beneficial gut bacteria. Different from probiotics (live bacteria).</p></div>
+    <div class="gloss-card" id="g-lutein"><span class="cat">Nutrient</span><h4>Lutein</h4><p>Carotenoid antioxidant important for eye health. Found in breast milk. Added to Similac formulas. Helps filter blue light and protect the developing retina.</p></div>
+    <div class="gloss-card" id="g-ve"><span class="cat">Vitamin</span><h4>Vitamin E</h4><p>Fat-soluble antioxidant that protects cell membranes from oxidative damage. Important for infant brain development. Added to infant formulas.</p></div>
+    <div class="gloss-card" id="g-hydrolyzed"><span class="cat">Chemistry</span><h4>Hydrolyzed Protein</h4><p>Protein that has been broken down into smaller peptides or amino acids using enzymes or acid. Extensively hydrolyzed formulas (like Similac Alimentum) are used for infants with cow's milk protein allergy — the smaller peptides are less likely to trigger immune reactions.</p></div>
+    <div class="gloss-card" id="g-soy"><span class="cat">Biology</span><h4>Soy Protein Isolate</h4><p>Highly refined form of soybean protein used in nutritional supplements (Ensure). Contains all essential amino acids. Plant-based alternative to dairy protein.</p></div>
+    <div class="gloss-card" id="g-slowdigest"><span class="cat">Nutrition</span><h4>Slow-Release Carbohydrate</h4><p>Modified carbohydrate blend (e.g., modified maltodextrin, fructose) designed to be digested and absorbed more slowly, producing a lower glycemic response. Used in Glucerna for diabetes management.</p></div>
+    <div class="gloss-card" id="g-fructose"><span class="cat">Chemistry</span><h4>Fructose</h4><p>Simple sugar (monosaccharide, C₆H₁₂O₆) found in fruit. Has a lower glycemic index than glucose. Used in Glucerna's slow-release carbohydrate blend.</p></div>
+    <div class="gloss-card" id="g-glycemic"><span class="cat">Biology</span><h4>Glycemic (Impact/Index)</h4><p>Refers to the effect of food on blood glucose levels. Glycemic index (GI) ranks foods by how quickly they raise blood sugar. Low-GI foods are preferred for diabetes management.</p></div>
+    <div class="gloss-card" id="g-electrolyte"><span class="cat">Biology</span><h4>Electrolytes</h4><p>Minerals (sodium, potassium, chloride, etc.) that carry electrical charge in body fluids. Essential for nerve function, muscle contraction, and fluid balance. Pedialyte provides optimal electrolyte balance for rehydration.</p></div>
+    <div class="gloss-card" id="g-ors"><span class="cat">Clinical</span><h4>ORS (Oral Rehydration Salt)</h4><p>WHO-recommended formulation of salts and glucose for treating dehydration. Principle: glucose facilitates sodium and water absorption in the small intestine. Pedialyte is based on ORS principles.</p></div>
+    <div class="gloss-card" id="g-anticoagulant"><span class="cat">Drug Class</span><h4>Anticoagulant</h4><p>Blood-thinning medication (warfarin, DOACs like apixaban/rivaroxaban) used to prevent stroke in AFib. Some patients can't tolerate anticoagulants (bleeding risk), making them candidates for LAAC (Amplatzer Amulet).</p></div>
+    <div class="gloss-card" id="g-scs"><span class="cat">Technology</span><h4>SCS (Spinal Cord Stimulation)</h4><p>Neuromodulation therapy where an implanted device delivers electrical impulses to the spinal cord, interrupting pain signals. Used for chronic back/leg pain, CRPS, and diabetic neuropathy.</p></div>
+    <div class="gloss-card" id="g-drg"><span class="cat">Biology / Technology</span><h4>DRG (Dorsal Root Ganglion)</h4><p>Cluster of sensory nerve cell bodies along the spinal cord. DRG stimulation is a targeted form of neuromodulation for localized pain conditions.</p></div>
+    <div class="gloss-card" id="g-immunoassay"><span class="cat">Diagnostics</span><h4>Immunoassay</h4><p>Biochemical test that uses antibody-antigen binding to measure the concentration of a substance (hormone, protein, drug) in blood or other samples. Abbott's Alinity platforms run automated immunoassays.</p></div>
+    <div class="gloss-card" id="g-chemiluminescence"><span class="cat">Chemistry</span><h4>Chemiluminescence</h4><p>Emission of light as a result of a chemical reaction. Used in diagnostic immunoassays: a luminescent label bound to the analyte produces light proportional to the analyte concentration when triggered by a chemical reagent.</p></div>
+    <div class="gloss-card" id="g-antigen"><span class="cat">Biology</span><h4>Antigen</h4><p>Any substance (typically a protein) that triggers an immune response. In rapid diagnostic tests (BinaxNOW), viral antigens are detected using antibody-coated test strips.</p></div>
+    <div class="gloss-card" id="g-immunochromatography"><span class="cat">Technology</span><h4>Immunochromatographic Assay</h4><p>Lateral flow test technology (like BinaxNOW). Sample migrates along a membrane strip. If the target antigen is present, it binds to labeled antibodies and produces a visible line at the test zone.</p></div>
+    <div class="gloss-card" id="g-dna"><span class="cat">Biology</span><h4>DNA (Deoxyribonucleic Acid)</h4><p>Molecule carrying genetic instructions. Cologuard detects methylated DNA biomarkers shed by colorectal tumors into stool. Altered methylation patterns are cancer indicators.</p></div>
+    <div class="gloss-card" id="g-hemoglobin"><span class="cat">Biology</span><h4>Hemoglobin</h4><p>Oxygen-carrying protein in red blood cells. Cologuard also tests for hemoglobin in stool (occult blood), which can indicate colorectal bleeding from tumors or polyps.</p></div>
+    <div class="gloss-card" id="g-pcr"><span class="cat">Technology</span><h4>PCR (Polymerase Chain Reaction)</h4><p>Laboratory technique that amplifies small segments of DNA millions of times for detection. Used in Cologuard to detect cancer-associated DNA biomarkers. Also used in molecular diagnostics (COVID testing).</p></div>
+    <div class="gloss-card" id="g-rtpcr"><span class="cat">Technology</span><h4>RT-PCR (Reverse Transcription PCR)</h4><p>Variant of PCR that first converts RNA to DNA (reverse transcription) before amplification. Used in Oncotype DX to measure gene expression levels in tumor tissue.</p></div>
+    <div class="gloss-card" id="g-ffpe"><span class="cat">Lab</span><h4>FFPE (Formalin-Fixed Paraffin-Embedded)</h4><p>Standard method of preserving tissue samples. Tissue is fixed in formalin, embedded in paraffin wax, then sliced for analysis. Oncotype DX analyzes gene expression from FFPE breast tumor samples.</p></div>
+    <div class="gloss-card" id="g-mced"><span class="cat">Technology</span><h4>MCED (Multi-Cancer Early Detection)</h4><p>Blood-based tests that screen for multiple types of cancer simultaneously by detecting circulating tumor DNA (ctDNA) or other biomarkers. CancerGuard (Exact Sciences) is Abbott's entry in this emerging space.</p></div>
+    <div class="gloss-card" id="g-mrd"><span class="cat">Clinical</span><h4>MRD (Molecular Residual Disease)</h4><p>Detection of tiny amounts of remaining cancer after treatment using molecular methods. OncoDetect (Exact Sciences) monitors for MRD and recurrence risk using ctDNA analysis.</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>INTERNAL DOCUMENT — ROUGH DRAFT</strong> · Abbott Laboratories Sales Reference Guide · April 2026</p>
+  <p style="margin-top:.35rem">Prepared for sales team review. Not for external distribution. Subject to revision. Contact Sales Operations for questions.</p>
+  <p style="margin-top:.35rem;font-size:.7rem;opacity:.7">All financial data sourced from Abbott SEC filings (8-K, 10-K), earnings calls, and press releases. Market size estimates from publicly available industry reports. Verify all figures before use in external-facing materials.</p>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Glossary search
+const searchInput = document.getElementById('glossarySearch');
+const glossaryGrid = document.getElementById('glossaryGrid');
+const glossCards = glossaryGrid.querySelectorAll('.gloss-card');
+
+searchInput.addEventListener('input', function() {
+  const query = this.value.toLowerCase().trim();
+  glossCards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = text.includes(query) ? '' : 'none';
+  });
+});
+
+// Scroll-to-top button
+const scrollBtn = document.getElementById('scrollTopBtn');
+window.addEventListener('scroll', () => {
+  scrollBtn.style.display = window.scrollY > 600 ? 'block' : 'none';
+});
+
+// Smooth scroll for vocab links
+document.querySelectorAll('a.vocab').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      target.style.boxShadow = '0 0 0 3px var(--sky)';
+      setTimeout(() => { target.style.boxShadow = ''; }, 2000);
+    }
+  });
+});
+</script>
+</body>
+</html>
