@@ -2,10 +2,10 @@
   "id": "abbott-sales-reference-guide",
   "title": "Abbott Product Guide and Glossary",
   "type": "claude",
-  "file": "content/claude/abbott-sales-reference-guidehtml.html",
+  "file": "content/claude/abbott-sales-reference-guide.html",
   "tags": ["Abbott", "medcial devices", "biosimilars"],
-  "date": "2026-04-14",
-  "description": "Short description here"
+  "date": "2026-04-15",
+  "description": "An overview of Abbott's products and outlook as of April 15, 2026"
 },
 {
     "id": "jnj-overview",
