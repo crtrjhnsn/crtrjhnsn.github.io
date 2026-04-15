@@ -1,13 +1,14 @@
-[{
-  "id": "abbott-sales-reference-guide",
-  "title": "Abbott Product Guide and Glossary",
-  "type": "claude",
-  "file": "content/claude/abbott-sales-reference-guide.html",
-  "tags": ["Abbott", "medcial devices", "biosimilars"],
-  "date": "2026-04-15",
-  "description": "An overview of Abbott's products and outlook as of April 15, 2026"
-},
-{
+[
+  {
+    "id": "abbott-sales-reference-guide",
+    "title": "Abbott Product Guide and Glossary",
+    "type": "claude",
+    "file": "content/claude/Abbott_Sales_Reference_Guide.html",
+    "tags": ["Abbott", "Medical Devices", "Biosimilars"],
+    "date": "2026-04-15",
+    "description": "An overview of Abbott's products and outlook as of April 15, 2026"
+  },
+  {
     "id": "jnj-overview",
     "title": "Johnson & Johnson Overview",
     "type": "claude",
@@ -22,12 +23,7 @@
     "description": "An interactive tool to build, preview, and copy CSS gradient code in real time.",
     "type": "claude",
     "file": "content/claude/gradient-generator.html",
-    "tags": [
-      "css",
-      "tool",
-      "interactive",
-      "design"
-    ],
+    "tags": ["css", "tool", "interactive", "design"],
     "date": "2026-04-10"
   },
   {
@@ -36,25 +32,17 @@
     "description": "A guide to adding, organizing, and sharing your artifacts.",
     "type": "doc",
     "file": "content/docs/getting-started.md",
-    "tags": [
-      "guide",
-      "meta",
-      "setup"
-    ],
+    "tags": ["guide", "meta", "setup"],
     "date": "2026-04-14"
   },
   {
     "id": "debounce-util",
     "title": "Debounce Utility",
-    "description": "A reusable debounce function with TypeScript generics \u2014 delays execution until input stops.",
+    "description": "A reusable debounce function with TypeScript generics — delays execution until input stops.",
     "type": "code",
     "file": "content/code/debounce.ts",
     "language": "typescript",
-    "tags": [
-      "typescript",
-      "utility",
-      "performance"
-    ],
+    "tags": ["typescript", "utility", "performance"],
     "date": "2026-04-12"
   },
   {
@@ -63,12 +51,8 @@
     "description": "Pick a base color and instantly generate a full accessible color palette with hex codes.",
     "type": "claude",
     "file": "content/claude/palette-mixer.html",
-    "tags": [
-      "color",
-      "design",
-      "tool",
-      "accessibility"
-    ],
+    "tags": ["color", "design", "tool", "accessibility"],
     "date": "2026-04-08"
   }
 ]
+
