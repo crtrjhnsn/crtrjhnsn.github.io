@@ -1,0 +1,66 @@
+[
+  {
+    "id": "jnj-overview",
+    "title": "Johnson & Johnson Overview",
+    "type": "claude",
+    "file": "content/claude/index.html",
+    "tags": ["pharma", "pipeline", "research"],
+    "date": "2026-04-14",
+    "description": "JNJ pipeline, business overview, and glossary of Biologic Terms"
+  },
+  {
+    "id": "gradient-generator",
+    "title": "CSS Gradient Generator",
+    "description": "An interactive tool to build, preview, and copy CSS gradient code in real time.",
+    "type": "claude",
+    "file": "content/claude/gradient-generator.html",
+    "tags": [
+      "css",
+      "tool",
+      "interactive",
+      "design"
+    ],
+    "date": "2026-04-10"
+  },
+  {
+    "id": "getting-started",
+    "title": "Getting Started with Artifact Gallery",
+    "description": "A guide to adding, organizing, and sharing your artifacts.",
+    "type": "doc",
+    "file": "content/docs/getting-started.md",
+    "tags": [
+      "guide",
+      "meta",
+      "setup"
+    ],
+    "date": "2026-04-14"
+  },
+  {
+    "id": "debounce-util",
+    "title": "Debounce Utility",
+    "description": "A reusable debounce function with TypeScript generics \u2014 delays execution until input stops.",
+    "type": "code",
+    "file": "content/code/debounce.ts",
+    "language": "typescript",
+    "tags": [
+      "typescript",
+      "utility",
+      "performance"
+    ],
+    "date": "2026-04-12"
+  },
+  {
+    "id": "color-palette",
+    "title": "Palette Mixer",
+    "description": "Pick a base color and instantly generate a full accessible color palette with hex codes.",
+    "type": "claude",
+    "file": "content/claude/palette-mixer.html",
+    "tags": [
+      "color",
+      "design",
+      "tool",
+      "accessibility"
+    ],
+    "date": "2026-04-08"
+  }
+]

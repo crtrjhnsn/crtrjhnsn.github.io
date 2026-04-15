@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Gradient Generator</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    h1 {
+      text-align: center;
+      padding: 24px 16px 8px;
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .subtitle {
+      text-align: center;
+      color: #64748b;
+      font-size: 0.875rem;
+      margin-bottom: 24px;
+    }
+    .preview {
+      width: 100%;
+      height: 220px;
+      transition: background 0.3s ease;
+      flex-shrink: 0;
+    }
+    .controls {
+      background: #fff;
+      border-top: 1px solid #e2e8f0;
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 540px) { .controls { grid-template-columns: 1fr; padding: 16px; } }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    label { font-size: 0.8125rem; font-weight: 600; color: #475569; }
+    input[type="color"] {
+      width: 100%;
+      height: 42px;
+      border-radius: 8px;
+      border: 1.5px solid #e2e8f0;
+      padding: 2px;
+      cursor: pointer;
+      background: none;
+    }
+    select, input[type="range"] {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 0.875rem;
+      background: #f8fafc;
+      color: #1e293b;
+      appearance: none;
+      outline: none;
+    }
+    select:focus { border-color: #7c3aed; }
+    input[type="range"] {
+      padding: 0;
+      height: 6px;
+      appearance: none;
+      background: #e2e8f0;
+      border: none;
+      border-radius: 99px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: #7c3aed;
+      cursor: pointer;
+    }
+    .angle-val { font-size: 0.8125rem; color: #94a3b8; }
+    .output-wrap {
+      grid-column: 1 / -1;
+      background: #f1f5f9;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    #css-output {
+      font-family: 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.8125rem;
+      color: #334155;
+      flex: 1;
+      word-break: break-all;
+    }
+    .copy-btn {
+      flex-shrink: 0;
+      padding: 6px 14px;
+      background: #7c3aed;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .copy-btn:hover  { background: #6d28d9; }
+    .copy-btn.copied { background: #059669; }
+  </style>
+</head>
+<body>
+  <h1>CSS Gradient Generator</h1>
+  <p class="subtitle">Drag the sliders, pick your colors, copy the code.</p>
+  <div class="preview" id="preview"></div>
+  <div class="controls">
+    <div class="field">
+      <label for="color1">Color 1</label>
+      <input type="color" id="color1" value="#7c3aed" />
+    </div>
+    <div class="field">
+      <label for="color2">Color 2</label>
+      <input type="color" id="color2" value="#ec4899" />
+    </div>
+    <div class="field">
+      <label for="grad-type">Type</label>
+      <select id="grad-type">
+        <option value="linear">Linear</option>
+        <option value="radial">Radial</option>
+        <option value="conic">Conic</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>
+        Angle: <span class="angle-val" id="angle-val">135°</span>
+      </label>
+      <input type="range" id="angle" min="0" max="360" value="135" />
+    </div>
+    <div class="output-wrap">
+      <span id="css-output">background: linear-gradient(135deg, #7c3aed, #ec4899);</span>
+      <button class="copy-btn" id="copy-btn">Copy</button>
+    </div>
+  </div>
+
+  <script>
+    const preview   = document.getElementById('preview');
+    const color1    = document.getElementById('color1');
+    const color2    = document.getElementById('color2');
+    const gradType  = document.getElementById('grad-type');
+    const angleEl   = document.getElementById('angle');
+    const angleVal  = document.getElementById('angle-val');
+    const cssOutput = document.getElementById('css-output');
+    const copyBtn   = document.getElementById('copy-btn');
+
+    function update() {
+      const c1 = color1.value;
+      const c2 = color2.value;
+      const a  = angleEl.value;
+      const t  = gradType.value;
+      angleVal.textContent = `${a}°`;
+
+      let bg;
+      if (t === 'linear') bg = `linear-gradient(${a}deg, ${c1}, ${c2})`;
+      else if (t === 'radial') bg = `radial-gradient(circle, ${c1}, ${c2})`;
+      else bg = `conic-gradient(from ${a}deg, ${c1}, ${c2}, ${c1})`;
+
+      preview.style.background = bg;
+      const css = `background: ${bg};`;
+      cssOutput.textContent = css;
+    }
+
+    [color1, color2, gradType, angleEl].forEach(el => el.addEventListener('input', update));
+
+    copyBtn.addEventListener('click', async () => {
+      await navigator.clipboard.writeText(cssOutput.textContent).catch(() => {});
+      copyBtn.textContent = 'Copied!';
+      copyBtn.classList.add('copied');
+      setTimeout(() => {
+        copyBtn.textContent = 'Copy';
+        copyBtn.classList.remove('copied');
+      }, 2000);
+    });
+
+    update();
+  </script>
+</body>
+</html>
