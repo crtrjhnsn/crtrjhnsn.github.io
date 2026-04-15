@@ -1,5 +1,13 @@
-[
-  {
+[{
+  "id": "abbott-sales-reference-guidehtml",
+  "title": "Abbott Product Guide and Glossary",
+  "type": "claude",
+  "file": "content/claude/abbott-sales-reference-guidehtml.html",
+  "tags": ["Abbott", "medcial devices", "biosimilars"],
+  "date": "2026-04-14",
+  "description": "Short description here"
+},
+{
     "id": "jnj-overview",
     "title": "Johnson & Johnson Overview",
     "type": "claude",
