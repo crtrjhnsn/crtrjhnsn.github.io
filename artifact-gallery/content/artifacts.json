@@ -1,6 +1,6 @@
 [
   {
-    "id": "amgen_overview",
+    "id": "amgen-overview",
     "title": "Amgen Product Guide and Glossary",
     "type": "claude",
     "file": "content/claude/amgen_overview.html",
