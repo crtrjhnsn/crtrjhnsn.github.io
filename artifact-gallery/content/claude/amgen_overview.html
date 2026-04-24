@@ -1,0 +1,1949 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Amgen — Sales Desk Brief · Portfolio, Pipeline, Market Access</title>
+<meta name="description" content="Internal rough-draft sales brief for Amgen Inc. — business lines, innovative portfolio, biosimilars, LOE & TAM, provider adoption, market access, litigation, headwinds and tailwinds. Data as of early 2026." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #0B1F3A;
+    --ink-2: #1C334F;
+    --paper: #F4EEE2;
+    --paper-2: #EAE1CC;
+    --stone: #D9CFB8;
+    --sage: #4A7C74;
+    --sage-deep: #2F5751;
+    --cardinal: #B8452E;
+    --cardinal-soft: #D97757;
+    --gold: #B89352;
+    --alert: #8A1C2A;
+    --success: #2F5751;
+    --muted: #6A6353;
+    --rule: #C8BEA6;
+    --shadow: 0 1px 0 rgba(11,31,58,.05), 0 10px 40px -20px rgba(11,31,58,.25);
+    --shadow-soft: 0 1px 0 rgba(11,31,58,.04);
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'Manrope', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(ellipse at 10% -10%, rgba(74,124,116,.08), transparent 55%),
+      radial-gradient(ellipse at 100% 0%, rgba(184,69,46,.06), transparent 50%);
+    background-attachment: fixed;
+  }
+  /* paper grain */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image:
+      radial-gradient(rgba(11,31,58,.04) 1px, transparent 1px);
+    background-size: 3px 3px;
+    mix-blend-mode: multiply;
+    opacity:.35;
+  }
+  main, header, nav, footer{position:relative; z-index:1}
+
+  /* ============ MASTHEAD ============ */
+  .masthead{
+    border-bottom: 2px solid var(--ink);
+    padding: 28px 40px 18px;
+    background: linear-gradient(180deg, rgba(244,238,226,.9), rgba(244,238,226,.4));
+    backdrop-filter: blur(6px);
+    position: sticky; top:0; z-index:50;
+  }
+  .masthead-inner{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;
+    max-width:1280px; margin:0 auto;
+  }
+  .nameplate{
+    font-family:var(--font-display);
+    font-weight:900;
+    font-size: clamp(28px, 3.2vw, 42px);
+    letter-spacing:-0.02em;
+    line-height:1;
+  }
+  .nameplate em{
+    font-style: italic; color: var(--cardinal); font-weight: 400;
+  }
+  .masthead-meta{
+    font-family:var(--font-mono);
+    font-size: 11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--muted);
+    text-align:right;
+  }
+  .masthead-meta b{color:var(--ink); font-weight:700}
+  .navbar{
+    max-width:1280px; margin: 14px auto 0;
+    display:flex; gap: 22px; flex-wrap:wrap;
+    font-size:12px; font-family:var(--font-mono); letter-spacing:.06em;
+    text-transform:uppercase;
+    padding-top:10px;
+    border-top:1px solid var(--rule);
+  }
+  .navbar a{color:var(--ink-2); text-decoration:none; border-bottom:1px solid transparent; padding-bottom:2px; transition: all .2s}
+  .navbar a:hover{color:var(--cardinal); border-bottom-color:var(--cardinal)}
+
+  /* ============ LAYOUT ============ */
+  main{max-width:1280px; margin: 0 auto; padding: 40px}
+  section{margin: 72px 0; scroll-margin-top: 140px}
+  .kicker{
+    font-family:var(--font-mono);
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:11px;
+    color:var(--cardinal);
+    margin-bottom: 10px;
+  }
+  h1, h2, h3, h4{font-family:var(--font-display); font-weight:600; letter-spacing:-0.015em; color:var(--ink)}
+  h1{font-size:clamp(40px, 5vw, 64px); line-height:1; margin:0 0 18px}
+  h1 em{font-style:italic; color:var(--cardinal)}
+  h2{font-size: clamp(28px, 3vw, 40px); line-height:1.05; margin:0 0 8px; font-weight:700}
+  h3{font-size: 22px; margin: 28px 0 8px; font-weight:600}
+  h4{font-size: 15px; font-family: var(--font-body); font-weight:700; text-transform:uppercase; letter-spacing:.08em; margin: 20px 0 6px}
+  .lede{font-family:var(--font-display); font-size: clamp(18px,1.6vw, 22px); line-height:1.45; color:var(--ink-2); max-width: 72ch}
+  p{margin: 0 0 14px}
+  a.term{
+    color:var(--sage-deep);
+    text-decoration: none;
+    border-bottom: 1px dotted var(--sage);
+    cursor: help;
+    background: linear-gradient(180deg, transparent 70%, rgba(74,124,116,.16) 70%);
+    padding: 0 1px;
+    transition: background .2s;
+  }
+  a.term:hover{background: linear-gradient(180deg, transparent 55%, rgba(184,69,46,.22) 55%); color: var(--cardinal)}
+
+  /* ============ HERO ============ */
+  .hero{
+    display:grid; grid-template-columns: 1.3fr 1fr; gap: 48px;
+    padding: 28px 0 56px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .hero-right{
+    padding: 24px; background: var(--paper-2);
+    border: 1px solid var(--rule);
+    font-family: var(--font-mono); font-size: 12px; line-height:1.7;
+  }
+  .hero-right dt{color:var(--cardinal); text-transform:uppercase; letter-spacing:.1em; font-size:10px; margin-top: 10px}
+  .hero-right dt:first-child{margin-top:0}
+  .hero-right dd{margin: 2px 0 6px; color: var(--ink); font-weight:500}
+  @media (max-width: 780px){
+    .hero{grid-template-columns: 1fr}
+    main{padding:24px}
+    .masthead{padding: 18px 20px 14px}
+    section{margin: 56px 0}
+  }
+
+  /* ============ TL;DR STRIP ============ */
+  .tldr{
+    background: var(--ink); color: var(--paper);
+    padding: 22px 26px; border-left: 6px solid var(--cardinal);
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 24px;
+  }
+  .tldr .stat{border-left:1px solid rgba(244,238,226,.18); padding-left: 16px}
+  .tldr .stat:first-child{border-left:none; padding-left:0}
+  .tldr .num{font-family: var(--font-display); font-weight: 700; font-size: 34px; line-height:1; color: var(--paper)}
+  .tldr .num em{font-style:italic; color: var(--cardinal-soft); font-weight:400}
+  .tldr .lbl{font-family: var(--font-mono); font-size: 10px; letter-spacing:.1em; text-transform: uppercase; color: var(--stone); margin-top: 8px}
+  @media (max-width: 780px){ .tldr{grid-template-columns: repeat(2,1fr)} }
+
+  /* ============ FLOW DIAGRAM ============ */
+  .flow-wrap{
+    margin-top: 32px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    padding: 28px;
+    overflow-x:auto;
+  }
+  .flow-legend{
+    display:flex; gap: 24px; flex-wrap: wrap; font-family: var(--font-mono);
+    font-size: 11px; letter-spacing:.06em; text-transform:uppercase;
+    margin-top: 18px; color: var(--muted);
+  }
+  .flow-legend span::before{
+    content:""; display:inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right:6px; vertical-align: middle;
+  }
+  .legend-gm::before{background:var(--sage)}
+  .legend-onc::before{background:var(--cardinal)}
+  .legend-inf::before{background:var(--gold)}
+  .legend-rare::before{background:#6A5B8A}
+  .legend-bio::before{background:var(--ink-2)}
+
+  /* ============ CARDS / DRUGS ============ */
+  .drug-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .drug-card{
+    background: #FBF7EC;
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--sage);
+    padding: 22px;
+    position: relative;
+  }
+  .drug-card.onc{border-top-color: var(--cardinal)}
+  .drug-card.inf{border-top-color: var(--gold)}
+  .drug-card.rare{border-top-color: #6A5B8A}
+  .drug-card.bio{border-top-color: var(--ink)}
+  .drug-card .dc-head{
+    display:flex; justify-content:space-between; align-items:baseline; gap: 12px;
+    margin-bottom: 10px;
+  }
+  .drug-card h3{margin: 0}
+  .drug-card .generic{font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing:.04em}
+  .drug-card .tagline{font-family:var(--font-display); font-style:italic; color:var(--ink-2); font-size:15px; margin: 4px 0 12px; display:block}
+  .drug-card dl{display:grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 10px 0 0; font-size: 13px}
+  .drug-card dt{font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing:.08em; color: var(--cardinal); align-self:start; padding-top:3px}
+  .drug-card dd{margin:0}
+  .pill{display:inline-block; padding: 2px 8px; border-radius: 99px; font-family:var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing:.08em; margin-right: 4px; border:1px solid var(--rule); background:var(--paper)}
+  .pill.warn{background:#F8E3D4; border-color:#D9A67A; color:var(--cardinal)}
+  .pill.good{background:#E4EAE3; border-color:#8CA696; color:var(--sage-deep)}
+  .pill.ink{background:var(--ink); border-color:var(--ink); color:var(--paper)}
+
+  /* ============ TABLE-LIKE ROWS ============ */
+  .ledger{
+    width: 100%; border-collapse: collapse;
+    font-size: 13px; margin-top: 16px;
+    background: #FBF7EC; border:1px solid var(--rule);
+  }
+  .ledger th, .ledger td{ padding: 12px 14px; text-align:left; border-bottom:1px solid var(--rule); vertical-align: top}
+  .ledger th{background: var(--ink); color: var(--paper); font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform:uppercase; font-weight: 500}
+  .ledger tr:last-child td{border-bottom: none}
+  .ledger td.num{font-family: var(--font-mono); text-align:right; white-space: nowrap}
+
+  /* ============ CALLOUTS ============ */
+  .callout{
+    border: 1px solid var(--rule); background: #FBF7EC;
+    padding: 20px 24px; border-left: 5px solid var(--cardinal);
+    margin: 22px 0;
+  }
+  .callout h4{margin-top:0; color: var(--cardinal)}
+  .callout.ink{background: var(--ink); color: var(--paper); border-color: var(--ink); border-left-color: var(--cardinal-soft)}
+  .callout.ink h4{color: var(--cardinal-soft)}
+  .callout.sage{border-left-color: var(--sage)}
+  .callout.sage h4{color: var(--sage-deep)}
+
+  /* ============ TWO COL ============ */
+  .two-col{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  }
+  @media (max-width: 780px){ .two-col{grid-template-columns: 1fr} }
+
+  /* ============ HEADWINDS / TAILWINDS ============ */
+  .weather{
+    display:grid; grid-template-columns: 1fr 1fr; gap: 0;
+    margin-top: 22px; border: 1px solid var(--rule);
+  }
+  .weather > div{padding: 26px 28px}
+  .weather .heads{
+    background: #F3DCD2;
+    border-right: 1px solid var(--rule);
+  }
+  .weather .tails{
+    background: #E3EDE8;
+  }
+  .weather h3{
+    font-family: var(--font-display); font-weight: 700; font-size: 24px;
+    margin: 0 0 4px; display:flex; align-items:center; gap: 10px;
+  }
+  .weather .heads h3{color:var(--alert)}
+  .weather .tails h3{color:var(--sage-deep)}
+  .weather ul{padding-left: 0; list-style: none; margin: 14px 0 0}
+  .weather li{ padding: 12px 0; border-top: 1px solid rgba(11,31,58,.12); font-size: 14px}
+  .weather li:first-child{border-top:none}
+  .weather li b{font-family:var(--font-mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em; display:block; margin-bottom: 4px}
+  .weather .heads li b{color:var(--alert)}
+  .weather .tails li b{color:var(--sage-deep)}
+  @media (max-width: 780px){
+    .weather{grid-template-columns: 1fr}
+    .weather .heads{border-right:none; border-bottom: 1px solid var(--rule)}
+  }
+
+  /* ============ GLOSSARY ============ */
+  .glossary-controls{
+    display:flex; gap: 14px; flex-wrap:wrap; margin: 20px 0 24px;
+    align-items:center;
+  }
+  .glossary-controls input{
+    flex: 1 1 280px;
+    font-family: var(--font-body); font-size: 16px;
+    padding: 12px 16px; border: 1px solid var(--ink); background: var(--paper);
+    outline: none;
+  }
+  .glossary-controls input:focus{border-color: var(--cardinal); box-shadow: 0 0 0 3px rgba(184,69,46,.15)}
+  .glossary-controls .chip{
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform:uppercase;
+    padding: 8px 14px; border: 1px solid var(--rule); background: var(--paper); cursor: pointer; color:var(--ink-2);
+  }
+  .glossary-controls .chip.active{background: var(--ink); color: var(--paper); border-color: var(--ink)}
+  .glossary-grid{
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr)); gap: 0;
+    border-top: 1px solid var(--rule);
+    border-left: 1px solid var(--rule);
+  }
+  .g-entry{
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 22px;
+    background: #FBF7EC;
+  }
+  .g-entry:target{background: #F8E3D4; animation: flash 1.8s ease}
+  @keyframes flash {
+    0%{background: #D97757}
+    100%{background: #F8E3D4}
+  }
+  .g-entry h4{
+    font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: -0.01em;
+    text-transform: none; margin: 0 0 2px; color: var(--ink);
+  }
+  .g-entry .g-cat{
+    font-family: var(--font-mono); font-size: 10px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--cardinal); margin-bottom: 6px;
+  }
+  .g-entry p{font-size: 13.5px; color: var(--ink-2); margin: 0}
+  .g-hidden{display:none !important}
+  .g-count{font-family: var(--font-mono); font-size: 11px; color: var(--muted); margin-left:auto}
+
+  /* ============ FOOTER ============ */
+  footer{
+    margin-top: 80px;
+    padding: 36px 40px;
+    background: var(--ink); color: var(--paper);
+    font-size: 13px;
+  }
+  footer .foot-inner{max-width:1280px; margin:0 auto; display:grid; grid-template-columns: 2fr 1fr 1fr; gap: 32px}
+  footer h4{color: var(--cardinal-soft); font-family: var(--font-mono); font-size: 11px; letter-spacing:.1em; text-transform: uppercase; margin: 0 0 10px}
+  footer ul{list-style:none; padding: 0; margin: 0; font-size: 12px; line-height: 1.9; color: var(--stone)}
+  footer a{color: var(--paper); text-decoration: none; border-bottom: 1px dotted rgba(244,238,226,.4)}
+  @media (max-width: 780px){ footer .foot-inner{grid-template-columns:1fr} }
+
+  /* ============ MISC ============ */
+  .rule{border: 0; border-top: 1px solid var(--rule); margin: 40px 0}
+  .note{font-size: 12px; color: var(--muted); font-style: italic}
+  .small{font-size: 12px}
+  .asof{
+    display: inline-block; font-family: var(--font-mono); font-size: 10px; letter-spacing:.1em; text-transform: uppercase;
+    padding: 3px 8px; background: var(--stone); color: var(--ink); margin-left: 8px; vertical-align: middle;
+  }
+  ul.clean{list-style:none; padding: 0}
+  ul.clean li{padding: 10px 0; border-top: 1px solid var(--rule); font-size: 14px}
+  ul.clean li:first-child{border-top:none}
+
+  /* print */
+  @media print {
+    .masthead{position:static}
+    body::before{display:none}
+    a{color: var(--ink)}
+  }
+</style>
+</head>
+<body>
+
+<!-- ========================================================== MASTHEAD -->
+<header class="masthead">
+  <div class="masthead-inner">
+    <div>
+      <div class="nameplate">Amgen <em>Sales Desk Brief</em></div>
+      <div class="small" style="font-family:var(--font-mono); letter-spacing:.08em; color:var(--muted); text-transform:uppercase; font-size:10px; margin-top:6px">
+        Portfolio · Pipeline · Market Access · Litigation · Outlook
+      </div>
+    </div>
+    <div class="masthead-meta">
+      <div>Rough Draft · Internal Use</div>
+      <div><b>Data cutoff: Feb 2026</b></div>
+      <div>Prepared for sales enablement</div>
+    </div>
+  </div>
+  <nav class="navbar" aria-label="Section navigation">
+    <a href="#flow">Flow Map</a>
+    <a href="#business-lines">Business Lines</a>
+    <a href="#innovative">Innovative Portfolio</a>
+    <a href="#biosimilars">Biosimilars</a>
+    <a href="#litigation">Litigation</a>
+    <a href="#adoption">Provider Adoption</a>
+    <a href="#access">Market Access</a>
+    <a href="#administration">Administration</a>
+    <a href="#weather">Headwinds / Tailwinds</a>
+    <a href="#glossary">Glossary</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- ========================================================== HERO -->
+<section class="hero" id="top">
+  <div>
+    <div class="kicker">A rough draft — ready for your edits</div>
+    <h1>The company behind <em>biology at scale</em>.</h1>
+    <p class="lede">
+      Amgen is a large-cap biotech with four declared therapeutic areas — General Medicine, Oncology,
+      Inflammation, and Rare Disease — plus a deliberate <a class="term" href="#g-biosimilar">biosimilar</a> franchise
+      that competes on reference biologics. The story of 2026 is a company straddling two eras:
+      defending a base eroding to <a class="term" href="#g-loe">loss-of-exclusivity (LOE)</a> and
+      <a class="term" href="#g-ira">Inflation Reduction Act (IRA)</a> price setting on the one hand, while
+      repositioning around MariTide in obesity, a fast-growing rare-disease bench from the Horizon acquisition,
+      and a first-in-class oncology <a class="term" href="#g-bite">BiTE</a> on the other.
+    </p>
+    <p class="lede" style="color:var(--muted)">
+      This brief is a starting point, not the final word. Every vocabulary term links to a searchable glossary.
+      Ping the sales manager with any section you want me to deepen, tighten, or pull.
+    </p>
+  </div>
+  <aside class="hero-right">
+    <dl>
+      <dt>HQ</dt><dd>Thousand Oaks, California</dd>
+      <dt>Ticker</dt><dd>NASDAQ: AMGN</dd>
+      <dt>2025 Revenue</dt><dd>$36.8B (+10% YoY)</dd>
+      <dt>Product Sales Volume Growth</dt><dd>+13%, partially offset by ~3% lower net selling price</dd>
+      <dt>Products over $1B</dt><dd>14</dd>
+      <dt>Therapeutic Areas</dt><dd>General Medicine · Oncology · Inflammation · Rare Disease</dd>
+      <dt>Lead Pipeline Asset</dt><dd>MariTide (maridebart cafraglutide) · Phase 3 MARITIME</dd>
+      <dt>Reference Moment</dt><dd>J.P. Morgan Healthcare Conference, January 2026</dd>
+    </dl>
+  </aside>
+</section>
+
+<!-- ========================================================== TL;DR -->
+<section>
+  <div class="tldr">
+    <div class="stat">
+      <div class="num">$36.8<em>B</em></div>
+      <div class="lbl">FY2025 Total Revenue</div>
+    </div>
+    <div class="stat">
+      <div class="num">~20%</div>
+      <div class="lbl">MariTide Phase 2 mean weight loss at 52 wks</div>
+    </div>
+    <div class="stat">
+      <div class="num">$1.2<em>B</em></div>
+      <div class="lbl">Otezla impairment after IRA price selection</div>
+    </div>
+    <div class="stat">
+      <div class="num">$4<em>B</em></div>
+      <div class="lbl">Biosimilar sales Amgen targets by ~2030</div>
+    </div>
+  </div>
+  <p class="note" style="margin-top:10px">
+    Figures drawn from Amgen's Q4/FY2025 release (Feb 3, 2026), Amgen 2026 Fact Sheet, and publicly filed DEF 14A. MariTide Phase 2 results published in <i>NEJM</i>, June 2025.
+  </p>
+</section>
+
+<!-- ========================================================== FLOW MAP -->
+<section id="flow">
+  <div class="kicker">Step 1 · Problem → Therapeutic Area</div>
+  <h2>What Amgen is actually trying to solve</h2>
+  <p class="lede" style="margin-bottom:12px">
+    The company frames its work around five commercial buckets. Reading left-to-right: the disease problem, the therapeutic area it belongs to, and the Amgen product(s) that answer it. Dotted lines = assets in late-stage trials.
+  </p>
+
+  <div class="flow-wrap">
+    <svg viewBox="0 0 1180 680" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; min-width: 900px" aria-label="Amgen problems and therapeutic areas flow diagram">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#0B1F3A"/>
+        </marker>
+        <style>
+          .nd { fill:#FBF7EC; stroke:#0B1F3A; stroke-width:1.3 }
+          .nd-gm { fill:#E4EAE8 }
+          .nd-onc{ fill:#F5DCD1 }
+          .nd-inf{ fill:#F0E6C8 }
+          .nd-rar{ fill:#E5DFEE }
+          .nd-bio{ fill:#D7DEE6 }
+          .hd { font-family:'Fraunces', serif; font-size:17px; font-weight:700; fill:#0B1F3A }
+          .lb { font-family:'Manrope', sans-serif; font-size:12px; fill:#0B1F3A }
+          .md { font-family:'JetBrains Mono', monospace; font-size:10px; fill:#6A6353; text-transform:uppercase }
+          .ln { stroke:#0B1F3A; stroke-width:1; fill:none }
+          .ln-d { stroke-dasharray: 4 4 }
+          .prod { font-family:'Manrope'; font-size:11px; font-weight:700; fill:#B8452E }
+        </style>
+      </defs>
+
+      <!-- Problems column -->
+      <text x="30" y="28" class="md">Disease Problem</text>
+      <g>
+        <rect x="20" y="46" width="230" height="40" class="nd nd-gm"/>
+        <text x="32" y="71" class="lb">High LDL-C cholesterol / MACE risk</text>
+
+        <rect x="20" y="96" width="230" height="40" class="nd nd-gm"/>
+        <text x="32" y="121" class="lb">Obesity, T2D, OSA, heart failure</text>
+
+        <rect x="20" y="146" width="230" height="40" class="nd nd-gm"/>
+        <text x="32" y="171" class="lb">Osteoporosis / fracture risk</text>
+
+        <rect x="20" y="206" width="230" height="40" class="nd nd-onc"/>
+        <text x="32" y="231" class="lb">Extensive-stage small cell lung cancer</text>
+
+        <rect x="20" y="256" width="230" height="40" class="nd nd-onc"/>
+        <text x="32" y="281" class="lb">KRAS G12C colorectal &amp; NSCLC</text>
+
+        <rect x="20" y="306" width="230" height="40" class="nd nd-onc"/>
+        <text x="32" y="331" class="lb">B-ALL / multiple myeloma</text>
+
+        <rect x="20" y="366" width="230" height="40" class="nd nd-inf"/>
+        <text x="32" y="385" class="lb">Severe asthma, nasal polyps,</text>
+        <text x="32" y="398" class="lb">COPD (trial)</text>
+
+        <rect x="20" y="416" width="230" height="40" class="nd nd-inf"/>
+        <text x="32" y="441" class="lb">Psoriasis, psoriatic arthritis</text>
+
+        <rect x="20" y="476" width="230" height="40" class="nd nd-rar"/>
+        <text x="32" y="501" class="lb">Thyroid eye disease (TED)</text>
+
+        <rect x="20" y="526" width="230" height="40" class="nd nd-rar"/>
+        <text x="32" y="551" class="lb">Uncontrolled gout</text>
+
+        <rect x="20" y="576" width="230" height="40" class="nd nd-rar"/>
+        <text x="32" y="595" class="lb">NMOSD · gMG · IgG4-RD · ANCA-</text>
+        <text x="32" y="608" class="lb">associated vasculitis</text>
+      </g>
+
+      <!-- Therapeutic area column -->
+      <text x="430" y="28" class="md">Therapeutic Area</text>
+      <g>
+        <rect x="420" y="46" width="220" height="140" class="nd nd-gm"/>
+        <text x="432" y="71" class="hd">General Medicine</text>
+        <text x="432" y="95" class="lb">Cardiovascular · metabolic ·</text>
+        <text x="432" y="111" class="lb">bone health</text>
+        <text x="432" y="140" class="md">Growth engine</text>
+        <text x="432" y="160" class="lb">MariTide is the headline.</text>
+
+        <rect x="420" y="206" width="220" height="140" class="nd nd-onc"/>
+        <text x="432" y="231" class="hd">Oncology</text>
+        <text x="432" y="255" class="lb">Solid tumors · heme malignancies</text>
+        <text x="432" y="284" class="md">First-in-class tilt</text>
+        <text x="432" y="304" class="lb">BiTE platform (IMDELLTRA,</text>
+        <text x="432" y="320" class="lb">BLINCYTO).</text>
+
+        <rect x="420" y="366" width="220" height="90" class="nd nd-inf"/>
+        <text x="432" y="391" class="hd">Inflammation</text>
+        <text x="432" y="412" class="lb">Asthma · CRSwNP · COPD (trial)</text>
+        <text x="432" y="440" class="md">Facing IRA pressure</text>
+
+        <rect x="420" y="476" width="220" height="140" class="nd nd-rar"/>
+        <text x="432" y="501" class="hd">Rare Disease</text>
+        <text x="432" y="525" class="lb">Inherited from Horizon acquisition;</text>
+        <text x="432" y="541" class="lb">high unit prices, narrow specialist</text>
+        <text x="432" y="557" class="lb">prescriber bases.</text>
+        <text x="432" y="586" class="md">Fastest-growing segment</text>
+      </g>
+
+      <!-- Product column -->
+      <text x="830" y="28" class="md">Lead Amgen Products</text>
+      <g>
+        <rect x="820" y="46" width="320" height="40" class="nd"/>
+        <text x="832" y="65" class="prod">Repatha (evolocumab)</text>
+        <text x="832" y="80" class="lb">PCSK9 mAb · SC injection every 2 or 4 wks</text>
+
+        <rect x="820" y="96" width="320" height="40" class="nd" stroke-dasharray="4 4"/>
+        <text x="832" y="115" class="prod">MariTide — Phase 3 (MARITIME)</text>
+        <text x="832" y="130" class="lb">GLP-1R agonist / GIPR antagonist · monthly SC</text>
+
+        <rect x="820" y="146" width="320" height="40" class="nd"/>
+        <text x="832" y="165" class="prod">Prolia / EVENITY</text>
+        <text x="832" y="180" class="lb">Denosumab / romosozumab — bone health</text>
+
+        <rect x="820" y="206" width="320" height="40" class="nd"/>
+        <text x="832" y="225" class="prod">IMDELLTRA (tarlatamab)</text>
+        <text x="832" y="240" class="lb">DLL3 × CD3 BiTE · ES-SCLC 2L+</text>
+
+        <rect x="820" y="256" width="320" height="40" class="nd"/>
+        <text x="832" y="275" class="prod">LUMAKRAS + Vectibix</text>
+        <text x="832" y="290" class="lb">KRAS G12C inhibitor · oral · CRC 3L, NSCLC</text>
+
+        <rect x="820" y="306" width="320" height="40" class="nd"/>
+        <text x="832" y="325" class="prod">BLINCYTO · Kyprolis · Nplate</text>
+        <text x="832" y="340" class="lb">BiTE · proteasome inhib. · TPO mimetic</text>
+
+        <rect x="820" y="366" width="320" height="40" class="nd"/>
+        <text x="832" y="385" class="prod">TEZSPIRE (tezepelumab)</text>
+        <text x="832" y="400" class="lb">Anti-TSLP mAb · severe asthma, CRSwNP</text>
+
+        <rect x="820" y="416" width="320" height="40" class="nd"/>
+        <text x="832" y="435" class="prod">Otezla · Enbrel</text>
+        <text x="832" y="450" class="lb">PDE4 inhib. · TNF-α receptor fusion</text>
+
+        <rect x="820" y="476" width="320" height="40" class="nd"/>
+        <text x="832" y="495" class="prod">TEPEZZA (teprotumumab)</text>
+        <text x="832" y="510" class="lb">IGF-1R mAb · IV infusion · TED</text>
+
+        <rect x="820" y="526" width="320" height="40" class="nd"/>
+        <text x="832" y="545" class="prod">KRYSTEXXA (pegloticase)</text>
+        <text x="832" y="560" class="lb">PEGylated uricase enzyme · IV</text>
+
+        <rect x="820" y="576" width="320" height="40" class="nd"/>
+        <text x="832" y="591" class="prod">UPLIZNA · TAVNEOS</text>
+        <text x="832" y="606" class="lb">Anti-CD19 mAb · avacopan (C5aR1)</text>
+      </g>
+
+      <!-- Connector lines: Problems -> TA -->
+      <g>
+        <!-- GM -->
+        <path d="M 250 66 L 420 116" class="ln" marker-end="url(#arr)"/>
+        <path d="M 250 116 L 420 116" class="ln" marker-end="url(#arr)"/>
+        <path d="M 250 166 L 420 116" class="ln" marker-end="url(#arr)"/>
+        <!-- ONC -->
+        <path d="M 250 226 L 420 276" class="ln" marker-end="url(#arr)"/>
+        <path d="M 250 276 L 420 276" class="ln" marker-end="url(#arr)"/>
+        <path d="M 250 326 L 420 276" class="ln" marker-end="url(#arr)"/>
+        <!-- INF -->
+        <path d="M 250 386 L 420 411" class="ln" marker-end="url(#arr)"/>
+        <path d="M 250 436 L 420 411" class="ln" marker-end="url(#arr)"/>
+        <!-- RARE -->
+        <path d="M 250 496 L 420 546" class="ln" marker-end="url(#arr)"/>
+        <path d="M 250 546 L 420 546" class="ln" marker-end="url(#arr)"/>
+        <path d="M 250 596 L 420 546" class="ln" marker-end="url(#arr)"/>
+      </g>
+
+      <!-- TA -> Products -->
+      <g>
+        <path d="M 640 116 L 820 66" class="ln" marker-end="url(#arr)"/>
+        <path d="M 640 116 L 820 116" class="ln ln-d" marker-end="url(#arr)"/>
+        <path d="M 640 116 L 820 166" class="ln" marker-end="url(#arr)"/>
+
+        <path d="M 640 276 L 820 226" class="ln" marker-end="url(#arr)"/>
+        <path d="M 640 276 L 820 276" class="ln" marker-end="url(#arr)"/>
+        <path d="M 640 276 L 820 326" class="ln" marker-end="url(#arr)"/>
+
+        <path d="M 640 411 L 820 386" class="ln" marker-end="url(#arr)"/>
+        <path d="M 640 411 L 820 436" class="ln" marker-end="url(#arr)"/>
+
+        <path d="M 640 546 L 820 496" class="ln" marker-end="url(#arr)"/>
+        <path d="M 640 546 L 820 546" class="ln" marker-end="url(#arr)"/>
+        <path d="M 640 546 L 820 596" class="ln" marker-end="url(#arr)"/>
+      </g>
+
+      <!-- Biosimilars band -->
+      <rect x="20" y="640" width="1120" height="30" class="nd nd-bio"/>
+      <text x="32" y="660" class="hd" style="font-size:14px">Biosimilars Franchise</text>
+      <text x="250" y="660" class="lb">AMJEVITA (adalimumab) · WEZLANA (ustekinumab) · PAVBLU (aflibercept) · BKEMV (eculizumab) · MVASI (bevacizumab) · KANJINTI (trastuzumab) · RIABNI (rituximab) · plus ABP 692 (ocrelizumab, Ph3) and ABP 206 (nivolumab)</text>
+    </svg>
+
+    <div class="flow-legend">
+      <span class="legend-gm">General Medicine</span>
+      <span class="legend-onc">Oncology</span>
+      <span class="legend-inf">Inflammation</span>
+      <span class="legend-rare">Rare Disease</span>
+      <span class="legend-bio">Biosimilars</span>
+      <span style="color:var(--muted)"><span style="border-top:1px dashed var(--muted); display:inline-block; width:16px; vertical-align:middle"></span> Dashed = investigational, not yet approved</span>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================== BUSINESS LINES -->
+<section id="business-lines">
+  <div class="kicker">Step 2 · Segment mechanics</div>
+  <h2>Business lines, in plain English</h2>
+  <p class="lede">
+    Amgen groups its revenue into four therapeutic areas plus a distinct biosimilars franchise. Each segment has a different buyer, a different sales cycle, and a different risk profile. Here is how they actually behave in the field.
+  </p>
+
+  <table class="ledger" aria-label="Amgen business segments overview">
+    <thead>
+      <tr>
+        <th>Segment</th>
+        <th>Primary buyer</th>
+        <th>Sales cycle shape</th>
+        <th>Core risks</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>General Medicine</b><br><span class="small" style="color:var(--muted)">Repatha, MariTide (future), Prolia, EVENITY</span></td>
+        <td>Primary care, cardiology, endocrinology</td>
+        <td>High volume, moderate per-script value, long adherence tail if step therapy cleared</td>
+        <td>IRA pricing, biosimilar denosumab at the door, payer <a class="term" href="#g-step-therapy">step therapy</a></td>
+      </tr>
+      <tr>
+        <td><b>Oncology</b><br><span class="small" style="color:var(--muted)">IMDELLTRA, BLINCYTO, LUMAKRAS, Kyprolis, Nplate, Vectibix, XGEVA</span></td>
+        <td>Medical and surgical oncologists, academic centers, community clinics</td>
+        <td>Lower patient count, very high per-patient spend, institutional procurement</td>
+        <td>Competing novel agents, clinical inertia, long trial timelines</td>
+      </tr>
+      <tr>
+        <td><b>Inflammation</b><br><span class="small" style="color:var(--muted)">TEZSPIRE, Otezla, Enbrel</span></td>
+        <td>Pulmonologists, rheumatologists, dermatologists, allergists</td>
+        <td>Recurring subcutaneous or oral therapy; tight <a class="term" href="#g-formulary">formulary</a> management</td>
+        <td>Otezla selected for <a class="term" href="#g-ira">Medicare price setting</a>; Enbrel facing biosimilar entries in 2029</td>
+      </tr>
+      <tr>
+        <td><b>Rare Disease</b><br><span class="small" style="color:var(--muted)">TEPEZZA, KRYSTEXXA, UPLIZNA, TAVNEOS</span></td>
+        <td>Specialty clinics, academic hospitals, rheumatology, ophthalmology, neurology</td>
+        <td>Small patient counts, very high unit price, typically buy-and-bill infusion model</td>
+        <td>Niche prescriber education, <a class="term" href="#g-pa">prior-authorization</a> complexity, reimbursement scrutiny</td>
+      </tr>
+      <tr>
+        <td><b>Biosimilars</b><br><span class="small" style="color:var(--muted)">AMJEVITA, WEZLANA, PAVBLU, BKEMV, MVASI, KANJINTI, RIABNI</span></td>
+        <td>PBMs, health systems, specialty pharmacies</td>
+        <td>Price-led, formulary-driven; wins come in waves tied to <a class="term" href="#g-loe">LOE</a></td>
+        <td>Interchangeable status, rebate wars, state substitution laws</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ========================================================== INNOVATIVE PORTFOLIO -->
+<section id="innovative">
+  <div class="kicker">Step 3 · The brand-name book</div>
+  <h2>Innovative portfolio — what each drug actually is</h2>
+  <p class="lede">
+    These are Amgen-originated (or Amgen-owned post-Horizon) brands, not biosimilars. For each drug I'll flag
+    the mechanism, the chemistry, how it's administered, the payer lever, the
+    <a class="term" href="#g-tam">total addressable market (TAM)</a>, and where it sits on the
+    <a class="term" href="#g-loe">LOE</a> clock.
+  </p>
+
+  <div class="drug-grid">
+
+    <!-- MariTide -->
+    <article class="drug-card">
+      <div class="dc-head">
+        <h3>MariTide</h3>
+        <span class="generic">maridebart cafraglutide · Phase 3</span>
+      </div>
+      <em class="tagline">Amgen's swing at the obesity category.</em>
+      <p>
+        A long-acting <a class="term" href="#g-pac">peptide-antibody conjugate</a>: a monoclonal antibody that <i>blocks</i> the
+        <a class="term" href="#g-gipr">GIP receptor</a> fused to two <a class="term" href="#g-glp1ra">GLP-1 receptor agonist</a>
+        peptides via amino-acid linkers. That dual mechanism — GLP-1 activation plus GIP antagonism —
+        was Amgen's human-genetics bet that blocking GIP (rather than activating it, as Zepbound does) might yield more
+        durable weight loss. Half-life is roughly 21 days, which is what allows monthly (or less frequent) dosing.
+      </p>
+      <dl>
+        <dt>Target indications</dt><dd>Obesity, T2D, heart failure, OSA, <a class="term" href="#g-ascvd">ASCVD</a></dd>
+        <dt>Phase 2 result</dt><dd>Up to ~20% mean weight loss at 52 wks; up to ~17% in obesity + T2D; HbA1c dropped up to 2.2 pp (<i>NEJM</i>, Jun 2025)</dd>
+        <dt>Administration</dt><dd><a class="term" href="#g-sc">Subcutaneous</a> autoinjector, monthly</dd>
+        <dt>TAM</dt><dd>Global anti-obesity medication market forecast ~$95B by 2030 (Goldman); GLP-1 class ~$190B by 2035 (Morgan Stanley)</dd>
+        <dt>Readout timing</dt><dd>MARITIME Phase 3 chronic weight management readouts expected ~2027</dd>
+        <dt>Status</dt><dd><span class="pill">Investigational</span> <span class="pill good">Differentiated PK</span></dd>
+      </dl>
+    </article>
+
+    <!-- Repatha -->
+    <article class="drug-card">
+      <div class="dc-head">
+        <h3>Repatha</h3>
+        <span class="generic">evolocumab</span>
+      </div>
+      <em class="tagline">The PCSK9 workhorse, now with primary-prevention data.</em>
+      <p>
+        A fully human IgG2 monoclonal antibody against <a class="term" href="#g-pcsk9">PCSK9</a>. By binding circulating PCSK9,
+        it prevents the enzyme from degrading LDL receptors, so the liver pulls more
+        <a class="term" href="#g-ldl">LDL-C</a> out of the bloodstream. The VESALIUS-CV Phase 3 study reported in 2025 that
+        Repatha cut first <a class="term" href="#g-mace">MACE</a> by 25% and first heart attack by 36% in high-risk patients with no prior MI or stroke — that is the primary-prevention story Amgen is now selling.
+      </p>
+      <dl>
+        <dt>Chemistry</dt><dd>IgG2 monoclonal antibody, produced via <a class="term" href="#g-cho">CHO cell</a> culture</dd>
+        <dt>Administration</dt><dd>SC autoinjector: 140 mg every 2 wks or 420 mg monthly</dd>
+        <dt>TAM</dt><dd>Tens of millions of US adults with <a class="term" href="#g-ascvd">ASCVD</a> not at LDL goal; $3.0B in Amgen sales FY2025</dd>
+        <dt>LOE</dt><dd>US patents running ~2029–2030; EU earlier in 2028</dd>
+        <dt>Sales growth</dt><dd>Double-digit in recent quarters; primary-prevention data is the catalyst</dd>
+      </dl>
+    </article>
+
+    <!-- Prolia -->
+    <article class="drug-card">
+      <div class="dc-head">
+        <h3>Prolia / XGEVA</h3>
+        <span class="generic">denosumab</span>
+      </div>
+      <em class="tagline">Same molecule, two books, one biosimilar cliff.</em>
+      <p>
+        A fully human monoclonal antibody against <a class="term" href="#g-rankl">RANKL</a>. Binding RANKL stops
+        osteoclasts from forming and resorbing bone. Prolia is the osteoporosis dose (60 mg SC every 6 months);
+        XGEVA is the higher-dose oncology indication for bone metastases and giant-cell tumor.
+      </p>
+      <dl>
+        <dt>LOE</dt><dd>US composition patent expired Feb 2025; <a class="term" href="#g-biosim">biosimilars</a> launching from late May 2025 per settlements with Sandoz and Celltrion</dd>
+        <dt>2024 Prolia sales</dt><dd>~$4.3B; erosion accelerating in 2026</dd>
+        <dt>TAM</dt><dd>Osteoporosis: ~10M US women post-menopause; oncology: any solid tumor w/ bone mets</dd>
+        <dt>Administration</dt><dd>Prolia SC q6m; XGEVA SC q4w</dd>
+        <dt>Status</dt><dd><span class="pill warn">At LOE</span> <span class="pill">Generic competition active</span></dd>
+      </dl>
+    </article>
+
+    <!-- EVENITY -->
+    <article class="drug-card">
+      <div class="dc-head">
+        <h3>EVENITY</h3>
+        <span class="generic">romosozumab-aqqg</span>
+      </div>
+      <em class="tagline">Bone-building, not just bone-preserving.</em>
+      <p>
+        A humanized monoclonal antibody that binds <a class="term" href="#g-sclerostin">sclerostin</a>, which ordinarily
+        slows bone formation. Blocking it produces a simultaneous <i>anabolic</i> (build) and anti-resorptive
+        effect — unusual among osteoporosis drugs. Delivered as two SC injections once monthly for 12 doses.
+      </p>
+      <dl>
+        <dt>Indication</dt><dd>Postmenopausal osteoporosis at high risk of fracture</dd>
+        <dt>Key warning</dt><dd>Boxed warning for CV events — payers and cardiologists watch closely</dd>
+        <dt>Uptake</dt><dd>Endocrinology-led; growing double-digit in recent quarters</dd>
+      </dl>
+    </article>
+
+    <!-- IMDELLTRA -->
+    <article class="drug-card onc">
+      <div class="dc-head">
+        <h3>IMDELLTRA</h3>
+        <span class="generic">tarlatamab-dlle</span>
+      </div>
+      <em class="tagline">First-in-class BiTE for small-cell lung cancer.</em>
+      <p>
+        A <a class="term" href="#g-bite">bispecific T-cell engager (BiTE)</a> that bridges <a class="term" href="#g-dll3">DLL3</a> on SCLC cells
+        to CD3 on cytotoxic T cells, forcing a tumor-directed T-cell attack. Full FDA approval in 2025 for
+        2L+ <a class="term" href="#g-essclc">ES-SCLC</a> with overall-survival benefit vs chemo.
+      </p>
+      <dl>
+        <dt>Administration</dt><dd>IV infusion with step-up dosing; monitoring for <a class="term" href="#g-crs">CRS</a> and neurologic toxicity</dd>
+        <dt>TAM</dt><dd>SCLC ~14% of lung cancers globally, ~30,000–35,000 US cases/yr, mostly extensive stage</dd>
+        <dt>Q3 2025 sales</dt><dd>~$178M, up 33% QoQ</dd>
+        <dt>Pipeline</dt><dd>Ph3 moving into earlier lines, incl. 1L maintenance</dd>
+      </dl>
+    </article>
+
+    <!-- LUMAKRAS -->
+    <article class="drug-card onc">
+      <div class="dc-head">
+        <h3>LUMAKRAS</h3>
+        <span class="generic">sotorasib</span>
+      </div>
+      <em class="tagline">First KRAS G12C inhibitor; underperforming vs expectations.</em>
+      <p>
+        A small-molecule covalent inhibitor that locks <a class="term" href="#g-kras">KRAS G12C</a> in its inactive GDP-bound state.
+        Oral, once-daily. Approved in 2L NSCLC and — with Vectibix — in 3L <a class="term" href="#g-crc">metastatic CRC</a>.
+      </p>
+      <dl>
+        <dt>Q3 2025 sales</dt><dd>~$96M, slight YoY decline — growing volume, lower net price</dd>
+        <dt>Competition</dt><dd>BMS/Mirati's Krazati; a growing G12C class</dd>
+        <dt>Status</dt><dd><span class="pill">Approved</span> <span class="pill warn">Below blockbuster trajectory</span></dd>
+      </dl>
+    </article>
+
+    <!-- TEZSPIRE -->
+    <article class="drug-card inf">
+      <div class="dc-head">
+        <h3>TEZSPIRE</h3>
+        <span class="generic">tezepelumab-ekko · partnered w/ AstraZeneca</span>
+      </div>
+      <em class="tagline">Anti-TSLP biologic for severe asthma — now nasal polyps.</em>
+      <p>
+        A human monoclonal antibody that binds <a class="term" href="#g-tslp">TSLP</a>, an epithelial alarmin sitting upstream
+        of multiple inflammatory cascades. Unlike Type-2 biologics, TEZSPIRE works across eosinophilic and non-eosinophilic asthma phenotypes, which is the core selling point. FDA approved in October 2025 for CRSwNP following the WAYPOINT Phase 3.
+      </p>
+      <dl>
+        <dt>Indication</dt><dd>Severe asthma (add-on maintenance); CRSwNP; Ph3 in EoE, COPD</dd>
+        <dt>Administration</dt><dd>SC injection every 4 wks</dd>
+        <dt>2025 revenue</dt><dd>~$1.48B (+52% YoY)</dd>
+        <dt>Prescribers</dt><dd>Pulmonology, allergy, ENT (for CRSwNP)</dd>
+      </dl>
+    </article>
+
+    <!-- Otezla -->
+    <article class="drug-card inf">
+      <div class="dc-head">
+        <h3>Otezla</h3>
+        <span class="generic">apremilast</span>
+      </div>
+      <em class="tagline">Oral plaque psoriasis / PsA — now an IRA casualty.</em>
+      <p>
+        A small-molecule <a class="term" href="#g-pde4">PDE4 inhibitor</a> taken as a BID oral tablet — no injections, no lab monitoring. That convenience has been its selling point in milder patients.
+        Selected for Medicare price setting under the <a class="term" href="#g-ira">IRA</a>, which triggered a $1.2B intangible-asset impairment at Amgen in 2025.
+      </p>
+      <dl>
+        <dt>Maximum Fair Price</dt><dd>Applies from Jan 1, 2027</dd>
+        <dt>Status</dt><dd><span class="pill warn">IRA-selected</span></dd>
+      </dl>
+    </article>
+
+    <!-- Enbrel -->
+    <article class="drug-card inf">
+      <div class="dc-head">
+        <h3>Enbrel</h3>
+        <span class="generic">etanercept</span>
+      </div>
+      <em class="tagline">The TNF inhibitor that just keeps running.</em>
+      <p>
+        A <a class="term" href="#g-fusion">fusion protein</a> combining the extracellular portion of the TNF receptor with an IgG1 Fc region. It acts as a decoy receptor that sponges up TNF-α, dampening immune-mediated inflammation in psoriasis, RA, PsA, ankylosing spondylitis.
+      </p>
+      <dl>
+        <dt>US LOE</dt><dd>Biosimilars held off until 2029 via patent litigation; Amgen will have enjoyed ~31 yrs of exclusivity</dd>
+        <dt>2025 trend</dt><dd>Sales declining under volume pressure from newer mechanisms</dd>
+      </dl>
+    </article>
+
+    <!-- BLINCYTO -->
+    <article class="drug-card onc">
+      <div class="dc-head">
+        <h3>BLINCYTO</h3>
+        <span class="generic">blinatumomab</span>
+      </div>
+      <em class="tagline">The BiTE that proved the platform.</em>
+      <p>
+        Bispecific T-cell engager linking CD19 on B-cell precursors to CD3 on T cells, used in
+        <a class="term" href="#g-ball">B-ALL</a>. Delivered as continuous IV infusion. Expanding into frontline MRD-positive
+        ALL settings has been a major growth lever — Q4 2025 sales were up 58% YoY.
+      </p>
+    </article>
+
+    <!-- TEPEZZA -->
+    <article class="drug-card rare">
+      <div class="dc-head">
+        <h3>TEPEZZA</h3>
+        <span class="generic">teprotumumab-trbw</span>
+      </div>
+      <em class="tagline">The TED franchise, acquired from Horizon.</em>
+      <p>
+        A fully human monoclonal antibody against the <a class="term" href="#g-igf1r">IGF-1 receptor</a>, which is overexpressed on orbital fibroblasts in <a class="term" href="#g-ted">thyroid eye disease</a>. It's the only FDA-approved therapy for TED.
+      </p>
+      <dl>
+        <dt>Administration</dt><dd>IV infusion every 3 wks × 8 doses</dd>
+        <dt>Notable safety</dt><dd>Hearing-related adverse events; patients need audiology monitoring</dd>
+        <dt>2025 revenue</dt><dd>~$1.90B</dd>
+      </dl>
+    </article>
+
+    <!-- KRYSTEXXA -->
+    <article class="drug-card rare">
+      <div class="dc-head">
+        <h3>KRYSTEXXA</h3>
+        <span class="generic">pegloticase</span>
+      </div>
+      <em class="tagline">Last-line therapy for uncontrolled gout.</em>
+      <p>
+        A <a class="term" href="#g-peg">PEGylated</a> recombinant uricase enzyme that metabolizes uric acid directly to allantoin,
+        collapsing serum urate in patients whose gout has failed xanthine-oxidase inhibitors. Administered IV every 2 weeks; frequently co-administered with methotrexate to reduce anti-drug antibody formation and improve durability.
+      </p>
+      <dl>
+        <dt>TAM</dt><dd>~100,000 US patients with refractory tophaceous gout</dd>
+      </dl>
+    </article>
+
+    <!-- UPLIZNA -->
+    <article class="drug-card rare">
+      <div class="dc-head">
+        <h3>UPLIZNA</h3>
+        <span class="generic">inebilizumab-cdon</span>
+      </div>
+      <em class="tagline">B-cell depleter with the widest new label of 2025–26.</em>
+      <p>
+        A humanized anti-<a class="term" href="#g-cd19">CD19</a> monoclonal antibody that depletes a broad range of B cells — including plasmablasts and some plasma cells — implicated in autoantibody-driven disease. Already approved in NMOSD; FDA added IgG4-RD and generalized myasthenia gravis (gMG) as indications in 2025; EC followed in Feb 2026 for gMG.
+      </p>
+      <dl>
+        <dt>Administration</dt><dd>Two IV loading doses, then maintenance every 6 months</dd>
+        <dt>Q3 2025 sales</dt><dd>~$155M, up 46% YoY</dd>
+        <dt>TAM</dt><dd>NMOSD ~15,000 US; IgG4-RD thousands; gMG 56,000–123,000 Europe alone</dd>
+      </dl>
+    </article>
+
+    <!-- TAVNEOS -->
+    <article class="drug-card rare">
+      <div class="dc-head">
+        <h3>TAVNEOS</h3>
+        <span class="generic">avacopan</span>
+      </div>
+      <em class="tagline">Oral complement pathway drug for ANCA vasculitis.</em>
+      <p>
+        A small-molecule selective <a class="term" href="#g-c5ar1">C5a receptor (C5aR1)</a> antagonist, an adjunct for severe
+        <a class="term" href="#g-anca">ANCA-associated vasculitis</a>. Designed to reduce steroid exposure in a chronically steroid-dependent population. Sales up 84% YoY in Q4 2025.
+      </p>
+    </article>
+
+    <!-- Kyprolis -->
+    <article class="drug-card onc">
+      <div class="dc-head">
+        <h3>Kyprolis</h3>
+        <span class="generic">carfilzomib</span>
+      </div>
+      <em class="tagline">Next-gen proteasome inhibitor in multiple myeloma.</em>
+      <p>
+        An epoxyketone <a class="term" href="#g-proteasome">proteasome inhibitor</a> that irreversibly binds the proteasome's chymotrypsin-like site, causing protein misfold buildup and myeloma cell apoptosis. Used in relapsed/refractory myeloma combinations.
+      </p>
+    </article>
+
+    <!-- Nplate -->
+    <article class="drug-card onc">
+      <div class="dc-head">
+        <h3>Nplate</h3>
+        <span class="generic">romiplostim</span>
+      </div>
+      <em class="tagline">TPO mimetic for ITP and radiation exposure.</em>
+      <p>
+        A peptibody (peptide + Fc) that activates the <a class="term" href="#g-tpo">thrombopoietin receptor (MPL)</a> to stimulate platelet production. Used in chronic ITP and as a medical countermeasure for hematopoietic injury from acute radiation syndrome.
+      </p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ========================================================== BIOSIMILARS -->
+<section id="biosimilars">
+  <div class="kicker">Step 4 · Generic-plays-for-biologics</div>
+  <h2>Biosimilars — what we're copying, and when</h2>
+  <p class="lede">
+    A <a class="term" href="#g-biosim">biosimilar</a> isn't a generic in the chemical-identity sense — you can't
+    rebuild a monoclonal antibody atom-for-atom. Instead, it's a highly similar biologic, proven in comparative studies,
+    with no clinically meaningful differences from the <a class="term" href="#g-ref-product">reference product</a>.
+    Amgen targets ~$4B in biosimilar sales by ~2030. These are the currently active or near-term assets.
+  </p>
+
+  <table class="ledger" aria-label="Amgen biosimilars portfolio">
+    <thead>
+      <tr>
+        <th>Amgen biosimilar</th>
+        <th>Reference brand · originator</th>
+        <th>Molecule</th>
+        <th>Launch status</th>
+        <th>Administration</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><b>AMJEVITA</b><br>adalimumab-atto</td><td>Humira · AbbVie</td><td>Anti-TNF-α mAb</td><td>Launched US Jan 2023; interchangeable</td><td>SC prefilled syringe / autoinjector</td></tr>
+      <tr><td><b>WEZLANA</b><br>ustekinumab-auub</td><td>Stelara · Janssen</td><td>Anti-<a class="term" href="#g-il23">IL-12/23</a> p40 mAb</td><td>Launched Jan 1, 2025; interchangeable</td><td>SC / IV induction</td></tr>
+      <tr><td><b>PAVBLU</b><br>aflibercept-ayyh</td><td>Eylea · Regeneron/Bayer</td><td>VEGF fusion trap</td><td>Launched late 2024</td><td>Intravitreal injection</td></tr>
+      <tr><td><b>BKEMV</b><br>eculizumab-aeeb</td><td>Soliris · Alexion/AZ</td><td>Anti-C5 mAb</td><td>Launched 2025; interchangeable</td><td>IV every 2 wks</td></tr>
+      <tr><td><b>MVASI</b><br>bevacizumab-awwb</td><td>Avastin · Roche/Genentech</td><td>Anti-<a class="term" href="#g-vegf">VEGF-A</a> mAb</td><td>Established</td><td>IV infusion</td></tr>
+      <tr><td><b>KANJINTI</b><br>trastuzumab-anns</td><td>Herceptin · Roche</td><td>Anti-HER2 mAb</td><td>Established</td><td>IV or SC</td></tr>
+      <tr><td><b>RIABNI</b><br>rituximab-arrx</td><td>Rituxan · Roche/Biogen</td><td>Anti-CD20 mAb</td><td>Established</td><td>IV infusion</td></tr>
+      <tr><td><b>ABP 692</b><br>ocrelizumab candidate</td><td>Ocrevus · Roche</td><td>Anti-CD20 mAb, MS</td><td>Phase 3 enrolling (NCT06700343)</td><td>IV (future)</td></tr>
+      <tr><td><b>ABP 206</b><br>nivolumab candidate</td><td>Opdivo · BMS</td><td>Anti-PD-1 mAb</td><td>In development</td><td>IV (future)</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout sage">
+    <h4>How a biosimilar actually wins a script</h4>
+    <p>
+      Biosimilars rarely win by persuading the doctor; they win by being on the right tier of the payer's
+      <a class="term" href="#g-formulary">formulary</a>, and — if they carry an
+      <a class="term" href="#g-interchangeable">interchangeable designation</a> — by giving the pharmacist legal cover to substitute without
+      calling the prescriber. Amgen was the first company to launch a US Humira biosimilar (Jan 2023),
+      and captured ~$466M in Amjevita sales in year one.
+    </p>
+  </div>
+</section>
+
+<!-- ========================================================== LOE / TAM TABLE -->
+<section id="loe-tam">
+  <div class="kicker">Step 5 · The cliff calendar</div>
+  <h2>LOE timeline and TAM, at a glance</h2>
+  <p class="lede">
+    Most of the sales-manager questions about Amgen boil down to: <i>which drugs are about to go off-patent,
+    and how big are the new ones really?</i>
+  </p>
+
+  <table class="ledger">
+    <thead>
+      <tr>
+        <th>Asset</th>
+        <th>Type</th>
+        <th>US LOE / Entry</th>
+        <th>Approx. TAM / market size</th>
+        <th>Renewal behavior</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Prolia / XGEVA</b></td><td>Brand · off-patent</td><td>Feb 2025 (US composition); biosims launched late May 2025</td>
+        <td>Prolia ~$4.3B in 2024 brand sales; osteoporosis ~10M eligible US women</td>
+        <td>Chronic — q6m dosing; erosion depends on formulary switches</td>
+      </tr>
+      <tr>
+        <td><b>Enbrel</b></td><td>Brand</td><td>Biosimilar entry blocked until 2029 per prior patent litigation</td>
+        <td>~$3.3B recent annual sales; TNF class pressured by IL-17 / IL-23</td>
+        <td>Chronic SC; high attrition to newer mechanisms</td>
+      </tr>
+      <tr>
+        <td><b>Otezla</b></td><td>Brand · IRA-selected</td><td>MFP effective Jan 1, 2027</td>
+        <td>Moderate psoriasis / PsA; oral convenience niche</td>
+        <td>Chronic BID oral; discontinuation often GI-driven</td>
+      </tr>
+      <tr>
+        <td><b>Repatha</b></td><td>Brand</td><td>US patents running ~2029–2030; EU ~2028</td>
+        <td>Millions of US ASCVD patients not at LDL goal; $3.0B FY25 sales</td>
+        <td>Chronic — q2w or q4w SC for life</td>
+      </tr>
+      <tr>
+        <td><b>IMDELLTRA</b></td><td>Brand · first-in-class</td><td>12-yr biologic exclusivity from 2024 approval</td>
+        <td>~30–35k US ES-SCLC cases/yr; Ph3 moving to earlier lines</td>
+        <td>Finite cycles until progression</td>
+      </tr>
+      <tr>
+        <td><b>MariTide</b></td><td>Brand · Phase 3</td><td>Earliest approval 2027+; 12-yr exclusivity clock starts at approval</td>
+        <td>Obesity/diabetes TAM forecast $95B global by 2030 (Goldman); $190B by 2035 (MS)</td>
+        <td>Chronic — persistence is the whole game</td>
+      </tr>
+      <tr>
+        <td><b>TEZSPIRE</b></td><td>Brand · partnered</td><td>Biologic exclusivity through mid-2030s</td>
+        <td>~2.5M US severe-asthma patients; expanding to CRSwNP, EoE, COPD</td>
+        <td>Chronic q4w SC</td>
+      </tr>
+      <tr>
+        <td><b>TEPEZZA</b></td><td>Brand · rare</td><td>Biologic exclusivity to ~2032 range</td>
+        <td>~15–20k US TED patients with moderate–severe active disease</td>
+        <td>Finite 8-dose course; repeat treatment possible</td>
+      </tr>
+      <tr>
+        <td><b>UPLIZNA</b></td><td>Brand · rare</td><td>Biologic exclusivity through early 2030s</td>
+        <td>Multi-indication: NMOSD + IgG4-RD + gMG stacking labels</td>
+        <td>q6m maintenance — stickiest of the rare-disease book</td>
+      </tr>
+      <tr>
+        <td><b>Biosimilars (portfolio)</b></td><td>Biosimilar</td><td>N/A — biosimilar is <i>the</i> LOE event</td>
+        <td>Targeting ~$4B total Amgen biosimilar revenue by ~2030</td>
+        <td>Depends on formulary re-tenders, usually annual</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note">
+    LOE dates are Amgen and industry-analyst disclosures as of early 2026. Real-world timing depends on remaining patents,
+    regulatory exclusivity, <a class="term" href="#g-bpcia">BPCIA</a> litigation outcomes, and settlement agreements. Assume the
+    sales manager will want live counsel input before anything is committed in writing externally.
+  </p>
+</section>
+
+<!-- ========================================================== LITIGATION -->
+<section id="litigation">
+  <div class="kicker">Step 6 · The legal docket</div>
+  <h2>Ongoing lawsuits you should know exist</h2>
+  <p class="lede">
+    Every drug has a litigation footprint. Here's what's still live as of early 2026, organized by segment.
+  </p>
+
+  <div class="two-col">
+    <div>
+      <h3>General Medicine / Bone Health</h3>
+      <ul class="clean">
+        <li><b>Denosumab multidistrict litigation (MDL No. 3138) — D.N.J.</b><br>
+          Consolidated <a class="term" href="#g-bpcia">BPCIA</a> patent suits over Prolia/XGEVA biosimilars. Sandoz and Celltrion have settled (late-May 2025 launch pathway); other biosimilar developers remain in the MDL.
+        </li>
+      </ul>
+
+      <h3>Inflammation / Immunology</h3>
+      <ul class="clean">
+        <li><b>Enbrel patent defenses</b><br>
+          Amgen successfully defended composition and method-of-use patents that keep Samsung Bioepis' Eticovo and Sandoz's Erelzi off the US market until 2029; Supreme Court declined cert in 2021.
+        </li>
+        <li><b>Otezla IRA price-setting challenge context</b><br>
+          Amgen recorded a $1.2B non-cash impairment in 2025 tied to CMS selecting Otezla for Medicare negotiation. Industry-wide IRA challenges (various plaintiffs vs HHS) remain under appeal; Amgen has not been a headline plaintiff but the outcomes are directly financially material.
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>Corporate / Securities</h3>
+      <ul class="clean">
+        <li><b>Shareholder class action re: $10.7B IRS tax dispute</b><br>
+          Filed 2023 by a Michigan pension fund. In 2024 a SDNY judge denied Amgen's motion to dismiss; case proceeds. Allegations center on disclosure adequacy about an IRS dispute over 2010–2015 income allocation between the US and Puerto Rico.
+        </li>
+        <li><b>IRS examinations</b><br>
+          Amgen's 10-Q disclosures confirm ongoing IRS exams for 2016–2018 on issues similar to the earlier period, with potential extension to later years. Resolution not expected within 12 months.
+        </li>
+      </ul>
+
+      <h3>Oncology / Rare Disease</h3>
+      <ul class="clean">
+        <li>No headline Amgen-as-defendant litigation on IMDELLTRA, TEPEZZA, UPLIZNA, or TAVNEOS at this writing. Standard product-liability exposure applies across the rare-disease book inherited from Horizon.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout">
+    <h4>Sales-desk guidance</h4>
+    <p>
+      Avoid discussing active litigation with customers. If a provider or institution raises a litigation question,
+      route it to Medical Affairs / Legal. This page is for internal awareness only so you don't get blindsided in a hallway conversation.
+    </p>
+  </div>
+</section>
+
+<!-- ========================================================== PROVIDER ADOPTION -->
+<section id="adoption">
+  <div class="kicker">Step 7 · The human in the loop</div>
+  <h2>Consumer experience &amp; medical-provider adoption</h2>
+  <p class="lede">
+    Uptake in pharma is rarely about the molecule — it's about how the molecule fits into a clinician's day and a patient's life. Here's the uptake shape by audience, and the points that tend to close the deal.
+  </p>
+
+  <h3>Uptake by prescriber segment</h3>
+  <table class="ledger">
+    <thead>
+      <tr>
+        <th>Prescriber</th>
+        <th>Typical uptake pattern</th>
+        <th>What they care about most</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Primary care (FM / IM)</b></td>
+        <td>Slow early; accelerates sharply once guideline inclusion + payer coverage line up (classic <a class="term" href="#g-glp1ra">GLP-1 RA</a> adoption curve)</td>
+        <td>PA burden, titration simplicity, adherence tooling, time-to-approval, clear patient education</td>
+      </tr>
+      <tr>
+        <td><b>Cardiology</b></td>
+        <td>Faster for drugs with CV-outcomes evidence (Repatha VESALIUS-CV); skeptical of surrogate-endpoint stories</td>
+        <td>Hard endpoints (<a class="term" href="#g-mace">MACE</a>, mortality), <a class="term" href="#g-nnt">NNT</a>, safety in polypharmacy</td>
+      </tr>
+      <tr>
+        <td><b>Endocrinology</b></td>
+        <td>Early adopters for obesity &amp; bone; comfortable with injectables; wary of novel mechanisms without outcome data</td>
+        <td>Glycemic effect, durability post-discontinuation, body-comp data, GI <a class="term" href="#g-ae">adverse events</a></td>
+      </tr>
+      <tr>
+        <td><b>Oncology</b></td>
+        <td>Adoption driven by NCCN inclusion and academic KOL enthusiasm; community uptake lags academic by 6–18 months</td>
+        <td>Overall survival, PFS, toxicity management, reimbursement (J-code &amp; <a class="term" href="#g-asp">ASP-based</a> buy-and-bill)</td>
+      </tr>
+      <tr>
+        <td><b>Rheumatology</b></td>
+        <td>Recycle pattern: patients cycle through mechanisms; formulary step-therapy dictates sequence</td>
+        <td>Persistence vs alternatives, infection risk, infusion logistics, sustainable co-pay</td>
+      </tr>
+      <tr>
+        <td><b>Pulmonology / Allergy (for TEZSPIRE)</b></td>
+        <td>Adoption strongest in severe-asthma clinics; broadening as CRSwNP launch adds ENT</td>
+        <td>Non-Type-2 phenotype coverage, exacerbation reduction, dosing interval</td>
+      </tr>
+      <tr>
+        <td><b>Neurology / Ophthalmology (rare disease)</b></td>
+        <td>Low raw prescriber count; each champion moves a disproportionate share</td>
+        <td>Rarity-aware dosing, infusion center access, durability, post-marketing registries</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Closing points doctors actually react to</h3>
+  <ul class="clean">
+    <li><b>Outcome data, not surrogates.</b> Cardiologists prefer MACE-reduction over LDL-C percentages; oncologists prefer OS over PFS when available.</li>
+    <li><b>Low administrative burden.</b> Prior-auth turnaround, free-drug bridge programs, nurse educators, and a clean specialty-pharmacy workflow.</li>
+    <li><b>Dosing interval that matches the patient's life.</b> Once-monthly beats weekly. Once-every-six-months (UPLIZNA, Prolia) is almost always preferred for chronic maintenance.</li>
+    <li><b>Adherence data.</b> Real-world persistence numbers beat trial numbers in the conversation.</li>
+    <li><b>Co-pay support.</b> Manufacturer co-pay cards and foundation assistance programs are frequently what actually closes the prescription.</li>
+    <li><b>Phenotype-agnostic efficacy.</b> TEZSPIRE's TSLP mechanism works across asthma phenotypes — that's a single-sentence differentiator.</li>
+  </ul>
+
+  <h3>Consumer (patient) experience drivers</h3>
+  <ul class="clean">
+    <li><b>Device quality.</b> A pen or autoinjector that fires cleanly, with minimal site reactions, outperforms a vial-and-syringe experience.</li>
+    <li><b>Onboarding.</b> Nurse-led first-injection education reduces discontinuation, especially for obesity and biologics.</li>
+    <li><b>Adverse-event experience.</b> For GLP-1-class drugs, GI tolerability drives 15%+ of discontinuations (Goldman survey).</li>
+    <li><b>Cash exposure.</b> For patients, the real question is out-of-pocket, not list price. Cost and loss of insurance coverage drive the majority of GLP-1 discontinuations (60–64% per recent survey data).</li>
+  </ul>
+</section>
+
+<!-- ========================================================== MARKET ACCESS -->
+<section id="access">
+  <div class="kicker">Step 8 · Who pays, and how</div>
+  <h2>Insurance coverage &amp; market access, by segment</h2>
+  <p class="lede">
+    Coverage is the rate-limiting step for almost every script. Here's the state of play as of early 2026.
+  </p>
+
+  <table class="ledger">
+    <thead>
+      <tr>
+        <th>Segment / Drug</th>
+        <th>Medicare</th>
+        <th>Medicaid</th>
+        <th>Commercial</th>
+        <th>Utilization management</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>Repatha</b></td>
+        <td>Part D — typically covered; tier 3–4</td>
+        <td>Covered with PA</td>
+        <td>Broadly covered</td>
+        <td>PA on LDL threshold, statin-intolerance documentation</td>
+      </tr>
+      <tr>
+        <td><b>MariTide (future)</b></td>
+        <td>Obesity coverage path opens via CMMI <b>BALANCE</b> model and short-term <b>Medicare GLP-1 Bridge</b> (Jul 1, 2026 – Dec 31, 2027)</td>
+        <td>Optional for states under MDRP weight-loss exception; Medicaid coverage expanding state-by-state</td>
+        <td>Employer GLP-1 obesity coverage rose 44% → 48% in 2024–25; projected ~65% by 2027 (MS AlphaWise)</td>
+        <td>Heavy PA, BMI thresholds, documented diet + exercise, step therapy with older agents</td>
+      </tr>
+      <tr>
+        <td><b>Prolia / EVENITY</b></td>
+        <td>Part B for Prolia in many cases (buy-and-bill); Part D for some settings</td>
+        <td>Covered</td>
+        <td>Covered; EVENITY more tightly managed</td>
+        <td>DEXA score thresholds, prior fracture history</td>
+      </tr>
+      <tr>
+        <td><b>Oncology (IMDELLTRA, BLINCYTO, Kyprolis, LUMAKRAS)</b></td>
+        <td>Part B (infused) or Part D (oral LUMAKRAS)</td>
+        <td>Covered with NCCN listing</td>
+        <td>Covered per NCCN</td>
+        <td>Pathway programs increasingly gate oncology scripts</td>
+      </tr>
+      <tr>
+        <td><b>TEZSPIRE</b></td>
+        <td>Part D SC biologic</td>
+        <td>Covered with PA</td>
+        <td>Severe-asthma PA; step through ICS/LABA, sometimes prior biologic</td>
+        <td>Eosinophil threshold historically applied for class; TEZSPIRE's value prop is <i>no</i> eos threshold</td>
+      </tr>
+      <tr>
+        <td><b>Otezla</b></td>
+        <td>Part D until Jan 1, 2027 when the <a class="term" href="#g-mfp">Maximum Fair Price</a> under IRA applies</td>
+        <td>Covered</td>
+        <td>Covered; tier varies</td>
+        <td>Step therapy through topicals for psoriasis</td>
+      </tr>
+      <tr>
+        <td><b>Rare disease (TEPEZZA, UPLIZNA, KRYSTEXXA, TAVNEOS)</b></td>
+        <td>Primarily Part B <a class="term" href="#g-bandb">buy-and-bill</a>; specialty pharmacy for some</td>
+        <td>Covered with PA + specialty criteria</td>
+        <td>Covered; high-touch market-access case management</td>
+        <td>Diagnostic confirmation, specialist attestation, sometimes registry enrollment</td>
+      </tr>
+      <tr>
+        <td><b>Biosimilars</b></td>
+        <td>Part B/D depending on site of care</td>
+        <td>Formulary-driven</td>
+        <td>Increasingly preferred over reference brand on commercial formularies</td>
+        <td>Lowest-cost-preferred logic; interchangeable designation matters</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout ink">
+    <h4>The new obesity access map</h4>
+    <p>
+      Under the CMS <b>BALANCE</b> model (announced December 2025), state Medicaid agencies can opt in from May 2026
+      through January 2027, and eligible Part D beneficiaries will get GLP-1 access via the <b>Medicare GLP-1 Bridge</b>
+      from July 1, 2026 through December 31, 2027. Medicare pricing for negotiated GLP-1 injections is set at
+      roughly $245/month, with patient copays capped at $50. TrumpRx-direct is ~$350/month. For MariTide, the
+      implication is: if Amgen joins the model, the access lift is massive; if it doesn't, patients stay on
+      commercial/self-pay rails. Goldman Sachs trimmed its 2030 global anti-obesity market to ~$95B from a prior
+      $130B estimate, in part because of coverage stringency and rising discontinuation rates.
+    </p>
+  </div>
+
+  <h3>Prescription renewal length — rule of thumb</h3>
+  <ul class="clean">
+    <li><b>Chronic cardiometabolic (Repatha, MariTide future):</b> Initial 30–90 day supply, then 90-day refills. PA typically renewed every 6–12 months.</li>
+    <li><b>Oral psoriasis / PsA (Otezla):</b> 30-day initial, 90-day maintenance.</li>
+    <li><b>Severe-asthma / CRSwNP biologic (TEZSPIRE):</b> PA usually re-approved every 6–12 months on exacerbation-reduction evidence.</li>
+    <li><b>Osteoporosis (Prolia, EVENITY):</b> Prolia every 6 months — the renewal <i>is</i> the dose. EVENITY is a finite 12-month course.</li>
+    <li><b>Oncology (IMDELLTRA, BLINCYTO, Kyprolis):</b> Until progression or unacceptable toxicity.</li>
+    <li><b>Rare disease infusions (TEPEZZA, UPLIZNA, KRYSTEXXA):</b> Per protocol; UPLIZNA is twice-yearly maintenance.</li>
+  </ul>
+</section>
+
+<!-- ========================================================== ADMINISTRATION -->
+<section id="administration">
+  <div class="kicker">Step 9 · From factory to arm</div>
+  <h2>How these drugs actually get to market</h2>
+  <p class="lede">
+    Distribution matters as much as the molecule. Amgen runs a complex chain spanning manufacturing sites, specialty
+    pharmacies, physician-administered (<a class="term" href="#g-bandb">buy-and-bill</a>) channels, and increasingly
+    direct-to-patient autoinjectors.
+  </p>
+
+  <table class="ledger">
+    <thead>
+      <tr><th>Product</th><th>Dosage form</th><th>Route</th><th>Channel</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>MariTide</td><td>Autoinjector (expected)</td><td>SC, monthly or less frequent</td><td>Specialty pharmacy / direct-to-patient at launch</td></tr>
+      <tr><td>Repatha</td><td>Prefilled syringe, autoinjector, on-body infusor</td><td>SC q2w or q4w</td><td>Retail + specialty pharmacy</td></tr>
+      <tr><td>Prolia / XGEVA</td><td>Prefilled syringe</td><td>SC</td><td>Buy-and-bill or specialty</td></tr>
+      <tr><td>EVENITY</td><td>Two prefilled syringes</td><td>SC monthly × 12</td><td>Buy-and-bill / specialty</td></tr>
+      <tr><td>TEZSPIRE</td><td>Prefilled pen / syringe</td><td>SC q4w</td><td>Specialty pharmacy</td></tr>
+      <tr><td>Otezla</td><td>Oral tablet</td><td>PO BID</td><td>Retail</td></tr>
+      <tr><td>Enbrel</td><td>Autoinjector</td><td>SC weekly</td><td>Retail + specialty</td></tr>
+      <tr><td>IMDELLTRA</td><td>Lyophilized vial</td><td>IV infusion with step-up</td><td>Buy-and-bill (hospital / infusion center)</td></tr>
+      <tr><td>BLINCYTO</td><td>Continuous IV infusion bag</td><td>IV, continuous</td><td>Buy-and-bill; outpatient with pump</td></tr>
+      <tr><td>LUMAKRAS</td><td>Oral tablet</td><td>PO daily</td><td>Specialty pharmacy</td></tr>
+      <tr><td>Kyprolis</td><td>Lyophilized vial</td><td>IV</td><td>Buy-and-bill</td></tr>
+      <tr><td>TEPEZZA</td><td>IV infusion</td><td>IV q3w × 8</td><td>Buy-and-bill infusion center</td></tr>
+      <tr><td>UPLIZNA</td><td>IV infusion</td><td>Loading + q6m maintenance</td><td>Buy-and-bill</td></tr>
+      <tr><td>KRYSTEXXA</td><td>IV infusion</td><td>q2w</td><td>Buy-and-bill</td></tr>
+      <tr><td>TAVNEOS</td><td>Oral capsule</td><td>PO BID</td><td>Specialty pharmacy</td></tr>
+      <tr><td>Biosimilars (AMJEVITA, WEZLANA, etc.)</td><td>Varies</td><td>SC or IV per reference</td><td>Retail + specialty; formulary-tier driven</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ========================================================== WEATHER -->
+<section id="weather">
+  <div class="kicker">Step 10 · What could go right, what could go wrong</div>
+  <h2>Headwinds &amp; tailwinds<span class="asof">as of Feb 2026</span></h2>
+  <p class="lede">
+    A balanced view. The headwinds are concrete and near-term; the tailwinds are bigger in dollar potential but more conditional on execution.
+  </p>
+
+  <div class="weather">
+    <div class="heads">
+      <h3>Scary headwinds</h3>
+      <ul>
+        <li>
+          <b>IRA price setting — Otezla</b>
+          Otezla's Maximum Fair Price takes effect January 1, 2027. Amgen has already booked a $1.2B intangible-asset impairment. Future IPAY cycles will pull in more of Amgen's small-molecule franchise.
+        </li>
+        <li>
+          <b>Prolia / XGEVA biosimilar cliff</b>
+          US composition patent expired February 2025; biosimilars launched from late May 2025. Prolia's $4B+ revenue base is entering structural erosion even with the late-May staggered entry.
+        </li>
+        <li>
+          <b>$10.7B IRS dispute</b>
+          Shareholder class action over disclosure is proceeding; underlying IRS exams for 2016–2018 are live, with likely extensions to later years.
+        </li>
+        <li>
+          <b>MariTide's Phase 2 GI tolerability signal</b>
+          Up to ~25% of participants reported vomiting at higher doses in Phase 1 PK-LDI; investigators have redesigned Phase 3 dose escalation, but Wegovy/Zepbound already hold the mindshare.
+        </li>
+        <li>
+          <b>Enbrel's declining volume</b>
+          Even with patents to 2029, Enbrel is losing share to IL-17 and IL-23 class competitors. Revenue contraction is already showing up quarter to quarter.
+        </li>
+        <li>
+          <b>LUMAKRAS under-delivery</b>
+          Trailing the KRAS G12C class vs expectations; Q3 2025 sales were down 2% YoY.
+        </li>
+        <li>
+          <b>Payer stringency on obesity</b>
+          Goldman Sachs cut global anti-obesity TAM from $130B to $95B; cost and loss of coverage drive 60–64% of GLP-1 discontinuations today.
+        </li>
+      </ul>
+    </div>
+    <div class="tails">
+      <h3>Exciting tailwinds</h3>
+      <ul>
+        <li>
+          <b>MariTide's differentiated profile</b>
+          Once-monthly dosing, ~20% mean weight loss at 52 weeks with no plateau — if Phase 3 holds, it is a credible counter-entry into the obesity blockbuster category.
+        </li>
+        <li>
+          <b>Repatha's primary-prevention story</b>
+          VESALIUS-CV data (25% MACE reduction, 36% MI reduction in high-risk CV patients without prior MI/stroke) expands the eligible patient pool substantially.
+        </li>
+        <li>
+          <b>IMDELLTRA scale-up</b>
+          Q3 2025 sales ~$178M (+33% QoQ), Phase 3 confirmatory overall-survival data, and trials moving into earlier lines of SCLC all point to blockbuster potential.
+        </li>
+        <li>
+          <b>UPLIZNA label stacking</b>
+          Added IgG4-RD and gMG in 2025; EC approval for gMG in Feb 2026. +46% YoY sales growth in Q3 2025. Each indication compounds prescriber familiarity.
+        </li>
+        <li>
+          <b>TEZSPIRE beyond asthma</b>
+          CRSwNP Phase 3 (WAYPOINT) showed 98% reduction in need for polyp surgery and 88% reduction in systemic steroid use; FDA approved late 2025. COPD and EoE Ph3 trials ongoing.
+        </li>
+        <li>
+          <b>Biosimilars scaling to ~$4B</b>
+          PAVBLU, WEZLANA, BKEMV launching in sequence; Amgen targets $4B franchise by ~2030. ABP 692 (ocrelizumab, MS) in Phase 3.
+        </li>
+        <li>
+          <b>Rare disease momentum</b>
+          TEPEZZA, KRYSTEXXA, UPLIZNA, TAVNEOS together generated $1.2B+ per quarter at recent runs — the Horizon acquisition is earning back.
+        </li>
+        <li>
+          <b>GLP-1 coverage environment opening</b>
+          BALANCE and GLP-1 Bridge create a Medicare path for obesity drugs; employer GLP-1 obesity coverage projected to reach 65% by 2027.
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout sage">
+    <h4>How to actually use this page with a sales manager</h4>
+    <p>
+      Pair every headwind with a counter on the tailwind side when you're asked about risk. The honest
+      executive-summary line: Amgen's base is eroding faster than some peers' (Prolia LOE + Otezla IRA), but its
+      growth book — rare disease + TEZSPIRE + IMDELLTRA + eventually MariTide — is real and accelerating. The
+      company's reinvention rides on MariTide converting from a hope into a product.
+    </p>
+  </div>
+</section>
+
+<!-- ========================================================== GLOSSARY -->
+<section id="glossary">
+  <div class="kicker">Step 11 · Language</div>
+  <h2>Glossary — searchable, cross-linked</h2>
+  <p class="lede">
+    Every clickable term in this brief jumps here. Use the search box to filter by word or category. Filter by
+    pill to narrow to just sales/commercial terms or just biology terms.
+  </p>
+
+  <div class="glossary-controls">
+    <input type="search" id="g-search" placeholder="Search any term — 'LOE', 'BiTE', 'HbA1c', 'buy-and-bill'..." aria-label="Search glossary" />
+    <button class="chip active" data-filter="all">All</button>
+    <button class="chip" data-filter="biology">Biology</button>
+    <button class="chip" data-filter="drug">Drug / Product</button>
+    <button class="chip" data-filter="sales">Sales / Commercial</button>
+    <button class="chip" data-filter="payer">Payer / Access</button>
+    <button class="chip" data-filter="legal">Legal / Regulatory</button>
+    <span class="g-count" id="g-count"></span>
+  </div>
+
+  <div class="glossary-grid" id="glossary-grid">
+
+    <!-- Sales/Commercial core -->
+    <div class="g-entry" id="g-loe" data-cat="sales">
+      <div class="g-cat">Sales</div>
+      <h4>LOE — Loss of Exclusivity</h4>
+      <p>The date a drug's market protection ends — usually via patent expiry or the end of regulatory exclusivity — after which generics (small molecules) or biosimilars (biologics) can enter.</p>
+    </div>
+    <div class="g-entry" id="g-tam" data-cat="sales">
+      <div class="g-cat">Sales</div>
+      <h4>TAM — Total Addressable Market</h4>
+      <p>The full revenue opportunity if a product reached every eligible patient. In pharma usually stated as $ or patient-count; sellers then adjust for serviceable and obtainable share.</p>
+    </div>
+    <div class="g-entry" id="g-asp" data-cat="payer">
+      <div class="g-cat">Payer</div>
+      <h4>ASP — Average Sales Price</h4>
+      <p>The CMS-published benchmark used to reimburse physician-administered drugs under Medicare Part B. ASP + 6% is the classic buy-and-bill formula.</p>
+    </div>
+    <div class="g-entry" id="g-bandb" data-cat="payer">
+      <div class="g-cat">Payer</div>
+      <h4>Buy-and-bill</h4>
+      <p>A channel where the provider (hospital, infusion center, clinic) purchases the drug, administers it, and then bills the payer. Common for IV infusions and many oncology and rare-disease drugs.</p>
+    </div>
+    <div class="g-entry" id="g-formulary" data-cat="payer">
+      <div class="g-cat">Payer</div>
+      <h4>Formulary</h4>
+      <p>A payer or PBM's list of covered drugs, typically arranged in tiers with different cost-sharing. Preferred brand, non-preferred, specialty, and excluded tiers drive most of the economics of a script.</p>
+    </div>
+    <div class="g-entry" id="g-pa" data-cat="payer">
+      <div class="g-cat">Payer</div>
+      <h4>Prior authorization (PA)</h4>
+      <p>A utilization-management step where the prescriber must get payer approval before a drug is dispensed. PA burden is frequently the rate-limiting step on uptake.</p>
+    </div>
+    <div class="g-entry" id="g-step-therapy" data-cat="payer">
+      <div class="g-cat">Payer</div>
+      <h4>Step therapy</h4>
+      <p>A rule requiring patients to try (and fail) cheaper therapies first before coverage of a more expensive option is granted.</p>
+    </div>
+    <div class="g-entry" id="g-ira" data-cat="legal">
+      <div class="g-cat">Regulatory</div>
+      <h4>IRA — Inflation Reduction Act</h4>
+      <p>A 2022 US law that, among other things, gave CMS the authority to negotiate prices for selected high-spend drugs under Medicare Part B and D. Selected drugs receive a Maximum Fair Price that takes effect in subsequent years.</p>
+    </div>
+    <div class="g-entry" id="g-mfp" data-cat="legal">
+      <div class="g-cat">Regulatory</div>
+      <h4>MFP — Maximum Fair Price</h4>
+      <p>The price CMS sets under IRA negotiation. For drugs selected in the first cycle, MFPs take effect January 1, 2026; Otezla's MFP under a later cycle takes effect January 1, 2027.</p>
+    </div>
+    <div class="g-entry" id="g-bpcia" data-cat="legal">
+      <div class="g-cat">Regulatory</div>
+      <h4>BPCIA — Biologics Price Competition and Innovation Act</h4>
+      <p>The 2009 US law that created the biosimilar regulatory pathway, including a "patent dance" procedure biosimilar developers and originators use to litigate patent issues before launch.</p>
+    </div>
+
+    <!-- Biology foundational -->
+    <div class="g-entry" id="g-biosim" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>Biosimilar</h4>
+      <p>A biological product that is highly similar to, and has no clinically meaningful differences from, an already-approved reference biologic. Not an exact copy — biologics are too complex for that — but therapeutically equivalent.</p>
+    </div>
+    <div class="g-entry" id="g-biosimilar" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>Biosimilar (alt spelling)</h4>
+      <p>See Biosimilar above.</p>
+    </div>
+    <div class="g-entry" id="g-interchangeable" data-cat="legal">
+      <div class="g-cat">Regulatory</div>
+      <h4>Interchangeable designation</h4>
+      <p>An FDA status granted to certain biosimilars, allowing a pharmacist to substitute the biosimilar for the reference biologic without prescriber intervention, subject to state law.</p>
+    </div>
+    <div class="g-entry" id="g-ref-product" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>Reference product</h4>
+      <p>The originator biologic a biosimilar is compared against (e.g., Humira is the reference product for AMJEVITA).</p>
+    </div>
+
+    <!-- Drug-class terms -->
+    <div class="g-entry" id="g-glp1ra" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>GLP-1 receptor agonist</h4>
+      <p>A molecule that mimics glucagon-like peptide-1 and activates its receptor, producing insulin release, glucagon suppression, slowed gastric emptying, and reduced appetite via central mechanisms.</p>
+    </div>
+    <div class="g-entry" id="g-gipr" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>GIP receptor (GIPR)</h4>
+      <p>The receptor for glucose-dependent insulinotropic polypeptide. Can be either agonized (Zepbound) or antagonized (MariTide) to contribute to weight loss — the mechanism debate is live.</p>
+    </div>
+    <div class="g-entry" id="g-pac" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>Peptide-antibody conjugate</h4>
+      <p>A single molecule combining a peptide (often a GLP-1 analog) with a full monoclonal antibody via covalent linkers. The antibody extends half-life; the peptide delivers the receptor activity. MariTide is an example.</p>
+    </div>
+    <div class="g-entry" id="g-pcsk9" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>PCSK9</h4>
+      <p>Proprotein convertase subtilisin/kexin type 9 — a protein that degrades LDL receptors. Blocking it keeps LDL receptors on hepatocytes longer, lowering circulating LDL-C. Target of Repatha.</p>
+    </div>
+    <div class="g-entry" id="g-ldl" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>LDL-C</h4>
+      <p>Low-density lipoprotein cholesterol — the "bad" cholesterol most strongly linked to atherosclerotic cardiovascular disease. Reducing LDL-C reduces event risk.</p>
+    </div>
+    <div class="g-entry" id="g-mace" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>MACE</h4>
+      <p>Major adverse cardiovascular events — a composite clinical endpoint typically comprising CV death, non-fatal MI, and non-fatal stroke; sometimes expanded to include hospitalization for unstable angina or heart failure.</p>
+    </div>
+    <div class="g-entry" id="g-ascvd" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>ASCVD</h4>
+      <p>Atherosclerotic cardiovascular disease — the umbrella for coronary artery disease, cerebrovascular disease, and peripheral artery disease driven by plaque buildup.</p>
+    </div>
+    <div class="g-entry" id="g-rankl" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>RANKL</h4>
+      <p>Receptor activator of nuclear factor kappa-B ligand — a cytokine that tells osteoclast precursors to mature and resorb bone. Blocking RANKL (Prolia/XGEVA) slows bone loss.</p>
+    </div>
+    <div class="g-entry" id="g-sclerostin" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>Sclerostin</h4>
+      <p>A protein secreted by osteocytes that inhibits Wnt-signaling–driven bone formation. Blocking it (EVENITY) allows bones to build.</p>
+    </div>
+    <div class="g-entry" id="g-bite" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>BiTE — Bispecific T-cell Engager</h4>
+      <p>A recombinant bispecific molecule designed to bridge a tumor antigen (e.g., DLL3, CD19) on one arm with CD3 on a T cell on the other, physically redirecting T-cell cytotoxicity to the tumor. Amgen is the originator of the platform.</p>
+    </div>
+    <div class="g-entry" id="g-dll3" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>DLL3</h4>
+      <p>Delta-like ligand 3 — a Notch-pathway ligand highly expressed in small-cell lung cancer and largely absent from normal tissue. Target of IMDELLTRA.</p>
+    </div>
+    <div class="g-entry" id="g-kras" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>KRAS G12C</h4>
+      <p>A specific glycine-to-cysteine mutation at codon 12 of the KRAS oncogene. The cysteine residue creates a covalent drug-binding pocket, enabling the first generation of KRAS inhibitors (sotorasib/LUMAKRAS, adagrasib).</p>
+    </div>
+    <div class="g-entry" id="g-essclc" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>ES-SCLC</h4>
+      <p>Extensive-stage small-cell lung cancer — SCLC that has spread beyond one lung at diagnosis. Aggressive, chemo-responsive initially, but historically poor survival in later lines.</p>
+    </div>
+    <div class="g-entry" id="g-crc" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>Metastatic CRC</h4>
+      <p>Metastatic colorectal cancer. LUMAKRAS + Vectibix is approved for 3L KRAS G12C–mutated mCRC.</p>
+    </div>
+    <div class="g-entry" id="g-ball" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>B-ALL</h4>
+      <p>B-cell acute lymphoblastic leukemia — an aggressive blood cancer of B-cell precursors. BLINCYTO is approved across relapsed, MRD-positive, and frontline consolidation settings.</p>
+    </div>
+    <div class="g-entry" id="g-crs" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>CRS — Cytokine Release Syndrome</h4>
+      <p>A systemic inflammatory response to T-cell-engaging therapies (BiTEs, CAR-T). Monitoring and stepwise dosing are central to safe administration.</p>
+    </div>
+    <div class="g-entry" id="g-tslp" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>TSLP</h4>
+      <p>Thymic stromal lymphopoietin — an epithelial alarmin that sits upstream of multiple Th2 and non-Th2 inflammatory cascades. Blocking it (TEZSPIRE) is effective across asthma phenotypes.</p>
+    </div>
+    <div class="g-entry" id="g-il23" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>IL-12/23</h4>
+      <p>Interleukins that drive Th1 and Th17 immune responses. Stelara (ustekinumab, targeted by Amgen's WEZLANA) binds the shared p40 subunit and is used in psoriasis, PsA, Crohn's, and UC.</p>
+    </div>
+    <div class="g-entry" id="g-pde4" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>PDE4 inhibitor</h4>
+      <p>Phosphodiesterase-4 inhibitor. Raises intracellular cAMP in immune cells, dampening cytokine production. Otezla is a selective PDE4 inhibitor.</p>
+    </div>
+    <div class="g-entry" id="g-fusion" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>Fusion protein</h4>
+      <p>A recombinant protein created by joining two genes encoding different protein domains. Enbrel fuses the extracellular portion of the TNF receptor with an IgG1 Fc region, creating a soluble TNF decoy.</p>
+    </div>
+    <div class="g-entry" id="g-proteasome" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>Proteasome inhibitor</h4>
+      <p>Blocks the proteasome, the cellular machine that degrades old and misfolded proteins. Myeloma cells are particularly sensitive. Kyprolis is an epoxyketone-class inhibitor; bortezomib was first-in-class.</p>
+    </div>
+    <div class="g-entry" id="g-tpo" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>Thrombopoietin receptor (MPL)</h4>
+      <p>The receptor that drives platelet production. Nplate (romiplostim) mimics thrombopoietin to raise platelet counts in chronic ITP.</p>
+    </div>
+    <div class="g-entry" id="g-igf1r" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>IGF-1 receptor</h4>
+      <p>Insulin-like growth factor-1 receptor. Overexpressed on orbital fibroblasts in thyroid eye disease. TEPEZZA blocks it to shrink proptosis and reduce diplopia.</p>
+    </div>
+    <div class="g-entry" id="g-ted" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>TED — Thyroid Eye Disease</h4>
+      <p>An autoimmune orbital inflammatory disease, often linked to Graves' disease, causing proptosis (bulging eyes), redness, double vision, and in severe cases vision loss.</p>
+    </div>
+    <div class="g-entry" id="g-cd19" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>CD19</h4>
+      <p>A B-cell surface marker expressed across a broad B-cell lineage, including plasmablasts. UPLIZNA depletes CD19+ cells in NMOSD, IgG4-RD, and gMG.</p>
+    </div>
+    <div class="g-entry" id="g-c5ar1" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>C5aR1</h4>
+      <p>The complement component 5a receptor 1, a GPCR expressed on neutrophils driving vasculitis inflammation. TAVNEOS (avacopan) is a selective oral antagonist.</p>
+    </div>
+    <div class="g-entry" id="g-anca" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>ANCA-associated vasculitis</h4>
+      <p>A group of autoimmune small-vessel vasculitides including granulomatosis with polyangiitis (GPA) and microscopic polyangiitis (MPA), driven by anti-neutrophil cytoplasmic antibodies.</p>
+    </div>
+    <div class="g-entry" id="g-peg" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>PEGylation</h4>
+      <p>Covalent attachment of polyethylene glycol chains to a protein, extending circulating half-life and reducing immunogenicity. KRYSTEXXA is PEGylated uricase.</p>
+    </div>
+    <div class="g-entry" id="g-vegf" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>VEGF-A</h4>
+      <p>Vascular endothelial growth factor A — drives pathological angiogenesis in tumors and wet AMD. Targets for Avastin (bevacizumab, copied by MVASI) and Eylea (aflibercept, copied by PAVBLU).</p>
+    </div>
+    <div class="g-entry" id="g-cho" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>CHO cell</h4>
+      <p>Chinese hamster ovary cell line — the workhorse mammalian expression system for recombinant therapeutic antibodies, including most Amgen mAbs.</p>
+    </div>
+
+    <!-- Administration / clinical -->
+    <div class="g-entry" id="g-sc" data-cat="biology">
+      <div class="g-cat">Administration</div>
+      <h4>Subcutaneous (SC)</h4>
+      <p>Injection into the fat layer below the skin. Slower absorption than IV; enables self-administration via pens and autoinjectors.</p>
+    </div>
+    <div class="g-entry" id="g-ae" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>Adverse event (AE)</h4>
+      <p>Any unfavorable medical occurrence in a patient administered a therapy, whether or not causally related. Serious AEs (SAEs) are those causing death, hospitalization, or lasting disability.</p>
+    </div>
+    <div class="g-entry" id="g-nnt" data-cat="biology">
+      <div class="g-cat">Biology</div>
+      <h4>NNT — Number Needed to Treat</h4>
+      <p>The number of patients who must be treated to prevent one additional event. Lower is better. A common cardiology shorthand when evaluating incremental value of a new agent.</p>
+    </div>
+
+    <!-- Amgen-specific drug cross-refs kept short -->
+    <div class="g-entry" id="g-repatha" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>Repatha — evolocumab</h4>
+      <p>PCSK9-inhibiting monoclonal antibody, SC q2w/q4w. VESALIUS-CV showed a 25% MACE reduction in primary-prevention-eligible patients.</p>
+    </div>
+    <div class="g-entry" id="g-maritide" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>MariTide — maridebart cafraglutide</h4>
+      <p>Phase 3 investigational GLP-1 RA / GIPR antagonist peptide-antibody conjugate; monthly SC injection for obesity, T2D, OSA, heart failure, and ASCVD.</p>
+    </div>
+    <div class="g-entry" id="g-prolia-g" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>Prolia / XGEVA — denosumab</h4>
+      <p>Anti-RANKL mAb in two dosing regimens: osteoporosis (Prolia, 60 mg SC q6m) and cancer bone mets / GCTB (XGEVA).</p>
+    </div>
+    <div class="g-entry" id="g-evenity-g" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>EVENITY — romosozumab-aqqg</h4>
+      <p>Anti-sclerostin mAb for postmenopausal osteoporosis at high fracture risk. Finite 12-month course, two SC injections monthly.</p>
+    </div>
+    <div class="g-entry" id="g-imd" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>IMDELLTRA — tarlatamab-dlle</h4>
+      <p>DLL3 × CD3 BiTE for 2L+ ES-SCLC. IV with step-up dosing and CRS monitoring.</p>
+    </div>
+    <div class="g-entry" id="g-lum" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>LUMAKRAS — sotorasib</h4>
+      <p>First-in-class oral KRAS G12C covalent inhibitor for NSCLC and, with Vectibix, 3L KRAS G12C mCRC.</p>
+    </div>
+    <div class="g-entry" id="g-blin" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>BLINCYTO — blinatumomab</h4>
+      <p>CD19 × CD3 BiTE for B-ALL; continuous IV infusion. Expanding in frontline MRD-positive settings.</p>
+    </div>
+    <div class="g-entry" id="g-tez" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>TEZSPIRE — tezepelumab-ekko</h4>
+      <p>Anti-TSLP biologic, SC q4w. Approved in severe asthma and CRSwNP; trials ongoing in COPD and EoE.</p>
+    </div>
+    <div class="g-entry" id="g-otz" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>Otezla — apremilast</h4>
+      <p>Oral PDE4 inhibitor for psoriasis, PsA, Behçet's oral ulcers. Selected for Medicare price negotiation with MFP from Jan 1, 2027.</p>
+    </div>
+    <div class="g-entry" id="g-enb" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>Enbrel — etanercept</h4>
+      <p>TNF receptor–Fc fusion protein, SC weekly. Biosimilars held off the US market until 2029 through litigation.</p>
+    </div>
+    <div class="g-entry" id="g-tep" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>TEPEZZA — teprotumumab-trbw</h4>
+      <p>Anti-IGF-1R mAb for TED. IV q3w × 8. Hearing-AE monitoring required.</p>
+    </div>
+    <div class="g-entry" id="g-krys" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>KRYSTEXXA — pegloticase</h4>
+      <p>PEGylated uricase enzyme for refractory gout. IV q2w; often given with methotrexate to mitigate immunogenicity.</p>
+    </div>
+    <div class="g-entry" id="g-upl" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>UPLIZNA — inebilizumab-cdon</h4>
+      <p>Anti-CD19 B-cell depleter, IV. Approved in NMOSD, IgG4-RD, gMG. Maintenance every 6 months.</p>
+    </div>
+    <div class="g-entry" id="g-tav" data-cat="drug">
+      <div class="g-cat">Drug</div>
+      <h4>TAVNEOS — avacopan</h4>
+      <p>Oral C5aR1 antagonist for ANCA-associated vasculitis, reducing steroid exposure in chronic therapy.</p>
+    </div>
+    <div class="g-entry" id="g-amj" data-cat="drug">
+      <div class="g-cat">Drug · Biosimilar</div>
+      <h4>AMJEVITA — adalimumab-atto</h4>
+      <p>Amgen's interchangeable biosimilar to Humira; first US Humira biosimilar launched (Jan 2023).</p>
+    </div>
+    <div class="g-entry" id="g-wez" data-cat="drug">
+      <div class="g-cat">Drug · Biosimilar</div>
+      <h4>WEZLANA — ustekinumab-auub</h4>
+      <p>Interchangeable biosimilar to Stelara; launched January 1, 2025.</p>
+    </div>
+    <div class="g-entry" id="g-pav" data-cat="drug">
+      <div class="g-cat">Drug · Biosimilar</div>
+      <h4>PAVBLU — aflibercept-ayyh</h4>
+      <p>Biosimilar to Eylea for retinal disease; launched late 2024 with intravitreal administration.</p>
+    </div>
+    <div class="g-entry" id="g-bkemv" data-cat="drug">
+      <div class="g-cat">Drug · Biosimilar</div>
+      <h4>BKEMV — eculizumab-aeeb</h4>
+      <p>Interchangeable biosimilar to Soliris for PNH and atypical HUS.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr class="rule" />
+
+<!-- ========================================================== OPEN QUESTIONS -->
+<section id="open">
+  <div class="kicker">For my sales manager</div>
+  <h2>Open questions &amp; things I'd tighten next</h2>
+  <ul class="clean">
+    <li><b>Accuracy spot-checks:</b> I've pulled LOE dates, revenue figures, and clinical data from Amgen's own 2025 annual release and SEC filings, recent FDA/EC approval announcements, and current analyst notes. Before this goes external, I'd run the LOE column past Legal and the TAM column past Market Research.</li>
+    <li><b>MariTide positioning:</b> I've been conservative on MariTide TAM — I'd want guidance on whether to lean harder on durability / less-frequent-dosing versus weight-loss magnitude in the one-page version.</li>
+    <li><b>IRA selection outlook:</b> Which Amgen products are most at risk in the next IPAY cycle? I'd like to add a forward-looking row once the CMS eligibility math for Repatha / TEZSPIRE is clearer.</li>
+    <li><b>Headwind/tailwind balance:</b> Would you like this page restructured as three scenarios (bear / base / bull) instead of a parallel list? That's the reframe I'd do if this is going to a commercial strategy audience rather than sales.</li>
+    <li><b>Depth of biosimilar competitive map:</b> I left the opposing biosimilars (denosumab competitors, ustekinumab field) implicit. Happy to add a competitive landscape chart if useful.</li>
+    <li><b>International view:</b> I've stayed US-first. If needed I can add EU/Japan pricing, launch sequencing, and country-level payer posture, especially for MariTide and UPLIZNA.</li>
+  </ul>
+</section>
+
+</main>
+
+<!-- ========================================================== FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <h4>About this document</h4>
+      <p>Rough-draft internal sales brief on Amgen Inc. All figures are drawn from publicly filed disclosures and third-party analyst reporting as of Feb 2026. This is not investment advice, legal advice, or a customer-facing piece. Every vocabulary term links to the glossary.</p>
+    </div>
+    <div>
+      <h4>Sources referenced</h4>
+      <ul>
+        <li>Amgen Q4 &amp; FY2025 earnings release (Feb 3, 2026)</li>
+        <li>Amgen 2026 Fact Sheet &amp; DEF 14A</li>
+        <li><i>NEJM</i> — MariTide Phase 2 (Jun 2025)</li>
+        <li>CMS BALANCE model &amp; Medicare GLP-1 Bridge guidance</li>
+        <li>Morgan Stanley, Goldman Sachs, Leerink LOE &amp; obesity notes</li>
+        <li>FDA approval announcements (IMDELLTRA, UPLIZNA, TEZSPIRE/CRSwNP)</li>
+        <li>Center for Biosimilars · Biologics HQ · Fierce Pharma industry reporting</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Jump</h4>
+      <ul>
+        <li><a href="#top">Top</a></li>
+        <li><a href="#flow">Flow map</a></li>
+        <li><a href="#innovative">Innovative portfolio</a></li>
+        <li><a href="#biosimilars">Biosimilars</a></li>
+        <li><a href="#weather">Headwinds / Tailwinds</a></li>
+        <li><a href="#glossary">Glossary</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Glossary search + filter
+  (function(){
+    var input = document.getElementById('g-search');
+    var chips = document.querySelectorAll('.glossary-controls .chip');
+    var entries = document.querySelectorAll('.g-entry');
+    var counter = document.getElementById('g-count');
+    var activeFilter = 'all';
+
+    function applyFilters(){
+      var q = (input.value || '').trim().toLowerCase();
+      var shown = 0;
+      entries.forEach(function(el){
+        var text = el.textContent.toLowerCase();
+        var cat = (el.dataset.cat || '').toLowerCase();
+        var matchesQ = !q || text.indexOf(q) !== -1;
+        var matchesCat = activeFilter === 'all' || cat === activeFilter;
+        if (matchesQ && matchesCat){ el.classList.remove('g-hidden'); shown++; }
+        else { el.classList.add('g-hidden'); }
+      });
+      counter.textContent = shown + ' of ' + entries.length + ' terms';
+    }
+
+    input.addEventListener('input', applyFilters);
+    chips.forEach(function(chip){
+      chip.addEventListener('click', function(){
+        chips.forEach(function(c){ c.classList.remove('active'); });
+        chip.classList.add('active');
+        activeFilter = (chip.dataset.filter || 'all').toLowerCase();
+        applyFilters();
+      });
+    });
+
+    applyFilters();
+  })();
+
+  // Smooth highlight when glossary links are clicked
+  (function(){
+    document.querySelectorAll('a.term').forEach(function(a){
+      a.addEventListener('click', function(){
+        var id = a.getAttribute('href').replace('#','');
+        var target = document.getElementById(id);
+        if (target){
+          // clear search so the target is visible
+          var input = document.getElementById('g-search');
+          if (input) input.value = '';
+          document.querySelectorAll('.glossary-controls .chip').forEach(function(c){ c.classList.remove('active'); });
+          var allChip = document.querySelector('.glossary-controls .chip[data-filter="all"]');
+          if (allChip) allChip.classList.add('active');
+          document.querySelectorAll('.g-entry').forEach(function(el){ el.classList.remove('g-hidden'); });
+          var counter = document.getElementById('g-count');
+          var entries = document.querySelectorAll('.g-entry');
+          if (counter) counter.textContent = entries.length + ' of ' + entries.length + ' terms';
+        }
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
