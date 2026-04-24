@@ -1,5 +1,14 @@
 [
   {
+    "id": "amgen_overview",
+    "title": "Amgen Product Guide and Glossary",
+    "type": "claude",
+    "file": "content/claude/amgen_overview.html",
+    "tags": ["amgen", "pharma", "products", "opus 4.7"],
+    "date": "2026-04-24",
+    "description": "Opus 4.7 first run, amgen overview"
+  },
+  {
     "id": "abbott-sales-reference-guide",
     "title": "Abbott Product Guide and Glossary",
     "type": "claude",
