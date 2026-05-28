@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intuitive Surgical (ISRG) — Sales Reference &amp; Flow Draft</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f3ec;
+    --paper-2:#efe9dd;
+    --ink:#1b1f1d;
+    --ink-soft:#41463f;
+    --line:#d8d0bf;
+    --teal:#0c5c54;
+    --teal-bright:#0f7d72;
+    --rust:#a8421f;
+    --gold:#9a7212;
+    --green:#2f6b3a;
+    --red:#9c2b22;
+    --card:#fffdf8;
+    --shadow:0 1px 2px rgba(27,31,29,.06),0 10px 30px rgba(27,31,29,.06);
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+    --sans:'IBM Plex Sans',system-ui,sans-serif;
+    --serif:'Fraunces',Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:88px}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:16.5px;line-height:1.62;
+    font-weight:400;-webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 1px 1px,rgba(27,31,29,.035) 1px,transparent 0);
+    background-size:22px 22px;
+  }
+  a{color:var(--teal);text-decoration:none}
+  ::selection{background:var(--teal);color:#fff}
+
+  /* ---------- top bar ---------- */
+  header.topbar{
+    position:sticky;top:0;z-index:50;background:rgba(246,243,236,.92);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{max-width:1180px;margin:0 auto;padding:10px 24px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .brand{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:-.02em;white-space:nowrap}
+  .brand b{color:var(--teal)}
+  nav.secnav{display:flex;gap:2px;flex-wrap:wrap;flex:1;min-width:200px}
+  nav.secnav a{
+    font-size:12.5px;font-weight:500;color:var(--ink-soft);padding:5px 9px;border-radius:6px;
+    letter-spacing:.01em;transition:.15s;white-space:nowrap;
+  }
+  nav.secnav a:hover{background:var(--paper-2);color:var(--ink)}
+  nav.secnav a.on{background:var(--teal);color:#fff}
+  .gsearch-top{position:relative}
+  .gsearch-top input{
+    font-family:var(--sans);font-size:13px;border:1px solid var(--line);background:var(--card);
+    padding:7px 11px 7px 30px;border-radius:20px;width:170px;color:var(--ink);
+  }
+  .gsearch-top input:focus{outline:none;border-color:var(--teal)}
+  .gsearch-top svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:14px;height:14px;opacity:.5}
+
+  /* ---------- layout ---------- */
+  main{max-width:1180px;margin:0 auto;padding:0 24px 120px}
+  section{padding:64px 0 8px;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:none}
+  .eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:10px}
+  h1{font-family:var(--serif);font-weight:900;font-size:clamp(34px,6vw,62px);line-height:1.02;letter-spacing:-.025em;margin:.1em 0 .25em}
+  h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,3.6vw,38px);letter-spacing:-.02em;line-height:1.08;margin:0 0 .4em}
+  h3{font-family:var(--serif);font-weight:600;font-size:23px;letter-spacing:-.01em;margin:1.6em 0 .35em}
+  h4{font-size:14px;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin:1.4em 0 .4em;font-weight:600}
+  p{margin:0 0 1.05em;max-width:74ch}
+  .lead{font-size:19px;color:var(--ink-soft);max-width:70ch}
+  strong{font-weight:600}
+
+  /* ---------- hero ---------- */
+  .hero{padding-top:56px}
+  .hero .meta{font-family:var(--mono);font-size:12px;color:var(--ink-soft);letter-spacing:.04em;margin-bottom:30px;display:flex;gap:18px;flex-wrap:wrap}
+  .hero .meta span{display:inline-flex;gap:6px;align-items:center}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--teal-bright);display:inline-block}
+  .draftbar{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--rust);
+    padding:14px 18px;border-radius:8px;font-size:14px;color:var(--ink-soft);margin:8px 0 0;max-width:74ch;box-shadow:var(--shadow)}
+
+  /* ---------- key metrics strip ---------- */
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:34px 0 8px}
+  .kpi{background:var(--card);padding:18px 18px 16px}
+  .kpi .n{font-family:var(--serif);font-weight:700;font-size:30px;letter-spacing:-.02em;line-height:1}
+  .kpi .l{font-size:12px;color:var(--ink-soft);margin-top:6px;line-height:1.3}
+  .kpi .d{font-family:var(--mono);font-size:11px;color:var(--green);margin-top:3px;font-weight:500}
+
+  /* ---------- cards ---------- */
+  .grid{display:grid;gap:18px;margin:22px 0}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:820px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px;box-shadow:var(--shadow)}
+  .card h3{margin-top:0}
+  .pill{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+    padding:3px 9px;border-radius:20px;border:1px solid var(--line);color:var(--ink-soft);margin:0 6px 6px 0;font-weight:500}
+  .pill.flagship{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .pill.new{background:#fdf3e6;border-color:var(--gold);color:var(--gold)}
+
+  /* ---------- product table-ish ---------- */
+  table{width:100%;border-collapse:collapse;margin:18px 0;font-size:14.5px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--teal);font-weight:600;background:var(--paper-2)}
+  tr:last-child td{border-bottom:none}
+  td.num{font-family:var(--mono);white-space:nowrap}
+
+  /* ---------- glossary terms in text ---------- */
+  .term{
+    color:var(--ink);border-bottom:1.5px dotted var(--teal-bright);cursor:help;
+    font-weight:500;transition:background .15s;border-radius:2px;
+  }
+  .term:hover{background:rgba(15,125,114,.12)}
+  #tooltip{
+    position:fixed;z-index:200;max-width:330px;background:var(--ink);color:#f4f1ea;
+    font-size:13px;line-height:1.5;padding:12px 14px;border-radius:9px;box-shadow:0 12px 34px rgba(0,0,0,.28);
+    pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .13s,transform .13s;font-family:var(--sans)
+  }
+  #tooltip.show{opacity:1;transform:translateY(0)}
+  #tooltip .tt-cat{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#7fd3c8;margin-bottom:4px;font-weight:600}
+  #tooltip .tt-term{font-weight:600;color:#fff;margin-bottom:2px}
+
+  /* ---------- flow map ---------- */
+  .flow{margin:26px 0;overflow-x:auto;padding-bottom:6px}
+  .flow-inner{min-width:760px;display:grid;grid-template-columns:1.1fr 40px .9fr 40px 1fr;gap:0 0;align-items:stretch}
+  .flow-col{display:flex;flex-direction:column;gap:10px}
+  .flow-head{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);font-weight:600;margin-bottom:6px;text-align:center}
+  .fnode{background:var(--card);border:1px solid var(--line);border-radius:9px;padding:9px 12px;font-size:13px;box-shadow:var(--shadow);flex:1;display:flex;align-items:center}
+  .fnode.area{background:var(--teal);color:#fff;border-color:var(--teal);font-weight:500}
+  .fnode.prod{border-left:3px solid var(--rust)}
+  .farrow{display:flex;align-items:center;justify-content:center;color:var(--teal-bright);font-size:20px}
+
+  /* ---------- callouts ---------- */
+  .note{border-left:3px solid var(--teal);background:var(--card);padding:14px 18px;border-radius:0 9px 9px 0;margin:18px 0;box-shadow:var(--shadow)}
+  .note.warn{border-left-color:var(--red)}
+  .note.good{border-left-color:var(--green)}
+  .note .nt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;margin-bottom:4px}
+  .note.warn .nt{color:var(--red)}.note.good .nt{color:var(--green)}.note .nt{color:var(--teal)}
+
+  ul.clean{margin:.4em 0 1.1em;padding-left:1.2em}
+  ul.clean li{margin-bottom:.5em;max-width:72ch}
+  ul.clean li::marker{color:var(--teal-bright)}
+
+  /* ---------- headwinds / tailwinds ---------- */
+  .hw-tw{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0}
+  @media(max-width:820px){.hw-tw{grid-template-columns:1fr}}
+  .hw{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--red);border-radius:12px;padding:22px;box-shadow:var(--shadow)}
+  .tw{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--green);border-radius:12px;padding:22px;box-shadow:var(--shadow)}
+  .hw h3,.tw h3{margin-top:0;display:flex;align-items:center;gap:8px}
+  .hw .item,.tw .item{padding:12px 0;border-bottom:1px solid var(--line)}
+  .hw .item:last-child,.tw .item:last-child{border-bottom:none}
+  .item .it-h{font-weight:600;font-size:15px;margin-bottom:2px}
+  .item .it-b{font-size:13.5px;color:var(--ink-soft)}
+
+  /* ---------- glossary ---------- */
+  #glossary-search{width:100%;max-width:480px;font-family:var(--sans);font-size:15px;border:1px solid var(--line);
+    background:var(--card);padding:13px 16px;border-radius:10px;color:var(--ink);box-shadow:var(--shadow)}
+  #glossary-search:focus{outline:none;border-color:var(--teal)}
+  .gfilters{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 6px}
+  .gfilter{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:5px 11px;border-radius:20px;
+    border:1px solid var(--line);background:var(--card);cursor:pointer;color:var(--ink-soft);font-weight:500;transition:.15s}
+  .gfilter.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  #glist{margin-top:16px;display:grid;gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--card)}
+  .gentry{padding:16px 20px;border-bottom:1px solid var(--line);scroll-margin-top:96px}
+  .gentry:last-child{border-bottom:none}
+  .gentry.flash{animation:flash 1.5s ease}
+  @keyframes flash{0%,40%{background:#fdf3d8}100%{background:var(--card)}}
+  .gentry .gt{font-family:var(--serif);font-weight:600;font-size:19px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .gtag{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:4px;font-weight:600}
+  .gtag.medical{background:#e3f0ec;color:var(--teal)}
+  .gtag.sales{background:#fbeede;color:var(--rust)}
+  .gtag.biology{background:#e6efe2;color:var(--green)}
+  .gtag.buzz{background:#efe7f5;color:#6b3fa0}
+  .gdef{margin-top:7px;font-size:14.5px}
+  .gdef .lens{font-weight:600;color:var(--teal)}
+  .gnone{padding:30px;text-align:center;color:var(--ink-soft);font-size:14px}
+
+  /* ---------- questions ---------- */
+  .q{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px;margin-bottom:12px;box-shadow:var(--shadow)}
+  .q .qh{font-weight:600;font-size:15px;margin-bottom:3px;display:flex;gap:8px}
+  .q .qh::before{content:"?";font-family:var(--serif);font-weight:900;color:var(--rust);font-size:18px;line-height:1}
+  .q .qb{font-size:14px;color:var(--ink-soft)}
+
+  footer{border-top:1px solid var(--line);padding:40px 0 0;margin-top:64px;font-size:13px;color:var(--ink-soft)}
+  footer .src{font-family:var(--mono);font-size:11.5px;line-height:1.9}
+  .totop{position:fixed;bottom:22px;right:22px;background:var(--ink);color:var(--paper);width:42px;height:42px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);cursor:pointer;opacity:0;pointer-events:none;transition:.2s;z-index:60;font-size:18px}
+  .totop.show{opacity:1;pointer-events:auto}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">Intuitive&nbsp;<b>/ ISRG</b></div>
+    <nav class="secnav" id="secnav">
+      <a href="#overview">Overview</a>
+      <a href="#map">Problem&nbsp;Map</a>
+      <a href="#products">Platforms</a>
+      <a href="#volume">Volume&nbsp;&amp;&nbsp;Mechanics</a>
+      <a href="#subs">Subs&nbsp;&amp;&nbsp;Complements</a>
+      <a href="#adoption">Adoption</a>
+      <a href="#sales">Sales&nbsp;Points</a>
+      <a href="#tam">TAM&nbsp;&amp;&nbsp;QoL</a>
+      <a href="#payer">Payer&nbsp;&amp;&nbsp;Billing</a>
+      <a href="#access">Access</a>
+      <a href="#winds">Headwinds&nbsp;/&nbsp;Tailwinds</a>
+      <a href="#glossary">Glossary</a>
+      <a href="#questions">Open&nbsp;Qs</a>
+    </nav>
+    <div class="gsearch-top">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+      <input id="topsearch" type="text" placeholder="Search glossary…" autocomplete="off">
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="overview">
+  <div class="eyebrow">Sales reference &middot; working draft</div>
+  <h1>Intuitive Surgical:<br>problems, platforms<br>&amp; the money behind them</h1>
+  <div class="meta">
+    <span><span class="dot"></span>NASDAQ: ISRG</span>
+    <span>Sunnyvale, CA</span>
+    <span>CEO: Dave Rosa</span>
+    <span>Data current to Q1 2026 (qtr ended 3/31/26)</span>
+  </div>
+  <p class="lead">Intuitive is the pioneer and dominant player in <span class="term" data-t="ras">robotic-assisted surgery</span>. Its economic engine is not the robot itself but the recurring <span class="term" data-t="ia">instruments &amp; accessories</span> consumed every time the robot is used — the classic <span class="term" data-t="razor">razor-and-blade model</span>. This draft maps the clinical problems ISRG targets, the platforms that address them, and the commercial + reimbursement realities a rep needs to carry into a hospital.</p>
+  <div class="draftbar"><strong>Draft note for the flow diagram:</strong> the "Problem&nbsp;Map" section below is the skeleton you can lift directly into a flowchart — three columns (clinical problem → therapeutic area → platform/procedure). Everything else is supporting depth. Open questions and suggested edits are collected at the bottom.</div>
+
+  <div class="kpis">
+    <div class="kpi"><div class="n">$2.77B</div><div class="l">Q1 2026 revenue</div><div class="d">+23% YoY</div></div>
+    <div class="kpi"><div class="n">11,395</div><div class="l"><span class="term" data-t="installed">da Vinci installed base</span></div><div class="d">+12% YoY</div></div>
+    <div class="kpi"><div class="n">~17%</div><div class="l">WW procedure growth (Q1'26)</div><div class="d">da Vinci +16% &middot; Ion +39%</div></div>
+    <div class="kpi"><div class="n">~$1,880</div><div class="l">da Vinci <span class="term" data-t="ia">I&amp;A</span> per procedure</div><div class="d">up from ~$1,780</div></div>
+    <div class="kpi"><div class="n">~20M</div><div class="l">Annual addressable procedures (<span class="term" data-t="tam">TAM</span>)</div><div class="d">vs ~9M served today</div></div>
+    <div class="kpi"><div class="n">67.8%</div><div class="l">Non-GAAP gross margin</div><div class="d">~1% tariff headwind in '26 guide</div></div>
+  </div>
+
+  <h3>The three business lines</h3>
+  <p>Revenue splits into three buckets that reinforce each other. The hardware gets a system into the building; the consumables and service then compound for the life of that system.</p>
+  <div class="grid g3">
+    <div class="card">
+      <span class="pill">~24% of rev</span>
+      <h3 style="font-size:20px">Systems (capital)</h3>
+      <p style="font-size:14.5px;margin:0">One-time <span class="term" data-t="placement">placements</span> of da Vinci and Ion robots, sold or leased. Q1'26: 431 da Vinci placed (232 were <span class="term" data-t="dv5">da Vinci 5</span>), 52 Ion. Lumpy, lower-margin, but it seeds the annuity.</p>
+    </div>
+    <div class="card">
+      <span class="pill flagship">~61% of rev</span>
+      <h3 style="font-size:20px">Instruments &amp; Accessories</h3>
+      <p style="font-size:14.5px;margin:0">The "blades." Q1'26 I&amp;A revenue $1.69B (+23%). Grows directly with <span class="term" data-t="procvol">procedure volume</span> and <span class="term" data-t="pullthrough">pull-through</span>. This is the high-margin, predictable core of the thesis.</p>
+    </div>
+    <div class="card">
+      <span class="pill">~16% of rev</span>
+      <h3 style="font-size:20px">Service</h3>
+      <p style="font-size:14.5px;margin:0">Recurring maintenance/service contracts on the installed base (~$100K&ndash;$200K per system/yr). Q1'26 service revenue $434M (+19%). Scales with installed base, not procedures.</p>
+    </div>
+  </div>
+  <p style="font-size:14px;color:var(--ink-soft)"><em>Mix percentages are approximate, derived from Q1 2026 segment figures; treat as directional rather than audited splits.</em></p>
+</section>
+
+<!-- ================= PROBLEM MAP ================= -->
+<section id="map">
+  <div class="eyebrow">Flow skeleton</div>
+  <h2>Problems &rarr; therapeutic areas &rarr; platforms</h2>
+  <p class="lead">This is the spine of the flow diagram. ISRG does not sell to a disease; it sells access and precision into procedures that already exist, then tries to convert <span class="term" data-t="open">open</span> and <span class="term" data-t="lap">laparoscopic</span> cases to robotic.</p>
+
+  <div class="flow">
+    <div class="flow-inner">
+      <div class="flow-col">
+        <div class="flow-head">Clinical problem</div>
+        <div class="fnode">Localized prostate / kidney / bladder cancer</div>
+        <div class="fnode">Uterine fibroids, endometrial cancer, prolapse</div>
+        <div class="fnode">Hernia, gallbladder, colorectal disease, bariatric (obesity)</div>
+        <div class="fnode">Suspected lung cancer (peripheral nodule)</div>
+        <div class="fnode">Oropharyngeal / throat tumors</div>
+        <div class="fnode">Mitral valve disease, coronary revascularization</div>
+      </div>
+      <div class="flow-col"><div class="flow-head">&nbsp;</div>
+        <div class="farrow">&rarr;</div><div class="farrow">&rarr;</div><div class="farrow">&rarr;</div><div class="farrow">&rarr;</div><div class="farrow">&rarr;</div><div class="farrow">&rarr;</div></div>
+      <div class="flow-col">
+        <div class="flow-head">Therapeutic area</div>
+        <div class="fnode area">Urology</div>
+        <div class="fnode area">Gynecology</div>
+        <div class="fnode area">General surgery</div>
+        <div class="fnode area">Interventional pulmonology / thoracic</div>
+        <div class="fnode area">Head &amp; neck (ENT)</div>
+        <div class="fnode area">Cardiac (new)</div>
+      </div>
+      <div class="flow-col"><div class="flow-head">&nbsp;</div>
+        <div class="farrow">&rarr;</div><div class="farrow">&rarr;</div><div class="farrow">&rarr;</div><div class="farrow">&rarr;</div><div class="farrow">&rarr;</div><div class="farrow">&rarr;</div></div>
+      <div class="flow-col">
+        <div class="flow-head">Platform / procedure</div>
+        <div class="fnode prod">da Vinci 5 / Xi / SP &mdash; <span class="term" data-t="prostatectomy">prostatectomy</span>, nephrectomy</div>
+        <div class="fnode prod">da Vinci 5 / Xi &mdash; <span class="term" data-t="hysterectomy">hysterectomy</span>, myomectomy</div>
+        <div class="fnode prod">da Vinci 5 / Xi / SP &mdash; <span class="term" data-t="hernia">hernia repair</span>, <span class="term" data-t="chole">cholecystectomy</span>, colectomy</div>
+        <div class="fnode prod">Ion &mdash; robotic <span class="term" data-t="bronch">bronchoscopy</span> biopsy</div>
+        <div class="fnode prod">da Vinci SP &mdash; <span class="term" data-t="tors">TORS</span></div>
+        <div class="fnode prod">da Vinci 5 &mdash; mitral repair, <span class="term" data-t="ima">IMA mobilization</span> (limited launch)</div>
+      </div>
+    </div>
+  </div>
+  <div class="note"><div class="nt">Reading the map</div>The leftmost column is where the patient's actual problem sits; the rightmost is the SKU/procedure your account will bill. Urology and gynecology are the mature, high-penetration base. General surgery is the largest growth pool. Pulmonology (Ion) and cardiac are the expansion frontiers. Use color in the live flowchart to separate "mature" vs "frontier" areas.</div>
+</section>
+
+<!-- ================= PLATFORMS ================= -->
+<section id="products">
+  <div class="eyebrow">The portfolio</div>
+  <h2>Platforms: in-market and in-development</h2>
+  <p class="lead">Two device families &mdash; the multi-armed <span class="term" data-t="multiport">da Vinci</span> surgical systems and the <span class="term" data-t="endoluminal">Ion endoluminal</span> bronchoscopy system &mdash; sit on top of a software/data layer that Intuitive increasingly treats as a product in its own right.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <span class="pill flagship">Flagship</span><span class="pill new">Cardiac cleared Jan '26</span>
+      <h3>da Vinci 5</h3>
+      <p style="font-size:14.5px">The current-generation <span class="term" data-t="multiport">multiport</span> system: 150+ design changes over Xi and ~10,000&times; its computing power. Headline feature is <span class="term" data-t="forcefb">Force Feedback</span> &mdash; the first da Vinci that lets the surgeon <em>feel</em> tissue resistance, shown preclinically to cut applied force by up to ~43%. Integrated <span class="term" data-t="esu">electrosurgical unit</span> and <span class="term" data-t="insufflation">insufflation</span>, new console ergonomics. In Jan 2026 the FDA cleared it for selected <strong>cardiac</strong> procedures (mitral valve repair, IMA mobilization) — a new frontier. dV5 runs ~11% higher <span class="term" data-t="utilization">utilization</span> than Xi, and pulls a higher I&amp;A spend.</p>
+    </div>
+    <div class="card">
+      <span class="pill">Workhorse</span>
+      <h3>da Vinci Xi</h3>
+      <p style="font-size:14.5px">The most widely used multiport robot in the world and still the bulk of the installed base. Overhead-boom architecture for multi-quadrant access, <span class="term" data-t="firefly">Firefly</span> fluorescence imaging, integrated table motion. It is now the trade-in/upgrade target as accounts move to dV5. Capital roughly $1.5&ndash;2.5M historically.</p>
+    </div>
+    <div class="card">
+      <span class="pill">Entry capital</span>
+      <h3>da Vinci X</h3>
+      <p style="font-size:14.5px">A lower-cost multiport option sharing the Xi console and vision cart but with fewer automated features; a price-sensitive on-ramp for smaller hospitals (historically ~$0.7&ndash;1.3M). Bridges programs that can't justify a full Xi/dV5.</p>
+    </div>
+    <div class="card">
+      <span class="pill">Single incision</span><span class="pill new">3 new indications Dec '25</span>
+      <h3>da Vinci SP</h3>
+      <p style="font-size:14.5px">A <span class="term" data-t="singleport">single-port</span> system delivering three wristed instruments + an articulating 3D endoscope through one incision or <span class="term" data-t="natorifice">natural orifice</span>, with 360&deg; access. Strong in urology and head &amp; neck (<span class="term" data-t="tors">TORS</span>); Dec 2025 the FDA added inguinal hernia repair, cholecystectomy and appendectomy. Fastest-growing platform: SP procedures +68% in Q1'26.</p>
+    </div>
+    <div class="card">
+      <span class="pill">Diagnostics frontier</span>
+      <h3>Ion endoluminal system</h3>
+      <p style="font-size:14.5px">Robotic <span class="term" data-t="bronch">bronchoscopy</span> for biopsy of small <span class="term" data-t="nodule">peripheral lung nodules</span> &mdash; not surgery, but minimally invasive <em>diagnosis</em>. A flexible, shape-sensing catheter navigates deep into the lung. &gt;140K biopsies in 2025; installed base 1,041 (+22%). A Mayo Clinic study reported ~85% <span class="term" data-t="sensitivity">malignancy sensitivity</span>. Pipeline: <span class="term" data-t="rose">ROSE</span> (rapid on-site evaluation) and <span class="term" data-t="ebus">EBUS</span> integration.</p>
+    </div>
+    <div class="card">
+      <span class="pill">Software / data</span>
+      <h3>Digital ecosystem</h3>
+      <p style="font-size:14.5px">My Intuitive app, the <strong>My Intuitive&nbsp;Plus</strong> subscription, <span class="term" data-t="simnow">SimNow</span> VR simulation, <span class="term" data-t="caseinsights">Case Insights</span> (AI that scores kinematics + video), <span class="term" data-t="hub">Intuitive Hub</span> edge computing, Force Gauge, telepresence/remote proctoring. Intuitive ingests data from 1,000+ cases/day — the basis of a <span class="term" data-t="moat">data moat</span> competitors can't replicate quickly.</p>
+    </div>
+  </div>
+
+  <h3>In testing / development to watch</h3>
+  <ul class="clean">
+    <li><strong>Cardiac program build-out</strong> — bespoke instruments, training and clinical-evidence infrastructure; a limited set of US sites stand up dV5 cardiac programs through 2026.</li>
+    <li><strong>Ion ROSE + EBUS integration</strong> — aims to compress the time from nodule detection to diagnosis and staging, pushing Ion from pure biopsy toward a detection-to-treatment pathway.</li>
+    <li><strong>SP indication expansion</strong> — continued FDA filings to widen the addressable procedure list (the lever that turns SP from niche to mainstream).</li>
+    <li><strong>dV5 software cadence</strong> — Force Gauge, in-console video replay, digital ruler, surgeon-initiated tool eject, multi-arm targeting, SimNow&nbsp;2; most ship as <span class="term" data-t="k510">510(k)</span>-cleared feature releases.</li>
+    <li><strong>Extended-use Force Feedback instruments</strong> — designed to lower per-procedure consumable cost, a direct answer to <span class="term" data-t="remanufacture">remanufactured-instrument</span> competition.</li>
+  </ul>
+</section>
+
+<!-- ================= VOLUME & MECHANICS ================= -->
+<section id="volume">
+  <div class="eyebrow">Where the volume is</div>
+  <h2>Highest-volume products &amp; how they're built</h2>
+  <p class="lead">Procedure volume — not system sales — is the number to anchor on. Roughly <strong>847,000 da Vinci cases ran in Q1'26 alone</strong>, and consumables scale with every one of them.</p>
+
+  <table>
+    <thead><tr><th>Platform</th><th>Where volume concentrates</th><th>Q1'26 procedure growth</th><th>Per-procedure consumable</th></tr></thead>
+    <tbody>
+      <tr><td><strong>da Vinci Xi/5</strong> (multiport)</td><td>Urology (prostatectomy), gyn (hysterectomy), general surgery (hernia, chole, colorectal, bariatric)</td><td class="num">~16%</td><td class="num">~$700&ndash;$3,200</td></tr>
+      <tr><td><strong>da Vinci SP</strong></td><td>Urology, head &amp; neck (TORS); newer general-surgery indications</td><td class="num">~68%</td><td class="num">SP-specific instruments</td></tr>
+      <tr><td><strong>Ion</strong></td><td>Peripheral lung-nodule biopsy</td><td class="num">~39%</td><td class="num">single-use catheter + tools</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size:14px;color:var(--ink-soft)"><em>Blended da Vinci I&amp;A revenue ran ~$1,880 per procedure in Q1'26. The wide per-procedure range reflects how instrument-heavy a case is (a simple chole vs a complex colorectal resection).</em></p>
+
+  <h3>Mechanical composition — what's actually in the box</h3>
+  <div class="grid g2">
+    <div class="card">
+      <h4>da Vinci multiport system</h4>
+      <ul class="clean" style="margin-bottom:0">
+        <li><strong>Surgeon console</strong> — the surgeon sits away from the patient, viewing a high-def 3D <span class="term" data-t="stereo">stereoscopic</span> image and driving the instruments with hand controllers and foot pedals. Movements are scaled and <span class="term" data-t="tremor">tremor-filtered</span>.</li>
+        <li><strong>Patient cart</strong> — the robotic arms that dock to ports in the patient and hold the instruments and camera.</li>
+        <li><strong>Vision cart</strong> — the imaging/processing tower (and on dV5, the integrated <span class="term" data-t="esu">ESU</span>/insufflation).</li>
+        <li><strong>EndoWrist instruments</strong> — single-use, wristed tools (graspers, needle drivers, scissors) with more range of motion than the human wrist; <span class="term" data-t="staplers">SureForm staplers</span>, <span class="term" data-t="energy">SynchroSeal / Vessel Sealer</span> energy devices, clip appliers.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Ion endoluminal system</h4>
+      <ul class="clean" style="margin-bottom:0">
+        <li><strong>Shape-sensing catheter</strong> — an ultra-thin, fully articulating bronchoscope-style catheter that threads through the airways to reach nodules in the lung periphery.</li>
+        <li><strong>Fiber-optic shape sensing</strong> — continuously reports the catheter's exact shape/position so navigation stays stable during the biopsy.</li>
+        <li><strong>Planning + navigation software</strong> — builds a 3D airway map from the patient's CT and guides the route to the target.</li>
+        <li><strong>Single-use biopsy tools</strong> — needles/forceps passed through the catheter; the recurring-revenue layer for Ion.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SUBS & COMPLEMENTS ================= -->
+<section id="subs">
+  <div class="eyebrow">Competitive context</div>
+  <h2>Substitutes &amp; complements</h2>
+  <p class="lead">For most procedures the real competition isn't another robot — it's the surgeon's existing technique. Know what you're displacing and what you sit alongside.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h4>Substitutes</h4>
+      <ul class="clean" style="margin-bottom:0">
+        <li><strong>Open surgery</strong> — the legacy approach; larger incision, longer recovery. The biggest "competitor" by volume in many general-surgery settings.</li>
+        <li><strong>Conventional laparoscopy</strong> — minimally invasive, cheaper, no robot. The default substitute for cost-conscious accounts; the value case must justify robotic spend over straight lap.</li>
+        <li><strong>Medtronic Hugo</strong> — FDA-cleared (US urology, Dec 2025); CE-marked since 2021, in 30+ countries. Pitches an open console and modular arms.</li>
+        <li><strong>J&amp;J Ottava</strong> — FDA <span class="term" data-t="denovo">de novo</span> submission Jan 2026 (general surgery); met endpoints in a bariatric study. Not yet cleared.</li>
+        <li><strong>CMR Versius, Moon, others</strong> — smaller multiport entrants with select clearances.</li>
+        <li><strong>For Ion:</strong> J&amp;J <strong>Monarch</strong> robotic bronchoscopy, plus conventional/EBUS bronchoscopy and CT-guided needle biopsy.</li>
+        <li><strong>Remanufactured instruments</strong> — FDA cleared third-party remanufacturing of Xi instruments (2025); a direct margin substitute on the consumable line, not the system.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>Complements</h4>
+      <ul class="clean" style="margin-bottom:0">
+        <li><strong>The digital ecosystem</strong> — SimNow, Case Insights, telepresence raise utilization and stickiness of the systems already placed.</li>
+        <li><strong>Energy &amp; stapling instruments</strong> — SureForm staplers and SynchroSeal/Vessel Sealer expand what a single docking can accomplish, lifting I&amp;A per case.</li>
+        <li><strong>Imaging (Firefly fluorescence)</strong> — complements the core platform by improving intra-op visualization of perfusion and anatomy.</li>
+        <li><strong>Ion &harr; da Vinci pathway</strong> — Ion diagnoses the lung nodule; da Vinci (or thoracic surgery) can treat it. The two platforms are complements within one disease journey, not substitutes.</li>
+        <li><strong>Service &amp; training</strong> — proctoring and credentialing programs that make a surgeon productive faster, protecting the annuity.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ADOPTION ================= -->
+<section id="adoption">
+  <div class="eyebrow">Who adopts, and how fast</div>
+  <h2>Provider uptake rates by setting</h2>
+  <p class="lead">Adoption is uneven. The decision is rarely one person — it runs through the surgeon, the <span class="term" data-t="vac">value analysis committee</span>, the capital committee, and finance, often funneled through a <span class="term" data-t="gpo">GPO</span> contract inside an <span class="term" data-t="idn">IDN</span>.</p>
+
+  <table>
+    <thead><tr><th>Provider type</th><th>Uptake posture</th><th>What moves them</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Large academic / IDN flagships</strong></td><td>Earliest, highest. Multiple systems; first to take dV5 and cardiac.</td><td>Recruiting/retaining surgeons, research, "state-of-the-art" halo, residency training.</td></tr>
+      <tr><td><strong>High-volume community hospitals</strong></td><td>Core of the base; steady upgrade cycle.</td><td>Throughput, OR efficiency, surgeon demand, marketing differentiation vs the hospital across town.</td></tr>
+      <tr><td><strong>Small / rural hospitals</strong></td><td>Price-sensitive; da Vinci X or leased/refurbished units.</td><td>Capital affordability, lease structures, service reliability, keeping cases local.</td></tr>
+      <tr><td><strong>Ambulatory surgery centers (<span class="term" data-t="asc">ASC</span>)</strong></td><td>Emerging; enabled by refurbished/older systems.</td><td>Lower budgets — needs a cheaper capital path; outpatient procedure mix.</td></tr>
+      <tr><td><strong>Ion / pulmonology programs</strong></td><td>Early adoption curve, fast growth.</td><td>Earlier lung-cancer diagnosis, building a lung program, diagnostic yield.</td></tr>
+    </tbody>
+  </table>
+  <div class="note good"><div class="nt">The lock-in</div>Once surgeons are trained (often 6&ndash;12 months of proctored cases) and credentialed on da Vinci, switching to a competitor means retraining, re-credentialing, new instruments, and volume disruption. These <span class="term" data-t="switching">switching costs</span> are among the most durable in medtech — the single most important reason the installed base compounds.</div>
+</section>
+
+<!-- ================= SALES POINTS ================= -->
+<section id="sales">
+  <div class="eyebrow">What the surgeon actually cares about</div>
+  <h2>The sales points that land</h2>
+  <p class="lead">Doctors buy clinical confidence and workflow; administrators buy economics. Carry both scripts and read the room.</p>
+  <div class="grid g2">
+    <div class="card">
+      <h4>To the surgeon (clinical)</h4>
+      <ul class="clean" style="margin-bottom:0">
+        <li><strong>Force Feedback</strong> — feel tissue tension; up to ~43% less force applied preclinically. Frame as gentler handling and confidence on delicate dissection.</li>
+        <li><strong>Lower <span class="term" data-t="conversion">conversion-to-open</span> rates</strong> — finishing minimally invasively is a clean, defensible clinical win.</li>
+        <li><strong>Visualization &amp; dexterity</strong> — 3D HD, wristed instruments beyond human range, tremor filtering, scaled motion.</li>
+        <li><strong>Ergonomics</strong> — seated console reduces surgeon fatigue across a long list day.</li>
+        <li><strong>Objective skill feedback</strong> — Case Insights/Force Gauge for self-improvement and proctoring.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>To the administrator (economic)</h4>
+      <ul class="clean" style="margin-bottom:0">
+        <li><strong>Shorter <span class="term" data-t="los">length of stay</span> &amp; faster recovery</strong> — frees beds, supports outpatient shift, reduces complication costs.</li>
+        <li><strong>Surgeon recruiting/retention</strong> — a credible robotics program is table stakes for attracting talent.</li>
+        <li><strong>Throughput &amp; standardization</strong> — predictable OR workflow, inventory standardization across a fleet.</li>
+        <li><strong>Volume capture</strong> — keep cases (and downstream referrals) inside the system rather than losing them to a competitor.</li>
+        <li><strong>Flexible capital</strong> — lease and pay-as-you-go structures to soften the up-front hit.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note warn"><div class="nt">Be honest about the evidence</div>Robotic surgery's per-case cost is typically <em>higher</em> than laparoscopy, and outcome superiority varies by procedure (strong in some, neutral in others). Overclaiming universal outcome benefit invites pushback from a sophisticated VAC. Lead with the procedures where evidence is strongest and let cost-of-complication and LOS carry the economic case.</div>
+</section>
+
+<!-- ================= TAM & QoL ================= -->
+<section id="tam">
+  <div class="eyebrow">Market size &amp; patient impact</div>
+  <h2>TAM, quality of life &amp; probability of success</h2>
+  <p class="lead">Intuitive frames its opportunity as ~20M annual addressable procedures against ~9M served today — the gap is the growth story. Each platform widens that gap differently.</p>
+
+  <table>
+    <thead><tr><th>Platform / area</th><th>Addressable opportunity</th><th>QoL / outcome angle</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Core da Vinci</strong> (uro, gyn, gen surg)</td><td>The bulk of the ~20M procedure TAM; general surgery is the largest under-penetrated pool.</td><td>Smaller incisions, less pain, faster return to normal life vs open.</td></tr>
+      <tr><td><strong>da Vinci SP</strong></td><td>Incremental — opens single-incision/natural-orifice approaches and new patient groups; debate is how much is <em>new</em> vs substitution.</td><td>Better cosmesis, potential for less pain; tissue-sparing access.</td></tr>
+      <tr><td><strong>Ion (lung)</strong></td><td>Large, early-stage, effectively no direct robotic competitor at scale; expands ISRG into diagnostics.</td><td>Earlier, more accurate diagnosis of the deadliest cancer; ~85% malignancy sensitivity in the Mayo study, supporting earlier-stage detection.</td></tr>
+      <tr><td><strong>Cardiac (new)</strong></td><td>Estimated ~160,000 additional annual procedures from the initial cardiac clearance.</td><td>Minimally invasive alternative to sternotomy for selected valve/revascularization cases.</td></tr>
+    </tbody>
+  </table>
+
+  <h4>Probability of success — what has to go right</h4>
+  <ul class="clean">
+    <li><strong>dV5 upgrade cycle</strong> must convert into higher utilization and I&amp;A per case (it's running ~11% above Xi so far).</li>
+    <li><strong>Ion's ~39% growth</strong> needs to hold as clinical evidence (Mayo, others) accumulates.</li>
+    <li><strong>SP</strong> must prove it adds incremental procedures rather than cannibalizing multiport cases.</li>
+    <li><strong>Cardiac</strong> must move from limited launch to measurable volume in 2026+.</li>
+    <li><strong>International reimbursement</strong> expansions (e.g., Japan's June 2026 additions) must translate into real procedure acceleration.</li>
+  </ul>
+</section>
+
+<!-- ================= PAYER ================= -->
+<section id="payer">
+  <div class="eyebrow">Getting paid — the part reps underestimate</div>
+  <h2>Payer billing &amp; reimbursement hurdles</h2>
+  <p class="lead">The single most important reimbursement fact: <strong>there is no separate payment for "the robot."</strong> Robotic assistance is treated as a <em>technique</em> integral to the underlying procedure, not a separately reimbursed service.</p>
+
+  <div class="grid g2">
+    <div class="card">
+      <h4>How it bills</h4>
+      <ul class="clean" style="margin-bottom:0">
+        <li>The case is coded with the <strong>base procedure <span class="term" data-t="cpt">CPT</span> code</strong> (e.g., 55866 for robotic radical prostatectomy). Reimbursement is the customary rate for that base procedure.</li>
+        <li><span class="term" data-t="s2900">HCPCS S2900</span> ("surgical techniques requiring use of a robotic system") is an add-on code some commercial payers ask for — but it is <strong>not separately payable</strong>, and <strong>S-codes are not valid for Medicare/Medicaid</strong>.</li>
+        <li>Per <span class="term" data-t="ncci">NCCI</span>, services integral to a procedure are bundled — you cannot unbundle the robot.</li>
+        <li>Do <strong>not</strong> append <span class="term" data-t="mod22">modifier 22</span> simply because a case was robotic; it's only for documented unusual complexity unrelated to the technique.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>The hurdles before a facility "gets paid back"</h4>
+      <ul class="clean" style="margin-bottom:0">
+        <li><strong>Capital is unreimbursed.</strong> The system is a capital expense for the hospital — not billable to the payer. ROI comes only through procedure margin and volume.</li>
+        <li><strong>Coverage ≠ extra payment.</strong> Medicare covers robotic procedures the same as traditional when medically necessary — but pays no premium for the robot.</li>
+        <li><strong>Higher per-case cost, same reimbursement</strong> → the facility eats the consumable + capital delta unless volume/efficiency offsets it. This is the core CFO objection.</li>
+        <li><strong>Medical-necessity &amp; documentation</strong> — coverage hinges on the base procedure being necessary and correctly coded; <span class="term" data-t="prior">prior authorization</span> applies to the procedure, not the robot.</li>
+        <li><strong>New indications</strong> (cardiac, new SP procedures) rely on existing base-procedure codes; reps should confirm payer policy per region.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="note warn"><div class="nt">Compliance guardrail</div>This is reference framing, not coding/billing or legal advice. Coding choices are the provider's responsibility and payer policies vary; direct accounts to Intuitive's reimbursement team / payer policy and a certified coder for any specific claim.</div>
+</section>
+
+<!-- ================= ACCESS ================= -->
+<section id="access">
+  <div class="eyebrow">Geographic reach</div>
+  <h2>Accessibility — US &amp; international</h2>
+  <div class="grid g2">
+    <div class="card">
+      <h4>United States</h4>
+      <p style="font-size:14.5px;margin:0">Deepest penetration and the world's largest robotic-surgery market. da Vinci is broadly available across academic centers and community hospitals, with the frontier now being <span class="term" data-t="asc">ASC</span>/outpatient access via refurbished/older systems and the dV5 upgrade wave. Cardiac is a deliberately limited US launch through 2026. Reimbursement is procedure-based (no robot premium), so US access is gated by hospital capital budgets more than by coverage.</p>
+    </div>
+    <div class="card">
+      <h4>International</h4>
+      <p style="font-size:14.5px;margin:0">Growing but uneven, and gated by local <span class="term" data-t="regclear">regulatory clearance</span> and reimbursement. Highlights: <strong>Japan</strong> expanding robotic reimbursement (new procedures effective June 2026), <strong>China</strong> a large but increasingly competitive and quota/tender-driven market, and broad presence across Europe and other OECD systems. International procedure growth ran below the US in Q1'26 in some markets, partly reflecting capital-placement timing and macro/tariff pressure.</p>
+    </div>
+  </div>
+  <p style="font-size:14px;color:var(--ink-soft)"><em>Access abroad depends on country-by-country clearance, public/private reimbursement, hospital funding models, and local competition — generalize cautiously in the flow diagram.</em></p>
+</section>
+
+<!-- ================= HEADWINDS / TAILWINDS ================= -->
+<section id="winds">
+  <div class="eyebrow">The honest two-sided view</div>
+  <h2>Scary headwinds &amp; exciting tailwinds</h2>
+  <p class="lead">A credible rep can name both. Here's the balance sheet of the narrative.</p>
+  <div class="hw-tw">
+    <div class="hw">
+      <h3>&#9650; Headwinds</h3>
+      <div class="item"><div class="it-h">Real competition, finally</div><div class="it-b">After 20+ years effectively alone, Medtronic's Hugo is FDA-cleared (US urology) and J&amp;J's Ottava is in FDA review. Choice for hospitals = pricing and share pressure over time.</div></div>
+      <div class="item"><div class="it-h">Margin compression</div><div class="it-b">2025 gross margin fell to ~66% (from 67.5%), hit by ~95 bps of tariffs, higher dV5 production cost not yet at target, and Ion/service build-out. 2026 guide bakes in ~1% tariff drag.</div></div>
+      <div class="item"><div class="it-h">Remanufactured instruments</div><div class="it-b">FDA-cleared third-party remanufacturing of Xi instruments (2025) chips at the high-margin consumable annuity — the heart of the model.</div></div>
+      <div class="item"><div class="it-h">Decelerating procedure growth</div><div class="it-b">2026 da Vinci procedure guidance of 13.5&ndash;15.5% is down from ~18% in 2025; the law of large numbers plus capacity and international softness.</div></div>
+      <div class="item"><div class="it-h">Cost-of-care scrutiny</div><div class="it-b">No reimbursement premium + higher per-case cost keeps CFOs and VACs sceptical; competition could eventually force lower system pricing, pressuring valuation.</div></div>
+      <div class="item"><div class="it-h">Valuation &amp; expectations</div><div class="it-b">A premium multiple (forward P/E well above the med-device average) means the stock punishes any growth wobble — a sentiment, not operational, risk.</div></div>
+    </div>
+    <div class="tw">
+      <h3>&#9660; Tailwinds</h3>
+      <div class="item"><div class="it-h">The annuity compounds</div><div class="it-b">~77% of revenue is recurring (I&amp;A + service) and grows with an 11,395-system base and ~16% procedure growth — a software-like model in hardware clothing.</div></div>
+      <div class="item"><div class="it-h">Switching costs / installed base</div><div class="it-b">Training, credentialing and workflow lock-in make the base extraordinarily sticky even as rivals arrive.</div></div>
+      <div class="item"><div class="it-h">dV5 upgrade super-cycle</div><div class="it-b">Higher utilization (~+11% vs Xi) and higher I&amp;A per case as the base converts; 232 of 431 Q1 placements were already dV5.</div></div>
+      <div class="item"><div class="it-h">Ion + diagnostics expansion</div><div class="it-b">+39% procedure growth in a huge, early-stage lung market with no direct robotic competitor at scale; ROSE/EBUS push it up the value chain.</div></div>
+      <div class="item"><div class="it-h">New frontiers: cardiac &amp; SP</div><div class="it-b">Cardiac clearance opens ~160K procedures; SP +68% and adding indications. Both widen TAM beyond the mature core.</div></div>
+      <div class="item"><div class="it-h">Data moat</div><div class="it-b">1,000+ cases/day of kinematic + video data feeding Case Insights — a compounding advantage in surgical AI that money alone can't buy quickly.</div></div>
+      <div class="item"><div class="it-h">International reimbursement unlocks</div><div class="it-b">Japan's June 2026 expansion and similar moves convert latent demand into billable procedures.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GLOSSARY ================= -->
+<section id="glossary">
+  <div class="eyebrow">Reference</div>
+  <h2>Searchable glossary</h2>
+  <p class="lead">Every dotted term in this document links here. Search by word or definition, or filter by lens. Each entry is tagged <em>medical</em>, <em>biology/operation</em>, <em>sales/cost</em>, or <em>buzzword</em>; dual-lens entries show both the clinical and the commercial read.</p>
+  <input id="glossary-search" type="text" placeholder="Search terms or definitions…" autocomplete="off">
+  <div class="gfilters" id="gfilters">
+    <span class="gfilter on" data-f="all">All</span>
+    <span class="gfilter" data-f="medical">Medical</span>
+    <span class="gfilter" data-f="biology">Biology / operation</span>
+    <span class="gfilter" data-f="sales">Sales / cost</span>
+    <span class="gfilter" data-f="buzz">Buzzword</span>
+  </div>
+  <div id="glist"></div>
+</section>
+
+<!-- ================= QUESTIONS ================= -->
+<section id="questions">
+  <div class="eyebrow">For the next pass</div>
+  <h2>Open questions &amp; suggested edits</h2>
+  <p class="lead">Nuance to resolve before this becomes the final flow diagram. These are where the draft is intentionally simplified.</p>
+
+  <h4>Questions for you</h4>
+  <div class="q"><div class="qh">Who is the audience for the flow diagram?</div><div class="qb">A surgeon-facing leave-behind, an internal rep enablement tool, and an investor-style brief each want different emphasis (clinical vs economic vs growth). Right now this leans rep-enablement. Confirm so I can re-weight.</div></div>
+  <div class="q"><div class="qh">How much competitor detail belongs in a <em>sales</em> piece?</div><div class="qb">I included Hugo/Ottava/Monarch for completeness. If this leaves the building with customers, we may want to soften or remove direct competitor naming for compliance/tone.</div></div>
+  <div class="q"><div class="qh">Do you want hard outcome claims, or framed evidence?</div><div class="qb">I deliberately avoided "robotic is better" blanket claims because the evidence is procedure-specific. If you have approved clinical claims/MLR-cleared language, swap mine for those verbatim.</div></div>
+  <div class="q"><div class="qh">Mature vs frontier color-coding?</div><div class="qb">For the live flowchart, should I split therapeutic areas into "mature" (uro/gyn) vs "frontier" (pulm/cardiac) with distinct colors, or keep one palette?</div></div>
+  <div class="q"><div class="qh">Region scope?</div><div class="qb">Is this US-only, or do you need the international column fully built out (per-country clearance + reimbursement)? International detail here is intentionally high-level.</div></div>
+
+  <h4>Edits I'd recommend</h4>
+  <ul class="clean">
+    <li><strong>Verify every number against the live 10-Q / latest press release</strong> before publishing — figures here are pulled from Q1 2026 (qtr ended 3/31/26) reporting and should be refreshed each quarter.</li>
+    <li><strong>Replace clinical claims with MLR-approved language</strong> (force-reduction %, sensitivity, conversion rates) — my phrasings are paraphrased from public materials, not promotional-review-cleared copy.</li>
+    <li><strong>Add a per-procedure economic worked example</strong> (one prostatectomy: capital amortization + consumables + service vs reimbursement) if the audience is finance.</li>
+    <li><strong>Insert real instrument SKUs / part numbers</strong> in the mechanical section if this is a rep tool.</li>
+    <li><strong>Confirm the cardiac procedure list and SP indication list</strong> against the current FDA-cleared labeling — both are recent and may expand.</li>
+    <li><strong>Decide whether revenue-mix % should appear at all</strong> — they're directional estimates from quarterly figures, not an official segment split.</li>
+  </ul>
+</section>
+
+<footer>
+  <p style="max-width:74ch"><strong>Working draft &middot; internal sales reference.</strong> Not investment, legal, coding, or medical advice. Clinical and reimbursement statements are paraphrased from public company materials and third-party reporting and must be verified against current FDA labeling, payer policy, and promotional-review&ndash;approved claims before any external use.</p>
+  <p class="src">Primary sources &middot; Intuitive Q1 2026 &amp; Q4 2025 earnings releases / 8-K / 10-K &middot; intuitive.com product pages (da Vinci 5/Xi/X/SP, Ion, instruments) &middot; Intuitive 2025 Corporate Impact Report &middot; Intuitive reimbursement &amp; coding guidance (S2900 / CPT) &middot; CMS / NCCI policy &middot; MedTech Dive, MassDevice, MD+DI (Hugo, Ottava, Monarch) &middot; Mayo Clinic Ion study (as reported) &middot; ACS Bulletin &amp; peer-reviewed cost analyses (system &amp; instrument pricing).</p>
+  <p style="font-family:var(--mono);font-size:11px;margin-top:10px">Compiled for CJ &middot; data current to Q1 2026 &middot; refresh each quarter.</p>
+</footer>
+
+</main>
+
+<div id="tooltip"></div>
+<div class="totop" id="totop">&uarr;</div>
+
+<script>
+/* ---------- single source of truth: glossary ---------- */
+const GLOSSARY = {
+  ras:{term:"Robotic-assisted surgery (RAS)",cat:"medical",def:{med:"Minimally invasive surgery where the surgeon controls robotic arms from a console rather than holding instruments directly.",sales:"ISRG's core category; the 'technique' that is bundled into the base procedure for billing — never reimbursed separately."}},
+  razor:{term:"Razor-and-blade model",cat:"sales",def:{sales:"Sell the durable system at modest margin (the razor), then earn high-margin recurring revenue from single-use instruments/accessories used every case (the blades). The blades are the real business."}},
+  ia:{term:"Instruments & accessories (I&A)",cat:"sales",def:{sales:"The single-use consumables (EndoWrist tools, staplers, energy devices) used each procedure — ISRG's largest, highest-margin, most predictable revenue line. ~$1,880 per da Vinci case in Q1'26."}},
+  installed:{term:"Installed base",cat:"sales",def:{sales:"The cumulative number of systems in the field (11,395 da Vinci; 1,041 Ion as of 3/31/26). It drives both consumable and service revenue and is the key compounding asset."}},
+  placement:{term:"System placement",cat:"sales",def:{sales:"A unit shipped/installed in a quarter via sale or lease. 431 da Vinci placed in Q1'26 (232 were dV5). Lumpy capital revenue that seeds the recurring annuity."}},
+  procvol:{term:"Procedure volume",cat:"sales",def:{sales:"Number of surgeries/biopsies performed on the systems. The metric ISRG guides to (13.5–15.5% da Vinci growth for 2026) because consumable revenue scales with it."}},
+  pullthrough:{term:"Pull-through",cat:"sales",def:{sales:"The recurring instrument/accessory and service revenue a placed system 'pulls through' over its life. Higher utilization = higher pull-through."}},
+  utilization:{term:"Utilization",cat:"sales",def:{sales:"How many procedures a given system performs per period. dV5 is running ~11% above Xi, lifting per-system economics."}},
+  tam:{term:"TAM / SAM / SOM",cat:"buzz",def:{sales:"Total / Serviceable / Obtainable Addressable Market. ISRG frames ~20M annual procedures as TAM vs ~9M served today; the gap is the growth runway."}},
+  dv5:{term:"da Vinci 5",cat:"medical",def:{med:"Current-gen multiport system; first with Force Feedback, integrated electrosurgery/insufflation, new ergonomics; cleared for selected cardiac procedures Jan 2026.",sales:"The upgrade super-cycle: higher utilization and I&A per case; 232 of 431 Q1'26 placements."}},
+  multiport:{term:"Multiport",cat:"medical",def:{med:"A robotic approach using several small incisions ('ports'), each holding one arm/instrument. The classic da Vinci configuration (X, Xi, 5)."}},
+  singleport:{term:"Single-port (SP)",cat:"medical",def:{med:"Delivering three wristed instruments plus a camera through one ~2.5cm incision or a natural orifice — less scarring, narrow-space access.",sales:"Fastest-growing platform (+68% Q1'26); indication expansion is the lever to scale it."}},
+  natorifice:{term:"Natural orifice",cat:"biology",def:{med:"Accessing the surgical site through an existing body opening (e.g., mouth, vagina) instead of a new incision — a key SP use case."}},
+  endoluminal:{term:"Endoluminal",cat:"biology",def:{med:"Working inside the natural lumens (hollow passages) of the body — for Ion, navigating inside the airways of the lung."}},
+  bronch:{term:"Bronchoscopy",cat:"biology",def:{med:"Threading a thin scope into the airways to inspect or biopsy lung tissue. Ion is a robotic, shape-sensing bronchoscopy platform for hard-to-reach peripheral nodules."}},
+  nodule:{term:"Peripheral pulmonary nodule",cat:"biology",def:{med:"A small lesion in the outer lung, hard to reach with conventional bronchoscopy and the central target of Ion biopsies. Early characterization is critical in lung cancer."}},
+  sensitivity:{term:"Malignancy sensitivity (diagnostic yield)",cat:"medical",def:{med:"How reliably a biopsy correctly identifies cancer when it's present. A Mayo Clinic study reported ~85% malignancy sensitivity for Ion — the core clinical proof point.",sales:"Higher yield = fewer repeat procedures and earlier-stage detection, the value story for pulmonology programs."}},
+  rose:{term:"ROSE (rapid on-site evaluation)",cat:"medical",def:{med:"Examining biopsy tissue immediately in the procedure room to confirm an adequate sample before the patient leaves — an Ion development priority."}},
+  ebus:{term:"EBUS (endobronchial ultrasound)",cat:"medical",def:{med:"Ultrasound from inside the airway to locate lymph nodes/lesions and guide/stage biopsies. Ion integration aims to combine diagnosis and staging."}},
+  forcefb:{term:"Force Feedback",cat:"buzz",def:{med:"dV5 technology that senses force at the instrument tip and conveys tissue resistance to the surgeon — preclinically up to ~43% less force applied. (Contraindicated for the force-feedback needle driver in hysterectomy/myomectomy.)",sales:"The flagship differentiator vs prior da Vinci and vs competitors lacking true haptics."}},
+  esu:{term:"Electrosurgical unit (ESU)",cat:"medical",def:{med:"The generator delivering controlled electrical energy to cut tissue and seal vessels. dV5 integrates it into the system rather than as separate cart equipment."}},
+  insufflation:{term:"Insufflation",cat:"biology",def:{med:"Inflating the abdomen with CO₂ to create working space for laparoscopic/robotic surgery. dV5 integrates insufflation control."}},
+  firefly:{term:"Firefly fluorescence imaging",cat:"medical",def:{med:"Near-infrared imaging that lights up a fluorescent dye to show blood flow/perfusion and anatomy intra-operatively — a visualization complement on Xi/5."}},
+  stereo:{term:"Stereoscopic 3D vision",cat:"medical",def:{med:"Two offset camera channels giving the surgeon true depth perception at the console — a core advantage over 2D laparoscopy."}},
+  tremor:{term:"Tremor filtering / motion scaling",cat:"buzz",def:{med:"Software that removes hand tremor and scales large hand motions into fine instrument movements for precision."}},
+  staplers:{term:"SureForm staplers (SmartFire)",cat:"medical",def:{med:"Articulating robotic staplers that monitor tissue compression before/during firing to optimize the staple line.",sales:"A high-value consumable that lifts I&A per case."}},
+  energy:{term:"Energy instruments (SynchroSeal / Vessel Sealer)",cat:"medical",def:{med:"Robotic devices that seal and divide vessels/tissue using the integrated E-200 generator.",sales:"Premium consumables expanding what one docking can accomplish."}},
+  prostatectomy:{term:"Radical prostatectomy",cat:"biology",def:{med:"Surgical removal of the prostate for localized prostate cancer. The original high-volume robotic procedure (CPT 55866 when robotic/laparoscopic, nerve-sparing)."}},
+  hysterectomy:{term:"Hysterectomy",cat:"biology",def:{med:"Removal of the uterus (for fibroids, cancer, prolapse, etc.). A core high-volume gynecologic robotic procedure."}},
+  hernia:{term:"Hernia repair",cat:"biology",def:{med:"Surgical correction of a hernia (e.g., inguinal). A large general-surgery pool; SP added inguinal hernia repair in Dec 2025."}},
+  chole:{term:"Cholecystectomy",cat:"biology",def:{med:"Gallbladder removal — extremely high-volume general surgery; added to SP indications Dec 2025."}},
+  tors:{term:"TORS (transoral robotic surgery)",cat:"medical",def:{med:"Robotic surgery on throat/oropharyngeal tumors through the mouth — a signature SP/head-and-neck application avoiding external incisions."}},
+  ima:{term:"IMA mobilization",cat:"biology",def:{med:"Freeing the internal mammary artery for use as a graft in coronary revascularization — one of dV5's initial cardiac clearances (with mitral valve repair)."}},
+  conversion:{term:"Conversion to open",cat:"medical",def:{med:"When a minimally invasive case must be switched mid-operation to open surgery. Lower conversion rates are a clean clinical selling point.",sales:"Fewer conversions = better outcomes narrative and lower complication cost."}},
+  los:{term:"Length of stay (LOS)",cat:"sales",def:{med:"How many days a patient stays admitted post-op.",sales:"Shorter LOS frees beds and lowers cost — a central administrator-facing value lever for minimally invasive surgery."}},
+  open:{term:"Open surgery",cat:"medical",def:{med:"Traditional surgery via a large single incision. The legacy approach ISRG most wants to convert; the biggest 'competitor' by volume in many settings."}},
+  lap:{term:"Laparoscopy (conventional)",cat:"medical",def:{med:"Minimally invasive surgery using long hand-held instruments and a 2D/3D camera — no robot. The cheaper substitute robotic surgery must out-value."}},
+  vac:{term:"Value Analysis Committee (VAC)",cat:"sales",def:{sales:"The hospital committee that vets new devices/consumables for clinical value and cost before purchase. A key gatekeeper — bring evidence, not adjectives."}},
+  gpo:{term:"Group Purchasing Organization (GPO)",cat:"sales",def:{sales:"An entity that negotiates pricing/contracts on behalf of many hospitals. Often the contractual path through which systems and consumables are bought."}},
+  idn:{term:"Integrated Delivery Network (IDN)",cat:"sales",def:{sales:"A multi-hospital health system buying and standardizing as one. Winning the IDN standard can place multiple systems and lock in consumables fleet-wide."}},
+  asc:{term:"Ambulatory Surgery Center (ASC)",cat:"sales",def:{sales:"An outpatient, same-day surgical facility — lower budgets than hospitals. An emerging access frontier ISRG addresses with refurbished/older systems."}},
+  switching:{term:"Switching costs",cat:"buzz",def:{sales:"The retraining, re-credentialing, new-instrument and volume-disruption cost of moving off da Vinci. Among the most durable moats in medtech."}},
+  moat:{term:"Data moat",cat:"buzz",def:{sales:"A compounding competitive advantage from proprietary data — here, 1,000+ surgical cases/day feeding Case Insights/AI that rivals can't quickly match."}},
+  caseinsights:{term:"Case Insights",cat:"buzz",def:{med:"AI that analyzes da Vinci system data, kinematics and video to give surgeons objective performance feedback.",sales:"Stickiness + the visible edge of the data moat; part of the My Intuitive Plus subscription."}},
+  simnow:{term:"SimNow",cat:"medical",def:{med:"VR surgical simulator for training and skills practice on the da Vinci platform (SimNow 2 adds targeted learning)."}},
+  hub:{term:"Intuitive Hub",cat:"buzz",def:{med:"An edge-computing system on dV5 that powers recording, streaming and advanced digital features in the OR."}},
+  cpt:{term:"CPT code",cat:"sales",def:{sales:"Current Procedural Terminology code identifying the procedure for billing (e.g., 55866). Robotic cases bill on the base procedure code — the robot adds no separate code/payment."}},
+  s2900:{term:"HCPCS S2900",cat:"sales",def:{sales:"Add-on code for 'surgical techniques requiring a robotic system.' Some commercial payers request it, but it is NOT separately payable and is NOT valid for Medicare/Medicaid."}},
+  ncci:{term:"NCCI",cat:"sales",def:{sales:"National Correct Coding Initiative — CMS rules that bundle services integral to a procedure. Under NCCI the robotic technique can't be unbundled for extra pay."}},
+  mod22:{term:"Modifier 22",cat:"sales",def:{sales:"Appended for unusual procedural complexity. Must NOT be used merely to flag a case as robotic — only documented complexity unrelated to the technique."}},
+  prior:{term:"Prior authorization",cat:"sales",def:{sales:"Payer pre-approval of a procedure. Applies to the underlying surgery's medical necessity, not to the use of a robot specifically."}},
+  denovo:{term:"De novo (FDA)",cat:"sales",def:{sales:"An FDA pathway for novel low-to-moderate-risk devices with no predicate. J&J submitted Ottava via de novo (general surgery) in Jan 2026."}},
+  k510:{term:"510(k)",cat:"sales",def:{sales:"FDA clearance pathway showing 'substantial equivalence' to a legally marketed predicate device. Most dV5 software/instrument features ship as 510(k) clearances."}},
+  regclear:{term:"Regulatory clearance",cat:"sales",def:{sales:"Country-by-country authorization (FDA in the US, CE mark in Europe, etc.) required before a device can be marketed — a gate on international access."}},
+  remanufacture:{term:"Remanufactured instruments",cat:"sales",def:{sales:"Third-party reconditioned single-use instruments. FDA cleared remanufacturing of da Vinci Xi instruments in 2025 — a margin substitute on the consumable line."}},
+};
+
+/* ---------- render glossary ---------- */
+const CAT_LABEL={medical:"Medical",biology:"Biology / operation",sales:"Sales / cost",buzz:"Buzzword"};
+const glist=document.getElementById('glist');
+const entries=Object.entries(GLOSSARY).map(([slug,o])=>({slug,...o}))
+  .sort((a,b)=>a.term.localeCompare(b.term));
+
+function lensHtml(def){
+  let h='';
+  if(def.med) h+=`<div class="gdef"><span class="lens">Medical:</span> ${def.med}</div>`;
+  if(def.sales) h+=`<div class="gdef"><span class="lens">Sales / cost:</span> ${def.sales}</div>`;
+  return h;
+}
+function buildGlossary(){
+  glist.innerHTML='';
+  entries.forEach(e=>{
+    const d=document.createElement('div');
+    d.className='gentry';d.id='g-'+e.slug;
+    d.dataset.cat=e.cat;
+    d.dataset.text=(e.term+' '+(e.def.med||'')+' '+(e.def.sales||'')).toLowerCase();
+    d.innerHTML=`<div class="gt">${e.term}<span class="gtag ${e.cat}">${CAT_LABEL[e.cat]}</span></div>${lensHtml(e.def)}`;
+    glist.appendChild(d);
+  });
+}
+buildGlossary();
+
+/* ---------- glossary search + filter ---------- */
+let activeFilter='all';
+const gsearch=document.getElementById('glossary-search');
+const topsearch=document.getElementById('topsearch');
+function applyGlossary(q){
+  q=(q||'').trim().toLowerCase();
+  let shown=0;
+  glist.querySelectorAll('.gentry').forEach(el=>{
+    const matchText=!q||el.dataset.text.includes(q);
+    const matchCat=activeFilter==='all'||el.dataset.cat===activeFilter;
+    const ok=matchText&&matchCat;
+    el.style.display=ok?'':'none';
+    if(ok)shown++;
+  });
+  let none=glist.querySelector('.gnone');
+  if(shown===0){
+    if(!none){none=document.createElement('div');none.className='gnone';none.textContent='No matching terms.';glist.appendChild(none);}
+  }else if(none){none.remove();}
+}
+gsearch.addEventListener('input',e=>applyGlossary(e.target.value));
+document.querySelectorAll('.gfilter').forEach(f=>{
+  f.addEventListener('click',()=>{
+    document.querySelectorAll('.gfilter').forEach(x=>x.classList.remove('on'));
+    f.classList.add('on');activeFilter=f.dataset.f;applyGlossary(gsearch.value);
+  });
+});
+topsearch.addEventListener('input',e=>{
+  gsearch.value=e.target.value;applyGlossary(e.target.value);
+  document.getElementById('glossary').scrollIntoView({behavior:'smooth'});
+});
+
+/* ---------- in-text term tooltips + linking ---------- */
+const tip=document.getElementById('tooltip');
+function tipHtml(slug){
+  const o=GLOSSARY[slug];if(!o)return'';
+  const short=o.def.med||o.def.sales;
+  return `<div class="tt-cat">${CAT_LABEL[o.cat]}</div><div class="tt-term">${o.term}</div><div>${short}</div>`;
+}
+document.querySelectorAll('.term').forEach(t=>{
+  const slug=t.dataset.t;
+  if(!GLOSSARY[slug]){t.style.borderBottom='none';return;}
+  t.addEventListener('mouseenter',e=>{
+    tip.innerHTML=tipHtml(slug);tip.classList.add('show');positionTip(e);
+  });
+  t.addEventListener('mousemove',positionTip);
+  t.addEventListener('mouseleave',()=>tip.classList.remove('show'));
+  t.addEventListener('click',()=>{
+    tip.classList.remove('show');
+    const target=document.getElementById('g-'+slug);
+    activeFilter='all';
+    document.querySelectorAll('.gfilter').forEach(x=>x.classList.toggle('on',x.dataset.f==='all'));
+    gsearch.value='';applyGlossary('');
+    target.scrollIntoView({behavior:'smooth',block:'center'});
+    target.classList.remove('flash');void target.offsetWidth;target.classList.add('flash');
+  });
+});
+function positionTip(e){
+  const pad=14,w=tip.offsetWidth,h=tip.offsetHeight;
+  let x=e.clientX+pad,y=e.clientY+pad;
+  if(x+w>innerWidth-10)x=e.clientX-w-pad;
+  if(y+h>innerHeight-10)y=e.clientY-h-pad;
+  tip.style.left=x+'px';tip.style.top=y+'px';
+}
+
+/* ---------- nav active state + back to top ---------- */
+const secs=[...document.querySelectorAll('section[id]')];
+const navlinks=[...document.querySelectorAll('#secnav a')];
+const totop=document.getElementById('totop');
+const navObs=new IntersectionObserver(es=>{
+  es.forEach(en=>{
+    if(en.isIntersecting){
+      const id=en.target.id;
+      navlinks.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+id));
+    }
+  });
+},{rootMargin:'-45% 0px -50% 0px'});
+secs.forEach(s=>navObs.observe(s));
+addEventListener('scroll',()=>{totop.classList.toggle('show',scrollY>600);});
+totop.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+</script>
+</body>
+</html>
