@@ -1,4 +1,13 @@
 [
+{
+    "id": "stryker-therapeutic-areas-draft",
+    "title": "Stryker Overview and Vocab Terms",
+    "type": "claude",
+    "file": "content/claude/stryker-therapeutic-areas-draft.html",
+    "tags": ["Stryker", "Med Device", "Glossary"],
+    "date": "2026-05-28",
+    "description": "Stryker Vocab and Business Line Nuance"
+  },
   {
     "id": "amgen_overview",
     "title": "Amgen Product Guide and Glossary",
