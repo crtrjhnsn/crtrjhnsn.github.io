@@ -1,4 +1,13 @@
 [
+    {
+    "id": "isrg-reference",
+    "title": "ISRG-Reference",
+    "type": "claude",
+    "file": "content/claude/isrg-reference.html",
+    "tags": ["ISRG", "Med Device", "Glossary"],
+    "date": "2026-05-28",
+    "description": "ISRG Product Descriptions"
+    },
 {
     "id": "stryker-therapeutic-areas-draft",
     "title": "Stryker Overview and Vocab Terms",
