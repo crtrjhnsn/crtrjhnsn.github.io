@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stryker — Problems, Therapeutic Areas &amp; Product Lines (Sales Working Draft)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF7F1; --paper-2:#F2ECE1; --ink:#1B1E24; --ink-soft:#41454d;
+    --gold:#D9962B; --gold-deep:#A66A14; --gold-wash:#F6E7C9;
+    --line:#D9CFBE; --line-soft:#E6DECF;
+    --char:#171A1F; --char-2:#22262E; --on-char:#EDE7DA; --on-char-soft:#A8A294;
+    --teal:#2E6E6A; --rust:#9A3B2A; --rust-soft:#C66B53;
+    --max:1180px;
+    --shadow:0 1px 2px rgba(27,30,36,.06),0 10px 30px -12px rgba(27,30,36,.18);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth; scroll-padding-top:84px}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:16.5px;line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(circle at 12% -5%,rgba(217,150,43,.06),transparent 40%),radial-gradient(circle at 90% 0%,rgba(46,110,106,.05),transparent 45%);}
+  .mono{font-family:"IBM Plex Mono",monospace}
+  h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;font-weight:600;line-height:1.12;letter-spacing:-.01em;color:var(--ink)}
+  a{color:var(--gold-deep);text-decoration-thickness:1px;text-underline-offset:2px}
+  /* ---------- top bar ---------- */
+  .draft-strip{position:fixed;top:0;left:0;right:0;z-index:60;background:var(--rust);color:#fff;
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    text-align:center;padding:5px 10px}
+  nav.top{position:fixed;top:26px;left:0;right:0;z-index:55;background:rgba(250,247,241,.86);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav.top .wrap{max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:18px;
+    padding:9px 22px;flex-wrap:wrap}
+  nav.top .brand{font-family:"Fraunces",serif;font-weight:700;font-size:18px;letter-spacing:-.01em;margin-right:6px}
+  nav.top .brand b{color:var(--gold-deep)}
+  nav.top a{font-size:12.5px;color:var(--ink-soft);text-decoration:none;font-weight:500;letter-spacing:.01em}
+  nav.top a:hover{color:var(--gold-deep)}
+  main{max-width:var(--max);margin:0 auto;padding:0 22px}
+  section{padding:64px 0;border-top:1px solid var(--line-soft)}
+  section:first-of-type{border-top:none}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);margin:0 0 12px}
+  .sec-h{font-size:clamp(26px,3.6vw,40px);margin:0 0 8px}
+  .lead{font-size:18px;color:var(--ink-soft);max-width:70ch;margin:0 0 26px}
+  p{max-width:74ch}
+  /* ---------- hero ---------- */
+  .hero{padding:150px 0 70px;border:none}
+  .hero h1{font-size:clamp(38px,6.4vw,76px);line-height:1.02;margin:0 0 20px;max-width:18ch}
+  .hero h1 em{font-style:italic;color:var(--gold-deep)}
+  .hero .sub{font-size:19px;color:var(--ink-soft);max-width:64ch}
+  .hero-meta{display:flex;gap:30px;flex-wrap:wrap;margin-top:34px;padding-top:24px;border-top:1px solid var(--line)}
+  .hero-meta div{font-size:13px}
+  .hero-meta .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);display:block;margin-bottom:3px}
+  .hero-meta .v{font-family:"Fraunces",serif;font-size:21px;font-weight:600}
+  /* ---------- cards / grid ---------- */
+  .grid{display:grid;gap:20px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media(max-width:880px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 22px;box-shadow:var(--shadow)}
+  .card h3{font-size:20px;margin:0 0 6px}
+  .card h4{font-size:15.5px;margin:0 0 4px;font-family:"IBM Plex Sans";font-weight:700}
+  .card .tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    background:var(--gold-wash);color:var(--gold-deep);padding:3px 8px;border-radius:20px;margin-bottom:10px}
+  .card.dark{background:var(--char);color:var(--on-char);border-color:#000}
+  .card.dark h3,.card.dark h4{color:#fff}
+  .card small{color:var(--ink-soft)}
+  .stat{font-family:"Fraunces",serif;font-size:34px;font-weight:600;color:var(--gold-deep);line-height:1}
+  .stat-row{display:flex;gap:14px;flex-wrap:wrap;margin:18px 0}
+  .stat-box{flex:1;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+  .stat-box .n{font-family:"Fraunces",serif;font-size:30px;font-weight:600;color:var(--ink)}
+  .stat-box .l{font-size:12px;color:var(--ink-soft);margin-top:2px}
+  /* ---------- table ---------- */
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:600px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-soft);background:var(--paper-2);position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td strong{font-weight:600}
+  /* ---------- glossary link styling ---------- */
+  a.gl{color:var(--ink);text-decoration:none;border-bottom:1.5px dotted var(--gold);cursor:help;font-weight:500}
+  a.gl:hover{background:var(--gold-wash);color:var(--gold-deep)}
+  /* ---------- callouts ---------- */
+  .note{border-left:3px solid var(--teal);background:#fff;border-radius:0 10px 10px 0;padding:14px 18px;margin:18px 0;
+    box-shadow:var(--shadow)}
+  .note .lab{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);display:block;margin-bottom:3px}
+  .q{border-left:3px solid var(--gold);background:var(--gold-wash);border-radius:0 10px 10px 0;padding:13px 18px;margin:14px 0}
+  .q .lab{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);display:block;margin-bottom:3px}
+  .q p{margin:4px 0 0;font-size:14.5px}
+  /* ---------- pills ---------- */
+  .pill{display:inline-block;font-size:12px;padding:3px 11px;border-radius:30px;border:1px solid var(--line);background:#fff;margin:0 4px 6px 0}
+  .pill.sub{border-color:var(--rust-soft);color:var(--rust)}
+  .pill.comp{border-color:var(--teal);color:var(--teal)}
+  /* ---------- headwinds/tailwinds ---------- */
+  .ht{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:880px){.ht{grid-template-columns:1fr}}
+  .ht-col{border-radius:16px;padding:26px}
+  .ht-col.head{background:var(--char);color:var(--on-char)}
+  .ht-col.tail{background:linear-gradient(160deg,#fff,var(--gold-wash))}
+  .ht-col h3{font-size:24px;margin:0 0 4px}
+  .ht-col.head h3{color:#fff}
+  .ht-item{padding:13px 0;border-top:1px solid rgba(0,0,0,.1)}
+  .ht-col.head .ht-item{border-top-color:rgba(255,255,255,.12)}
+  .ht-item b{font-size:15px;display:block;margin-bottom:2px}
+  .ht-item.head b{color:#fff}
+  .ht-item p{font-size:13.5px;margin:0;color:inherit;opacity:.92}
+  .ht-col.head .ht-item p{color:var(--on-char-soft)}
+  /* ---------- glossary search ---------- */
+  .gl-search{display:flex;gap:10px;align-items:center;margin:0 0 18px;flex-wrap:wrap}
+  .gl-search input{flex:1;min-width:220px;font-family:"IBM Plex Sans";font-size:15px;padding:11px 15px;
+    border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+  .gl-search input:focus{outline:2px solid var(--gold);border-color:var(--gold)}
+  .gl-filter{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    padding:7px 12px;border:1px solid var(--line);border-radius:30px;background:#fff;cursor:pointer;color:var(--ink-soft)}
+  .gl-filter.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .gl-count{font-size:12.5px;color:var(--ink-soft);margin-bottom:14px}
+  .gl-entry{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:12px;scroll-margin-top:90px}
+  .gl-entry.hit{box-shadow:0 0 0 2px var(--gold)}
+  .gl-entry h4{font-family:"Fraunces",serif;font-size:18px;margin:0 0 2px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+  .gl-entry .cat{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+    padding:2px 7px;border-radius:20px}
+  .cat-prod{background:#eef4f3;color:var(--teal)}
+  .cat-sales{background:var(--gold-wash);color:var(--gold-deep)}
+  .cat-clin{background:#f6ece9;color:var(--rust)}
+  .cat-reg{background:#ecedf2;color:#3a3f4a}
+  .gl-entry p{font-size:14px;margin:6px 0 0;max-width:none}
+  .gl-entry .biz{font-size:12.5px;color:var(--ink-soft);margin-top:6px}
+  .gl-entry .biz b{color:var(--ink)}
+  .hidden{display:none!important}
+  /* ---------- flow diagram ---------- */
+  .flow-wrap{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;box-shadow:var(--shadow);overflow-x:auto}
+  .flow-wrap svg{display:block;min-width:760px;width:100%;height:auto}
+  .legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12.5px;color:var(--ink-soft)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .legend i{width:13px;height:13px;border-radius:3px;display:inline-block}
+  /* footer */
+  footer{background:var(--char);color:var(--on-char-soft);font-size:13px;padding:46px 22px 60px;margin-top:30px}
+  footer .wrap{max-width:var(--max);margin:0 auto}
+  footer h4{color:#fff;font-size:15px;margin:0 0 10px}
+  footer a{color:var(--on-char)}
+  footer ol{padding-left:18px;margin:0;columns:2;column-gap:34px}
+  @media(max-width:700px){footer ol{columns:1}}
+  footer li{margin-bottom:7px;break-inside:avoid}
+  .back{display:inline-block;margin-top:10px;font-size:12px;font-family:"IBM Plex Mono",monospace;color:var(--gold-deep);text-decoration:none}
+  ul.clean{padding-left:18px}
+  ul.clean li{margin-bottom:6px}
+  .seg-bar{height:34px;border-radius:8px;overflow:hidden;display:flex;margin:14px 0;font-size:12px;font-weight:600;color:#fff;font-family:"IBM Plex Mono",monospace}
+  .seg-bar div{display:flex;align-items:center;justify-content:center}
+</style>
+</head>
+<body>
+
+<div class="draft-strip">Working draft · For internal sales-team review · Not for external distribution · Verify all figures before use</div>
+
+<nav class="top"><div class="wrap">
+  <span class="brand">Stryker<b>·</b>Field Brief</span>
+  <a href="#flow">Flow map</a>
+  <a href="#lines">Business lines</a>
+  <a href="#pipeline">Pipeline</a>
+  <a href="#volume">Flagships</a>
+  <a href="#uptake">Uptake</a>
+  <a href="#tam">TAM &amp; QoL</a>
+  <a href="#payer">Payer</a>
+  <a href="#access">Access</a>
+  <a href="#winds">Winds</a>
+  <a href="#glossary">Glossary</a>
+  <a href="#questions">Open Qs</a>
+</div></nav>
+
+<main>
+
+<!-- ======================= HERO ======================= -->
+<header class="hero" id="top">
+  <p class="eyebrow">Sales enablement · therapeutic-area &amp; portfolio map · rev. draft 0.9</p>
+  <h1>The problems Stryker solves, and the <em>products</em> that solve them.</h1>
+  <p class="sub">A field-facing working map of Stryker's two reportable segments, the clinical problems each therapeutic area targets, what's shipping versus what's in limited release, and the payer and adoption realities a rep meets in the room. Built for manager review — every figure is sourced; flagged items still need a second look.</p>
+  <div class="hero-meta">
+    <div><span class="k">FY2025 net sales</span><span class="v">~$25.1B</span></div>
+    <div><span class="k">Reported growth</span><span class="v">+11.2%</span></div>
+    <div><span class="k">Segments</span><span class="v">2</span></div>
+    <div><span class="k">Patients touched / yr</span><span class="v">~150M</span></div>
+    <div><span class="k">Mako procedures to date</span><span class="v">1.5M+</span></div>
+  </div>
+</header>
+
+<!-- ======================= FRAMING NOTE ======================= -->
+<section id="frame" style="padding-top:40px">
+  <p class="eyebrow">Read this first</p>
+  <h2 class="sec-h">One framing correction baked into this brief</h2>
+  <p class="lead">Stryker is a medical-<em>device</em> company, not a pharma company — and that changes almost every part of the sales story.</p>
+  <div class="grid g3">
+    <div class="card"><span class="tag">Not "trials"</span><h4>Clearance, not clinical trials</h4><p style="font-size:14.5px">Most products clear via the FDA <a class="gl" href="#g-510k">510(k)</a> or <a class="gl" href="#g-pma">PMA</a> pathways, not pharma-style Phase&nbsp;1–3 trials. "In development" usually means a limited market release, not a randomized endpoint readout.</p></div>
+    <div class="card"><span class="tag">Mechanical, not biologic</span><h4>Mechanism is physics, not pharmacology</h4><p style="font-size:14.5px">An implant's "mechanism of action" is materials, geometry, and fixation — not a biological pathway. Where biology matters (osseointegration, thrombus capture) the glossary says so explicitly.</p></div>
+    <div class="card"><span class="tag">Bundled, not billed</span><h4>The device is rarely billed to insurance</h4><p style="font-size:14.5px">Hospitals and <a class="gl" href="#g-asc">ASCs</a> are paid a bundled rate for the <em>procedure</em>; the implant and the robot come out of that bundle. There is no separate insurance code for "robot." This reframes the entire payer conversation — see <a href="#payer">Payer &amp; coverage</a>.</p></div>
+  </div>
+</section>
+
+<!-- ======================= FLOW DIAGRAM ======================= -->
+<section id="flow">
+  <p class="eyebrow">The core artifact</p>
+  <h2 class="sec-h">Problems → therapeutic areas → product lines</h2>
+  <p class="lead">A first-pass flow map. Left: the clinical or operational problem. Middle: Stryker's therapeutic / functional area. Right: the lead products and where they sit (shipping, limited release, or recently acquired).</p>
+  <div class="flow-wrap">
+  <svg viewBox="0 0 1000 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Flow diagram from clinical problems to Stryker therapeutic areas to products">
+    <defs>
+      <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L7,3 L0,6 Z" fill="#B8AD99"/>
+      </marker>
+      <style>
+        .col-h{font:600 13px "IBM Plex Mono",monospace;letter-spacing:.12em;fill:#A66A14;text-transform:uppercase}
+        .pb{fill:#fff;stroke:#D9CFBE}
+        .pb-t{font:500 12.5px "IBM Plex Sans",sans-serif;fill:#1B1E24}
+        .ta{fill:#22262E}
+        .ta-t{font:600 13px "IBM Plex Sans",sans-serif;fill:#fff}
+        .pr{stroke:#D9962B}
+        .pr-t{font:600 12px "IBM Plex Sans",sans-serif;fill:#1B1E24}
+        .pr-s{font:400 10px "IBM Plex Mono",monospace;fill:#7c7363}
+        .ln{stroke:#CFC4B0;stroke-width:1.4;fill:none}
+      </style>
+    </defs>
+    <text x="20" y="26" class="col-h">Problem</text>
+    <text x="370" y="26" class="col-h">Therapeutic area</text>
+    <text x="720" y="26" class="col-h">Lead products</text>
+
+    <!-- connectors (drawn first, behind) -->
+    <g class="ln" marker-end="url(#arr)">
+      <path d="M250,70 C320,70 320,95 360,95"/>
+      <path d="M250,130 C320,130 320,95 360,95"/>
+      <path d="M250,200 C320,200 320,175 360,175"/>
+      <path d="M250,260 C320,260 320,175 360,175"/>
+      <path d="M250,330 C320,330 320,255 360,255"/>
+      <path d="M250,400 C320,400 320,335 360,335"/>
+      <path d="M250,470 C320,470 320,415 360,415"/>
+      <path d="M250,540 C320,540 320,495 360,495"/>
+      <path d="M250,610 C320,610 320,575 360,575"/>
+      <!-- TA to product -->
+      <path d="M610,95 C680,95 680,80 710,80"/>
+      <path d="M610,95 C680,95 680,135 710,135"/>
+      <path d="M610,175 C680,175 680,200 710,200"/>
+      <path d="M610,255 C680,255 680,265 710,265"/>
+      <path d="M610,335 C680,335 680,330 710,330"/>
+      <path d="M610,415 C680,415 680,395 710,395"/>
+      <path d="M610,495 C680,495 680,460 710,460"/>
+      <path d="M610,575 C680,575 680,525 710,525"/>
+      <path d="M610,575 C680,575 680,590 710,590"/>
+    </g>
+
+    <!-- problems -->
+    <g>
+      <rect class="pb" x="20" y="52" width="230" height="36" rx="8"/><text class="pb-t" x="34" y="74">End-stage knee / hip osteoarthritis</text>
+      <rect class="pb" x="20" y="112" width="230" height="36" rx="8"/><text class="pb-t" x="34" y="134">Fractures &amp; complex trauma</text>
+      <rect class="pb" x="20" y="182" width="230" height="36" rx="8"/><text class="pb-t" x="34" y="204">Need for surgical precision / OR efficiency</text>
+      <rect class="pb" x="20" y="242" width="230" height="36" rx="8"/><text class="pb-t" x="34" y="264">Spinal deformity / degeneration</text>
+      <rect class="pb" x="20" y="312" width="230" height="36" rx="8"/><text class="pb-t" x="34" y="334">Minimally invasive visualization</text>
+      <rect class="pb" x="20" y="382" width="230" height="36" rx="8"/><text class="pb-t" x="34" y="404">Stroke &amp; cranial / cerebrovascular disease</text>
+      <rect class="pb" x="20" y="452" width="230" height="36" rx="8"/><text class="pb-t" x="34" y="474">Venous thromboembolism (DVT / PE)</text>
+      <rect class="pb" x="20" y="522" width="230" height="36" rx="8"/><text class="pb-t" x="34" y="544">Patient handling &amp; caregiver safety</text>
+      <rect class="pb" x="20" y="592" width="230" height="36" rx="8"/><text class="pb-t" x="34" y="614">Care coordination / hospital workflow</text>
+    </g>
+
+    <!-- therapeutic areas -->
+    <g>
+      <rect class="ta" x="360" y="77" width="250" height="36" rx="8"/><text class="ta-t" x="374" y="99">Joint Replacement (Ortho)</text>
+      <rect class="ta" x="360" y="157" width="250" height="36" rx="8"/><text class="ta-t" x="374" y="179">Trauma &amp; Extremities (Ortho)</text>
+      <rect class="ta" x="360" y="237" width="250" height="36" rx="8"/><text class="ta-t" x="374" y="259">Enabling Tech / Spinal Implants</text>
+      <rect class="ta" x="360" y="317" width="250" height="36" rx="8"/><text class="ta-t" x="374" y="339">Endoscopy &amp; Instruments</text>
+      <rect class="ta" x="360" y="397" width="250" height="36" rx="8"/><text class="ta-t" x="374" y="419">Neuro Cranial</text>
+      <rect class="ta" x="360" y="477" width="250" height="36" rx="8"/><text class="ta-t" x="374" y="499">Vascular</text>
+      <rect class="ta" x="360" y="557" width="250" height="36" rx="8"/><text class="ta-t" x="374" y="579">Medical / Digital</text>
+    </g>
+
+    <!-- products -->
+    <g>
+      <rect class="pr pb" x="710" y="62" width="270" height="38" rx="8"/><text class="pr-t" x="724" y="80">Triathlon / Mako Total &amp; Partial Knee</text><text class="pr-s" x="724" y="94">shipping · Mako 4</text>
+      <rect class="pr pb" x="710" y="117" width="270" height="38" rx="8"/><text class="pr-t" x="724" y="135">Mako Total Hip + Revision</text><text class="pr-s" x="724" y="149">shipping · first-to-market revision</text>
+      <rect class="pr pb" x="710" y="182" width="270" height="38" rx="8"/><text class="pr-t" x="724" y="200">T2 / Gamma nailing, extremities plates</text><text class="pr-s" x="724" y="214">shipping</text>
+      <rect class="pr pb" x="710" y="247" width="270" height="38" rx="8"/><text class="pr-t" x="724" y="265">Mako Spine + Q Guidance</text><text class="pr-s" x="724" y="279">launching · US spinal implants divested</text>
+      <rect class="pr pb" x="710" y="312" width="270" height="38" rx="8"/><text class="pr-t" x="724" y="330">1788 / camera, video, System 9</text><text class="pr-s" x="724" y="344">shipping</text>
+      <rect class="pr pb" x="710" y="377" width="270" height="38" rx="8"/><text class="pr-t" x="724" y="395">Neuroform / coils, Mako Shoulder</text><text class="pr-s" x="724" y="409">shipping / limited release</text>
+      <rect class="pr pb" x="710" y="442" width="270" height="38" rx="8"/><text class="pr-t" x="724" y="460">ClotTriever / FlowTriever (Inari)</text><text class="pr-s" x="724" y="474">acquired 2025</text>
+      <rect class="pr pb" x="710" y="507" width="270" height="38" rx="8"/><text class="pr-t" x="724" y="525">ProCuity beds, stretchers, LIFEPAK</text><text class="pr-s" x="724" y="539">shipping</text>
+      <rect class="pr pb" x="710" y="572" width="270" height="38" rx="8"/><text class="pr-t" x="724" y="590">Vocera, care.ai, SmartHospital</text><text class="pr-s" x="724" y="604">acquired / launched 2026</text>
+    </g>
+  </svg>
+  </div>
+  <div class="legend">
+    <span><i style="background:#fff;border:1px solid #D9CFBE"></i> Clinical / operational problem</span>
+    <span><i style="background:#22262E"></i> Therapeutic / functional area</span>
+    <span><i style="background:#fff;border:1px solid #D9962B"></i> Lead product (status noted)</span>
+  </div>
+  <div class="q"><span class="lab">Nuance to confirm</span><p>This map collapses Stryker's internal business units into nine therapeutic areas for readability. The real org reclassified Spine in Q4 2024 (enabling tech → Other Orthopaedics; interventional spine → Neuro Cranial) and renamed Neurovascular to Vascular after the Inari deal. <strong>Question for the team:</strong> do we map to the official business-unit names or to how surgeons actually think about the problem? They don't always agree.</p></div>
+</section>
+
+<!-- ======================= BUSINESS LINES ======================= -->
+<section id="lines">
+  <p class="eyebrow">The portfolio</p>
+  <h2 class="sec-h">Two segments, one operating-efficiency thesis</h2>
+  <p class="lead">Stryker reorganized into two reportable segments and dropped "Spine" from the Orthopaedics name in its 2024 reporting. Roughly 59% of revenue sits in MedSurg &amp; Neurotechnology, ~41% in Orthopaedics. About 74% of sales are in the United States.</p>
+
+  <div class="seg-bar">
+    <div style="width:59%;background:var(--char)">MedSurg &amp; Neurotechnology · ~59%</div>
+    <div style="width:41%;background:var(--gold)">Orthopaedics · ~41%</div>
+  </div>
+
+  <div class="grid g2">
+    <div class="card dark">
+      <h3>MedSurg &amp; Neurotechnology</h3>
+      <p style="font-size:14.5px;color:var(--on-char-soft)">The capital-equipment and disposables engine. Five businesses, all oriented toward OR throughput, visualization, and provider workflow.</p>
+      <ul class="clean" style="font-size:14px">
+        <li><b style="color:#fff">Instruments</b> — surgical power tools, <a class="gl" href="#g-navigation">navigation</a>, safety tech (e.g., System&nbsp;9, <a class="gl" href="#g-neptune">Neptune</a> waste management).</li>
+        <li><b style="color:#fff">Endoscopy</b> — cameras, video, <a class="gl" href="#g-endoscopy">endoscopic</a> &amp; communications systems (1788 platform).</li>
+        <li><b style="color:#fff">Medical</b> — <a class="gl" href="#g-procuity">ProCuity</a> beds, stretchers, <a class="gl" href="#g-lifepak">LIFEPAK</a> defibrillators, emergency care.</li>
+        <li><b style="color:#fff">Vascular</b> — renamed from Neurovascular; now includes <a class="gl" href="#g-inari">Inari</a>'s peripheral <a class="gl" href="#g-vte">VTE</a> portfolio.</li>
+        <li><b style="color:#fff">Neuro Cranial</b> — neurovascular coils/stents, <a class="gl" href="#g-cmf">CMF</a>, interventional spine.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Orthopaedics</h3>
+      <p style="font-size:14.5px;color:var(--ink-soft)">The implant franchise, increasingly sold as a system anchored by the Mako robot. This is the razor-and-blade story.</p>
+      <ul class="clean" style="font-size:14px">
+        <li><b>Knees</b> — <a class="gl" href="#g-triathlon">Triathlon</a> family + <a class="gl" href="#g-mako">Mako</a> Total &amp; Partial Knee. New <a class="gl" href="#g-triathlon-gold">Triathlon Gold</a> for metal sensitivity.</li>
+        <li><b>Hips</b> — Mako Total Hip, now with first-to-market robotic <a class="gl" href="#g-revision">revision</a> capability.</li>
+        <li><b>Trauma &amp; Extremities</b> — nailing systems, plating, <a class="gl" href="#g-cmf">CMF</a>, foot &amp; ankle, upper-extremity.</li>
+        <li><b>Other Orthopaedics</b> — <a class="gl" href="#g-enabling">enabling technologies</a>, Mako capital, Spinal Implants (US business divested 2025).</li>
+      </ul>
+      <div class="note" style="margin-top:14px"><span class="lab">Why it matters</span>Mako isn't just a product — it's the pull-through mechanism. A placed robot favors Stryker implants for years and locks in service revenue. The capital sale is the door; the disposables and implants are the annuity.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PIPELINE ======================= -->
+<section id="pipeline">
+  <p class="eyebrow">In development &amp; limited release</p>
+  <h2 class="sec-h">What's shipping next — with an efficiency and adoption lens</h2>
+  <p class="lead">For a device company, "pipeline" means new applications, next-gen capital, and limited market releases moving toward full launch. The throughline across the current wave: do more procedures, in more settings, with the same robot.</p>
+  <div class="grid g2">
+    <div class="card"><span class="tag">Limited release → full launch</span><h3>Mako Spine</h3><p style="font-size:14.5px">Robotic guidance for spinal procedures using <a class="gl" href="#g-accustop">AccuStop</a> haptics and <a class="gl" href="#g-qguidance">Q Guidance</a>. First cases late 2024; full US commercial launch targeted for H2 2025. Extends the Mako TAM beyond hip/knee.</p></div>
+    <div class="card"><span class="tag">Limited release</span><h3>Mako Shoulder</h3><p style="font-size:14.5px">Robotic-assisted shoulder arthroplasty (incl. reverse procedures), with 3D planning. First cases late 2024; remained in limited release through 2025 with broadening at AAOS 2026.</p></div>
+    <div class="card"><span class="tag">New platform</span><h3>Mako 4 &amp; Mako RPS</h3><p style="font-size:14.5px">Mako&nbsp;4 is the 4th-gen single platform across hip/knee/partial-knee/spine. Mako RPS is a newer system aimed at surgeons who currently do <em>manual</em> cases and don't use the arm-based robot — a deliberate move to grow the funnel, in limited release into 2026.</p></div>
+    <div class="card"><span class="tag">New implant</span><h3>Triathlon Gold</h3><p style="font-size:14.5px">A 3D-printed <a class="gl" href="#g-femoral">femoral component</a> with a <a class="gl" href="#g-tin">titanium-nitride</a> coating for patients with metal sensitivities, offered cemented or cementless. Addresses a real objection (nickel allergy) that previously pushed cases to competitors.</p></div>
+    <div class="card"><span class="tag">Acquired Aug 2024</span><h3>Vertos Medical</h3><p style="font-size:14.5px">Adds <a class="gl" href="#g-mild">mild</a> (minimally invasive lumbar decompression) — an outpatient interventional option for <a class="gl" href="#g-lss">lumbar spinal stenosis</a>. Slots into the interventional / Neuro Cranial story.</p></div>
+    <div class="card"><span class="tag">Acquired Aug 2024 · launched 2026</span><h3>care.ai &amp; SmartHospital Platform</h3><p style="font-size:14.5px">Ambient/AI room monitoring (care.ai) feeding Stryker's <a class="gl" href="#g-smarthospital">SmartHospital Platform</a> (launched March 2026). The digital-health and recurring-software bet, layered onto <a class="gl" href="#g-vocera">Vocera</a> communications.</p></div>
+  </div>
+  <div class="q"><span class="lab">Follow-up edit</span><p>I've labeled Mako Spine as "full launch H2 2025." That came from the AAOS 2025 announcement. <strong>Before this goes to the field, confirm</strong> whether the full US commercial launch actually completed on schedule, and pull current installed-base numbers for Spine and Shoulder specifically — the 1.5M+ figure is all-Mako and over-states the new applications.</p></div>
+</section>
+
+<!-- ======================= HIGHEST VOLUME ======================= -->
+<section id="volume">
+  <p class="eyebrow">Flagships</p>
+  <h2 class="sec-h">Highest-volume products: composition, substitutes, complements</h2>
+  <p class="lead">Volume in orthopaedics concentrates in knees and hips, both increasingly attached to Mako. Here's the mechanical reality and the competitive field a rep is selling against.</p>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Product</th><th>What it is (mechanical composition)</th><th>Substitutes</th><th>Complements</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong><a class="gl" href="#g-triathlon">Triathlon</a> knee</strong><br><small>highest-volume implant franchise</small></td>
+        <td><a class="gl" href="#g-cocr">Cobalt-chrome</a> femoral component, titanium tibial baseplate, <a class="gl" href="#g-uhmwpe">UHMWPE</a> (often <a class="gl" href="#g-xlpe">highly-crosslinked PE</a>) bearing insert. Single-radius design for kinematic stability.</td>
+        <td><span class="pill sub">Zimmer Persona</span><span class="pill sub">J&amp;J Attune</span><span class="pill sub">S&amp;N Legion</span></td>
+        <td><span class="pill comp">Mako Total Knee</span><span class="pill comp">Triathlon Gold (metal sensitivity)</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="gl" href="#g-mako">Mako</a> robotic system</strong><br><small>the pull-through engine</small></td>
+        <td>Robotic arm with <a class="gl" href="#g-haptic">haptic</a> boundaries, driven by a pre-op <a class="gl" href="#g-ct">CT</a>-based 3D plan; <a class="gl" href="#g-cms-capital">capital equipment</a>, ASP roughly $0.5M–$1M+.</td>
+        <td><span class="pill sub">Zimmer ROSA</span><span class="pill sub">J&amp;J VELYS</span><span class="pill sub">S&amp;N CORI</span><span class="pill sub">Manual instrumentation</span></td>
+        <td><span class="pill comp">Triathlon / hip implants</span><span class="pill comp">Q Guidance</span><span class="pill comp">Service contract</span></td>
+      </tr>
+      <tr>
+        <td><strong>Hip implants</strong><br><small>Mako Total Hip + revision</small></td>
+        <td>Titanium stem with <a class="gl" href="#g-osseo">porous/osseointegrative</a> coating, <a class="gl" href="#g-cocr">CoCr</a> or <a class="gl" href="#g-ceramic">ceramic</a> head, <a class="gl" href="#g-xlpe">XLPE</a> or ceramic liner in a titanium shell.</td>
+        <td><span class="pill sub">Zimmer Avenir/G7</span><span class="pill sub">J&amp;J Actis/Pinnacle</span></td>
+        <td><span class="pill comp">Mako Total Hip</span><span class="pill comp">Revision augment system</span></td>
+      </tr>
+      <tr>
+        <td><strong>1788 Endoscopy</strong><br><small>visualization platform</small></td>
+        <td>4K/fluorescence camera head, light source, image management; integrates with OR video and <a class="gl" href="#g-icg">ICG</a> fluorescence imaging.</td>
+        <td><span class="pill sub">Olympus</span><span class="pill sub">Karl Storz</span><span class="pill sub">Medtronic</span></td>
+        <td><span class="pill comp">Instruments / System 9</span><span class="pill comp">Neptune waste mgmt</span></td>
+      </tr>
+      <tr>
+        <td><strong><a class="gl" href="#g-inari">Inari</a> thrombectomy</strong><br><small>FlowTriever / ClotTriever</small></td>
+        <td>Large-bore <a class="gl" href="#g-thrombectomy">mechanical thrombectomy</a> catheters that aspirate/extract clot — mechanical clot removal, no <a class="gl" href="#g-tpa">thrombolytic drug</a> required.</td>
+        <td><span class="pill sub">Penumbra</span><span class="pill sub">Boston Scientific</span><span class="pill sub">Catheter-directed lysis</span></td>
+        <td><span class="pill comp">Neuro Cranial neurovascular</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><span class="lab">Composition footnote</span>Exact alloy/polymer specs vary by SKU and indication. The descriptions above are the standard arthroplasty material classes; for a given case, pull the specific implant's IFU rather than quoting these as the spec.</div>
+</section>
+
+<!-- ======================= UPTAKE ======================= -->
+<section id="uptake">
+  <p class="eyebrow">Adoption</p>
+  <h2 class="sec-h">Uptake by provider — and what each one actually cares about</h2>
+  <p class="lead">Penetration is real but uneven: at year-end 2024, an estimated ~45% of global knee implant procedures and ~20% of hip procedures involving Stryker were done with Mako. The sales points differ sharply by who's buying.</p>
+
+  <div class="grid g3">
+    <div class="card"><span class="tag">Early / heavy adopters</span><h4>High-volume academic &amp; ortho-specialty hospitals</h4><p style="font-size:14px">Already on Mako; the conversation is about new applications (spine, shoulder, revision) and throughput. <b>They care about:</b> case volume per robot, OR time, surgeon recruitment, and being seen as the regional center of excellence.</p></div>
+    <div class="card"><span class="tag">Fastest-growing</span><h4>Ambulatory surgery centers (<a class="gl" href="#g-asc">ASCs</a>)</h4><p style="font-size:14px">As primary joints migrate outpatient, ASCs want predictable, fast, low-complication cases. <b>They care about:</b> footprint/cost of the robot, turnover time, implant cost per case, and same-day discharge rates.</p></div>
+    <div class="card"><span class="tag">Slowest / most price-sensitive</span><h4>Community hospitals &amp; manual surgeons</h4><p style="font-size:14px">May not justify a $0.5M–$1M+ robot on volume alone — the target for the lower-friction Mako RPS. <b>They care about:</b> capital justification, learning curve, and whether the robot pays for itself given no separate reimbursement.</p></div>
+  </div>
+
+  <h3 style="margin:30px 0 10px;font-size:22px">The sales points doctors actually raise</h3>
+  <div class="grid g2">
+    <div class="card"><h4>What surgeons push on</h4><ul class="clean" style="font-size:14px"><li><b>Precision &amp; reproducibility</b> — CT-based plan + haptics for consistent component placement.</li><li><b>Learning curve &amp; workflow</b> — how many cases to proficiency; does it slow me down at first?</li><li><b>Outcomes evidence</b> — do the data show fewer revisions, better alignment, faster recovery?</li><li><b>Ergonomics</b> — less physical strain over a long OR day.</li></ul></div>
+    <div class="card"><h4>What administrators push on</h4><ul class="clean" style="font-size:14px"><li><b>Capital ROI</b> — no incremental reimbursement, so the robot must pay via volume, length-of-stay, and complication reduction.</li><li><b>Pull-through economics</b> — implant + service annuity over the robot's life.</li><li><b>Site-of-service fit</b> — does it work in our ASC build-out?</li><li><b>Bundled-payment risk</b> — does it help us hit <a class="gl" href="#g-team">TEAM</a> targets and <a class="gl" href="#g-prom">PROM</a> benchmarks?</li></ul></div>
+  </div>
+  <div class="q"><span class="lab">Accuracy flag — do not overstate</span><p>The clinical literature on robotic arthroplasty shows strong <em>radiographic/alignment precision</em> and short-term recovery signals, but long-term, high-grade evidence that Mako reduces <em>revision rates</em> versus manual is still maturing. <strong>Do not</strong> claim a hard revision-rate reduction in the field without the specific citation. Sell precision and workflow, not unproven survivorship.</p></div>
+</section>
+
+<!-- ======================= TAM & QOL ======================= -->
+<section id="tam">
+  <p class="eyebrow">Market &amp; impact</p>
+  <h2 class="sec-h">Total addressable market &amp; quality-of-life impact</h2>
+  <div class="stat-row">
+    <div class="stat-box"><div class="n">~$2.0B</div><div class="l">Ortho surgical-robotics market, 2025 (→ ~$8.3B by 2034, ~17% CAGR)</div></div>
+    <div class="stat-box"><div class="n">~$4.0B</div><div class="l">Neurovascular market TAM (high-single-digit CAGR)</div></div>
+    <div class="stat-box"><div class="n">~$4.9B</div><div class="l">Inari purchase price — entry into peripheral VTE</div></div>
+    <div class="stat-box"><div class="n">~$25.1B</div><div class="l">Stryker FY2025 net sales (all segments)</div></div>
+  </div>
+
+  <div class="tbl-wrap">
+  <table>
+    <thead><tr><th>Franchise</th><th>TAM signal</th><th>Quality-of-life / clinical impact</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Joint replacement</strong></td><td>Driven by aging demographics &amp; <a class="gl" href="#g-oa">osteoarthritis</a> prevalence; hip/knee are the most common Medicare surgeries.</td><td>High and well-established: pain relief and restored mobility are among the most reliably life-changing elective procedures in medicine.</td></tr>
+      <tr><td><strong>Mako robotics</strong></td><td>~$2B market growing ~17%/yr; penetration still has runway, especially internationally.</td><td>Indirect — improves precision/consistency of the implant procedure rather than treating disease itself.</td></tr>
+      <tr><td><strong>Vascular / Inari</strong></td><td>Fast-growing VTE segment; <a class="gl" href="#g-pe">pulmonary embolism</a> &amp; <a class="gl" href="#g-dvt">DVT</a> are large, under-treated.</td><td>Potentially high: mechanical clot removal can avoid bleeding risk of thrombolytics and address life-threatening PE.</td></tr>
+      <tr><td><strong>Neuro Cranial / stroke</strong></td><td>~$4B neurovascular TAM; <a class="gl" href="#g-ais">ischemic stroke</a> a major global burden.</td><td>High when time-to-treatment is met; neuro-interventional care is among the highest-stakes acute settings.</td></tr>
+      <tr><td><strong>Medical / SmartHospital</strong></td><td>Large but fragmented hospital-capital &amp; software market; recurring-revenue upside.</td><td>Operational — safety (falls, sepsis monitoring) and workflow rather than direct therapy.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><span class="lab">Probability-of-success framing</span>For a device company, "probability of success" is less about a binary trial readout and more about <strong>commercial adoption risk</strong>: regulatory clearance is usually the lower hurdle; the real uncertainty is installed-base growth, competitive pricing (e.g., VELYS undercutting), and whether bundled payment compresses the economics that justify the capital.</div>
+</section>
+
+<!-- ======================= PAYER ======================= -->
+<section id="payer">
+  <p class="eyebrow">Market access</p>
+  <h2 class="sec-h">Insurance coverage &amp; the hurdles before a case gets paid</h2>
+  <p class="lead">This is the most misunderstood part of the device story, so it gets the most space. The implant and the robot are almost never billed separately to a payer — they're absorbed into the facility's bundled payment for the procedure.</p>
+
+  <div class="grid g2">
+    <div class="card dark">
+      <h3>How payment actually flows</h3>
+      <ul class="clean" style="font-size:14px"><li>Inpatient Medicare → paid by <a class="gl" href="#g-drg">MS-DRG</a> (e.g., DRG 469/470 for major joint replacement). The implant cost comes out of that fixed payment.</li><li>Outpatient/ASC → paid via <a class="gl" href="#g-apc">APC</a>/facility rate under HCPCS C-codes.</li><li><b style="color:#fff">There is no separate CPT or add-on code for robotic assistance or navigation.</b> The robot generates no incremental revenue per case — its value is operational.</li></ul>
+    </div>
+    <div class="card">
+      <h3>The coverage hurdles</h3>
+      <ul class="clean" style="font-size:14px"><li><b>Medical necessity / prior auth</b> — the <em>procedure</em> must be justified (failed conservative care, imaging, function).</li><li><b><a class="gl" href="#g-ipo">Inpatient-Only list</a> &amp; <a class="gl" href="#g-twomidnight">Two-Midnight Rule</a></b> — TKA came off the IPO list in 2018, THA in 2020. Billing an "uncomplicated" case as inpatient is now a recoupment risk.</li><li><b>Site-of-service policies</b> — commercial payers increasingly deny inpatient admission for routine joints, forcing outpatient/ASC.</li><li><b><a class="gl" href="#g-ncci">NCCI</a> bundling edits &amp; global periods</b> — coding errors get claims denied or downcoded.</li></ul>
+    </div>
+  </div>
+  <div class="note" style="border-left-color:var(--rust)"><span class="lab" style="color:var(--rust)">The big 2026 shift</span>The mandatory <a class="gl" href="#g-team">TEAM</a> bundled-payment model began January 1, 2026, putting ~741 hospitals across 188 metro areas at financial risk for the full 30-day episode of lower-extremity joint replacement, spinal fusion, and hip-fracture care. It pulls forward the same incentive Mako already serves — fewer complications, shorter stays — but also squeezes per-case spend, which is a double-edged sword for premium-priced implants and capital.</div>
+  <div class="q"><span class="lab">Nuance to pressure-test</span><p>CMS has cited average total joint episode spend roughly in the $16,500–$33,000 range, and a single TKA can carry $11,000–$30,000 in allowed charges depending on site and payer. <strong>Question:</strong> should the field lead with "Mako helps you win under TEAM" (operational efficiency) or avoid the bundled-payment topic entirely with capital-sensitive administrators? This is a positioning decision, not a fact — flagging for sales leadership.</p></div>
+</section>
+
+<!-- ======================= ACCESS ======================= -->
+<section id="access">
+  <p class="eyebrow">Geography</p>
+  <h2 class="sec-h">Accessibility — US vs. international</h2>
+  <div class="grid g2">
+    <div class="card"><span class="tag">~74% of sales</span><h3>United States</h3><p style="font-size:14.5px">The core market and where Mako is most deeply penetrated. Access is shaped less by "is it covered" and more by site-of-service migration (hospital → ASC), bundled payment, and the capital-budget cycle. Distribution is largely direct sales force.</p></div>
+    <div class="card"><span class="tag">Growth runway</span><h3>International</h3><p style="font-size:14.5px">Mako has been used in 45+ countries and 1.5M+ procedures globally, but penetration outside the US is lower — a key tailwind. Access varies by national reimbursement systems, tender-based purchasing, and local regulatory clearance (CE mark in Europe, plus country-specific bodies). Europe and Asia-Pacific are stated priority expansion markets.</p></div>
+  </div>
+  <div class="q"><span class="lab">Follow-up edit</span><p>The ~74% US figure is from a third-party analysis, not pulled directly from the 10-K geographic note. <strong>Replace with the exact US / International / "Other countries" split from the most recent annual filing before publishing.</strong> Also confirm which specific markets the new Mako applications are cleared in — clearance ≠ commercial availability everywhere.</p></div>
+</section>
+
+<!-- ======================= HEADWINDS / TAILWINDS ======================= -->
+<section id="winds">
+  <p class="eyebrow">The honest weather report</p>
+  <h2 class="sec-h">Scary headwinds &amp; exciting tailwinds</h2>
+  <div class="ht">
+    <div class="ht-col head">
+      <h3>⚠ Headwinds</h3>
+      <div class="ht-item head"><b>Bundled payment compression (TEAM)</b><p>Mandatory 30-day episode risk from Jan 2026 pressures per-case spend and complicates premium implant/capital justification.</p></div>
+      <div class="ht-item head"><b>No reimbursement for the robot</b><p>Robotic assistance carries no separate payment code — the entire ROI rests on operational savings that skeptical CFOs may discount.</p></div>
+      <div class="ht-item head"><b>Price competition in robotics</b><p>J&amp;J's VELYS has been positioned well below Mako's price; cheaper, image-free systems lower the barrier for switchers.</p></div>
+      <div class="ht-item head"><b>ASC margin &amp; capital pressure</b><p>Outpatient migration shifts purchasing power to cost-sensitive ASCs with tighter capital budgets and less tolerance for $1M robots.</p></div>
+      <div class="ht-item head"><b>Tariffs &amp; supply costs</b><p>Stryker flagged a net tariff impact of roughly $175M for 2025 — a real input-cost headwind on hardware.</p></div>
+      <div class="ht-item head"><b>Pricing &amp; PROM small-numbers risk</b><p>Modestly negative pricing on implants; hospitals report mandatory patient-reported outcomes where low case counts can swing scores.</p></div>
+    </div>
+    <div class="ht-col tail">
+      <h3>↗ Tailwinds</h3>
+      <div class="ht-item"><b>Demographics &amp; OA prevalence</b><p>An aging population with rising osteoarthritis steadily expands the joint-replacement pool — a durable secular driver.</p></div>
+      <div class="ht-item"><b>Razor-and-blade installed base</b><p>1.5M+ Mako procedures across 45+ countries; each placed robot pulls through implants and a service annuity for years.</p></div>
+      <div class="ht-item"><b>New applications expand the TAM</b><p>Mako Spine, Shoulder, hip revision and the Mako RPS open whole new procedure categories on the same platform.</p></div>
+      <div class="ht-item"><b>Efficiency story fits value-based care</b><p>If Mako genuinely cuts length-of-stay and complications, it becomes the answer to TEAM rather than a victim of it.</p></div>
+      <div class="ht-item"><b>Inari + Vascular high-growth entry</b><p>Roughly $4.9B bet opens the fast-growing peripheral VTE segment, diversifying away from elective-procedure cyclicality.</p></div>
+      <div class="ht-item"><b>International &amp; digital runway</b><p>Lower ex-US robot penetration plus the SmartHospital/care.ai recurring-software layer offer growth beyond hardware.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= GLOSSARY ======================= -->
+<section id="glossary">
+  <p class="eyebrow">Reference</p>
+  <h2 class="sec-h">Searchable glossary</h2>
+  <p class="lead">Every linked term in this brief points here. Search by word, or filter by type — product, sales/cost, clinical/biological, or regulatory/payer. Each entry notes the sales angle and, where relevant, the biological impact.</p>
+
+  <div class="gl-search">
+    <input type="text" id="glq" placeholder="Search terms… (e.g. haptic, DRG, osseointegration)" aria-label="Search glossary">
+    <button class="gl-filter active" data-cat="all">All</button>
+    <button class="gl-filter" data-cat="prod">Product</button>
+    <button class="gl-filter" data-cat="sales">Sales / cost</button>
+    <button class="gl-filter" data-cat="clin">Clinical / bio</button>
+    <button class="gl-filter" data-cat="reg">Regulatory / payer</button>
+  </div>
+  <div class="gl-count" id="glcount"></div>
+  <div id="gllist">
+    <!-- entries: data-term used for search; data-cat for filter -->
+    <div class="gl-entry" id="g-mako" data-cat="prod" data-term="mako smartrobotics robotic arm"><h4>Mako (SmartRobotics) <span class="cat cat-prod">Product</span></h4><p>Stryker's robotic-arm-assisted surgery platform. Uses a pre-operative CT to build a 3D plan, then constrains the surgeon's instrument within haptic boundaries during the cut.</p><p class="biz"><b>Sales angle:</b> the anchor of the orthopaedic franchise — capital sale today, implant &amp; service annuity for years. <b>Bio impact:</b> none directly; it improves the precision of the implant procedure.</p></div>
+
+    <div class="gl-entry" id="g-mako4" data-cat="prod" data-term="mako 4 fourth generation platform"><h4>Mako 4 / Mako RPS <span class="cat cat-prod">Product</span></h4><p>Mako 4 is the fourth-generation single platform spanning hip, knee, partial knee and spine. Mako RPS is a newer system aimed at manual surgeons who don't use the arm-based robot.</p><p class="biz"><b>Sales angle:</b> RPS widens the funnel to lower-volume and price-sensitive accounts without cannibalizing the premium robot.</p></div>
+
+    <div class="gl-entry" id="g-triathlon" data-cat="prod" data-term="triathlon knee implant single radius"><h4>Triathlon <span class="cat cat-prod">Product</span></h4><p>Stryker's flagship total-knee implant system, built around a single-radius femoral design intended for kinematic stability through the range of motion.</p><p class="biz"><b>Sales angle:</b> highest-volume implant; the blade to Mako's razor. <b>Bio impact:</b> restores load-bearing joint mechanics, relieving osteoarthritis pain.</p></div>
+
+    <div class="gl-entry" id="g-triathlon-gold" data-cat="prod" data-term="triathlon gold titanium nitride metal sensitivity"><h4>Triathlon Gold <span class="cat cat-prod">Product</span></h4><p>A 3D-printed femoral component with a titanium-nitride coating for patients with metal sensitivities, available cemented or cementless.</p><p class="biz"><b>Sales angle:</b> neutralizes the "nickel allergy" objection that historically sent cases to competitors.</p></div>
+
+    <div class="gl-entry" id="g-inari" data-cat="prod" data-term="inari medical flowtriever clottriever thrombectomy vascular"><h4>Inari Medical <span class="cat cat-prod">Product</span></h4><p>Acquired in Feb 2025 (~$4.9B). Maker of FlowTriever and ClotTriever mechanical thrombectomy devices for venous thromboembolism. Now part of the Vascular business.</p><p class="biz"><b>Sales angle:</b> entry into a fast-growing, less elective-cyclical segment. <b>Bio impact:</b> physically removes blood clots, potentially avoiding thrombolytic bleeding risk.</p></div>
+
+    <div class="gl-entry" id="g-procuity" data-cat="prod" data-term="procuity hospital bed medical"><h4>ProCuity <span class="cat cat-prod">Product</span></h4><p>Stryker's connected/wireless hospital bed line within the Medical business, aimed at fall prevention and caregiver workflow.</p><p class="biz"><b>Sales angle:</b> safety + labor-efficiency story for hospital operations buyers.</p></div>
+
+    <div class="gl-entry" id="g-lifepak" data-cat="prod" data-term="lifepak defibrillator emergency medical"><h4>LIFEPAK <span class="cat cat-prod">Product</span></h4><p>Defibrillator/monitor line for emergency and acute care, part of the Medical business.</p><p class="biz"><b>Sales angle:</b> trusted brand in EMS and code-cart settings; recurring consumables/pads.</p></div>
+
+    <div class="gl-entry" id="g-vocera" data-cat="prod" data-term="vocera communication badge care coordination"><h4>Vocera <span class="cat cat-prod">Product</span></h4><p>Clinical communication and workflow platform (wearable badges, software) acquired by Stryker, now part of the digital/Medical layer.</p><p class="biz"><b>Sales angle:</b> recurring software revenue and a hook into hospital IT.</p></div>
+
+    <div class="gl-entry" id="g-smarthospital" data-cat="prod" data-term="smarthospital platform digital health care.ai"><h4>SmartHospital Platform <span class="cat cat-prod">Product</span></h4><p>Digital-health platform launched March 2026, integrating ambient AI room monitoring (from care.ai) with Stryker's communication and workflow tools.</p><p class="biz"><b>Sales angle:</b> shifts mix toward recurring software; differentiates on operations, not just devices.</p></div>
+
+    <div class="gl-entry" id="g-mild" data-cat="prod" data-term="mild minimally invasive lumbar decompression vertos"><h4>mild (Vertos) <span class="cat cat-prod">Product</span></h4><p>Minimally invasive lumbar decompression — an outpatient interventional procedure for lumbar spinal stenosis, gained via the Vertos Medical acquisition.</p><p class="biz"><b>Sales angle:</b> outpatient/ASC-friendly interventional option. <b>Bio impact:</b> removes tissue compressing the spinal canal to relieve nerve symptoms.</p></div>
+
+    <div class="gl-entry" id="g-neptune" data-cat="prod" data-term="neptune waste management surgical fluid"><h4>Neptune <span class="cat cat-prod">Product</span></h4><p>Surgical waste-fluid management system within Instruments.</p><p class="biz"><b>Sales angle:</b> disposables annuity plus OR safety/efficiency.</p></div>
+
+    <div class="gl-entry" id="g-endoscopy" data-cat="prod" data-term="endoscopy 1788 camera visualization"><h4>Endoscopy / 1788 <span class="cat cat-prod">Product</span></h4><p>Minimally invasive visualization business; the 1788 platform provides 4K and fluorescence imaging for the OR.</p><p class="biz"><b>Sales angle:</b> capital + recurring scopes/consumables; integrates with ICG fluorescence.</p></div>
+
+    <div class="gl-entry" id="g-qguidance" data-cat="prod" data-term="q guidance navigation system spine"><h4>Q Guidance <span class="cat cat-prod">Product</span></h4><p>Stryker's surgical guidance/navigation system, integrated with Mako 4 and used in spine procedures.</p><p class="biz"><b>Sales angle:</b> precision and planning value-add layered on capital.</p></div>
+
+    <div class="gl-entry" id="g-accustop" data-cat="prod" data-term="accustop haptic boundary mako spine"><h4>AccuStop <span class="cat cat-prod">Product</span></h4><p>The haptic technology in Mako Spine that holds the robotic arm within a pre-planned trajectory boundary.</p><p class="biz"><b>Sales angle:</b> tangible "the robot keeps you on plan" demonstration point.</p></div>
+
+    <div class="gl-entry" id="g-enabling" data-cat="prod" data-term="enabling technologies navigation robotics other orthopaedics"><h4>Enabling Technologies <span class="cat cat-prod">Product</span></h4><p>Umbrella for navigation, robotics and related capital reclassified into Other Orthopaedics in the 2024 reorganization.</p><p class="biz"><b>Sales angle:</b> the "platform" layer that differentiates the implant sale.</p></div>
+
+    <div class="gl-entry" id="g-mako-shoulder" data-cat="prod" data-term="mako shoulder reverse arthroplasty"><h4>Mako Shoulder <span class="cat cat-prod">Product</span></h4><p>Robotic-assisted shoulder arthroplasty application, including reverse procedures, in limited market release.</p><p class="biz"><b>Sales angle:</b> new procedure category on an installed robot — incremental pull-through.</p></div>
+
+    <!-- SALES / COST -->
+    <div class="gl-entry" id="g-cms-capital" data-cat="sales" data-term="capital equipment asp average selling price robot cost"><h4>Capital equipment / ASP <span class="cat cat-sales">Sales / cost</span></h4><p>"Capital" is the large one-time purchase (the robot itself); ASP is its average selling price — for ortho robots roughly $0.5M to over $1M in the US.</p><p class="biz"><b>Sales angle:</b> the capital sale opens the account; the recurring implants/service are where the margin compounds.</p></div>
+
+    <div class="gl-entry" id="g-pullthrough" data-cat="sales" data-term="pull through razor and blade recurring revenue annuity"><h4>Pull-through (razor-and-blade) <span class="cat cat-sales">Sales / cost</span></h4><p>The model where a placed capital device drives recurring sales of the implants, disposables and service that go with it.</p><p class="biz"><b>Sales angle:</b> justifies discounting the robot to lock in years of higher-margin recurring revenue.</p></div>
+
+    <div class="gl-entry" id="g-tam" data-cat="sales" data-term="total addressable market tam"><h4>TAM (Total Addressable Market) <span class="cat cat-sales">Sales / cost</span></h4><p>The total revenue opportunity if a product captured 100% of its relevant market.</p><p class="biz"><b>Sales angle:</b> used to size new applications (e.g., Mako Spine expands TAM beyond hip/knee).</p></div>
+
+    <div class="gl-entry" id="g-revision" data-cat="sales" data-term="revision surgery redo arthroplasty"><h4>Revision <span class="cat cat-clin">Clinical / bio</span></h4><p>A second surgery to replace or repair a previously implanted joint that has failed, worn, or loosened. Mako now offers a first-to-market robotic hip-revision capability.</p><p class="biz"><b>Sales angle:</b> revisions are complex and higher-value; robotic guidance is a differentiator. <b>Bio impact:</b> restores function after implant failure.</p></div>
+
+    <!-- REGULATORY / PAYER -->
+    <div class="gl-entry" id="g-510k" data-cat="reg" data-term="510k premarket notification fda clearance"><h4>510(k) <span class="cat cat-reg">Regulatory / payer</span></h4><p>An FDA premarket notification pathway showing a device is "substantially equivalent" to an already-marketed one. Faster than full PMA approval; results in "clearance," not "approval."</p><p class="biz"><b>Sales angle:</b> why most device line-extensions reach market quickly without pharma-scale trials.</p></div>
+
+    <div class="gl-entry" id="g-pma" data-cat="reg" data-term="pma premarket approval fda high risk device"><h4>PMA <span class="cat cat-reg">Regulatory / payer</span></h4><p>Premarket Approval — the FDA's most stringent pathway, for higher-risk (Class III) devices, requiring clinical evidence of safety and effectiveness.</p><p class="biz"><b>Sales angle:</b> a PMA is a higher barrier to entry and can be a competitive moat.</p></div>
+
+    <div class="gl-entry" id="g-drg" data-cat="reg" data-term="drg ms-drg diagnosis related group bundled inpatient payment 469 470"><h4>MS-DRG <span class="cat cat-reg">Regulatory / payer</span></h4><p>Medicare Severity Diagnosis-Related Group — the fixed inpatient payment a hospital receives for a given case type (e.g., DRG 469/470 for major joint replacement). The implant is paid out of this fixed amount.</p><p class="biz"><b>Sales angle:</b> explains why a pricier implant directly squeezes hospital margin — there's no extra reimbursement for it.</p></div>
+
+    <div class="gl-entry" id="g-apc" data-cat="reg" data-term="apc ambulatory payment classification outpatient facility"><h4>APC <span class="cat cat-reg">Regulatory / payer</span></h4><p>Ambulatory Payment Classification — the outpatient/facility payment system that pays for procedures done in hospital outpatient departments and, via related rates, ASCs.</p><p class="biz"><b>Sales angle:</b> the payment context as joints migrate out of the inpatient setting.</p></div>
+
+    <div class="gl-entry" id="g-ipo" data-cat="reg" data-term="inpatient only list ipo cms tka tha"><h4>Inpatient-Only (IPO) list <span class="cat cat-reg">Regulatory / payer</span></h4><p>CMS list of procedures Medicare will only pay for as inpatient. Total knee (27447) was removed in 2018 and total hip (27130) in 2020, enabling outpatient/ASC joint replacement.</p><p class="biz"><b>Sales angle:</b> the regulatory trigger behind the entire site-of-service migration to ASCs.</p></div>
+
+    <div class="gl-entry" id="g-twomidnight" data-cat="reg" data-term="two midnight rule inpatient admission medicare"><h4>Two-Midnight Rule <span class="cat cat-reg">Regulatory / payer</span></h4><p>Medicare guidance that inpatient admission is appropriate only when care is expected to span two midnights; otherwise the case should be outpatient.</p><p class="biz"><b>Sales angle:</b> billing uncomplicated joints as inpatient is now a recoupment risk — pushes cases outpatient.</p></div>
+
+    <div class="gl-entry" id="g-team" data-cat="reg" data-term="team transforming episode accountability model bundled payment 2026"><h4>TEAM <span class="cat cat-reg">Regulatory / payer</span></h4><p>Transforming Episode Accountability Model — CMS's mandatory bundled-payment program that began Jan 1, 2026, holding selected hospitals at financial risk for the full 30-day episode (incl. joint replacement, spinal fusion, hip-fracture).</p><p class="biz"><b>Sales angle:</b> double-edged — rewards the efficiency Mako claims to deliver, but squeezes per-case spend on premium implants/capital.</p></div>
+
+    <div class="gl-entry" id="g-prom" data-cat="reg" data-term="prom patient reported outcome measures quality"><h4>PROM <span class="cat cat-reg">Regulatory / payer</span></h4><p>Patient-Reported Outcome Measure — standardized patient-reported scores increasingly required for joint-replacement quality reporting and tied to reimbursement.</p><p class="biz"><b>Sales angle:</b> tools that demonstrably improve outcomes help hospitals hit reporting benchmarks.</p></div>
+
+    <div class="gl-entry" id="g-ncci" data-cat="reg" data-term="ncci national correct coding initiative bundling edits"><h4>NCCI edits <span class="cat cat-reg">Regulatory / payer</span></h4><p>National Correct Coding Initiative — CMS rules defining which procedure codes can't be billed together; updated quarterly.</p><p class="biz"><b>Sales angle:</b> a coding/denial reality that affects whether the facility actually gets paid cleanly.</p></div>
+
+    <div class="gl-entry" id="g-asc" data-cat="reg" data-term="asc ambulatory surgery center outpatient site of service"><h4>ASC <span class="cat cat-reg">Regulatory / payer</span></h4><p>Ambulatory Surgery Center — an outpatient facility, increasingly where primary joint replacements are performed.</p><p class="biz"><b>Sales angle:</b> the fastest-growing channel; demands smaller footprint, lower cost, fast turnover.</p></div>
+
+    <!-- CLINICAL / BIO -->
+    <div class="gl-entry" id="g-oa" data-cat="clin" data-term="osteoarthritis joint degeneration cartilage"><h4>Osteoarthritis (OA) <span class="cat cat-clin">Clinical / bio</span></h4><p>Degenerative joint disease in which cartilage breaks down, causing pain and stiffness — the primary indication driving hip/knee replacement.</p><p class="biz"><b>Bio impact:</b> the underlying disease the implant treats. <b>Sales angle:</b> aging demographics steadily expand this pool.</p></div>
+
+    <div class="gl-entry" id="g-haptic" data-cat="clin" data-term="haptic feedback boundary force robotic arm"><h4>Haptic <span class="cat cat-prod">Product</span></h4><p>Force/tactile feedback. Mako uses haptic boundaries to physically resist moving the instrument outside the planned region.</p><p class="biz"><b>Sales angle:</b> the most tangible demo of "the robot keeps the surgeon on plan."</p></div>
+
+    <div class="gl-entry" id="g-ct" data-cat="clin" data-term="ct computed tomography 3d planning imaging"><h4>CT-based planning <span class="cat cat-clin">Clinical / bio</span></h4><p>Mako requires a pre-op CT scan to build a patient-specific 3D model for surgical planning (vs. some image-free competitor systems).</p><p class="biz"><b>Sales angle:</b> precision selling point — but competitors counter that image-free avoids extra scan cost/radiation.</p></div>
+
+    <div class="gl-entry" id="g-osseo" data-cat="clin" data-term="osseointegration porous coating bone ingrowth cementless"><h4>Osseointegration <span class="cat cat-clin">Clinical / bio</span></h4><p>The biological process by which bone grows into a porous-coated implant surface, fixing it without cement (cementless fixation).</p><p class="biz"><b>Bio impact:</b> long-term implant stability. <b>Sales angle:</b> cementless options can speed OR time and suit younger, active patients.</p></div>
+
+    <div class="gl-entry" id="g-femoral" data-cat="clin" data-term="femoral component knee implant"><h4>Femoral component <span class="cat cat-clin">Clinical / bio</span></h4><p>The implant portion that caps the end of the femur in a knee (or articulates as the head in a hip).</p><p class="biz"><b>Sales angle:</b> material/coating choices (e.g., Triathlon Gold) address patient-specific objections.</p></div>
+
+    <div class="gl-entry" id="g-cocr" data-cat="clin" data-term="cobalt chromium cocr alloy implant material"><h4>Cobalt-chromium (CoCr) <span class="cat cat-clin">Clinical / bio</span></h4><p>A hard, wear-resistant alloy used for bearing surfaces like the femoral component.</p><p class="biz"><b>Bio impact:</b> durability; but metal sensitivity in some patients drives demand for alternatives like Triathlon Gold.</p></div>
+
+    <div class="gl-entry" id="g-tin" data-cat="clin" data-term="titanium nitride coating tin metal sensitivity"><h4>Titanium-nitride (TiN) coating <span class="cat cat-clin">Clinical / bio</span></h4><p>A hard ceramic-like coating (the gold-colored surface on Triathlon Gold) that reduces metal-ion exposure for sensitive patients.</p><p class="biz"><b>Sales angle:</b> directly answers the nickel-allergy objection.</p></div>
+
+    <div class="gl-entry" id="g-uhmwpe" data-cat="clin" data-term="uhmwpe polyethylene bearing insert"><h4>UHMWPE <span class="cat cat-clin">Clinical / bio</span></h4><p>Ultra-high-molecular-weight polyethylene — the plastic bearing surface between metal components in a joint implant.</p><p class="biz"><b>Bio impact:</b> wear debris from PE is a historic cause of implant loosening; material advances reduce it.</p></div>
+
+    <div class="gl-entry" id="g-xlpe" data-cat="clin" data-term="highly crosslinked polyethylene xlpe wear"><h4>Highly-crosslinked PE (XLPE) <span class="cat cat-clin">Clinical / bio</span></h4><p>A processed polyethylene engineered for lower wear, extending implant longevity.</p><p class="biz"><b>Sales angle:</b> longevity story, relevant under bundled payment's revision-cost exposure.</p></div>
+
+    <div class="gl-entry" id="g-ceramic" data-cat="clin" data-term="ceramic head hip bearing"><h4>Ceramic bearing <span class="cat cat-clin">Clinical / bio</span></h4><p>A very hard, smooth bearing material (often used for hip heads) prized for low wear.</p><p class="biz"><b>Sales angle:</b> premium option for younger/active hip patients.</p></div>
+
+    <div class="gl-entry" id="g-thrombectomy" data-cat="clin" data-term="mechanical thrombectomy clot removal catheter aspiration"><h4>Mechanical thrombectomy <span class="cat cat-clin">Clinical / bio</span></h4><p>Physically removing a blood clot with a catheter/device (aspiration or extraction), as Inari's FlowTriever/ClotTriever do.</p><p class="biz"><b>Bio impact:</b> restores blood flow; can avoid the bleeding risk of clot-dissolving drugs. <b>Sales angle:</b> core to the Vascular growth thesis.</p></div>
+
+    <div class="gl-entry" id="g-vte" data-cat="clin" data-term="venous thromboembolism vte dvt pe blood clot"><h4>VTE <span class="cat cat-clin">Clinical / bio</span></h4><p>Venous thromboembolism — the umbrella term for deep vein thrombosis (DVT) and pulmonary embolism (PE).</p><p class="biz"><b>Sales angle:</b> large, under-treated market entered via Inari.</p></div>
+
+    <div class="gl-entry" id="g-dvt" data-cat="clin" data-term="deep vein thrombosis dvt leg clot"><h4>DVT <span class="cat cat-clin">Clinical / bio</span></h4><p>Deep vein thrombosis — a clot, typically in a leg vein, that can break loose and travel to the lungs.</p><p class="biz"><b>Bio impact:</b> untreated, can cause life-threatening PE.</p></div>
+
+    <div class="gl-entry" id="g-pe" data-cat="clin" data-term="pulmonary embolism pe lung clot"><h4>PE <span class="cat cat-clin">Clinical / bio</span></h4><p>Pulmonary embolism — a clot lodged in the lung's arteries; can be rapidly fatal.</p><p class="biz"><b>Bio impact:</b> high-acuity; rapid clot removal can be life-saving.</p></div>
+
+    <div class="gl-entry" id="g-tpa" data-cat="clin" data-term="thrombolytic tpa clot dissolving drug lysis"><h4>Thrombolytic / lysis <span class="cat cat-clin">Clinical / bio</span></h4><p>Clot-dissolving drugs (e.g., tPA) or catheter-directed lysis — the pharmacologic alternative to mechanical clot removal.</p><p class="biz"><b>Sales angle:</b> mechanical thrombectomy is positioned to avoid the bleeding risk these carry.</p></div>
+
+    <div class="gl-entry" id="g-ais" data-cat="clin" data-term="acute ischemic stroke neurovascular"><h4>Acute ischemic stroke <span class="cat cat-clin">Clinical / bio</span></h4><p>Stroke caused by a clot blocking brain blood flow — addressed by neurovascular/neuro-interventional devices.</p><p class="biz"><b>Bio impact:</b> time-critical; faster reperfusion preserves brain tissue.</p></div>
+
+    <div class="gl-entry" id="g-lss" data-cat="clin" data-term="lumbar spinal stenosis nerve compression"><h4>Lumbar spinal stenosis <span class="cat cat-clin">Clinical / bio</span></h4><p>Narrowing of the spinal canal in the lower back that compresses nerves, causing pain/weakness — the target of the mild procedure.</p><p class="biz"><b>Bio impact:</b> decompression relieves nerve symptoms.</p></div>
+
+    <div class="gl-entry" id="g-cmf" data-cat="clin" data-term="craniomaxillofacial cmf cranial reconstruction"><h4>CMF <span class="cat cat-clin">Clinical / bio</span></h4><p>Craniomaxillofacial — implants/fixation for skull and facial reconstruction, within Neuro Cranial and Trauma &amp; Extremities.</p><p class="biz"><b>Sales angle:</b> specialized, defensible niche.</p></div>
+
+    <div class="gl-entry" id="g-navigation" data-cat="prod" data-term="surgical navigation gps tracking instruments"><h4>Surgical navigation <span class="cat cat-prod">Product</span></h4><p>Computer-assisted tracking that shows instrument position relative to anatomy in real time — distinct from robotics but often paired.</p><p class="biz"><b>Sales angle:</b> precision add-on; lower-capital entry than a full robot.</p></div>
+
+    <div class="gl-entry" id="g-icg" data-cat="clin" data-term="indocyanine green icg fluorescence imaging"><h4>ICG fluorescence <span class="cat cat-clin">Clinical / bio</span></h4><p>Indocyanine-green fluorescence imaging used with endoscopy systems to visualize blood flow/perfusion intraoperatively.</p><p class="biz"><b>Sales angle:</b> differentiates the 1788 visualization platform.</p></div>
+  </div>
+  <a class="back" href="#top">↑ back to top</a>
+</section>
+
+<!-- ======================= OPEN QUESTIONS ======================= -->
+<section id="questions">
+  <p class="eyebrow">Before this ships</p>
+  <h2 class="sec-h">Open questions &amp; nuance to resolve</h2>
+  <p class="lead">This is a draft. These are the judgment calls and unverified items I'd want a manager — or the relevant business-unit lead — to settle before it goes to the field.</p>
+  <div class="grid g2">
+    <div class="card"><h4>1 · Org mapping vs. surgeon mental model</h4><p style="font-size:14px">Do we structure the field story around official business-unit names (post-2024 reorg) or around how surgeons frame the clinical problem? Pick one and be consistent.</p></div>
+    <div class="card"><h4>2 · Evidence guardrails on Mako</h4><p style="font-size:14px">Agree on exactly what outcome claims reps may make. I've capped this at precision/workflow, not revision-rate reduction. Confirm with regulatory/medical affairs.</p></div>
+    <div class="card"><h4>3 · The TEAM positioning call</h4><p style="font-size:14px">Lead with "Mako helps you win under bundled payment," or stay off the topic with capital-averse administrators? A strategy decision, not a fact.</p></div>
+    <div class="card"><h4>4 · Verify the launch &amp; install-base figures</h4><p style="font-size:14px">Confirm Mako Spine full launch actually completed, and replace the all-Mako 1.5M figure with application-specific numbers where used.</p></div>
+    <div class="card"><h4>5 · Exact geographic split</h4><p style="font-size:14px">Swap the ~74% US estimate for the precise US/International breakdown from the latest 10-K geographic note.</p></div>
+    <div class="card"><h4>6 · Pricing &amp; ASP sensitivity</h4><p style="font-size:14px">Robot ASP and competitor price gaps (e.g., VELYS) move and are partly confidential — confirm what's safe to state externally vs. internal-only.</p></div>
+  </div>
+  <div class="q"><span class="lab">My recommendation</span><p>Treat the glossary as the source of truth and keep the body sections deliberately short — reps skim. If you want, the next revision can split this into a one-page "leave-behind" (flow map + flagship table + 5 talking points) and keep this longer file as the internal reference. Tell me which way to take it.</p></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h4>Sources &amp; verification trail</h4>
+    <p style="max-width:70ch;color:var(--on-char-soft)">Figures synthesized from Stryker SEC filings (10-K/10-Q/8-K earnings releases), AAOS 2025/2026 product announcements, CMS reimbursement rules, and third-party market analyses. Where a figure came from a secondary source rather than a filing, it's flagged in-text as needing confirmation. Verify everything against primary sources before any external use.</p>
+    <ol>
+      <li>Stryker FY2024 Form 10-K — segment structure &amp; reorganization (SEC EDGAR).</li>
+      <li>Stryker Q1–Q3 2025 10-Q / 8-K earnings releases — Inari close, divestiture, growth (SEC EDGAR).</li>
+      <li>Stryker Q4 &amp; full-year 2025 results — ~$25.1B sales, +11.2%, 2026 guidance (Jan 2026 release).</li>
+      <li>Stryker 8-K, Jan 6 2025 — Inari Medical acquisition agreement ($4.9B / $80 per share).</li>
+      <li>AAOS 2025/2026 — Mako 4, Mako Spine/Shoulder, Mako RPS, Triathlon Gold (PRNewswire / MedTech Dive / MassDevice).</li>
+      <li>Mako SmartRobotics overview — AccuStop, Q Guidance, 1.5M+ procedures / 45 countries (Stryker.com).</li>
+      <li>Orthopedics market analyses — knee/hip share, Mako procedure penetration (Gabelli; GlobalData via Medical Device Network).</li>
+      <li>Orthopedic surgical robots market sizing (~$2B 2025) &amp; CAGR (GMInsights).</li>
+      <li>CMS — CJR &amp; TEAM bundled-payment models; Inpatient-Only list changes (CMS.gov; AJMC; AAOS Now).</li>
+      <li>Orthopedic billing 2026 — no separate robotic CPT code, TKA/THA IPO removal, allowed-charge ranges (industry billing guides).</li>
+      <li>Surgical robots competitive ranking — Intuitive, Stryker, Medtronic, S&amp;N, Zimmer (MarketsandMarkets).</li>
+      <li>Stryker revenue/geographic mix &amp; competitor set — ~59/41 segment split, ~74% US (third-party; confirm vs. 10-K).</li>
+    </ol>
+    <p style="margin-top:18px;font-size:11.5px;color:var(--on-char-soft)">Working draft for internal sales-team review only. Not affiliated with or endorsed by Stryker Corporation. Trademarks belong to their respective owners. Confirm all clinical claims with regulatory/medical affairs before field use.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var q = document.getElementById('glq');
+  var list = document.getElementById('gllist');
+  var entries = Array.prototype.slice.call(list.querySelectorAll('.gl-entry'));
+  var filters = Array.prototype.slice.call(document.querySelectorAll('.gl-filter'));
+  var countEl = document.getElementById('glcount');
+  var activeCat = 'all';
+
+  function apply(){
+    var term = (q.value||'').trim().toLowerCase();
+    var shown = 0;
+    entries.forEach(function(e){
+      var hay = (e.getAttribute('data-term')+' '+e.textContent).toLowerCase();
+      var matchText = !term || hay.indexOf(term) !== -1;
+      var matchCat = activeCat==='all' || e.getAttribute('data-cat')===activeCat;
+      if(matchText && matchCat){ e.classList.remove('hidden'); shown++; }
+      else { e.classList.add('hidden'); }
+    });
+    countEl.textContent = shown + ' term' + (shown===1?'':'s') + ' shown' + (term?(' for "'+q.value+'"'):'') + (activeCat!=='all'?(' · '+activeCat):'');
+  }
+  q.addEventListener('input', apply);
+  filters.forEach(function(b){
+    b.addEventListener('click', function(){
+      filters.forEach(function(x){x.classList.remove('active')});
+      b.classList.add('active');
+      activeCat = b.getAttribute('data-cat');
+      apply();
+    });
+  });
+
+  // highlight the entry when an in-text glossary link is clicked
+  document.querySelectorAll('a.gl').forEach(function(a){
+    a.addEventListener('click', function(){
+      var id = a.getAttribute('href').slice(1);
+      // reset filter/search so the target is guaranteed visible
+      q.value=''; activeCat='all';
+      filters.forEach(function(x){x.classList.toggle('active', x.getAttribute('data-cat')==='all')});
+      apply();
+      var t = document.getElementById(id);
+      if(t){
+        entries.forEach(function(e){e.classList.remove('hit')});
+        setTimeout(function(){ t.classList.add('hit'); }, 60);
+        setTimeout(function(){ t.classList.remove('hit'); }, 2600);
+      }
+    });
+  });
+  apply();
+})();
+</script>
+</body>
+</html>
