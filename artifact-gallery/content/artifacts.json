@@ -1,9 +1,9 @@
 [
     {
-    "id": "bsx-field-reference",
+    "id": "bsx_field_reference",
     "title": "BSX Overview",
     "type": "claude",
-    "file": "content/claude/bsx-field-reference.html",
+    "file": "content/claude/bsx_field_reference.html",
     "tags": ["BSX", "Med Device", "Products", "Glossary"],
     "date": "2026-06-01",
     "description": "Overview of BSX Products"
