@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boston Scientific — Field Reference & Therapeutic Flow Map (Draft)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15201c;
+  --paper:#f4f1e8;
+  --paper-2:#ebe6d6;
+  --bsx:#1a3b34;        /* deep clinical teal-green */
+  --bsx-bright:#2f7d6e;
+  --accent:#c8442b;      /* arterial red */
+  --accent-2:#d98a2b;    /* amber */
+  --gold:#9a7b2e;
+  --line:#cdc6b2;
+  --shadow:rgba(21,32,28,.13);
+  --maxw:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Newsreader",Georgia,serif;font-size:18px;line-height:1.62;
+  background-image:radial-gradient(circle at 12% 8%,rgba(47,125,110,.06),transparent 42%),radial-gradient(circle at 88% 92%,rgba(200,68,43,.05),transparent 40%);
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:"Fraunces",Georgia,serif;line-height:1.08;font-weight:800;letter-spacing:-.01em}
+.mono{font-family:"IBM Plex Mono",monospace}
+a{color:var(--bsx-bright)}
+
+/* ===== Top bar ===== */
+.topbar{position:sticky;top:0;z-index:200;background:var(--bsx);color:var(--paper);
+  border-bottom:3px solid var(--accent);box-shadow:0 4px 18px var(--shadow)}
+.topbar-inner{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;gap:18px;
+  padding:11px 24px;flex-wrap:wrap}
+.brandmark{display:flex;align-items:center;gap:11px;font-family:"Fraunces";font-weight:800;font-size:1.05rem}
+.brandmark .dot{width:13px;height:13px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px rgba(200,68,43,.25)}
+.brandmark small{font-family:"IBM Plex Mono";font-weight:500;opacity:.62;font-size:.62rem;letter-spacing:.13em;display:block;text-transform:uppercase}
+nav.sections{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+nav.sections a{color:var(--paper);text-decoration:none;font-family:"IBM Plex Mono";font-size:.7rem;
+  letter-spacing:.04em;padding:6px 11px;border-radius:6px;opacity:.78;text-transform:uppercase;transition:.18s}
+nav.sections a:hover{opacity:1;background:rgba(255,255,255,.1)}
+.draft-flag{font-family:"IBM Plex Mono";font-size:.6rem;background:var(--accent-2);color:#2a1c08;
+  padding:3px 8px;border-radius:20px;font-weight:600;letter-spacing:.08em}
+
+/* ===== Hero ===== */
+.hero{max-width:var(--maxw);margin:0 auto;padding:64px 24px 38px}
+.hero .kicker{font-family:"IBM Plex Mono";font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:20px}
+.hero h1{font-size:clamp(2.6rem,6vw,5rem);margin:0 0 18px}
+.hero h1 em{font-style:italic;color:var(--bsx-bright);font-weight:500}
+.hero .lede{font-size:1.32rem;max-width:760px;color:#374742}
+.hero .meta{margin-top:26px;display:flex;gap:26px;flex-wrap:wrap;font-family:"IBM Plex Mono";font-size:.74rem;color:#566;letter-spacing:.03em}
+.hero .meta b{color:var(--ink)}
+
+/* ===== Layout ===== */
+section.band{max-width:var(--maxw);margin:0 auto;padding:46px 24px}
+.section-head{display:flex;align-items:baseline;gap:16px;border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:30px}
+.section-head .num{font-family:"IBM Plex Mono";font-size:.82rem;color:var(--accent);font-weight:600}
+.section-head h2{font-size:clamp(1.7rem,3.6vw,2.7rem);margin:0}
+.section-head .tag{margin-left:auto;font-family:"IBM Plex Mono";font-size:.66rem;text-transform:uppercase;letter-spacing:.1em;color:#778;align-self:center}
+
+p{margin:0 0 16px}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+@media(max-width:780px){.cols2{grid-template-columns:1fr}.topbar-inner{padding:10px 16px}nav.sections{width:100%;margin-left:0}}
+
+/* ===== Glossary term inline ===== */
+.term{color:var(--bsx);font-weight:600;border-bottom:1.5px dotted var(--bsx-bright);cursor:help;
+  text-decoration:none;position:relative}
+.term:hover{background:rgba(47,125,110,.1)}
+.term .pop{visibility:hidden;opacity:0;position:absolute;left:50%;bottom:135%;transform:translateX(-50%) translateY(6px);
+  width:min(330px,78vw);background:var(--ink);color:var(--paper);font-family:"Newsreader";font-weight:400;
+  font-size:.86rem;line-height:1.5;padding:13px 15px;border-radius:9px;z-index:120;
+  box-shadow:0 12px 34px rgba(0,0,0,.34);transition:.16s;pointer-events:none;border:1px solid var(--bsx-bright)}
+.term .pop::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:7px solid transparent;border-top-color:var(--ink)}
+.term .pop b{font-family:"IBM Plex Mono";font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);display:block;margin-bottom:4px}
+.term:hover .pop,.term:focus .pop{visibility:visible;opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ===== Cards & product blocks ===== */
+.card{background:#fbf9f1;border:1px solid var(--line);border-radius:14px;padding:26px 28px;
+  box-shadow:0 3px 14px var(--shadow);position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--bsx)}
+.card.red::before{background:var(--accent)}
+.card.amber::before{background:var(--accent-2)}
+.product{margin:0 0 30px}
+.product .ph{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.product .ph h3{font-size:1.6rem;margin:0}
+.product .pill{font-family:"IBM Plex Mono";font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;
+  padding:3px 9px;border-radius:20px;font-weight:600}
+.pill.flag{background:var(--bsx);color:#fff}
+.pill.dev{background:var(--accent-2);color:#2a1c08}
+.pill.risk{background:var(--accent);color:#fff}
+.pill.mkt{background:#dfe9e3;color:var(--bsx)}
+
+.specgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;margin:18px 0}
+.specgrid div{background:#fbf9f1;padding:13px 15px}
+.specgrid .k{font-family:"IBM Plex Mono";font-size:.6rem;text-transform:uppercase;letter-spacing:.09em;color:#7a7;margin-bottom:3px}
+.specgrid .v{font-size:.96rem;font-weight:500}
+.specgrid .v.big{font-family:"Fraunces";font-size:1.5rem;font-weight:800;color:var(--bsx)}
+
+.salespts{list-style:none;padding:0;margin:14px 0}
+.salespts li{padding:7px 0 7px 28px;position:relative;font-size:.98rem;border-bottom:1px dashed var(--line)}
+.salespts li::before{content:"▸";position:absolute;left:4px;color:var(--accent);font-size:1rem}
+.salespts li:last-child{border-bottom:none}
+
+.subhd{font-family:"IBM Plex Mono";font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--accent);margin:20px 0 8px;font-weight:600}
+
+/* ===== Flow diagram ===== */
+.flow{background:#fbf9f1;border:1px solid var(--line);border-radius:16px;padding:30px 26px;box-shadow:0 4px 18px var(--shadow);overflow-x:auto}
+.flow-rail{display:flex;flex-direction:column;gap:26px;min-width:680px}
+.flow-row{display:grid;grid-template-columns:175px 40px 1fr;align-items:center;gap:8px}
+.flow-problem{background:var(--accent);color:#fff;border-radius:11px;padding:14px 16px;text-align:center;box-shadow:0 3px 10px rgba(200,68,43,.3)}
+.flow-problem .t{font-family:"Fraunces";font-weight:800;font-size:1.02rem;line-height:1.1}
+.flow-problem .s{font-family:"IBM Plex Mono";font-size:.58rem;opacity:.85;margin-top:4px;text-transform:uppercase;letter-spacing:.06em}
+.flow-arrow{text-align:center;color:var(--bsx);font-size:1.5rem;font-weight:700}
+.flow-sols{display:flex;gap:8px;flex-wrap:wrap}
+.flow-sol{background:#dfe9e3;border:1px solid var(--bsx-bright);border-radius:9px;padding:8px 13px;flex:1;min-width:130px}
+.flow-sol .name{font-family:"Fraunces";font-weight:800;color:var(--bsx);font-size:.98rem}
+.flow-sol .area{font-family:"IBM Plex Mono";font-size:.56rem;text-transform:uppercase;letter-spacing:.07em;color:#6a8;margin-top:2px}
+.flow-sol.dev{background:#fbeed6;border-color:var(--accent-2)}
+.flow-sol.dev .name{color:#8a5a13}
+
+/* ===== Tables ===== */
+table.data{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9rem;background:#fbf9f1;
+  border:1px solid var(--line);border-radius:10px;overflow:hidden}
+table.data th{background:var(--bsx);color:var(--paper);font-family:"IBM Plex Mono";font-size:.64rem;
+  text-transform:uppercase;letter-spacing:.07em;padding:11px 13px;text-align:left;font-weight:600}
+table.data td{padding:11px 13px;border-top:1px solid var(--line);vertical-align:top}
+table.data tr:nth-child(even) td{background:rgba(203,198,178,.16)}
+
+/* ===== Headwinds / tailwinds ===== */
+.htgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+@media(max-width:780px){.htgrid{grid-template-columns:1fr}.flow-row{grid-template-columns:120px 26px 1fr}}
+.htcol h3{display:flex;align-items:center;gap:10px;font-size:1.4rem;margin:0 0 16px}
+.htcol .ic{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-size:1.2rem}
+.wind{border:1px solid var(--line);border-radius:11px;padding:16px 18px;margin-bottom:14px;background:#fbf9f1}
+.wind .wt{font-family:"Fraunces";font-weight:800;font-size:1.05rem;margin-bottom:5px}
+.wind.head{border-left:5px solid var(--accent)}
+.wind.tail{border-left:5px solid var(--bsx-bright)}
+.wind .sev{font-family:"IBM Plex Mono";font-size:.58rem;text-transform:uppercase;letter-spacing:.07em;
+  padding:2px 7px;border-radius:12px;float:right}
+.sev.hi{background:var(--accent);color:#fff}.sev.med{background:var(--accent-2);color:#2a1c08}.sev.lo{background:#dfe9e3;color:var(--bsx)}
+
+/* ===== Question / edit prompts ===== */
+.qbox{background:linear-gradient(135deg,#1a3b34,#234d44);color:var(--paper);border-radius:14px;
+  padding:26px 28px;margin:20px 0;box-shadow:0 6px 22px var(--shadow)}
+.qbox .qh{font-family:"IBM Plex Mono";font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-2);margin-bottom:14px}
+.qbox ol{margin:0;padding-left:22px}
+.qbox li{margin-bottom:11px;line-height:1.5}
+.qbox li em{color:#9fd3c6;font-style:normal;font-weight:600}
+
+/* ===== Glossary page ===== */
+#glossary-page{display:none}
+#glossary-page.active{display:block}
+.gsearch{position:sticky;top:62px;z-index:80;background:var(--paper);padding:18px 0 14px;border-bottom:1px solid var(--line)}
+.gsearch input{width:100%;font-family:"IBM Plex Mono";font-size:1rem;padding:15px 18px;border:2px solid var(--bsx);
+  border-radius:11px;background:#fbf9f1;color:var(--ink)}
+.gsearch input:focus{outline:none;border-color:var(--accent)}
+.gcount{font-family:"IBM Plex Mono";font-size:.7rem;color:#778;margin-top:8px}
+.gfilter{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.gfilter button{font-family:"IBM Plex Mono";font-size:.62rem;text-transform:uppercase;letter-spacing:.05em;
+  padding:5px 12px;border-radius:20px;border:1px solid var(--bsx);background:transparent;color:var(--bsx);cursor:pointer;transition:.15s}
+.gfilter button.on{background:var(--bsx);color:#fff}
+.gentry{border-bottom:1px solid var(--line);padding:18px 0}
+.gentry h4{font-size:1.2rem;margin:0 0 4px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.gentry .cat{font-family:"IBM Plex Mono";font-size:.56rem;text-transform:uppercase;letter-spacing:.06em;
+  padding:2px 8px;border-radius:12px;font-weight:600}
+.cat.medical{background:#dfe9e3;color:var(--bsx)}
+.cat.sales{background:#fbeed6;color:#8a5a13}
+.cat.biology{background:#f3dcd6;color:var(--accent)}
+.cat.buzz{background:#e4ddf0;color:#5a4a7a}
+.gentry .def{font-size:.98rem;color:#37413d}
+.gentry .impl{font-size:.84rem;color:#667;margin-top:6px;font-style:italic}
+.gentry .impl b{font-style:normal;font-family:"IBM Plex Mono";font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+
+footer{background:var(--bsx);color:var(--paper);margin-top:50px;padding:40px 24px}
+footer .fi{max-width:var(--maxw);margin:0 auto;font-family:"IBM Plex Mono";font-size:.74rem;line-height:1.7;opacity:.85}
+footer a{color:var(--accent-2)}
+.disclaimer{font-size:.7rem;opacity:.6;margin-top:18px;max-width:760px}
+.backtotop{display:inline-block;margin-top:14px;font-family:"IBM Plex Mono";font-size:.66rem;color:var(--accent-2);text-decoration:none}
+.note{font-family:"IBM Plex Mono";font-size:.72rem;color:#667;background:rgba(203,198,178,.25);border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 8px 8px 0;margin:14px 0}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brandmark"><span class="dot"></span><div>BOSTON SCIENTIFIC<small>Field Reference · Therapeutic Flow Map</small></div></div>
+    <span class="draft-flag">ROUGH DRAFT v0.1</span>
+    <nav class="sections">
+      <a href="#" onclick="showMain('overview');return false;">Overview</a>
+      <a href="#" onclick="showMain('flow');return false;">Flow Map</a>
+      <a href="#" onclick="showMain('cardio');return false;">Cardiovascular</a>
+      <a href="#" onclick="showMain('medsurg');return false;">MedSurg</a>
+      <a href="#" onclick="showMain('payer');return false;">Payer / Access</a>
+      <a href="#" onclick="showMain('winds');return false;">Headwinds/Tailwinds</a>
+      <a href="#" onclick="showGlossary();return false;">Glossary ▦</a>
+    </nav>
+  </div>
+</div>
+
+<div id="main-doc">
+<!-- HERO -->
+<div class="hero">
+  <div class="kicker">Internal Sales Enablement · Not for distribution · FY2026</div>
+  <h1>The problems we solve,<br>and <em>how the portfolio maps to them.</em></h1>
+  <p class="lede">A working draft flow diagram and field reference covering Boston Scientific's two reportable segments — Cardiovascular and MedSurg — the highest-volume franchises, their mechanical composition, substitutes and complements, payer mechanics, and the headwinds and tailwinds shaping the 2026–2028 plan.</p>
+  <div class="meta">
+    <span><b>FY2025 revenue</b> ≈ $20.07B</span>
+    <span><b>Cardiovascular</b> ~66% of sales</span>
+    <span><b>MedSurg</b> ~34% of sales</span>
+    <span><b>Intl. mix</b> ~40% of sales</span>
+    <span class="mono">Sources cited in footer</span>
+  </div>
+  <div class="note">This is a rough draft built for manager review. Every figure is sourced; every clinical and commercial term links to the searchable glossary (hover for a pop-out, click to jump). Open questions and suggested edits appear in green boxes throughout — they are deliberately unfinished.</div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="band" data-main="overview">
+  <div class="section-head"><span class="num">01</span><h2>Business lines at a glance</h2><span class="tag">Segment structure</span></div>
+  <p>Boston Scientific reports in two segments. <strong>Cardiovascular</strong> (~$13.3B in FY2025, ~66% of revenue) houses Interventional Cardiology, Watchman, Peripheral Interventions, and the fast-growing <span class="term" data-term="ep">Electrophysiology<span class="pop"><b>Electrophysiology (EP)</b>The study and treatment of the heart's electrical system; BSX's EP franchise is anchored by FARAPULSE pulsed field ablation.</span></span> franchise. <strong>MedSurg</strong> (~$6.7B, ~34%) houses Endoscopy, Urology, and Neuromodulation. MedSurg is the steadier, higher-recurring-revenue base — largely single-use disposables in chronic disease management — while Cardiovascular is the innovation-driven growth engine.</p>
+
+  <div class="cols2" style="margin-top:24px">
+    <div class="card">
+      <div class="subhd">Cardiovascular · ~66%</div>
+      <p style="font-size:.96rem">Interventional Cardiology (stents, imaging, structural), <span class="term" data-term="watchman">Watchman<span class="pop"><b>WATCHMAN FLX</b>Left atrial appendage closure implant; a one-time alternative to lifelong blood thinners for stroke-risk reduction in non-valvular AFib.</span></span> LAAC, Peripheral Interventions, Cardiac Rhythm Management, and Electrophysiology (FARAPULSE). Growth in FY2025 was driven overwhelmingly by EP and Watchman.</p>
+      <ul class="salespts">
+        <li>EP grew ~63% YoY in Q3 2025 on FARAPULSE adoption</li>
+        <li>Watchman franchise grew ~28% on concomitant ablation + closure</li>
+        <li>Pending: ~$14.5B Penumbra acquisition adds mechanical thrombectomy + neurovascular</li>
+      </ul>
+    </div>
+    <div class="card amber">
+      <div class="subhd">MedSurg · ~34%</div>
+      <p style="font-size:.96rem">Endoscopy (AXIOS, stents, hemostasis), Urology (stone management, prostate health via <span class="term" data-term="rezum">Rezūm<span class="pop"><b>Rezūm</b>Water-vapor (steam) thermal therapy that ablates excess prostate tissue to relieve BPH, preserving sexual function vs. surgery.</span></span>, sacral neuromodulation via Axonics), and Neuromodulation (deep brain stimulation, chronic pain via Intracept).</p>
+      <ul class="salespts">
+        <li>Endoscopy: durable double-digit anchor-product growth</li>
+        <li>Neuromodulation led MedSurg in Q1 2026 (+17.4%)</li>
+        <li>Urology underperformed in Q1 2026 (+2.1%) — flagged by management</li>
+      </ul>
+    </div>
+  </div>
+
+  <table class="data">
+    <tr><th>Segment / Franchise</th><th>FY2025 direction</th><th>Primary problem solved</th><th>Revenue character</th></tr>
+    <tr><td><b>Electrophysiology</b> (FARAPULSE)</td><td>Hyper-growth (~63% Q3'25)</td><td>Atrial fibrillation ablation</td><td>Capital + recurring catheter pull-through</td></tr>
+    <tr><td><b>Watchman</b> (LAAC)</td><td>Strong (~28%)</td><td>Stroke-risk reduction without lifelong anticoagulation</td><td>Implant, one-time per patient</td></tr>
+    <tr><td><b>Interventional Cardiology</b></td><td>Steady</td><td>Coronary & structural disease</td><td>Stents, imaging, accessories</td></tr>
+    <tr><td><b>Peripheral Interventions</b></td><td>Steady; expanding via Penumbra</td><td>Peripheral vascular disease, embolization, PE</td><td>Devices + disposables</td></tr>
+    <tr><td><b>Endoscopy</b></td><td>Durable double-digit</td><td>GI bleeding, strictures, fluid drainage, tissue resection</td><td>High recurring single-use</td></tr>
+    <tr><td><b>Urology</b></td><td>Mixed; soft in Q1'26</td><td>Kidney stones, BPH, incontinence</td><td>Disposables + implants</td></tr>
+    <tr><td><b>Neuromodulation</b></td><td>Accelerating (+17.4% Q1'26)</td><td>Chronic pain, movement disorders, OAB</td><td>Implants + recurring programming</td></tr>
+  </table>
+  <a class="backtotop" href="#" onclick="window.scrollTo(0,0);return false;">↑ top</a>
+</section>
+
+<!-- FLOW DIAGRAM -->
+<section class="band" data-main="flow">
+  <div class="section-head"><span class="num">02</span><h2>Problem → Therapeutic area → Product flow</h2><span class="tag">The core diagram</span></div>
+  <p>This is the spine of the deliverable: the clinical <em>problem</em> on the left, mapped through its therapeutic area to the BSX product(s) that address it. Amber tiles are in development, under expanded review, or pending acquisition close.</p>
+
+  <div class="flow">
+    <div class="flow-rail">
+
+      <div class="flow-row">
+        <div class="flow-problem"><div class="t">Atrial Fibrillation</div><div class="s">Irregular rhythm · ~59M people worldwide</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-sols">
+          <div class="flow-sol"><div class="name">FARAPULSE</div><div class="area">Electrophysiology · PFA ablation</div></div>
+          <div class="flow-sol"><div class="name">OPAL HDx</div><div class="area">EP · 3D mapping (complement)</div></div>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <div class="flow-problem"><div class="t">AFib stroke risk</div><div class="s">90%+ of clots form in the LAA</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-sols">
+          <div class="flow-sol"><div class="name">WATCHMAN FLX</div><div class="area">Structural · LAA closure</div></div>
+          <div class="flow-sol dev"><div class="name">WATCHMAN 1st-line</div><div class="area">CHAMPION-AF · label expansion</div></div>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <div class="flow-problem"><div class="t">Coronary artery disease</div><div class="s">Blockage / ischemia</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-sols">
+          <div class="flow-sol"><div class="name">SYNERGY stents</div><div class="area">Interventional cardiology</div></div>
+          <div class="flow-sol"><div class="name">IVUS imaging</div><div class="area">Intravascular guidance</div></div>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <div class="flow-problem"><div class="t">Pulmonary embolism / clot</div><div class="s">PE, DVT, acute limb ischemia</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-sols">
+          <div class="flow-sol"><div class="name">EKOS</div><div class="area">Peripheral · ultrasound-assisted lysis</div></div>
+          <div class="flow-sol dev"><div class="name">Penumbra CAVT</div><div class="area">Mechanical thrombectomy · pending close</div></div>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <div class="flow-problem"><div class="t">GI bleeding / strictures / drainage</div><div class="s">Endoscopic intervention</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-sols">
+          <div class="flow-sol"><div class="name">AXIOS</div><div class="area">Endoscopy · lumen-apposing stent</div></div>
+          <div class="flow-sol"><div class="name">OverStitch / MANTIS</div><div class="area">Endoscopic suturing & hemostasis</div></div>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <div class="flow-problem"><div class="t">Kidney stones</div><div class="s">Stone management</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-sols">
+          <div class="flow-sol"><div class="name">LithoVue</div><div class="area">Urology · single-use scope</div></div>
+          <div class="flow-sol"><div class="name">Lumenis / Moses laser</div><div class="area">Holmium laser lithotripsy</div></div>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <div class="flow-problem"><div class="t">Enlarged prostate (BPH)</div><div class="s">Urinary obstruction</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-sols">
+          <div class="flow-sol"><div class="name">Rezūm</div><div class="area">Urology · water-vapor therapy</div></div>
+          <div class="flow-sol"><div class="name">SpaceOAR</div><div class="area">Prostate health (radiation spacer)</div></div>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <div class="flow-problem"><div class="t">Overactive bladder / incontinence</div><div class="s">Bladder–bowel dysfunction</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-sols">
+          <div class="flow-sol"><div class="name">Axonics SNM</div><div class="area">Sacral neuromodulation</div></div>
+          <div class="flow-sol dev"><div class="name">eCoin (Valencia)</div><div class="area">Tibial nerve stim · integrating</div></div>
+        </div>
+      </div>
+
+      <div class="flow-row">
+        <div class="flow-problem"><div class="t">Chronic pain / movement disorders</div><div class="s">Neurological</div></div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-sols">
+          <div class="flow-sol"><div class="name">Intracept</div><div class="area">Neuromod · vertebrogenic pain</div></div>
+          <div class="flow-sol"><div class="name">Vercise Genus DBS</div><div class="area">Deep brain stimulation</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="qbox">
+    <div class="qh">Open questions — flow diagram</div>
+    <ol>
+      <li><em>Granularity:</em> Should this map go one level deeper (e.g., split AFib into <span class="term" data-term="paroxysmal">paroxysmal<span class="pop"><b>Paroxysmal AFib</b>Intermittent AFib episodes that self-terminate within 7 days; the original FARAPULSE indication.</span></span> vs. <span class="term" data-term="persistent">persistent<span class="pop"><b>Persistent AFib</b>AFib lasting ≥7 days; FARAPULSE gained expanded FDA approval here in 2025, roughly doubling the treatable population.</span></span> AFib, since FARAPULSE's label now covers both)? That changes the talk track materially.</li>
+      <li><em>Scope:</em> Do we include the pending Penumbra neurovascular/stroke products as their own problem row, or hold them out until the deal closes (expected 2H 2026) to avoid promoting an unapproved-in-our-hands portfolio?</li>
+      <li><em>Substitute vs. complement coding:</em> Watchman is positioned as a substitute for <span class="term" data-term="noac">NOACs<span class="pop"><b>NOAC</b>Non-vitamin-K oral anticoagulant (e.g., apixaban, rivaroxaban) — the "blood thinner" Watchman aims to replace.</span></span> but a complement to ablation. Should the diagram visually distinguish those two relationships?</li>
+    </ol>
+  </div>
+  <a class="backtotop" href="#" onclick="window.scrollTo(0,0);return false;">↑ top</a>
+</section>
+
+<!-- CARDIOVASCULAR DEEP DIVE -->
+<section class="band" data-main="cardio">
+  <div class="section-head"><span class="num">03</span><h2>Cardiovascular — flagship franchises</h2><span class="tag">Highest-volume growth</span></div>
+
+  <!-- FARAPULSE -->
+  <div class="product">
+    <div class="ph"><h3>FARAPULSE PFA System</h3><span class="pill flag">Flagship</span><span class="pill mkt">EP · US market leader</span></div>
+    <p>The single biggest growth driver in the company. FARAPULSE treats atrial fibrillation using <span class="term" data-term="pfa">pulsed field ablation<span class="pop"><b>Pulsed Field Ablation (PFA)</b>Non-thermal ablation that uses short, high-voltage electrical pulses to destroy heart tissue via irreversible electroporation, selectively sparing nearby structures.</span></span> rather than heat or cold. It brought in ~$1B in its first 12 months after the January 2024 FDA approval and drove EP segment growth of ~63% YoY in Q3 2025.</p>
+
+    <div class="specgrid">
+      <div><div class="k">Mechanism</div><div class="v"><span class="term" data-term="ire">Irreversible electroporation<span class="pop"><b>Irreversible Electroporation (IRE)</b>The cell-killing mechanism behind PFA: electric fields punch permanent pores in cell membranes, causing targeted cell death.</span></span></div></div>
+      <div><div class="k">Console</div><div class="v">FARASTAR generator + FARADRIVE sheath</div></div>
+      <div><div class="k">Catheter</div><div class="v">FARAWAVE / FARAWAVE NAV / FARAPOINT</div></div>
+      <div><div class="k">Mapping complement</div><div class="v">OPAL HDx system</div></div>
+      <div><div class="k">PFA market (global AFib ablation)</div><div class="v big">~$16B</div></div>
+      <div><div class="k">BSX guidance</div><div class="v">~15% PFA growth ≥3 yrs</div></div>
+    </div>
+
+    <div class="subhd">Mechanical composition</div>
+    <p style="font-size:.96rem">A capital generator delivers microsecond high-voltage pulses through a multi-electrode "flower"-shaped <span class="term" data-term="catheter">catheter<span class="pop"><b>Catheter</b>A thin flexible tube threaded through vasculature to the treatment site; the FARAWAVE catheter delivers the ablation energy.</span></span> (FARAWAVE) positioned at the pulmonary veins. Because the energy is tissue-selective, it largely spares the esophagus and phrenic nerve — the structures most often injured by thermal ablation. The NAV variant integrates with the OPAL HDx <span class="term" data-term="mapping">mapping system<span class="pop"><b>Electroanatomic mapping</b>3D visualization of the heart's chambers and electrical activity to guide catheter placement; reduces fluoroscopy and improves precision.</span></span>; ~1 in 3 FARAPULSE accounts now use the integrated NAV + OPAL configuration.</p>
+
+    <div class="subhd">Substitutes & complements</div>
+    <table class="data">
+      <tr><th>Relationship</th><th>Product</th><th>Note</th></tr>
+      <tr><td>Direct substitute</td><td>Medtronic PulseSelect / Sphere-9 (Affera)</td><td>Sphere-9 is mapping-integrated, focal + PFA</td></tr>
+      <tr><td>Direct substitute</td><td>J&J VARIPULSE</td><td>Integrates into the dominant CARTO mapping platform — creates switching costs</td></tr>
+      <tr><td>Legacy substitute</td><td>Thermal RF / cryoablation</td><td>ADVENT long-term data favored PFA at 4 yrs</td></tr>
+      <tr><td>Complement</td><td>OPAL HDx mapping</td><td>Pull-through capital + recurring</td></tr>
+      <tr><td>Complement</td><td>Watchman (concomitant)</td><td>Ablation + LAA closure in one procedure</td></tr>
+    </table>
+
+    <div class="subhd">What prescribers actually care about</div>
+    <ul class="salespts">
+      <li><b>Safety margin:</b> tissue selectivity reduces esophageal and phrenic-nerve injury risk vs. thermal — the #1 adoption driver cited by physicians.</li>
+      <li><b>Procedural efficiency / throughput:</b> faster case times increase lab volume — a direct economic argument to the hospital, not just the operator.</li>
+      <li><b>Durability:</b> ADVENT 4-year data showed greater long-term AFib success, fewer arrhythmia hospitalizations, lower repeat-ablation rates vs. thermal.</li>
+      <li><b>Label breadth:</b> now approved for both paroxysmal and persistent AFib (incl. posterior-wall + pulmonary-vein), ~doubling the treatable population.</li>
+      <li><b>Ecosystem lock-in counter:</b> J&J's CARTO integration is the competitive threat — OPAL HDx is the answer to "but it's not on my map."</li>
+    </ul>
+
+    <div class="subhd">TAM & quality-of-life impact</div>
+    <p style="font-size:.96rem">BSX frames the global EP / AFib-ablation market at roughly $16B and growing fast; persistent AFib alone is estimated at a potential ~$1B opportunity by 2028. Clinically, successful ablation can restore normal rhythm, reduce stroke/heart-failure risk, and meaningfully improve symptom burden and exercise tolerance. <span class="note" style="display:inline-block;margin:8px 0 0">Probability-of-success framing: high — FARAPULSE is approved, market-leading in the US, and backed by long-term RCT data. The risk is share, not viability.</span></p>
+  </div>
+
+  <!-- WATCHMAN -->
+  <div class="product">
+    <div class="ph"><h3>WATCHMAN FLX / FLX Pro</h3><span class="pill flag">Flagship</span><span class="pill mkt">Most-implanted LAAC</span></div>
+    <p>A <span class="term" data-term="laac">left atrial appendage closure<span class="pop"><b>LAAC</b>Left atrial appendage closure — sealing off the small heart pouch where most AFib-related clots form, removing the need for lifelong blood thinners.</span></span> implant. Since 90%+ of AFib-related clots form in the <span class="term" data-term="laa">left atrial appendage<span class="pop"><b>Left Atrial Appendage (LAA)</b>A small pouch in the left atrium; the dominant site of clot formation in non-valvular AFib.</span></span>, sealing it provides a one-time alternative to lifelong anticoagulation. Over 600,000 patients implanted — the most-implanted, most-studied LAAC device.</p>
+
+    <div class="specgrid">
+      <div><div class="k">Type</div><div class="v">Permanent nitinol-frame implant</div></div>
+      <div><div class="k">Delivery</div><div class="v">Transcatheter, single procedure</div></div>
+      <div><div class="k">Key trial 2026</div><div class="v">CHAMPION-AF (NEJM, ACC.26)</div></div>
+      <div><div class="k">Bleeding reduction</div><div class="v big">~45%</div></div>
+      <div><div class="k">Patients treated</div><div class="v big">600K+</div></div>
+      <div><div class="k">Latest gen</div><div class="v">FLX Pro (CE mark in EU)</div></div>
+    </div>
+
+    <div class="subhd">Mechanical composition</div>
+    <p style="font-size:.96rem">A self-expanding <span class="term" data-term="nitinol">nitinol<span class="pop"><b>Nitinol</b>A nickel-titanium shape-memory alloy that self-expands to a preset shape at body temperature; the structural frame of many implants.</span></span> frame with a permeable fabric cap. Deployed via transcatheter access into the LAA ostium, where it anchors and, over weeks, <span class="term" data-term="endothelialization">endothelializes<span class="pop"><b>Endothelialization</b>The process by which the body's own tissue grows over an implant surface, sealing it into the vessel/chamber wall.</span></span> — the body's tissue grows over it to permanently seal the pouch.</p>
+
+    <div class="subhd">Substitutes & complements</div>
+    <table class="data">
+      <tr><th>Relationship</th><th>Alternative</th><th>Note</th></tr>
+      <tr><td>Primary substitute</td><td>NOACs (apixaban, rivaroxaban)</td><td>The therapy Watchman aims to replace; ~40% of patients are non-adherent</td></tr>
+      <tr><td>Device substitute</td><td>Abbott Amplatzer Amulet</td><td>Competing LAAC device</td></tr>
+      <tr><td>Complement</td><td>FARAPULSE ablation</td><td>Concomitant single procedure — drove the franchise's ~28% growth</td></tr>
+    </table>
+
+    <div class="subhd">What prescribers care about (and the CHAMPION-AF inflection)</div>
+    <ul class="salespts">
+      <li><b>Adherence problem:</b> ~40% of AFib patients on blood thinners don't take them consistently — the core clinical pitch.</li>
+      <li><b>CHAMPION-AF (March 2026):</b> met all endpoints — statistically superior bleeding protection and similar efficacy vs. NOACs in a broad NVAF population. This is the data that supports a potential first-line expansion beyond today's bleeding-risk-restricted label.</li>
+      <li><b>One-and-done:</b> single implant vs. lifetime drug cost and bleeding risk — strong patient and payer narrative.</li>
+      <li><b>Concomitant workflow:</b> pairing with ablation lowers long-term stroke risk in one trip to the lab.</li>
+    </ul>
+    <div class="note">Compliance flag: the CHAMPION-AF first-line use is investigational until label expansion is granted. Reps must not promote first-line positioning off the current bleeding-risk-restricted indication. Verify the live label before any first-line talk track.</div>
+  </div>
+
+  <!-- PERIPHERAL / PENUMBRA -->
+  <div class="product">
+    <div class="ph"><h3>Peripheral Interventions + pending Penumbra</h3><span class="pill dev">Pending close · 2H 2026</span></div>
+    <p>EKOS delivers <span class="term" data-term="ultrasoundlysis">ultrasound-assisted thrombolysis<span class="pop"><b>Ultrasound-assisted thrombolysis</b>Uses ultrasound energy to loosen a clot's fibrin structure so clot-dissolving drugs work faster and at lower doses (EKOS).</span></span> for pulmonary embolism (HI-PEITHO trial showed superiority vs. anticoagulation alone in intermediate-risk PE). The ~$14.5B Penumbra acquisition (announced Jan 15, 2026; $374/share) adds <span class="term" data-term="thrombectomy">mechanical thrombectomy<span class="pop"><b>Mechanical thrombectomy</b>Physically removing a blood clot with a device (e.g., computer-assisted vacuum aspiration) rather than dissolving it with drugs.</span></span> (Lightning Bolt/Flash CAVT) and a re-entry into neurovascular/stroke — a market BSX exited by selling to Stryker in 2011.</p>
+    <div class="specgrid">
+      <div><div class="k">Penumbra EV</div><div class="v big">~$14.5B</div></div>
+      <div><div class="k">US thrombectomy opportunity</div><div class="v">1.25M+ arterial patients/yr</div></div>
+      <div><div class="k">Embolization/access opp.</div><div class="v">315K+ patients/yr</div></div>
+      <div><div class="k">Funding</div><div class="v">~$11B cash + stock</div></div>
+    </div>
+  </div>
+  <a class="backtotop" href="#" onclick="window.scrollTo(0,0);return false;">↑ top</a>
+</section>
+
+<!-- MEDSURG DEEP DIVE -->
+<section class="band" data-main="medsurg">
+  <div class="section-head"><span class="num">04</span><h2>MedSurg — the recurring-revenue base</h2><span class="tag">Endoscopy · Urology · Neuromod</span></div>
+
+  <div class="product">
+    <div class="ph"><h3>Endoscopy — AXIOS, OverStitch, MANTIS</h3><span class="pill flag">Highest MedSurg volume</span></div>
+    <p>The largest MedSurg unit and a durable double-digit grower, built on high-recurring single-use disposables. <span class="term" data-term="axios">AXIOS<span class="pop"><b>AXIOS Stent</b>A lumen-apposing metal stent (LAMS) that creates a drainage channel between two organs/cavities under endoscopic ultrasound guidance — e.g., draining pancreatic fluid collections.</span></span> is a <span class="term" data-term="lams">lumen-apposing metal stent<span class="pop"><b>LAMS</b>Lumen-Apposing Metal Stent — a dumbbell-shaped stent that holds two lumens together to create a drainage or access route.</span></span> for transluminal drainage; OverStitch enables endoscopic suturing; MANTIS supports hemostasis and tissue approximation.</p>
+    <div class="subhd">Operational efficiency angle</div>
+    <ul class="salespts">
+      <li>Single-use disposables = predictable recurring revenue and high revenue visibility for the hospital's GI service line.</li>
+      <li>Endoscopic (vs. surgical) approaches shorten length of stay and shift cases to outpatient/<span class="term" data-term="asc">ASC<span class="pop"><b>ASC</b>Ambulatory Surgery Center — outpatient facility; site-of-service shift from hospital to ASC is a major economic and reimbursement theme.</span></span> settings.</li>
+    </ul>
+  </div>
+
+  <div class="product">
+    <div class="ph"><h3>Urology — Rezūm, Stone Management, SNM</h3><span class="pill mkt">Mixed momentum</span></div>
+    <p>Rezūm uses water-vapor (steam) thermal energy to ablate obstructing prostate tissue in <span class="term" data-term="bph">BPH<span class="pop"><b>BPH</b>Benign Prostatic Hyperplasia — non-cancerous prostate enlargement causing urinary obstruction; very high prevalence in aging men.</span></span>, and gained an expanded FDA indication for larger glands. Stone management runs on the LithoVue single-use scope and Lumenis/Moses holmium lasers. Sacral neuromodulation (Axonics) and tibial-nerve stim (eCoin/Valencia) treat overactive bladder and incontinence.</p>
+    <div class="subhd">Prescriber sales points — Rezūm</div>
+    <ul class="salespts">
+      <li><b>QoL preservation:</b> Rezūm preserves sexual function vs. surgical resection (<span class="term" data-term="turp">TURP<span class="pop"><b>TURP</b>Transurethral Resection of the Prostate — the surgical gold-standard for BPH; effective but carries higher sexual-dysfunction risk and longer recovery.</span></span>) — the central patient conversation.</li>
+      <li><b>Office-based:</b> minimally invasive, can be done in-office, fast recovery — economic upside for urology practices.</li>
+      <li><b>Substitutes:</b> TURP, UroLift (Teleflex), GreenLight laser, and the drug pathway (alpha-blockers / 5-ARIs).</li>
+    </ul>
+    <div class="note">Q1 2026: management explicitly flagged urology as below expectations (+2.1%), citing weakness in the core business and in neuromodulation, while expecting sacral neuromodulation (Axonics) to improve over time. Don't over-promise near-term urology momentum in manager-facing materials.</div>
+  </div>
+
+  <div class="product">
+    <div class="ph"><h3>Neuromodulation — Intracept, Vercise DBS</h3><span class="pill mkt">Accelerating</span></div>
+    <p>Led MedSurg growth in Q1 2026 (+17.4%). <span class="term" data-term="intracept">Intracept<span class="pop"><b>Intracept</b>A minimally invasive procedure ablating the basivertebral nerve to treat chronic vertebrogenic (bone-origin) low-back pain.</span></span> treats chronic <span class="term" data-term="vertebrogenic">vertebrogenic<span class="pop"><b>Vertebrogenic pain</b>Chronic low-back pain originating from damaged vertebral endplates, signaled via the basivertebral nerve.</span></span> back pain by ablating the basivertebral nerve; the <span class="term" data-term="dbs">Vercise Genus DBS<span class="pop"><b>Deep Brain Stimulation (DBS)</b>Implanted electrodes deliver electrical pulses to specific brain targets to treat Parkinson's and other movement disorders.</span></span> franchise drives the brain business with Cartesia leads.</p>
+  </div>
+  <a class="backtotop" href="#" onclick="window.scrollTo(0,0);return false;">↑ top</a>
+</section>
+
+<!-- PAYER / ACCESS -->
+<section class="band" data-main="payer">
+  <div class="section-head"><span class="num">05</span><h2>Payer billing, reimbursement & access</h2><span class="tag">The economic gate</span></div>
+  <p>A device only sells if it gets paid for. Below is the reimbursement architecture reps should understand, plus the hurdles before a payer reimburses the device or procedure.</p>
+
+  <div class="subhd">How devices get paid — the building blocks</div>
+  <table class="data">
+    <tr><th>Mechanism</th><th>What it is</th><th>Why it matters</th></tr>
+    <tr><td><span class="term" data-term="cpt">CPT code<span class="pop"><b>CPT</b>Current Procedural Terminology — AMA-maintained codes that define and bill physician procedures. No clean CPT = friction.</span></span></td><td>Defines the billable physician procedure</td><td>A dedicated CPT signals an established, payable procedure</td></tr>
+    <tr><td><span class="term" data-term="drg">MS-DRG<span class="pop"><b>MS-DRG</b>Medicare Severity Diagnosis-Related Group — bundled inpatient payment based on diagnosis, not itemized device cost.</span></span></td><td>Bundled inpatient payment by diagnosis group</td><td>If device cost exceeds the DRG payment, the hospital loses money — a key adoption barrier</td></tr>
+    <tr><td><span class="term" data-term="ntap">NTAP<span class="pop"><b>NTAP</b>New Technology Add-on Payment — temporary extra Medicare inpatient payment for costly new tech, bridging the gap until DRG rates catch up.</span></span></td><td>Temporary add-on for costly new inpatient tech</td><td>FARAPULSE qualifies: covers 65% of excess cost up to $6,337.50/case (Medicare FFS inpatient)</td></tr>
+    <tr><td><span class="term" data-term="appc">APC / OPPS<span class="pop"><b>APC / OPPS</b>Ambulatory Payment Classification under the Outpatient Prospective Payment System — how Medicare pays for hospital outpatient procedures.</span></span></td><td>Outpatient hospital payment grouping</td><td>Governs site-of-service economics for outpatient cases</td></tr>
+    <tr><td><span class="term" data-term="hcpcs">HCPCS C-codes<span class="pop"><b>HCPCS C-codes</b>Codes used to report device categories on outpatient hospital claims (e.g., FARAWAVE catheters, FARADRIVE sheath).</span></span></td><td>Report specific device use on claims</td><td>Used to track FARAWAVE / FARAPOINT / FARADRIVE usage</td></tr>
+  </table>
+
+  <div class="subhd">Hurdles before a payer reimburses</div>
+  <table class="data">
+    <tr><th>Hurdle</th><th>What it means</th></tr>
+    <tr><td>FDA clearance/approval</td><td>Necessary but not sufficient — payment is a separate process from approval.</td></tr>
+    <tr><td>Coding</td><td>Existence of a clean CPT / HCPCS pathway. Brand-new procedures may bill under unlisted codes (reimbursement friction).</td></tr>
+    <tr><td>Coverage</td><td>Each payer's medical policy must deem it medically necessary; commercial payers issue their own <span class="term" data-term="priorauth">prior authorization<span class="pop"><b>Prior Authorization</b>Payer requirement to approve a procedure before it's performed; a common access bottleneck and abandonment driver.</span></span> rules. Medicare may use <span class="term" data-term="ncd">NCD/LCD<span class="pop"><b>NCD / LCD</b>National / Local Coverage Determination — Medicare's rules on whether and when a service is covered.</span></span>.</td></tr>
+    <tr><td>Payment adequacy</td><td>DRG/APC rate must cover device cost; NTAP or transitional pass-through bridges the gap for new tech.</td></tr>
+    <tr><td>Evidence</td><td>Sustained coverage hinges on RCT data (ADVENT, CHAMPION-AF, HI-PEITHO are coverage-relevant, not just clinical marketing).</td></tr>
+  </table>
+
+  <div class="qbox">
+    <div class="qh">Open questions — payer section</div>
+    <ol>
+      <li><em>Specificity:</em> Do you want exact FY2026 CPT numbers and national DRG dollar amounts pulled in per product, or keep it at this conceptual level for a sales audience? Exact rates change annually and vary by MAC/region — I'd want to date-stamp and source any specific dollar figures before they go in front of a manager.</li>
+      <li><em>Commercial vs. Medicare:</em> Should we build a side-by-side of Medicare vs. commercial-payer pathways per flagship product? That's where most field reimbursement questions actually land.</li>
+      <li><em>Verification:</em> The $6,337.50 NTAP cap is from the FARAPULSE coding reference — confirm it's still current for the FY2026 rate year before publishing.</li>
+    </ol>
+  </div>
+
+  <div class="section-head" style="margin-top:46px"><span class="num">06</span><h2>US & international accessibility</h2><span class="tag">Geographic reach</span></div>
+  <p>BSX derives roughly 40% of sales internationally — meaningful currency exposure but also a long runway as flagship products roll out beyond the US.</p>
+  <table class="data">
+    <tr><th>Product</th><th>US</th><th>International</th></tr>
+    <tr><td>FARAPULSE</td><td>Approved 2024; expanded label (persistent AFib) 2025; US market leader</td><td>Strong EP performance in Japan & China; OPAL HDx approved in China (2026)</td></tr>
+    <tr><td>WATCHMAN FLX</td><td>Approved; broad use; CHAMPION-AF supports potential first-line expansion</td><td>FLX Pro received CE mark in Europe</td></tr>
+    <tr><td>Axonics SNM / eCoin</td><td>SNM established; eCoin (Valencia) integrating</td><td>Axonics F15 approved in Europe; active EMEA expansion</td></tr>
+    <tr><td>Acurate TAVR</td><td>Never FDA-approved</td><td><b>Withdrawn globally May 2025</b> — see headwinds</td></tr>
+    <tr><td>Penumbra portfolio</td><td>Established; pending BSX ownership</td><td>Available in 100+ markets</td></tr>
+  </table>
+  <a class="backtotop" href="#" onclick="window.scrollTo(0,0);return false;">↑ top</a>
+</section>
+
+<!-- HEADWINDS / TAILWINDS -->
+<section class="band" data-main="winds">
+  <div class="section-head"><span class="num">07</span><h2>Scary headwinds & exciting tailwinds</h2><span class="tag">The honest read</span></div>
+  <p>The candid view a manager will want — what could go wrong, and what's genuinely working. Severity/strength tags are judgment calls flagged for discussion.</p>
+
+  <div class="htgrid">
+    <div class="htcol">
+      <h3><span class="ic" style="background:var(--accent);color:#fff">▼</span>Headwinds</h3>
+
+      <div class="wind head"><span class="sev hi">High</span><div class="wt">PFA competition is intensifying</div>
+        J&J's VARIPULSE plugs into the dominant CARTO mapping platform, creating switching costs; Medtronic's Affera/Sphere-9 is mapping-integrated too. The threat is share erosion, not market viability.</div>
+
+      <div class="wind head"><span class="sev hi">High</span><div class="wt">2026 guidance was cut</div>
+        After the Q1 2026 call, management lowered full-year organic growth guidance from a ~10–11% range to ~6.5–8.0%, citing unanticipated headwinds in electrophysiology and Watchman volumes. This reframes the hyper-growth thesis.</div>
+
+      <div class="wind head"><span class="sev med">Medium</span><div class="wt">Urology underperformance</div>
+        Q1 2026 urology grew just ~2.1%; management expects a "below-market year" in urology and softness in core neuromodulation within the unit.</div>
+
+      <div class="wind head"><span class="sev med">Medium</span><div class="wt">Structural-heart strategic gap (TAVR exit)</div>
+        BSX discontinued the Acurate neo2 / Acurate Prime TAVR systems globally in May 2025 after the ACURATE IDE trial failed its non-inferiority margin vs. Medtronic Evolut and Edwards Sapien. ~$200M of 2024 sales gone, and no TAVR franchise — a notable hole in structural heart.</div>
+
+      <div class="wind head"><span class="sev med">Medium</span><div class="wt">FX & tariff exposure</div>
+        ~40% international sales = real currency drag in strong-dollar periods; management has cited a ~$200M tariff impact.</div>
+
+      <div class="wind head"><span class="sev med">Medium</span><div class="wt">Integration & leverage risk</div>
+        The ~$14.5B Penumbra deal is funded largely with ~$11B of cash/new debt and must clear regulatory review and integrate a neurovascular business BSX exited in 2011.</div>
+    </div>
+
+    <div class="htcol">
+      <h3><span class="ic" style="background:var(--bsx-bright);color:#fff">▲</span>Tailwinds</h3>
+
+      <div class="wind tail"><span class="sev hi">Strong</span><div class="wt">FARAPULSE is the US PFA leader</div>
+        ~$1B in its first 12 months, EP up ~63% YoY in Q3 2025, and ADVENT 4-year data showing durable superiority vs. thermal. Persistent-AFib label expansion roughly doubled the addressable population.</div>
+
+      <div class="wind tail"><span class="sev hi">Strong</span><div class="wt">CHAMPION-AF opens Watchman first-line</div>
+        March 2026 NEJM data: superior bleeding protection, similar efficacy vs. NOACs in a broad NVAF population. A first-line label would dramatically expand the funnel beyond today's bleeding-risk-restricted patients.</div>
+
+      <div class="wind tail"><span class="sev med">Building</span><div class="wt">Concomitant ablation + closure</div>
+        Pairing FARAPULSE + Watchman in one procedure (OPTION data) is driving Watchman's ~28% growth and deepens the EP account relationship.</div>
+
+      <div class="wind tail"><span class="sev med">Building</span><div class="wt">Neuromodulation re-acceleration</div>
+        +17.4% in Q1 2026, led by Intracept in vertebrogenic pain and Cartesia/DBS in the brain franchise.</div>
+
+      <div class="wind tail"><span class="sev med">Building</span><div class="wt">Penumbra = scaled entry into thrombectomy + neurovascular</div>
+        1.25M+ US arterial thrombectomy patients/yr and a re-entry into stroke — large, underserved, fast-growing adjacencies leveraging BSX's global footprint.</div>
+
+      <div class="wind tail"><span class="sev lo">Durable</span><div class="wt">Recurring-revenue MedSurg ballast</div>
+        Single-use disposables in endoscopy and urology provide high revenue visibility that balances the more volatile, innovation-driven cardiovascular side.</div>
+    </div>
+  </div>
+  <a class="backtotop" href="#" onclick="window.scrollTo(0,0);return false;">↑ top</a>
+
+  <!-- CLOSING QUESTIONS -->
+  <div class="section-head" style="margin-top:50px"><span class="num">08</span><h2>Questions & suggested edits before v0.2</h2><span class="tag">Nuance to resolve</span></div>
+  <div class="qbox">
+    <div class="qh">Strategic / framing</div>
+    <ol>
+      <li><em>Audience:</em> Is this for new-hire onboarding, a specific franchise team, or cross-portfolio reps? That should drive how deep we go on competitor products vs. our own.</li>
+      <li><em>Guidance cut tone:</em> How candid do you want the headwinds page to be in a field-facing document? I've kept it honest per your accuracy preference, but a manager may want the guidance-cut framing softened or moved to an appendix.</li>
+      <li><em>Single product vs. portfolio:</em> Want me to spin FARAPULSE and Watchman into their own standalone one-pagers (the way you've built company-specific deliverables before), or keep everything unified here?</li>
+    </ol>
+  </div>
+  <div class="qbox">
+    <div class="qh">Data & sourcing</div>
+    <ol>
+      <li><em>Segment dollar precision:</em> I used FY2025 segment splits (~$13.3B / ~$6.7B). Do you want the exact franchise-level revenue lines from the 10-K added to each product card?</li>
+      <li><em>Reimbursement specificity:</em> Should I pull exact, date-stamped FY2026 CPT/DRG/APC dollar figures per product? They vary by region and update annually, so I'd source each one explicitly.</li>
+      <li><em>Compliance review:</em> Several claims (CHAMPION-AF first-line, FARAPULSE label scope) sit close to on-/off-label lines. This draft should go through your med-legal/compliance reviewer before any field use — I've flagged the riskiest spots inline.</li>
+    </ol>
+  </div>
+  <div class="qbox">
+    <div class="qh">Build / format</div>
+    <ol>
+      <li><em>Print version:</em> Want a print/PDF-optimized stylesheet so this can be handed out, or is web/hover the primary mode?</li>
+      <li><em>Deeper flow tiers:</em> Should the flow map become interactive (click a problem → expand the full product card)?</li>
+      <li><em>Visuals:</em> Add product/anatomy diagrams, or keep it text + data for now?</li>
+    </ol>
+  </div>
+</section>
+</div><!-- /main-doc -->
+
+<!-- GLOSSARY PAGE -->
+<div id="glossary-page">
+  <section class="band">
+    <div class="section-head"><span class="num">▦</span><h2>Searchable Glossary</h2><span class="tag">Sales · Medical · Biology · Buzzwords</span></div>
+    <p>Every flagged term in the document. Each entry carries a sales/cost note and a medical implication. Search by term or definition; filter by category.</p>
+    <div class="gsearch">
+      <input id="gsearchInput" type="text" placeholder="Search terms, definitions, implications…" autocomplete="off">
+      <div class="gcount" id="gcount"></div>
+      <div class="gfilter" id="gfilter">
+        <button class="on" data-cat="all">All</button>
+        <button data-cat="medical">Medical</button>
+        <button data-cat="biology">Biology / MOA</button>
+        <button data-cat="sales">Sales / Cost</button>
+      </div>
+    </div>
+    <div id="glist"></div>
+    <a class="backtotop" href="#" onclick="showMain('overview');return false;">← back to document</a>
+  </section>
+</div>
+
+<footer>
+  <div class="fi">
+    <strong>BOSTON SCIENTIFIC — Field Reference & Therapeutic Flow Map · ROUGH DRAFT v0.1</strong><br>
+    Internal sales-enablement working document. Figures are FY2025/FY2026 to the cited dates and will drift; verify against the latest 10-K/10-Q and live product labeling before field use.<br><br>
+    <b>Selected sources:</b> BSX Q4 2025 & Q1 2026 earnings (SEC 8-K); CHAMPION-AF (NEJM / ACC.26, Mar 2026); ADVENT long-term outcomes; HI-PEITHO (EKOS); FARAPULSE coding & payment reference; Penumbra acquisition release (Jan 15, 2026); MedTech Dive, MassDevice, Fierce Biotech, Medical Device Network, Cardiovascular Business, MPO. JPM 2026 commentary.
+    <div class="disclaimer">Not investment advice and not medical advice. Several statements touch on- and off-label boundaries and must be cleared by med-legal/compliance before any external or field use. Prepared for manager review.</div>
+  </div>
+</footer>
+
+<script>
+/* ===== Glossary data: single source of truth ===== */
+const GLOSSARY = {
+  ep:{t:"Electrophysiology (EP)",cat:"medical",def:"The study and treatment of the heart's electrical conduction system; the BSX franchise anchored by FARAPULSE pulsed field ablation.",sales:"Fastest-growing cardiovascular franchise; capital generator placement drives recurring catheter pull-through.",med:"Targets arrhythmias, principally atrial fibrillation."},
+  pfa:{t:"Pulsed Field Ablation (PFA)",cat:"biology",def:"Non-thermal cardiac ablation using short high-voltage electrical pulses to destroy tissue via irreversible electroporation, selectively sparing adjacent structures.",sales:"The category BSX leads in the US; framed as the new standard of care for AFib ablation.",med:"Lower risk of esophageal/phrenic-nerve injury vs. thermal RF or cryoablation."},
+  ire:{t:"Irreversible Electroporation (IRE)",cat:"biology",def:"The cell-killing mechanism behind PFA: pulsed electric fields create permanent pores in cell membranes, causing targeted cell death.",sales:"The mechanistic story reps use to explain PFA's tissue selectivity.",med:"Cardiac myocytes are more susceptible than esophageal/nerve tissue at the energies used."},
+  ablation:{t:"Ablation",cat:"medical",def:"Deliberate destruction of small areas of heart tissue to interrupt abnormal electrical signals causing arrhythmia.",sales:"Core EP procedure; market BSX targets with FARAPULSE.",med:"Can restore normal rhythm and reduce stroke/heart-failure risk."},
+  catheter:{t:"Catheter",cat:"medical",def:"A thin flexible tube threaded through the vasculature to a treatment site; the FARAWAVE catheter delivers ablation energy.",sales:"Recurring single-use consumable — the razor-blade economics of EP.",med:"Access typically via femoral vein."},
+  mapping:{t:"Electroanatomic Mapping",cat:"medical",def:"3D visualization of heart chamber anatomy and electrical activity used to guide catheter placement.",sales:"OPAL HDx is BSX's mapping complement; counters J&J CARTO ecosystem lock-in.",med:"Reduces fluoroscopy exposure and improves ablation precision."},
+  watchman:{t:"WATCHMAN FLX",cat:"medical",def:"A transcatheter left atrial appendage closure (LAAC) implant offering a one-time alternative to lifelong oral anticoagulation for stroke-risk reduction in non-valvular AFib.",sales:"Most-implanted, most-studied LAAC device; 600K+ patients; ~28% franchise growth.",med:"Seals the LAA where 90%+ of AFib clots form."},
+  laac:{t:"LAAC",cat:"medical",def:"Left Atrial Appendage Closure — mechanically sealing the heart pouch where most AFib clots originate to reduce stroke risk.",sales:"Positioned as substitute for NOACs, complement to ablation.",med:"Removes the need for lifelong blood thinners in eligible patients."},
+  laa:{t:"Left Atrial Appendage (LAA)",cat:"biology",def:"A small pouch off the left atrium; the dominant site of clot formation in non-valvular AFib.",sales:"The anatomical basis of the entire Watchman pitch.",med:">90% of NVAF-related clots form here."},
+  nitinol:{t:"Nitinol",cat:"biology",def:"A nickel-titanium shape-memory alloy that self-expands to a preset shape at body temperature; structural frame of many implants.",sales:"Enables minimally invasive transcatheter delivery — smaller access, faster recovery.",med:"Self-expanding frames conform to variable anatomy."},
+  endothelialization:{t:"Endothelialization",cat:"biology",def:"The process by which the body's own endothelial tissue grows over an implant surface, sealing it into the chamber/vessel wall.",sales:"Supports the 'permanent, one-and-done' Watchman narrative.",med:"Completes the seal over weeks post-implant."},
+  noac:{t:"NOAC",cat:"medical",def:"Non-vitamin-K Oral Anticoagulant (e.g., apixaban, rivaroxaban) — modern blood thinners for stroke prevention in AFib.",sales:"The therapy Watchman aims to replace; ~40% of patients are non-adherent.",med:"Effective but carry ongoing bleeding risk and adherence challenges."},
+  paroxysmal:{t:"Paroxysmal AFib",cat:"medical",def:"Intermittent AFib episodes that self-terminate within 7 days.",sales:"FARAPULSE's original indication.",med:"Often progresses to persistent AFib if untreated."},
+  persistent:{t:"Persistent AFib",cat:"medical",def:"AFib lasting 7 days or longer.",sales:"FARAPULSE expanded label (2025) ~doubled the treatable population; ~$1B opportunity by 2028.",med:"Harder to treat; may require posterior-wall ablation."},
+  thrombectomy:{t:"Mechanical Thrombectomy",cat:"medical",def:"Physically removing a blood clot with a device (e.g., computer-assisted vacuum aspiration) rather than dissolving it pharmacologically.",sales:"Core of the Penumbra acquisition; 1.25M+ US arterial patients/yr.",med:"Used in PE, DVT, stroke, acute limb ischemia."},
+  ultrasoundlysis:{t:"Ultrasound-assisted Thrombolysis",cat:"biology",def:"Uses ultrasound energy to loosen a clot's fibrin matrix so clot-dissolving drugs work faster and at lower doses (EKOS).",sales:"HI-PEITHO data showed superiority vs. anticoagulation alone in intermediate-risk PE.",med:"Lower drug dose may reduce bleeding risk."},
+  axios:{t:"AXIOS Stent",cat:"medical",def:"A lumen-apposing metal stent placed under endoscopic ultrasound to create a drainage channel between organs/cavities.",sales:"Anchor endoscopy product; high-recurring disposable.",med:"E.g., drains walled-off pancreatic fluid collections without surgery."},
+  lams:{t:"LAMS",cat:"medical",def:"Lumen-Apposing Metal Stent — a dumbbell-shaped stent that holds two lumens together to create a drainage or access route.",sales:"Premium-priced endoscopy consumable.",med:"Enables transluminal, non-surgical drainage/access."},
+  rezum:{t:"Rezūm",cat:"medical",def:"Water-vapor (steam) thermal therapy that ablates obstructing prostate tissue to relieve BPH.",sales:"Office-based, expanded FDA indication for larger glands; drives prostate-health growth.",med:"Preserves sexual function vs. surgical resection."},
+  bph:{t:"BPH",cat:"medical",def:"Benign Prostatic Hyperplasia — non-cancerous prostate enlargement causing urinary obstruction.",sales:"Very large, aging-driven patient pool.",med:"Symptoms: weak stream, frequency, retention."},
+  turp:{t:"TURP",cat:"medical",def:"Transurethral Resection of the Prostate — the surgical gold-standard for BPH.",sales:"The procedure Rezūm competes against on recovery and QoL.",med:"Effective but higher sexual-dysfunction risk and longer recovery."},
+  asc:{t:"ASC",cat:"sales",def:"Ambulatory Surgery Center — an outpatient procedural facility.",sales:"Site-of-service shift from hospital to ASC reshapes device economics and reimbursement.",med:"Lower-acuity setting; faster patient turnaround."},
+  intracept:{t:"Intracept",cat:"medical",def:"A minimally invasive procedure ablating the basivertebral nerve to treat chronic vertebrogenic low-back pain.",sales:"Strong double-digit neuromodulation growth driver.",med:"Targets a specific, diagnosable pain source rather than masking symptoms."},
+  vertebrogenic:{t:"Vertebrogenic Pain",cat:"biology",def:"Chronic low-back pain originating from damaged vertebral endplates, signaled via the basivertebral nerve.",sales:"Defines the Intracept patient-identification talk track.",med:"Identified via Modic changes on MRI."},
+  dbs:{t:"Deep Brain Stimulation (DBS)",cat:"medical",def:"Implanted electrodes deliver electrical pulses to specific brain targets to treat movement disorders.",sales:"Vercise Genus franchise; implant + recurring programming revenue.",med:"Used for Parkinson's disease and essential tremor."},
+  cpt:{t:"CPT Code",cat:"sales",def:"Current Procedural Terminology — AMA-maintained codes defining and billing physician procedures.",sales:"A dedicated CPT signals an established, payable procedure; no clean code = reimbursement friction.",med:"Maps the clinical act to a billing identity."},
+  drg:{t:"MS-DRG",cat:"sales",def:"Medicare Severity Diagnosis-Related Group — bundled inpatient payment based on diagnosis.",sales:"If device cost exceeds DRG payment, the hospital loses money — a real adoption barrier.",med:"Payment is by diagnosis group, not itemized device."},
+  ntap:{t:"NTAP",cat:"sales",def:"New Technology Add-on Payment — temporary extra Medicare inpatient payment for costly new technology.",sales:"FARAPULSE qualifies: 65% of excess cost up to $6,337.50/case (Medicare FFS inpatient) — verify current rate-year cap.",med:"Bridges the gap until DRG rates incorporate the new tech."},
+  appc:{t:"APC / OPPS",cat:"sales",def:"Ambulatory Payment Classification under the Outpatient Prospective Payment System — Medicare's hospital outpatient payment method.",sales:"Governs outpatient site-of-service economics.",med:"Applies to procedures not requiring inpatient admission."},
+  hcpcs:{t:"HCPCS C-codes",cat:"sales",def:"Healthcare Common Procedure Coding System codes reporting device categories on outpatient hospital claims.",sales:"Track FARAWAVE / FARAPOINT / FARADRIVE device usage.",med:"Device-level claim reporting."},
+  priorauth:{t:"Prior Authorization",cat:"sales",def:"Payer requirement to approve a procedure before it is performed.",sales:"A common access bottleneck and procedure-abandonment driver; varies by commercial payer.",med:"Can delay time-sensitive care."},
+  ncd:{t:"NCD / LCD",cat:"sales",def:"National / Local Coverage Determination — Medicare's rules on whether and when a service is covered.",sales:"Coverage policy is separate from FDA approval; evidence-driven.",med:"LCDs vary by regional Medicare contractor (MAC)."},
+};
+
+/* ===== Build inline tooltips from data (keeps pops in sync) ===== */
+document.querySelectorAll('.term[data-term]').forEach(el=>{
+  const k=el.getAttribute('data-term'); const g=GLOSSARY[k];
+  if(g && !el.querySelector('.pop')){
+    const span=document.createElement('span'); span.className='pop';
+    span.innerHTML='<b>'+g.t+'</b>'+g.def; el.appendChild(span);
+  }
+  el.setAttribute('tabindex','0');
+  el.style.cursor='help';
+  el.addEventListener('click',e=>{ if(e.target.closest('.pop'))return; });
+});
+
+/* ===== Render glossary page ===== */
+const catLabel={medical:"Medical",biology:"Biology / MOA",sales:"Sales / Cost",buzz:"Buzzword"};
+function renderGlossary(filter='all',q=''){
+  const list=document.getElementById('glist'); list.innerHTML='';
+  const entries=Object.values(GLOSSARY).sort((a,b)=>a.t.localeCompare(b.t));
+  const ql=q.toLowerCase(); let n=0;
+  entries.forEach(g=>{
+    if(filter!=='all' && g.cat!==filter) return;
+    const hay=(g.t+' '+g.def+' '+g.sales+' '+g.med).toLowerCase();
+    if(ql && !hay.includes(ql)) return;
+    n++;
+    const d=document.createElement('div'); d.className='gentry';
+    d.innerHTML='<h4>'+g.t+' <span class="cat '+g.cat+'">'+catLabel[g.cat]+'</span></h4>'+
+      '<div class="def">'+g.def+'</div>'+
+      '<div class="impl"><b>Sales / cost:</b> '+g.sales+'</div>'+
+      '<div class="impl"><b>Medical:</b> '+g.med+'</div>';
+    list.appendChild(d);
+  });
+  document.getElementById('gcount').textContent=n+' term'+(n===1?'':'s')+' shown · '+entries.length+' total';
+}
+let curFilter='all';
+document.getElementById('gsearchInput').addEventListener('input',e=>renderGlossary(curFilter,e.target.value));
+document.querySelectorAll('#gfilter button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#gfilter button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); curFilter=b.getAttribute('data-cat');
+    renderGlossary(curFilter,document.getElementById('gsearchInput').value);
+  });
+});
+
+/* ===== Page / section navigation ===== */
+function showGlossary(){
+  document.getElementById('main-doc').style.display='none';
+  document.getElementById('glossary-page').classList.add('active');
+  renderGlossary(curFilter,document.getElementById('gsearchInput').value);
+  window.scrollTo(0,0);
+  document.getElementById('gsearchInput').focus();
+}
+function showMain(sectionKey){
+  document.getElementById('glossary-page').classList.remove('active');
+  document.getElementById('main-doc').style.display='block';
+  if(sectionKey){
+    const target=document.querySelector('[data-main="'+sectionKey+'"]');
+    if(target){ target.scrollIntoView({behavior:'smooth',block:'start'}); }
+    else window.scrollTo(0,0);
+  }
+}
+/* Click an inline term -> jump to glossary, filtered to that term */
+document.querySelectorAll('.term[data-term]').forEach(el=>{
+  el.addEventListener('dblclick',()=>{
+    const g=GLOSSARY[el.getAttribute('data-term')];
+    showGlossary();
+    const inp=document.getElementById('gsearchInput'); inp.value=g.t; renderGlossary(curFilter,g.t);
+  });
+});
+renderGlossary();
+</script>
+</body>
+</html>
