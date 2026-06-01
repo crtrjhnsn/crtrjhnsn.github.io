@@ -142,7 +142,7 @@ function renderClaude(artifact, viewer) {
     <iframe
       src="${escHtml(artifact.file)}"
       title="${escHtml(artifact.title)}"
-      sandbox="allow-scripts allow-forms"
+      sandbox="allow-scripts allow-forms allow-same-origin allow-popups allow-modals"
       loading="lazy"
     ></iframe>`;
 }
