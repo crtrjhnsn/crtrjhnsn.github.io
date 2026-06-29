@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eli Lilly (LLY) — Buy-Side IC Memo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16181d; --ink-soft:#3a3f47; --muted:#6b7280; --faint:#9aa1ab;
+    --paper:#fbfaf7; --card:#ffffff; --line:#e6e3db; --line-strong:#d2cec3;
+    --accent:#9a1b2f;       /* Lilly-ish deep red */
+    --accent-soft:#c2415622;
+    --good:#1f7a4d; --bad:#b23b3b; --warn:#b07a17;
+    --invest:#7a4fb0;       /* investigational tag */
+    --chip:#f1efe9;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Newsreader",Georgia,serif; font-size:18px; line-height:1.62;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 22px;}
+  h1,h2,h3,h4,.label,th,.kicker,nav,.chip,.banner,.dash,button,.metric,.tbl-note,.foot{font-family:"IBM Plex Sans",system-ui,sans-serif;}
+  h1{font-size:2.35rem; line-height:1.1; letter-spacing:-.02em; margin:0 0 6px; font-weight:700;}
+  h2{font-size:1.5rem; letter-spacing:-.01em; margin:2.6em 0 .5em; font-weight:700; scroll-margin-top:84px;}
+  h3{font-size:1.12rem; margin:1.8em 0 .35em; font-weight:600; color:var(--ink);}
+  h4{font-size:.82rem; text-transform:uppercase; letter-spacing:.09em; color:var(--muted); margin:1.4em 0 .4em; font-weight:600;}
+  p{margin:.55em 0;}
+  a{color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-soft);}
+  a:hover{border-bottom-color:var(--accent);}
+  sup a{border:none; font-size:.7em; padding:0 1px;}
+  .kicker{font-size:.78rem; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:600;}
+  .muted{color:var(--muted);}
+  .small{font-size:.84rem;}
+
+  /* ---------- masthead ---------- */
+  header.mast{border-bottom:2px solid var(--ink); padding:30px 0 18px; margin-top:14px;}
+  .mast-row{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; flex-wrap:wrap;}
+  .mast-meta{font-family:"IBM Plex Mono",monospace; font-size:.74rem; color:var(--muted); text-align:right; line-height:1.7;}
+  .mast-meta b{color:var(--ink);}
+  .tape{display:flex; gap:0; flex-wrap:wrap; margin-top:18px; border:1px solid var(--line-strong); border-radius:8px; overflow:hidden; background:var(--card);}
+  .tape .metric{flex:1 1 130px; padding:11px 14px; border-right:1px solid var(--line); min-width:120px;}
+  .tape .metric:last-child{border-right:none;}
+  .metric .m-lbl{font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; color:var(--faint); font-weight:600;}
+  .metric .m-val{font-family:"IBM Plex Mono",monospace; font-size:1.18rem; font-weight:600; color:var(--ink); margin-top:2px;}
+  .metric .m-sub{font-size:.72rem; color:var(--muted); font-family:"IBM Plex Mono",monospace;}
+  .up{color:var(--good);} .down{color:var(--bad);}
+
+  /* ---------- compliance banner ---------- */
+  .banner{font-size:.8rem; border-radius:8px; padding:11px 15px; margin:18px 0; line-height:1.5; border:1px solid; display:flex; gap:10px; align-items:flex-start;}
+  .banner .bdot{flex:0 0 auto; margin-top:3px; font-weight:700;}
+  .banner.compliance{background:#fdf6f7; border-color:#e8c4cb; color:#6e2230;}
+  .banner.data{background:#f4f7fb; border-color:#cdd9e6; color:#27405e;}
+
+  /* ---------- nav / TOC ---------- */
+  nav.toc{position:sticky; top:0; z-index:40; background:rgba(251,250,247,.94); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); margin-bottom:8px;}
+  nav.toc .wrap{display:flex; gap:4px; overflow-x:auto; padding:8px 22px; scrollbar-width:thin;}
+  nav.toc a{font-size:.74rem; font-weight:600; color:var(--ink-soft); border:1px solid transparent; border-radius:6px; padding:5px 9px; white-space:nowrap;}
+  nav.toc a:hover{background:var(--chip); border-color:var(--line);}
+
+  /* ---------- cards & callouts ---------- */
+  .card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin:16px 0;}
+  .grid{display:grid; gap:14px;}
+  .g2{grid-template-columns:1fr 1fr;}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  @media(max-width:760px){.g2,.g3{grid-template-columns:1fr;}}
+  .pull{border-left:3px solid var(--accent); padding:4px 0 4px 16px; margin:14px 0; color:var(--ink-soft); font-style:italic;}
+  .takeaway{background:#f7f4ee; border:1px solid var(--line-strong); border-radius:10px; padding:14px 18px; margin:18px 0;}
+  .takeaway .kicker{display:block; margin-bottom:4px;}
+
+  /* ---------- tables ---------- */
+  .tbl-scroll{overflow-x:auto; margin:14px 0;}
+  table{border-collapse:collapse; width:100%; font-size:.9rem; background:var(--card);}
+  th,td{padding:8px 11px; text-align:right; border-bottom:1px solid var(--line);}
+  th:first-child,td:first-child{text-align:left;}
+  thead th{font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); border-bottom:1.5px solid var(--line-strong); font-weight:600; vertical-align:bottom;}
+  tbody tr:hover{background:#faf8f3;}
+  td.num,th.num{font-family:"IBM Plex Mono",monospace;}
+  tfoot td{font-weight:600; border-top:1.5px solid var(--line-strong); border-bottom:none;}
+  .tbl-note{font-size:.72rem; color:var(--faint); margin-top:6px;}
+  caption{caption-side:top; text-align:left; font-family:"IBM Plex Sans"; font-weight:600; font-size:.92rem; padding-bottom:8px;}
+
+  /* chips / tags */
+  .chip{display:inline-block; font-size:.66rem; font-weight:600; letter-spacing:.04em; padding:2px 7px; border-radius:20px; background:var(--chip); color:var(--ink-soft); border:1px solid var(--line); text-transform:uppercase; vertical-align:middle;}
+  .chip.appr{background:#eaf5ef; color:var(--good); border-color:#bfe0cd;}
+  .chip.inv{background:#f3edf9; color:var(--invest); border-color:#dcccec;}
+  .chip.risk{background:#fbeeee; color:var(--bad); border-color:#eccccc;}
+
+  /* glossary tooltip terms */
+  .term{border-bottom:1px dotted var(--accent); cursor:help; color:var(--ink);}
+  #tip{position:fixed; z-index:200; max-width:300px; background:#1c1e24; color:#f3f1ec; font-family:"IBM Plex Sans"; font-size:.78rem; line-height:1.45; padding:10px 12px; border-radius:8px; box-shadow:0 8px 28px rgba(0,0,0,.28); opacity:0; transform:translateY(4px); transition:opacity .12s, transform .12s; pointer-events:none;}
+  #tip.on{opacity:1; transform:translateY(0);}
+  #tip .tt{font-weight:600; color:#fff; display:block; margin-bottom:2px;}
+
+  /* charts */
+  .chart-card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px 10px; margin:16px 0;}
+  .chart-card svg{display:block; width:100%; height:auto;}
+  .legend{display:flex; gap:16px; flex-wrap:wrap; font-size:.74rem; color:var(--muted); font-family:"IBM Plex Sans"; margin-top:6px;}
+  .legend span{display:inline-flex; align-items:center; gap:5px;}
+  .swatch{width:11px; height:11px; border-radius:2px; display:inline-block;}
+
+  /* glossary list */
+  .gloss-search{width:100%; padding:10px 13px; font-family:"IBM Plex Sans"; font-size:.92rem; border:1px solid var(--line-strong); border-radius:8px; margin:10px 0 16px; background:var(--card);}
+  .gentry{border-bottom:1px solid var(--line); padding:12px 2px;}
+  .gentry .gt{font-family:"IBM Plex Sans"; font-weight:600; font-size:.98rem;}
+  .gentry .gt .chip{margin-left:8px;}
+  .gentry p{margin:.25em 0 0; font-size:.92rem; color:var(--ink-soft);}
+  .backtop{font-family:"IBM Plex Sans"; font-size:.72rem; float:right; margin-top:3px;}
+
+  /* references */
+  ol.refs{font-family:"IBM Plex Sans"; font-size:.82rem; color:var(--ink-soft); padding-left:22px;}
+  ol.refs li{margin:7px 0; line-height:1.45;}
+  .foot{border-top:2px solid var(--ink); margin-top:50px; padding:22px 0 60px; font-size:.78rem; color:var(--muted);}
+
+  .secnum{font-family:"IBM Plex Mono"; color:var(--accent); font-size:1.1rem; font-weight:600; margin-right:8px;}
+  hr.div{border:none; border-top:1px solid var(--line); margin:34px 0;}
+  ul.tight li{margin:.3em 0;}
+  .flag-good{color:var(--good); font-weight:600;}
+  .flag-bad{color:var(--bad); font-weight:600;}
+  .flag-warn{color:var(--warn); font-weight:600;}
+</style>
+</head>
+<body>
+
+<div id="tip"></div>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#snapshot">Snapshot</a>
+    <a href="#moneyflow">Money-Flow</a>
+    <a href="#revenue">Revenue</a>
+    <a href="#brand">Franchise</a>
+    <a href="#econ">Mfg Econ</a>
+    <a href="#margin">Margin/GTN</a>
+    <a href="#intl">International</a>
+    <a href="#moat">Moat</a>
+    <a href="#model">Model</a>
+    <a href="#failure">Failure Modes</a>
+    <a href="#drug">Drug Deep-Dive</a>
+    <a href="#pricing">Pricing/Vol</a>
+    <a href="#glossary">Glossary</a>
+    <a href="#refs">References</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">Buy-Side Research · Internal Investment-Committee Memo</div>
+  <div class="mast-row">
+    <div>
+      <h1>Eli Lilly &amp; Co.</h1>
+      <div class="muted" style="font-family:'IBM Plex Mono';font-size:.86rem;">NYSE: LLY · Biopharmaceuticals · Indianapolis, USA · USD reporting (US GAAP)</div>
+    </div>
+    <div class="mast-meta">
+      <div>As of <b>Mon 29 Jun 2026</b> (intraday)</div>
+      <div>Price data: <b>Interactive Brokers</b></div>
+      <div>Fundamentals: <b>SEC filings</b></div>
+      <div>Science: <b>PubMed</b></div>
+    </div>
+  </div>
+
+  <div class="tape" id="tape">
+    <div class="metric"><div class="m-lbl">Last</div><div class="m-val">$1,218.32</div><div class="m-sub up">+10.20 (+0.84%)</div></div>
+    <div class="metric"><div class="m-lbl">Market cap*</div><div class="m-val">≈$1.10T</div><div class="m-sub">~910M dil. sh.</div></div>
+    <div class="metric"><div class="m-lbl">YTD</div><div class="m-val up">+13.6%</div><div class="m-sub">vs XLV +3.9%</div></div>
+    <div class="metric"><div class="m-lbl">52-wk range</div><div class="m-val">621–1,238</div><div class="m-sub">at highs</div></div>
+    <div class="metric"><div class="m-lbl">Impl. vol</div><div class="m-val">34.7%</div><div class="m-sub">HV 35.1%</div></div>
+    <div class="metric"><div class="m-lbl">Div yield</div><div class="m-val">0.53%</div><div class="m-sub">growth-tilted</div></div>
+  </div>
+</header>
+
+<div class="banner compliance">
+  <span class="bdot">⚠</span>
+  <div><b>Compliance note.</b> This memo discusses both <b>approved commercial products</b> <span class="chip appr">approved</span> and <b>investigational / pipeline assets and unapproved indications</b> <span class="chip inv">investigational</span>. Investigational content is for investment analysis only and is <b>not</b> promotional, does not imply efficacy or safety conclusions, and must not be used for clinical or prescribing decisions. Efficacy/safety claims are attributed to peer-reviewed sources or company disclosures.</div>
+</div>
+<div class="banner data">
+  <span class="bdot">●</span>
+  <div><b>Not investment advice.</b> Prepared as an analytical reference, not a personalized recommendation. Numbers are sourced to primary filings and live market data where possible; proxies and limitations are flagged inline. Verify against source documents before any capital decision.</div>
+</div>
+
+<!-- ============================ A ============================ -->
+<h2 id="snapshot"><span class="secnum">A</span>Business-Model Snapshot</h2>
+
+<p><b>What Lilly sells, in plain English.</b> Lilly discovers, manufactures, and sells patent-protected prescription medicines. The business today is overwhelmingly a single-molecule story: <span class="term" data-d="tirzepatide">tirzepatide</span> — sold as <b>Mounjaro</b> <span class="chip appr">approved</span> for type-2 diabetes and <b>Zepbound</b> <span class="chip appr">approved</span> for obesity — drove <b>56% of 2025 revenue</b><sup><a href="#r1">1</a></sup>. Around that core sit an oncology franchise (Verzenio), immunology (Taltz, Omvoh, Ebglyss), a maturing CNS asset (Kisunla in Alzheimer's), the legacy diabetes book (Trulicity, Jardiance), and — newest and most consequential — <b>Foundayo (orforglipron)</b> <span class="chip appr">approved</span>, the first oral <span class="term" data-d="glp1">GLP-1</span> pill cleared in the U.S. that can be taken any time of day with no food or water restrictions<sup><a href="#r1">1</a></sup>.</p>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>Core customer segments</h4>
+    <ul class="tight small">
+      <li><b>Patients</b> — increasingly self-paying: ~45% of Zepbound scripts and ~55% of <i>new</i> scripts were cash-pay in Q1 2026<sup><a href="#r7">7</a></sup>.</li>
+      <li><b>Prescribers / specialists &amp; KOLs</b> — endocrinologists, PCPs, oncologists; demand created via <span class="term" data-d="medaffairs">medical affairs</span> and <span class="term" data-d="dtc">DTC advertising</span> (an expense, not a channel).</li>
+      <li><b>Payers / PBMs / national systems</b> — set formulary access and extract <span class="term" data-d="gtn">gross-to-net</span> rebates.</li>
+      <li><b>Wholesalers &amp; specialty pharmacies</b> — the booking point of sale; plus <b>LillyDirect</b>, Lilly's own telehealth/pharmacy channel.</li>
+      <li><b>Government tender buyers</b> — ex-U.S. health systems; and now U.S. Medicare/Medicaid under the 2025–26 pricing agreement<sup><a href="#r6">6</a></sup>.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>How the company makes money</h4>
+    <ul class="tight small">
+      <li><b>On-patent premium pricing</b> net of large rebates — gross margin ~83%<sup><a href="#r3">3</a></sup>.</li>
+      <li><b>Volume-led indication expansion</b> — diabetes → obesity → sleep apnea → CV/MASH adjacencies.</li>
+      <li><b>New launches</b> (Foundayo, Kisunla, Ebglyss, Omvoh, Jaypirca, Inluriyo).</li>
+      <li><b>Geographic rollout</b> — ex-U.S. volume +95% in Q1 2026<sup><a href="#r7">7</a></sup>.</li>
+      <li><b>Operating leverage</b> — non-GAAP <span class="term" data-d="perfmargin">performance margin</span> hit ~50% in Q1 2026<sup><a href="#r10">10</a></sup>.</li>
+      <li><b>Harvest</b> of legacy diabetes (Trulicity, Jardiance via the Boehringer Ingelheim collaboration).</li>
+    </ul>
+  </div>
+</div>
+
+<div class="takeaway">
+  <span class="kicker">The 5 KPIs that summarize the model</span>
+  <ol class="small" style="margin:.3em 0; padding-left:20px;">
+    <li><b>Incretin franchise revenue &amp; YoY growth</b> (Mounjaro + Zepbound + orforglipron) — the whole thesis.</li>
+    <li><b>Volume vs. realized-price split</b> — 2026 is +65% volume / −13% price; the durability of demand against price give-back is the crux.</li>
+    <li><b>Gross margin %</b> — pricing pressure vs. mix/cost-of-production improvement.</li>
+    <li><b>Performance margin</b> — operating leverage as launches scale.</li>
+    <li><b>Phase-3 pipeline conversion</b> — replenishment ahead of the mid-2030s tirzepatide patent cliff.</li>
+  </ol>
+</div>
+
+<!-- ============================ B ============================ -->
+<h2 id="moneyflow"><span class="secnum">B</span>Money-Flow Map</h2>
+<p>Pharma cash conversion runs in a long loop: capital is committed to manufacturing <i>months to years</i> before the matching revenue exists. The diagram traces a dollar from discovery to cash, and flags where margin risk is created.</p>
+
+<div class="chart-card" id="flowchart"></div>
+
+<p>Three points an IC should internalize:</p>
+<ul class="tight">
+  <li><b>Revenue is booked at the wholesaler/specialty-pharmacy/tender hand-off</b>, already <i>net</i> of gross-to-net deductions. There is no "DTC channel" — U.S. consumer advertising is demand-generation <span class="term" data-d="opex">opex</span>, not a sales line.</li>
+  <li><b>Reported net-sales growth ≠ volume growth.</b> In 2025, worldwide volume rose far faster than reported revenue because Lilly is <i>deliberately</i> giving back price (rebates + list cuts) to widen access. The 2026 split — <b>+65% volume, −13% price</b><sup><a href="#r5">5</a></sup> — is the single most important decomposition in the model.</li>
+  <li><b>Build-ahead is the hidden risk.</b> Lilly commits bioreactor and fill-finish capacity, and now oral-pill capacity, against a demand forecast. If demand softens, that capex converts into <span class="term" data-d="absorption">under-absorption</span> and potential inventory write-offs — margin damage that shows up quarters after the manufacturing decision.</li>
+</ul>
+
+<!-- ============================ C ============================ -->
+<h2 id="revenue"><span class="secnum">C</span>Revenue Architecture &amp; Growth Drivers</h2>
+
+<h3>Geographic mix (FY2025, as disclosed in the 10-K)</h3>
+<div class="tbl-scroll">
+<table>
+  <caption>Revenue by geography — FY2025 vs FY2024</caption>
+  <thead><tr><th>Geography</th><th class="num">FY2025 ($M)</th><th class="num">% of total</th><th class="num">FY2024 ($M)</th><th class="num">YoY</th></tr></thead>
+  <tbody>
+    <tr><td>United States</td><td class="num">43,481</td><td class="num">66.7%</td><td class="num">~28,900</td><td class="num up">~+50%</td></tr>
+    <tr><td>Outside U.S.</td><td class="num">21,698</td><td class="num">33.3%</td><td class="num">~16,100</td><td class="num up">~+35%</td></tr>
+  </tbody>
+  <tfoot><tr><td>Total revenue</td><td class="num">65,179</td><td class="num">100%</td><td class="num">45,043</td><td class="num up">+45%</td></tr></tfoot>
+</table>
+<div class="tbl-note">U.S./ex-U.S. split per FY2025 10-K revenue table.<sup><a href="#r1">1</a></sup> Prior-year geographic sub-totals approximated from the same table's growth math; treat as estimates. The structural read: still a ~⅔ U.S.-concentrated revenue base, but ex-U.S. is the faster grower.</div>
+</div>
+
+<h3>Franchise mix — the concentration problem in one table</h3>
+<div class="tbl-scroll">
+<table>
+  <caption>Top products — FY2025 (full year) and Q1 2026 run-rate</caption>
+  <thead><tr><th>Product (molecule)</th><th>Area</th><th class="num">FY2025 ($M)</th><th class="num">YoY</th><th class="num">Q1'26 ($M)</th><th class="num">Q1 YoY</th></tr></thead>
+  <tbody>
+    <tr><td>Mounjaro <span class="chip appr">appr</span> <span class="term" data-d="tirzepatide">(tirzepatide)</span></td><td>T2D</td><td class="num">22,965</td><td class="num up">+99%</td><td class="num">8,662</td><td class="num up">+125%</td></tr>
+    <tr><td>Zepbound <span class="chip appr">appr</span> (tirzepatide)</td><td>Obesity</td><td class="num">13,542</td><td class="num up">+175%</td><td class="num">4,160</td><td class="num up">+80%</td></tr>
+    <tr><td>Verzenio <span class="term" data-d="verzenio">(abemaciclib)</span></td><td>Oncology</td><td class="num">5,723</td><td class="num up">+8%</td><td class="num">~1,500</td><td class="num">—</td></tr>
+    <tr><td>Trulicity (dulaglutide)</td><td>T2D (legacy)</td><td class="num">&gt;3,000</td><td class="num down">declining</td><td class="num">—</td><td class="num">—</td></tr>
+    <tr><td>Taltz (ixekizumab)</td><td>Immunology</td><td class="num">&gt;3,000</td><td class="num up">growing</td><td class="num">—</td><td class="num">—</td></tr>
+    <tr><td>Jardiance (empagliflozin)*</td><td>T2D/CKD</td><td class="num">&gt;3,000</td><td class="num up">growing</td><td class="num">—</td><td class="num">—</td></tr>
+    <tr><td>Jaypirca <span class="term" data-d="jaypirca">(pirtobrutinib)</span></td><td>Onc (BTK)</td><td class="num">—</td><td class="num">ramping</td><td class="num">165</td><td class="num up">growing</td></tr>
+    <tr><td>Ebglyss (lebrikizumab)</td><td>Immunology</td><td class="num">—</td><td class="num">launch</td><td class="num">145</td><td class="num up">growing</td></tr>
+    <tr><td>Kisunla <span class="term" data-d="kisunla">(donanemab)</span></td><td>CNS / Alzheimer's</td><td class="num">—</td><td class="num">launch</td><td class="num">124</td><td class="num up">growing</td></tr>
+    <tr><td>Omvoh (mirikizumab)</td><td>Immunology (IBD)</td><td class="num">—</td><td class="num">launch</td><td class="num">80</td><td class="num up">growing</td></tr>
+    <tr><td>Inluriyo (imlunestrant)</td><td>Onc (oral <span class="term" data-d="serd">SERD</span>)</td><td class="num">—</td><td class="num">launch</td><td class="num">35</td><td class="num up">new</td></tr>
+  </tbody>
+</table>
+<div class="tbl-note">*Jardiance is co-developed with Boehringer Ingelheim; Lilly recognizes collaboration revenue, not full product sales. Six products (Mounjaro, Zepbound, Verzenio, Trulicity, Taltz, Jardiance) were each &gt;$3B and together were <b>82% of FY2025 revenue</b>; Mounjaro + Zepbound alone were <b>56%</b>.<sup><a href="#r1">1</a></sup> Quarterly product figures per Q1 2026 release.<sup><a href="#r9">9</a></sup></div>
+</div>
+
+<h3>Quarterly revenue trajectory</h3>
+<div class="chart-card" id="revchart"></div>
+
+<h3>The true growth engines, ranked</h3>
+<ol class="tight">
+  <li><b>Incretin volume.</b> Mounjaro + Zepbound added ~$6.7B of growth YoY in Q1 2026 alone and reached ~$12.8B combined for the quarter<sup><a href="#r10">10</a></sup>. This is the engine; everything else is secondary.</li>
+  <li><b>Oral GLP-1 (orforglipron / Foundayo).</b> <span class="chip appr">approved (obesity)</span> A pill removes the cold-chain and injection barriers, vastly expanding the addressable population — the most important <i>new</i> driver. The T2D indication is <span class="chip inv">filed/investigational</span>.</li>
+  <li><b>International rollout.</b> Ex-U.S. volume +95% in Q1 2026 as Lilly hits its 3rd–4th quarter in Europe, China and Brazil, much of it cash-pay<sup><a href="#r3">3</a></sup>.</li>
+  <li><b>New-launch portfolio.</b> Kisunla, Ebglyss, Omvoh, Jaypirca, Inluriyo — diversifies away from incretins, though still small.</li>
+  <li><b>Indication durability &amp; persistence.</b> Obesity/diabetes are chronic; adherence drives recurring revenue (offset by real-world discontinuation rates — a watch item).</li>
+</ol>
+
+<div class="card">
+  <h4>What is cyclical vs durable vs declining</h4>
+  <table class="small">
+    <tbody>
+      <tr><td><span class="flag-good">Structurally durable</span></td><td style="text-align:left">Tirzepatide franchise to mid-2030s LOE; obesity TAM expansion; Verzenio; new immunology launches.</td></tr>
+      <tr><td><span class="flag-warn">Transitional</span></td><td style="text-align:left">Price give-back (deliberate) trading list price for volume &amp; access; international launch-cost drag.</td></tr>
+      <tr><td><span class="flag-bad">Declining</span></td><td style="text-align:left">Trulicity (cannibalized by own tirzepatide); older diabetes; legacy established medicines.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h4>Leading indicators to watch</h4>
+<p class="small">New-patient starts &amp; prescriber breadth (IQVIA <span class="term" data-d="trx">TRx/NBRx</span> — third-party, since Lilly does not disclose scripts); net price realization; adherence/persistence (the <span class="term" data-d="upt">refill-length</span> analog); gross-to-net deduction rate; <b>inventory growth vs sales growth</b>; R&amp;D productivity (Phase-3 success, cost per approval); SG&amp;A/sales; DTC intensity; and management pipeline commentary at the <b>Dec 7, 2026 Investment Community Meeting</b>.<sup><a href="#r9">9</a></sup></p>
+
+<!-- ============================ D ============================ -->
+<h2 id="brand"><span class="secnum">D</span>Brand, Product &amp; Franchise Strategy</h2>
+<p><b>Why prevalence and indication breadth are the economics.</b> A molecule's value is roughly (eligible population) × (treatment rate) × (net price) × (persistence) × (years of exclusivity). Lilly's incretin platform scores high on every term: obesity and T2D are enormous, under-treated populations; net price — even after give-back — remains premium; persistence is structurally high for chronic metabolic disease; and exclusivity runs to the mid-2030s. <b>Indication breadth multiplies the population term</b> without re-paying most of the discovery cost: the same molecule is monetized across diabetes, obesity, sleep apnea, and (investigational) cardiovascular, MASH and osteoarthritis adjacencies.</p>
+
+<div class="grid g2">
+  <div class="card">
+    <h4>The product engine — strengths</h4>
+    <ul class="tight small">
+      <li><b>Best-in-class efficacy.</b> Tirzepatide's dual mechanism delivered weight loss "unprecedented for a single agent" and out-performed semaglutide 1.0mg on HbA1c and weight in head-to-head data.<sup><a href="#r12">12</a></sup></li>
+      <li><b>Innovation cadence.</b> &gt;25 positive Phase-3 topline readouts in 2025; 12 new Phase-3 starts.<sup><a href="#r4">4</a></sup></li>
+      <li><b>Format innovation.</b> Oral orforglipron breaks the injection/cold-chain ceiling on the category.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>The product engine — risks</h4>
+    <ul class="tight small">
+      <li><b>Concentration.</b> One molecule = 56% of revenue. A tirzepatide safety signal or faster-than-modeled cliff is the dominant tail risk.</li>
+      <li><b>Trial / discontinuation risk.</b> Pipeline misses (e.g. CV-outcomes, MASH) would re-rate the durability story.</li>
+      <li><b>Competitive crowding.</b> Novo's semaglutide/CagriSema, plus Amgen MariTide, Viking, Pfizer oral programs.</li>
+    </ul>
+  </div>
+</div>
+
+<p><b>Exclusivity, cliffs &amp; demand creation.</b> Patent-protected scarcity is the pricing-power source, but it is <i>time-boxed</i>. Lilly's durable moat is therefore the <b>execution machine</b> — discovery → trials → manufacturing scale-up → KOL/medical-affairs demand creation → launch — repeated faster than rivals, plus indication expansion as a moderate life-cycle extender. Per-molecule, the moat decays to the patent clock; as a franchise, it is replenished by the pipeline.</p>
+
+<!-- ============================ E ============================ -->
+<h2 id="econ"><span class="secnum">E</span>Drug-Development, Manufacturing &amp; Channel Economics</h2>
+<p><b>From raw material to dose.</b> Tirzepatide is an <span class="term" data-d="peptide">acylated peptide</span> — biologically manufactured and filled/finished into injectable pens under cold-chain, a capital-intensive, long-lead process. Orforglipron is a <span class="term" data-d="smallmol">small molecule</span> taken orally — chemically synthesized, far cheaper to make and ship, and not constrained by injectable fill-finish or the same cold-chain. <b>That manufacturing difference is a strategic weapon</b>: an oral GLP-1 can be scaled to a global population in a way injectables structurally cannot.</p>
+
+<div class="grid g3">
+  <div class="card"><h4>Customer acquisition</h4><p class="small">Cost-per-new-patient-start is driven by DTC + sales-force + medical affairs. LillyDirect lowers friction (direct telehealth → fulfillment) and captures first-party demand data.</p></div>
+  <div class="card"><h4>Repeat / persistence</h4><p class="small">Chronic dosing = recurring revenue, but real-world discontinuation (cost, tolerability, supply) is the leak. Persistence is the obesity-category "units-per-transaction."</p></div>
+  <div class="card"><h4>Fulfillment &amp; liability</h4><p class="small">Cold-chain + specialty-pharmacy cost for injectables; recall/return and product-liability litigation are the tail. Compounded-GLP-1 grey market is a quality &amp; brand risk.</p></div>
+</div>
+
+<p><b>In-house manufacturing vs. partnership reach.</b> They are <i>mutually reinforcing</i>, not substitutes. Lilly is spending aggressively on owned capacity (multiple new U.S. and ex-U.S. plants) to control supply — the binding constraint on incretin revenue in 2023–24. Where it partners — most notably the <b>Boehringer Ingelheim</b> diabetes alliance (Jardiance/empagliflozin) — it trades a slice of margin for scale and de-risking; this shows up as collaboration revenue / other income rather than full product sales. The 2025–26 wave of bolt-on acquisitions (Verve, Scorpion, Orna, Centessa, Kelonia, Ajax) buys pipeline optionality and modality breadth (RNA, gene editing, targeted protein degradation).<sup><a href="#r9">9</a></sup></p>
+
+<p><b>Best-available productivity proxies:</b> plant productivity → gross-margin trend &amp; qualitative utilization commentary (Lilly does not disclose plant-level utilization); commercial profitability → SG&amp;A/sales and the performance-margin trend (~43% → ~50% YoY in Q1 2026).<sup><a href="#r10">10</a></sup></p>
+
+<!-- ============================ F ============================ -->
+<h2 id="margin"><span class="secnum">F</span>Gross Margin, Inventory &amp; Gross-to-Net Framework</h2>
+
+<h3>Gross-margin decomposition</h3>
+<div class="tbl-scroll">
+<table>
+  <caption>Drivers of gross margin (non-GAAP basis)</caption>
+  <thead><tr><th>Driver</th><th>Direction recently</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>Product / portfolio mix</td><td class="num"><span class="flag-good">+</span></td><td style="text-align:left">Shift toward high-margin incretins &amp; specialty.</td></tr>
+    <tr><td>Cost of production</td><td class="num"><span class="flag-good">+</span></td><td style="text-align:left">Scale + yield improvements as new plants ramp.</td></tr>
+    <tr><td>Realized price (gross-to-net)</td><td class="num"><span class="flag-bad">−</span></td><td style="text-align:left">The dominant drag — deliberate rebates/list cuts for access. Q1'26 GM −0.9pp YoY on lower realized prices.<sup><a href="#r5">5</a></sup></td></tr>
+    <tr><td>Channel mix (U.S. net vs ex-U.S. tender)</td><td class="num"><span class="flag-warn">−/=</span></td><td style="text-align:left">Ex-U.S. growth often lower net price; partly cash-pay offsets.</td></tr>
+    <tr><td>FX</td><td class="num"><span class="flag-warn">±</span></td><td style="text-align:left">Modest favorable FX in late-2025.</td></tr>
+    <tr><td>Tariffs / duties</td><td class="num"><span class="flag-bad">risk</span></td><td style="text-align:left">Pharma-specific tariff threat is an open 2026 policy risk.</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="pull">Net read: gross margin has held in the low-80s (FY2025 ~83%; Q1'26 non-GAAP 82.6%) because mix + cost improvement are <i>almost exactly</i> offsetting an intentional price give-back. The day volume growth slows but price give-back continues is the day margin compresses — that is the key inflection to model.</div>
+
+<h3>Volume vs. price — how to read it</h3>
+<p>Reported growth = volume × price/mix. Lilly's 2026 print of <b>+56% revenue from +65% volume and −13% price</b> is the healthy pattern: it is <i>share/access capture</i>, not erosion. The dangerous version is the inverse — revenue held up by price while volume rolls over. Watch the gap between the two every quarter.</p>
+
+<h3>Healthy vs. dangerous inventory</h3>
+<div class="grid g2">
+  <div class="card"><h4 style="color:var(--good)">Healthy build-ahead</h4><p class="small">Pre-launch &amp; capacity inventory built against <i>confirmed</i> demand and approvals; Lilly capitalizes some pre-launch inventory when commercialization is probable. Rising inventory <i>alongside</i> rising sales = supplying real demand.</p></div>
+  <div class="card"><h4 style="color:var(--bad)">Dangerous inventory</h4><p class="small">Inventory growth <i>outrunning</i> sales growth; perishable/seasonal stock; capacity committed to a demand curve that flattens → write-offs + under-absorption. Track inventory-turns and the inventory-vs-sales growth gap.</p></div>
+</div>
+<p class="small"><b>How a slowdown propagates:</b> demand softens → built capacity under-absorbs (fixed cost spread over fewer units) → gross margin compresses → finished/WIP inventory ages → write-offs → working capital ties up cash → free cash flow falls — typically 1–3 quarters <i>after</i> the demand inflection.</p>
+
+<!-- ============================ G ============================ -->
+<h2 id="intl"><span class="secnum">G</span>International Expansion</h2>
+<p><b>Why it matters.</b> Ex-U.S. growth (1) diversifies away from U.S. pricing/policy concentration (IRA, PBMs, Medicaid), and (2) extends each asset's economic life by rolling the same molecule across new geographies and reimbursement regimes. Ex-U.S. was <b>+81% in Q1 2026</b> on +95% volume, and Lilly holds <b>&gt;53% of the ex-U.S. incretin market</b><sup><a href="#r7">7</a></sup> — with much of Europe/China/Brazil demand paid <b>out of pocket</b>.<sup><a href="#r3">3</a></sup></p>
+
+<div class="grid g2">
+  <div class="card"><h4>What must be true to be durable</h4><ul class="tight small"><li>Disease awareness &amp; diagnosis rates rise.</li><li>Reimbursement / HTA access (or sustained cash-pay willingness).</li><li>Local manufacturing &amp; cold-chain to serve volume.</li><li>Prescriber/specialist reach &amp; tender timing execution.</li></ul></div>
+  <div class="card"><h4>Risks</h4><ul class="tight small"><li>Local biosimilar/generic champions (esp. China post-LOE; India).</li><li>Health-budget/fiscal softness; China <span class="term" data-d="vbp">VBP</span> price pressure.</li><li>Geopolitics &amp; pharma tariffs; FX.</li><li>Launch-cost drag / over-expansion if uptake lags.</li></ul></div>
+</div>
+
+<!-- ============================ H ============================ -->
+<h2 id="moat"><span class="secnum">H</span>Competitive Map &amp; Moat Assessment</h2>
+
+<div class="tbl-scroll">
+<table>
+  <caption>Selected competitive set</caption>
+  <thead><tr><th>Arena</th><th>Key competitors</th><th>Lilly's position</th></tr></thead>
+  <tbody>
+    <tr><td>Incretin / obesity (core)</td><td style="text-align:left"><b>Novo Nordisk</b> (semaglutide: Ozempic/Wegovy/Rybelsus; CagriSema; oral sema), Amgen (MariTide), Viking (VK2735), Pfizer, Roche/Carmot, Boehringer/Zealand</td><td style="text-align:left"><span class="flag-good">Leader</span> on efficacy + first scaled oral pill</td></tr>
+    <tr><td>Oncology</td><td style="text-align:left">Pfizer, AstraZeneca, Novartis, Roche, Merck</td><td style="text-align:left">Strong in CDK4/6 (Verzenio), BTK (Jaypirca)</td></tr>
+    <tr><td>Immunology</td><td style="text-align:left">AbbVie, J&amp;J, Novartis, Sanofi/Regeneron</td><td style="text-align:left">Challenger (Taltz, Omvoh, Ebglyss)</td></tr>
+    <tr><td>CNS / Alzheimer's</td><td style="text-align:left">Biogen/Eisai (Leqembi)</td><td style="text-align:left">Co-leader (Kisunla)</td></tr>
+    <tr><td>Biosimilar/generic</td><td style="text-align:left">Post-LOE entrants (mid-2030s for tirzepatide)</td><td style="text-align:left">Protected near-term</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="grid g2">
+  <div class="card"><h4>Where Lilly wins</h4><ul class="tight small"><li>Franchise depth &amp; clinical differentiation (dual/triple incretin).</li><li>Manufacturing scale &amp; the oral-pill cost advantage.</li><li>Cost discipline / operating leverage (~50% performance margin).</li><li>Balance-sheet optionality for bolt-on M&amp;A.</li></ul></div>
+  <div class="card"><h4>Where Lilly is vulnerable</h4><ul class="tight small"><li><b>Single-asset concentration</b> (tirzepatide + its mid-2030s cliff).</li><li>Pipeline misses (retatrutide, CV outcomes, MASH).</li><li>U.S. pricing/policy (IRA negotiation, PBM, Medicaid).</li><li>Competitive crowding compressing category economics.</li></ul></div>
+</div>
+
+<div class="takeaway"><span class="kicker">Moat verdict</span> The durable edge is <b>R&amp;D + commercial + manufacturing execution as a repeatable system</b>, not any single patent. Per-molecule moats are time-boxed by patents; indication expansion is a <i>moderate</i> life-cycle extender; the franchise survives only if the pipeline replenishes faster than the cliff arrives. That makes Phase-3 conversion the load-bearing assumption.</div>
+
+<!-- ============================ I ============================ -->
+<h2 id="model"><span class="secnum">I</span>Practical Modeling Blueprint</h2>
+
+<h3>Driver-based architecture</h3>
+<ul class="tight small">
+  <li><b>Revenue</b> = Σ (product net sales) = volume × net price, modeled by franchise &amp; geography.</li>
+  <li><b>Gross margin</b> = portfolio/product margin − gross-to-net deductions ± FX/tariffs/freight ± manufacturing absorption.</li>
+  <li><b>Opex</b> = sales force + medical affairs + marketing/DTC + G&amp;A + R&amp;D + distribution.</li>
+  <li><b>Below gross profit:</b> collaboration profit-share (e.g. Boehringer) in other income/expense; acquired IPR&amp;D charges are lumpy and distort GAAP.</li>
+  <li><b>Operating income → non-GAAP net income / EPS</b> (tax ~16–17% non-GAAP; buyback-adjusted share count ~910M and falling).</li>
+  <li><b>FCF</b> = operating cash − Δworking capital (watch inventory) − capex − leases → funds dividend + buyback.</li>
+</ul>
+
+<div class="banner data"><span class="bdot">●</span><div><b>FCF caveat — model this carefully.</b> FY2025 operating cash flow was <b>$16.8B</b> (vs $8.8B in 2024)<sup><a href="#r2">2</a></sup>, but capex is <b>elevated</b> from the multi-plant capacity build-out, materially compressing free cash flow below operating cash flow. Pull exact capex from the cash-flow statement; do not assume OCF ≈ FCF for Lilly right now.</div></div>
+
+<h3>The 8–12 assumptions that matter most</h3>
+<ol class="tight small">
+  <li>Tirzepatide (Mounjaro+Zepbound) trajectory &amp; the mid-2030s LOE cliff shape.</li>
+  <li>Orforglipron ramp + T2D approval; pipeline conversion (retatrutide, donanemab, muvalaplin/lepodisiran, olomorasib).</li>
+  <li>Net pricing / gross-to-net (IRA negotiation, PBM rebates, Medicaid/Medicare obesity access).</li>
+  <li>New-launch ramp toward guidance (FY2026 revenue $82–85B; non-GAAP EPS $35.50–37.00).<sup><a href="#r7">7</a></sup></li>
+  <li>Gross margin (mix vs price give-back vs cost-of-production vs tariffs/FX).</li>
+  <li>Inventory growth vs sales growth (write-off / under-absorption risk).</li>
+  <li>R&amp;D intensity (~18–21% of revenue) &amp; productivity.</li>
+  <li>SG&amp;A leverage as launches mature.</li>
+  <li>International / EM durability (China VBP, cash-pay sustainability).</li>
+  <li>Capital return (dividend + buyback) &amp; capex intensity.</li>
+</ol>
+
+<h3>KPI dashboard</h3>
+<div class="tbl-scroll">
+<table>
+  <caption>Operating KPIs — definition, disclosure, and model mapping</caption>
+  <thead><tr><th>KPI</th><th>Where disclosed</th><th>Why it matters</th><th>Model line</th></tr></thead>
+  <tbody>
+    <tr><td>Worldwide revenue growth</td><td>Press release / 10-K/Q</td><td>Headline demand</td><td>Revenue</td></tr>
+    <tr><td>Volume vs realized-price split</td><td>MD&amp;A narrative</td><td>Access capture vs erosion</td><td>Rev decomposition</td></tr>
+    <tr><td>Mounjaro + Zepbound revenue</td><td>Product table</td><td>56% of the company</td><td>Core franchise</td></tr>
+    <tr><td>Orforglipron uptake</td><td>Mgmt commentary</td><td>New TAM unlock</td><td>New-launch line</td></tr>
+    <tr><td>U.S. vs ex-U.S. growth</td><td>Geographic table</td><td>Diversification</td><td>Geo build</td></tr>
+    <tr><td>Gross margin %</td><td>Income statement</td><td>Pricing vs cost</td><td>COGS</td></tr>
+    <tr><td>Performance / operating margin</td><td>Non-GAAP recon</td><td>Operating leverage</td><td>Operating income</td></tr>
+    <tr><td>R&amp;D as % revenue</td><td>Income statement</td><td>Reinvestment</td><td>R&amp;D opex</td></tr>
+    <tr><td>SG&amp;A as % revenue</td><td>Income statement</td><td>Selling productivity</td><td>SG&amp;A opex</td></tr>
+    <tr><td>Inventory vs sales growth</td><td>Balance sheet</td><td>Write-off risk</td><td>Working capital</td></tr>
+    <tr><td>Operating cash flow</td><td>Cash-flow stmt</td><td>Cash engine</td><td>OCF</td></tr>
+    <tr><td>Capex</td><td>Cash-flow stmt</td><td>Capacity intensity</td><td>FCF bridge</td></tr>
+    <tr><td>Self-pay % of Rx</td><td>Earnings call</td><td>Demand resilience vs payers</td><td>Net price</td></tr>
+    <tr><td>Phase-3 readouts / starts</td><td>Pipeline update</td><td>Replenishment</td><td>LT revenue</td></tr>
+    <tr><td>Buyback + dividend</td><td>Cash-flow stmt</td><td>Capital return &amp; share count</td><td>EPS / FCF</td></tr>
+    <tr><td>Effective tax rate (non-GAAP)</td><td>Non-GAAP recon</td><td>~16–17%</td><td>Net income</td></tr>
+  </tbody>
+</table>
+</div>
+
+<!-- ============================ J ============================ -->
+<h2 id="failure"><span class="secnum">J</span>Failure Modes &amp; Diligence Plan</h2>
+
+<h3>Top-10 ways the model breaks</h3>
+<div class="tbl-scroll">
+<table>
+  <thead><tr><th>#</th><th>Failure mode</th><th>Signal to monitor</th><th>Severity</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td style="text-align:left">Tirzepatide decelerates / cliff arrives faster</td><td style="text-align:left">Volume growth gap vs price; competitor share</td><td><span class="chip risk">severe</span></td></tr>
+    <tr><td>2</td><td style="text-align:left">Pipeline failures (retatrutide, CV outcomes, MASH)</td><td style="text-align:left">Phase-3 topline; FDA actions</td><td><span class="chip risk">severe</span></td></tr>
+    <tr><td>3</td><td style="text-align:left">Inventory overbuild → write-offs / under-absorption</td><td style="text-align:left">Inventory-vs-sales gap; GM dip</td><td><span class="chip risk">high</span></td></tr>
+    <tr><td>4</td><td style="text-align:left">U.S. volume/access deterioration</td><td style="text-align:left">TRx/NBRx; formulary changes</td><td><span class="chip risk">high</span></td></tr>
+    <tr><td>5</td><td style="text-align:left">Key-EM (China/EU) growth disappoints</td><td style="text-align:left">Ex-U.S. volume; cash-pay trends</td><td><span class="chip risk">med</span></td></tr>
+    <tr><td>6</td><td style="text-align:left">Pricing pressure intensifies (IRA/PBM/tender)</td><td style="text-align:left">Realized price; negotiation outcomes</td><td><span class="chip risk">high</span></td></tr>
+    <tr><td>7</td><td style="text-align:left">Gross-margin compression (tariffs/FX/inputs)</td><td style="text-align:left">GM bridge; tariff policy</td><td><span class="chip risk">med</span></td></tr>
+    <tr><td>8</td><td style="text-align:left">Launch undershoot / recalls / litigation</td><td style="text-align:left">Launch curves; safety signals</td><td><span class="chip risk">med</span></td></tr>
+    <tr><td>9</td><td style="text-align:left">R&amp;D productivity deteriorates</td><td style="text-align:left">Cost per approval; success rate</td><td><span class="chip risk">med</span></td></tr>
+    <tr><td>10</td><td style="text-align:left">EPS flattered by buybacks/non-GAAP while core weakens</td><td style="text-align:left">Organic vol vs EPS divergence; IPR&amp;D add-backs</td><td><span class="chip risk">med</span></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>15 diligence questions (ranked by value-of-information)</h3>
+<ol class="tight small">
+  <li>What is the quarter-by-quarter <b>volume vs realized-price</b> path for Mounjaro and Zepbound through 2027?</li>
+  <li>What is the precise <b>tirzepatide patent estate &amp; LOE</b> by jurisdiction (compound, formulation, device, method-of-use)?</li>
+  <li>What share of Zepbound demand is <b>cash-pay</b>, and how price-elastic is it as the Medicare/Medicaid bridge phases in/out (cap through Dec 2027)?<sup><a href="#r11">11</a></sup></li>
+  <li>What is orforglipron's <b>real-world adherence &amp; efficacy</b> vs injectables, and its T2D approval timing?</li>
+  <li>What is the <b>gross-to-net bridge</b> by major product (rebates, chargebacks, Medicaid/340B, IRA)? <i>Not disclosed — request or proxy.</i></li>
+  <li>What is FY2026–27 <b>capex</b> and the resulting FCF, and when does capex intensity peak?</li>
+  <li>What is the <b>inventory build vs forward demand plan</b>, and exposure to write-offs if demand flattens?</li>
+  <li>What is current <b>plant utilization</b> and the supply ceiling on incretin volume? <i>Qualitative only.</i></li>
+  <li>What are the economics of the <b>Boehringer Ingelheim</b> and any other profit-share arrangements?</li>
+  <li>What is the read-through from <b>retatrutide</b> and CV-outcomes data to long-term franchise durability?</li>
+  <li>How sustainable is the <b>international cash-pay</b> demand vs eventual reimbursement/VBP pressure?</li>
+  <li>What is the <b>competitive trajectory</b> of Novo's oral semaglutide / CagriSema and Amgen MariTide on share &amp; price?</li>
+  <li>What is the <b>net contribution</b> of the 2025–26 acquisitions vs dilution/IPR&amp;D charges?</li>
+  <li>How resilient is <b>gross margin</b> to a pharma-tariff scenario and FX reversal?</li>
+  <li>What is the <b>capital-return policy</b> trade-off (buyback vs M&amp;A vs capex) at ~50% performance margin?</li>
+</ol>
+
+<!-- ============================ K ============================ -->
+<h2 id="drug"><span class="secnum">K</span>Key-Drug Deep Dive — Tirzepatide &amp; Orforglipron</h2>
+<div class="banner data"><span class="bdot">●</span><div>Mechanistic content below is summarized from peer-reviewed literature retrieved from <b>PubMed</b>; see DOI links. It is descriptive science for investment analysis, not medical advice.</div></div>
+
+<h3>Tirzepatide (Mounjaro / Zepbound) <span class="chip appr">approved</span></h3>
+<div class="grid g2">
+  <div class="card">
+    <h4>How it works in the body</h4>
+    <p class="small">Tirzepatide is an <b>acylated peptide engineered to activate two receptors at once</b> — the <span class="term" data-d="gip">GIP</span> and <span class="term" data-d="glp1">GLP-1</span> incretin receptors. Both receptors sit on pancreatic β-cells (where they boost <b>glucose-dependent</b> insulin secretion — i.e. insulin rises mainly when blood sugar is high, limiting hypoglycemia risk) and in brain regions that govern satiety, reducing appetite and food intake. The two incretins diverge on glucagon (GIP raises it during low glucose; GLP-1 suppresses it during high glucose) and on fat handling (GIP supports lipogenesis; GLP-1 indirectly promotes lipolysis), which together improve adipose health. <i>According to PubMed</i>, this combination underlies the metabolic benefit.<sup><a href="#r13">13</a></sup></p>
+  </div>
+  <div class="card">
+    <h4>Administration &amp; formulation</h4>
+    <p class="small"><b>Once-weekly subcutaneous injection</b> via single-dose pen; biologically/peptide-manufactured with fill-finish + cold-chain. Titrated 5–15&nbsp;mg/week. <i>Formulation consequence:</i> the injectable + cold-chain requirement is exactly the bottleneck that the oral orforglipron is designed to bypass.</p>
+    <h4>Disease targeted</h4>
+    <p class="small"><b>Type-2 diabetes</b> (insulin resistance + inadequate insulin → chronic high blood glucose) and <b>obesity</b> (chronic excess adiposity driving metabolic, CV and mechanical disease), plus obstructive sleep apnea.</p>
+  </div>
+</div>
+<h4>Efficacy &amp; safety vs prior therapies (from the literature)</h4>
+<p class="small">Across the SURPASS 1–5 program, tirzepatide 5–15&nbsp;mg/week reduced HbA1c by ~1.2–2.6 percentage points and body weight by ~5–12&nbsp;kg — magnitudes the literature describes as unprecedented for a single agent — and out-performed semaglutide 1.0&nbsp;mg on both HbA1c and weight, with cardiovascular safety supported across the program (MACE-4). <b>Key adverse events</b> are gastrointestinal — nausea, vomiting, diarrhea, constipation — and are dose-dependent, the same class profile as selective GLP-1 agonists. <i>According to PubMed.</i><sup><a href="#r12">12</a></sup> The differentiation vs earlier diabetes drugs is the <b>dual mechanism</b> delivering combined glycemic + weight efficacy in one molecule.</p>
+
+<h3>Orforglipron (Foundayo) <span class="chip appr">approved (obesity)</span> <span class="chip inv">T2D filed</span></h3>
+<p class="small">Orforglipron is a <b>non-peptide, small-molecule, oral GLP-1 receptor agonist</b> — the first oral GLP-1 the U.S. FDA has approved that can be taken any time of day without food or water restrictions.<sup><a href="#r1">1</a></sup> <b>Competitive significance:</b> as a synthesized small molecule it sidesteps the injectable peptide's cold-chain and fill-finish constraints, so it is far cheaper and faster to scale — the single most important lever for reaching the global obesity/diabetes population and for defending share against Novo's oral semaglutide. The trade-off vs injectable tirzepatide is generally somewhat lower peak efficacy, exchanged for convenience, manufacturability and access.</p>
+
+<!-- ============================ L ============================ -->
+<h2 id="pricing"><span class="secnum">L</span>Current Pricing, Volatility &amp; Market Data</h2>
+<div class="banner data"><span class="bdot">●</span><div>Live market data via <b>Interactive Brokers</b>, intraday Mon 29 Jun 2026. Snapshots are point-in-time and will drift.</div></div>
+
+<h3>Price — 2-year weekly</h3>
+<div class="chart-card" id="pxchart"></div>
+
+<h3>Implied-volatility term structure (ATM, ~$1,220 strike)</h3>
+<div class="chart-card" id="ivchart"></div>
+<p class="small">The curve is <b>upward-sloping</b>: ~35% at 1 month rising to ~39% by 3–12 months. The back-month premium prices in <b>event risk</b> — Q2/Q3 prints, orforglipron T2D regulatory timing, and competitor read-throughs — none of which lands inside the next ~32 days, so the front month sits near realized vol.</p>
+
+<div class="tbl-scroll">
+<table>
+  <caption>Volatility &amp; market-data summary</caption>
+  <thead><tr><th>Metric</th><th class="num">LLY</th><th class="num">XLV (sector ETF)</th><th class="num">Relative</th></tr></thead>
+  <tbody>
+    <tr><td>Last price</td><td class="num">$1,218.32</td><td class="num">$160.19</td><td class="num">—</td></tr>
+    <tr><td>Day change</td><td class="num up">+0.84%</td><td class="num down">−0.09%</td><td class="num">—</td></tr>
+    <tr><td>YTD change</td><td class="num up">+13.6%</td><td class="num up">+3.9%</td><td class="num up">+9.6 pts</td></tr>
+    <tr><td>Implied vol (annualized)</td><td class="num">34.7%</td><td class="num">17.3%</td><td class="num">≈2.0×</td></tr>
+    <tr><td>Realized (30d) vol</td><td class="num">35.1%</td><td class="num">16.3%</td><td class="num">≈2.2×</td></tr>
+    <tr><td>ATM IV 1m / 3m / 6m / 1y</td><td class="num">34.9 / 38.9 / 39.1 / 39.2%</td><td class="num">—</td><td class="num">term ↑</td></tr>
+    <tr><td>IV percentile (13w / 52w)</td><td class="num">56% / 47%</td><td class="num">—</td><td class="num">mid-range</td></tr>
+    <tr><td>Avg option vol (calls / puts)</td><td class="num">18.4k / 16.9k</td><td class="num">—</td><td class="num">call-skew</td></tr>
+    <tr><td>90-day avg $ volume</td><td class="num">≈$4.0B</td><td class="num">—</td><td class="num">deep liquidity</td></tr>
+  </tbody>
+</table>
+<div class="tbl-note">IV ≈ realized at the front (no near-term binary); LLY single-name IV is ~2× the diversified health-care sector ETF, consistent with catalyst-driven idiosyncratic risk. <b>Limitation:</b> the IBKR snapshot does not expose a clean trailing IV series, so a precise 1-month IV <i>change</i> and a relative-IV <i>change</i> vs XLV are not directly retrievable here; IV percentile (current IV at the 56th percentile of the trailing 13 weeks) is the best on-hand proxy for "where vol sits." Realized vol shown is the 30-day annualized figure.</div>
+</div>
+
+<hr class="div">
+
+<!-- ============================ M ============================ -->
+<h2 id="glossary"><span class="secnum">M</span>Glossary</h2>
+<p class="small">Plain-English definitions. Hover any <span class="term" data-d="glp1">dotted term</span> in the memo for a pop-up; full entries below. Definitions avoid undefined acronyms.</p>
+<input class="gloss-search" id="glossSearch" placeholder="Filter glossary… (e.g. rebate, incretin, GTN)" oninput="filterGloss()">
+<div id="glossList"></div>
+
+<!-- ============================ refs ============================ -->
+<h2 id="refs">References &amp; Sources</h2>
+<p class="small muted">Primary sources (filings, company releases, peer-reviewed literature, live market data) are linked directly. Secondary/industry context is labeled. Financial figures are drawn from company filings/releases, not analyst estimates.</p>
+<ol class="refs">
+  <li id="r1"><b>[Primary — 10-K]</b> Eli Lilly &amp; Co., Form 10-K for FY ended Dec 31, 2025 (SEC EDGAR). <a href="https://www.sec.gov/Archives/edgar/data/0000059478/000005947826000013/lly-20251231.htm" target="_blank" rel="noopener">sec.gov/…/lly-20251231.htm</a></li>
+  <li id="r2"><b>[Primary — 10-K MD&amp;A]</b> FY2025 liquidity: operating cash flow $16.8B; cash $7.3B (via PublicNow filing mirror). <a href="https://www.publicnow.com/view/9AC16CBCCEF69965A963DFDCC4C9DF092F03D5B2?1770925806=" target="_blank" rel="noopener">publicnow.com/…</a></li>
+  <li id="r3"><b>[Primary — earnings call]</b> Eli Lilly Q1 2026 earnings call transcript (Motley Fool mirror), Apr 30, 2026. <a href="https://www.fool.com/earnings/call-transcripts/2026/04/30/eli-lilly-lly-q1-2026-earnings-transcript/" target="_blank" rel="noopener">fool.com/…/q1-2026-earnings-transcript</a></li>
+  <li id="r4"><b>[Primary — company]</b> Eli Lilly, "Year in Review" (2025 pipeline: &gt;25 Phase-3 positive readouts; 12 new starts). <a href="https://www.lilly.com/about/year-in-review" target="_blank" rel="noopener">lilly.com/about/year-in-review</a></li>
+  <li id="r5"><b>[Primary — press release]</b> Lilly reports Q1 2026 financial results (PRNewswire), Apr 30, 2026. <a href="https://www.prnewswire.com/news-releases/lilly-reports-first-quarter-2026-financial-results-raises-full-year-guidance-and-highlights-momentum-of-new-medicines-302758113.html" target="_blank" rel="noopener">prnewswire.com/…</a></li>
+  <li id="r6"><b>[Primary — 10-K]</b> FY2025 10-K (via PublicNow): U.S. government drug-pricing agreement; Medicare obesity access by Jul 1, 2026. <a href="https://www.publicnow.com/view/9AC16CBCCEF69965A963DFDCC4C9DF092F03D5B2?1770925806=" target="_blank" rel="noopener">publicnow.com/…</a></li>
+  <li id="r7"><b>[Primary — IR]</b> Lilly Q1 2026 results &amp; raised FY2026 guidance ($82–85B revenue; $35.50–37.00 non-GAAP EPS). <a href="https://investor.lilly.com/news-releases/news-release-details/lilly-reports-first-quarter-2026-financial-results-raises-full" target="_blank" rel="noopener">investor.lilly.com/…</a></li>
+  <li id="r8"><b>[Primary — press release]</b> Lilly reports Q4 &amp; FY2025 results, provides 2026 guidance (PRNewswire), Feb 4, 2026. <a href="https://www.prnewswire.com/news-releases/lilly-reports-fourth-quarter-2025-financial-results-and-provides-2026-guidance-302678376.html" target="_blank" rel="noopener">prnewswire.com/…</a></li>
+  <li id="r9"><b>[Secondary — industry recap]</b> ChemXplore summary of Q1 2026 product-line detail (Jaypirca/Ebglyss/Kisunla/Omvoh/Inluriyo; acquisitions). <a href="https://chemxplore.com/news/lilly-q1-financial-results" target="_blank" rel="noopener">chemxplore.com/…</a> <i>(corroborated against the Q1 release).</i></li>
+  <li id="r10"><b>[Secondary — recap]</b> TIKR recap of Q1 2026 call (M+Z $12.8B combined; performance margin ~50%). <a href="https://www.tikr.com/blog/eli-lilly-reports-19-8b-q1-revenue-as-glp-1-sales-surge-56-year-over-year" target="_blank" rel="noopener">tikr.com/…</a></li>
+  <li id="r11"><b>[Primary — earnings call]</b> Q1 2026 call: CMS GLP-1 "bridge" program capping senior obesity-drug out-of-pocket at $50/mo through Dec 2027. <a href="https://www.fool.com/earnings/call-transcripts/2026/04/30/eli-lilly-lly-q1-2026-earnings-transcript/" target="_blank" rel="noopener">fool.com/…</a></li>
+  <li id="r12"><b>[Primary — PubMed]</b> Nauck MA, D'Alessio DA. "Tirzepatide, a dual GIP/GLP-1 receptor co-agonist…" <i>Cardiovasc Diabetol</i> 2022;21:169. DOI <a href="https://doi.org/10.1186/s12933-022-01604-7" target="_blank" rel="noopener">10.1186/s12933-022-01604-7</a>. Retrieved via PubMed.</li>
+  <li id="r13"><b>[Primary — PubMed]</b> Liu QK. "Mechanisms of action and therapeutic applications of GLP-1 and dual GIP/GLP-1 receptor agonists." <i>Front Endocrinol</i> 2024;15:1431292. DOI <a href="https://doi.org/10.3389/fendo.2024.1431292" target="_blank" rel="noopener">10.3389/fendo.2024.1431292</a>. Retrieved via PubMed.</li>
+</ol>
+
+<div class="foot">
+  <b>Eli Lilly &amp; Co. (NYSE: LLY) — Buy-Side IC Memo.</b> Prepared 29 Jun 2026. Market data: Interactive Brokers (intraday, point-in-time). Fundamentals: SEC filings &amp; company releases. Scientific content: PubMed (DOIs above). <br><br>
+  *Market cap is computed as last price × ≈910M diluted weighted-average shares (implied by FY2025 reported net income ÷ EPS); confirm the exact current share count from the latest 10-Q before use. This document is an analytical reference and <b>not investment, legal, tax, or medical advice</b>. Investigational assets and unapproved indications are flagged and discussed solely for investment analysis. Verify all figures against primary sources before any decision.
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+/* ============ GLOSSARY DATA ============ */
+const GLOSS = {
+  glp1:{t:"GLP-1 (glucagon-like peptide-1)",tag:"",d:"A gut hormone (an 'incretin') released after eating that tells the pancreas to release insulin when blood sugar is high and signals the brain that you're full. Drugs that mimic it (GLP-1 receptor agonists) lower blood sugar and reduce appetite."},
+  gip:{t:"GIP (glucose-dependent insulinotropic polypeptide)",tag:"",d:"A second incretin hormone that also boosts insulin release after eating and affects fat storage. Tirzepatide activates both GIP and GLP-1 receptors at once."},
+  tirzepatide:{t:"Tirzepatide",tag:"approved",d:"Lilly's dual GIP/GLP-1 receptor agonist, sold as Mounjaro (diabetes) and Zepbound (obesity). A once-weekly injected peptide; the company's single largest revenue driver."},
+  incretin:{t:"Incretin",tag:"",d:"A class of gut hormones (GLP-1, GIP) released when you eat that stimulate insulin and reduce appetite. The 'incretin franchise' is the obesity/diabetes drug category built on mimicking them."},
+  gtn:{t:"Gross-to-net (GTN)",tag:"",d:"The gap between a drug's list price ('gross') and what the company actually keeps ('net') after rebates to pharmacy-benefit managers, chargebacks, Medicaid discounts, and similar deductions. Think of it as the pharma version of markdowns. The detailed bridge is usually not disclosed."},
+  dtc:{t:"DTC (direct-to-consumer) advertising",tag:"",d:"Consumer drug advertising (TV, digital). In pharma accounting it is a marketing expense that generates demand — not a sales 'channel'. Reported revenue is already net of rebates regardless of advertising."},
+  perfmargin:{t:"Performance margin",tag:"",d:"A Lilly non-GAAP profitability measure roughly analogous to operating margin, excluding certain items. Reached ~50% in Q1 2026, up from ~43% a year earlier — evidence of operating leverage as launches scale."},
+  opex:{t:"Operating expense (opex)",tag:"",d:"Day-to-day running costs below the gross-profit line: sales force, marketing/DTC, medical affairs, general &amp; administrative, research &amp; development, and distribution."},
+  absorption:{t:"Under-absorption",tag:"",d:"When a factory's fixed costs are spread over fewer units than planned because demand fell short, raising the cost per unit and squeezing gross margin. A core risk when capacity is built ahead of demand."},
+  gtnbridge:{t:"Gross-to-net bridge",tag:"",d:"The line-by-line walk from list price to net price (rebates, chargebacks, Medicaid/340B, IRA effects). Pharma companies generally do not disclose it product-by-product, so analysts must proxy it."},
+  verzenio:{t:"Verzenio (abemaciclib)",tag:"approved",d:"Lilly's oncology drug, a CDK4/6 inhibitor used in certain breast cancers. CDK4/6 inhibitors block proteins that let cancer cells divide."},
+  jaypirca:{t:"Jaypirca (pirtobrutinib)",tag:"approved",d:"A 'non-covalent' BTK inhibitor used in some blood cancers (e.g. CLL/SLL). BTK is a signaling protein that certain leukemias/lymphomas depend on to grow."},
+  kisunla:{t:"Kisunla (donanemab)",tag:"approved",d:"Lilly's Alzheimer's antibody that clears amyloid plaque from the brain. Competes with Biogen/Eisai's Leqembi."},
+  serd:{t:"SERD (selective estrogen receptor degrader)",tag:"",d:"A cancer drug type that destroys the estrogen receptor that certain breast cancers rely on. Lilly's oral SERD is imlunestrant (Inluriyo)."},
+  peptide:{t:"Peptide (acylated peptide)",tag:"",d:"A small protein-like chain of amino acids. Tirzepatide is an acylated (fat-tail-modified, to last longer in the body) peptide — biologically manufactured and injected, requiring cold-chain handling."},
+  smallmol:{t:"Small molecule",tag:"",d:"A drug made by chemical synthesis (like most pills) rather than grown in living cells. Cheaper and easier to mass-produce and ship than peptides/biologics. Orforglipron is an oral small-molecule GLP-1 drug."},
+  medaffairs:{t:"Medical affairs / KOL",tag:"",d:"The scientific (non-sales) function that educates physicians and engages 'key opinion leaders' (KOLs) — influential expert doctors — building credible clinical demand for a drug."},
+  trx:{t:"TRx / NBRx / NRx",tag:"",d:"Prescription-tracking metrics from third parties like IQVIA: TRx = total prescriptions; NRx = new prescriptions; NBRx = new-to-brand prescriptions. Lilly does not disclose script counts itself, so analysts buy this data."},
+  upt:{t:"Persistence / adherence (refill length)",tag:"",d:"How long patients keep taking a chronic medicine and how reliably they refill. Higher persistence = more recurring revenue per patient — the pharma analog of 'units per transaction.'"},
+  vbp:{t:"VBP (volume-based procurement)",tag:"",d:"China's government bulk-purchasing system that forces steep price cuts in exchange for volume. A major ex-U.S. pricing risk once drugs lose exclusivity there."},
+  ira:{t:"IRA (Inflation Reduction Act) drug pricing",tag:"",d:"U.S. law letting Medicare negotiate prices on selected high-spend drugs and penalizing price hikes above inflation. A structural headwind to U.S. net pricing."},
+  loe:{t:"LOE (loss of exclusivity)",tag:"",d:"When a drug's patents expire and generics/biosimilars can enter, usually collapsing price and share. Tirzepatide's key U.S. protection runs into the mid-2030s (confirm by patent type/jurisdiction)."},
+  ipr:{t:"Acquired IPR&D",tag:"",d:"In-process research &amp; development bought via acquisitions, expensed immediately under accounting rules. These charges are lumpy and depress GAAP earnings in deal-heavy quarters."},
+  macc:{t:"MACE-4",tag:"",d:"A composite cardiovascular trial endpoint counting major adverse cardiac events (e.g. heart attack, stroke, CV death, hospitalization for unstable angina). Used to show a drug is cardiovascular-safe."}
+};
+const TAGCLASS = {approved:"appr", investigational:"inv"};
+
+/* ============ TOOLTIP (fixed, viewport-clamped) ============ */
+const tip = document.getElementById('tip');
+function showTip(el){
+  const key = el.getAttribute('data-d'); const g = GLOSS[key]; if(!g) return;
+  tip.innerHTML = '<span class="tt">'+g.t+'</span>'+g.d;
+  tip.classList.add('on');
+  positionTip(el);
+}
+function positionTip(el){
+  const r = el.getBoundingClientRect();
+  tip.style.left='-9999px'; tip.style.top='0px'; // measure
+  const tw = tip.offsetWidth, th = tip.offsetHeight, pad=8, vw=window.innerWidth, vh=window.innerHeight;
+  let left = r.left + r.width/2 - tw/2;
+  left = Math.max(pad, Math.min(left, vw - tw - pad));
+  let top = r.top - th - 10;
+  if(top < pad){ top = r.bottom + 10; } // flip below if no room above
+  if(top + th > vh - pad){ top = Math.max(pad, vh - th - pad); }
+  tip.style.left = left+'px'; tip.style.top = top+'px';
+}
+function hideTip(){ tip.classList.remove('on'); }
+document.querySelectorAll('.term').forEach(el=>{
+  el.addEventListener('mouseenter',()=>showTip(el));
+  el.addEventListener('mouseleave',hideTip);
+  el.addEventListener('focus',()=>showTip(el));
+  el.addEventListener('blur',hideTip);
+  el.setAttribute('tabindex','0');
+  el.addEventListener('click',()=>{ // jump to glossary entry
+    const key=el.getAttribute('data-d');
+    const node=document.getElementById('g_'+key);
+    if(node){ node.scrollIntoView({behavior:'smooth',block:'center'}); node.style.background='#fff6d8'; setTimeout(()=>node.style.background='',1400); }
+  });
+});
+window.addEventListener('scroll',hideTip,{passive:true});
+
+/* ============ BUILD GLOSSARY LIST ============ */
+const glossList = document.getElementById('glossList');
+Object.keys(GLOSS).sort((a,b)=>GLOSS[a].t.localeCompare(GLOSS[b].t)).forEach(k=>{
+  const g=GLOSS[k];
+  const div=document.createElement('div'); div.className='gentry'; div.id='g_'+k;
+  const tag = g.tag ? ' <span class="chip '+(TAGCLASS[g.tag]||'')+'">'+g.tag+'</span>' : '';
+  div.innerHTML='<a class="backtop" href="#glossary">↑ top</a><div class="gt">'+g.t+tag+'</div><p>'+g.d+'</p>';
+  glossList.appendChild(div);
+});
+function filterGloss(){
+  const q=document.getElementById('glossSearch').value.toLowerCase();
+  document.querySelectorAll('.gentry').forEach(e=>{
+    e.style.display = e.textContent.toLowerCase().includes(q)?'':'none';
+  });
+}
+
+/* ============ CHART HELPERS ============ */
+const NS='http://www.w3.org/2000/svg';
+function svg(w,h){const s=document.createElementNS(NS,'svg');s.setAttribute('viewBox','0 0 '+w+' '+h);s.setAttribute('width',w);s.setAttribute('height',h);return s;}
+function el(n,a){const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;}
+function txt(x,y,s,a){const t=el('text',{x:x,y:y});Object.assign(t.style,{font:'12px IBM Plex Sans, sans-serif',fill:'#6b7280'});if(a)for(const k in a)t.setAttribute(k,a[k]);t.textContent=s;return t;}
+
+/* ---- PRICE CHART (2yr weekly) ---- */
+const PX=[914.57,948.4,857.47,804.62,804.46,891.68,922.12,952.74,960.02,902.71,923.71,921.49,877.79,887.16,932.06,917.97,892.7,818.93,831.54,746.2,748.01,795.35,826.71,789.12,767.76,783.17,781.98,799.9,725.72,785.41,811.08,878.31,844.27,873.68,920.63,869.58,813.48,837.57,822.51,738.21,732.41,839.96,884.54,823.62,734.57,757.39,713.71,737.67,769.88,819.36,762.73,775.45,780.67,793.01,771.71,812.69,762.33,625.65,701.23,711.68,732.58,727.21,755.39,751.99,724.54,839.87,833.49,802.83,825.45,862.86,924.37,1025.28,1059.7,1075.47,1010.31,1027.51,1071.44,1077.75,1080.36,1063.56,1038.4,1064.29,1037.15,1058.18,1040.0,1009.52,1051.99,990.33,985.08,906.7,878.24,935.58,939.47,927.03,883.96,963.33,948.45,1004.92,1065.0,1105.0,1131.42,1133.0,1098.57,1208.12,1218.6];
+const PX_START=new Date('2024-07-01');
+(function(){
+  const W=1000,H=340,m={l:54,r:16,t:16,b:34};
+  const s=svg(W,H); const iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const mn=Math.min(...PX), mx=Math.max(...PX); const lo=Math.floor(mn/50)*50-20, hi=Math.ceil(mx/50)*50;
+  const X=i=>m.l+ (PX.length<2?0:iw*i/(PX.length-1));
+  const Y=v=>m.t+ih-(v-lo)/(hi-lo)*ih;
+  // gridlines
+  for(let g=lo; g<=hi; g+=200){ s.appendChild(el('line',{x1:m.l,y1:Y(g),x2:W-m.r,y2:Y(g),stroke:'#eee'})); s.appendChild(txt(m.l-8,Y(g)+4,'$'+g,{'text-anchor':'end'})); }
+  // area + line
+  let dLine='', dArea='';
+  PX.forEach((v,i)=>{const x=X(i),y=Y(v); dLine+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' '; });
+  dArea = dLine + 'L'+X(PX.length-1).toFixed(1)+' '+Y(lo)+' L'+X(0)+' '+Y(lo)+' Z';
+  const grad=el('linearGradient',{id:'pxg',x1:0,y1:0,x2:0,y2:1});
+  grad.appendChild(el('stop',{offset:'0%','stop-color':'#9a1b2f','stop-opacity':'0.18'}));
+  grad.appendChild(el('stop',{offset:'100%','stop-color':'#9a1b2f','stop-opacity':'0'}));
+  const defs=el('defs',{}); defs.appendChild(grad); s.appendChild(defs);
+  s.appendChild(el('path',{d:dArea,fill:'url(#pxg)',stroke:'none'}));
+  s.appendChild(el('path',{d:dLine,fill:'none',stroke:'#9a1b2f','stroke-width':2}));
+  // last dot
+  s.appendChild(el('circle',{cx:X(PX.length-1),cy:Y(PX[PX.length-1]),r:3.5,fill:'#9a1b2f'}));
+  s.appendChild(txt(X(PX.length-1)-4,Y(PX[PX.length-1])-9,'$1,218',{'text-anchor':'end','font-weight':'600',fill:'#9a1b2f'}));
+  // x labels (every ~13 weeks)
+  for(let i=0;i<PX.length;i+=13){ const d=new Date(PX_START); d.setDate(d.getDate()+i*7); s.appendChild(txt(X(i),H-12,(d.toLocaleString('en',{month:'short'})+" '"+String(d.getFullYear()).slice(2)),{'text-anchor':'middle'})); }
+  document.getElementById('pxchart').appendChild(s);
+  const lg=document.createElement('div'); lg.className='legend'; lg.innerHTML='<span><span class="swatch" style="background:#9a1b2f"></span>LLY weekly close · Jul 2024 → Jun 2026 · +96% over 2yr · 52-wk low $621 → near $1,238 high</span>'; document.getElementById('pxchart').appendChild(lg);
+})();
+
+/* ---- IV TERM STRUCTURE ---- */
+(function(){
+  const pts=[{l:'1m',v:34.9},{l:'3m',v:38.9},{l:'6m',v:39.1},{l:'1y',v:39.2}];
+  const W=1000,H=240,m={l:54,r:16,t:18,b:34}; const s=svg(W,H); const iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const lo=30,hi=42; const X=i=>m.l+iw*i/(pts.length-1); const Y=v=>m.t+ih-(v-lo)/(hi-lo)*ih;
+  for(let g=lo; g<=hi; g+=3){ s.appendChild(el('line',{x1:m.l,y1:Y(g),x2:W-m.r,y2:Y(g),stroke:'#eee'})); s.appendChild(txt(m.l-8,Y(g)+4,g+'%',{'text-anchor':'end'})); }
+  // realized vol reference line
+  s.appendChild(el('line',{x1:m.l,y1:Y(35.1),x2:W-m.r,y2:Y(35.1),stroke:'#b07a17','stroke-dasharray':'5 4','stroke-width':1.4}));
+  s.appendChild(txt(W-m.r,Y(35.1)-6,'realized vol 35.1%',{'text-anchor':'end',fill:'#b07a17','font-weight':'600'}));
+  let d=''; pts.forEach((p,i)=>{d+=(i?'L':'M')+X(i)+' '+Y(p.v)+' ';});
+  s.appendChild(el('path',{d:d,fill:'none',stroke:'#27405e','stroke-width':2.2}));
+  pts.forEach((p,i)=>{ s.appendChild(el('circle',{cx:X(i),cy:Y(p.v),r:4,fill:'#27405e'})); s.appendChild(txt(X(i),Y(p.v)-11,p.v+'%',{'text-anchor':'middle','font-weight':'600',fill:'#27405e'})); s.appendChild(txt(X(i),H-12,p.l,{'text-anchor':'middle'})); });
+  document.getElementById('ivchart').appendChild(s);
+  const lg=document.createElement('div'); lg.className='legend'; lg.innerHTML='<span><span class="swatch" style="background:#27405e"></span>ATM implied vol (≈$1,220 strike)</span><span><span class="swatch" style="background:#b07a17"></span>30-day realized vol</span>'; document.getElementById('ivchart').appendChild(lg);
+})();
+
+/* ---- QUARTERLY REVENUE BAR ---- */
+(function(){
+  const bars=[{l:"Q1'25",v:12.73},{l:"Q2'25",v:15.56},{l:"Q3'25",v:17.60},{l:"Q4'25",v:19.29},{l:"Q1'26",v:19.80}];
+  const W=1000,H=260,m={l:54,r:16,t:18,b:34}; const s=svg(W,H); const iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const hi=22; const Y=v=>m.t+ih-v/hi*ih; const bw=iw/bars.length*0.55;
+  for(let g=0; g<=hi; g+=5){ s.appendChild(el('line',{x1:m.l,y1:Y(g),x2:W-m.r,y2:Y(g),stroke:'#eee'})); s.appendChild(txt(m.l-8,Y(g)+4,'$'+g+'B',{'text-anchor':'end'})); }
+  bars.forEach((b,i)=>{ const cx=m.l+iw*(i+0.5)/bars.length; const h=ih-(Y(b.v)-m.t);
+    s.appendChild(el('rect',{x:cx-bw/2,y:Y(b.v),width:bw,height:h,rx:3,fill:i===bars.length-1?'#9a1b2f':'#c8a0a8'}));
+    s.appendChild(txt(cx,Y(b.v)-7,'$'+b.v.toFixed(1)+'B',{'text-anchor':'middle','font-weight':'600',fill:'#16181d'}));
+    s.appendChild(txt(cx,H-12,b.l,{'text-anchor':'middle'}));
+  });
+  document.getElementById('revchart').appendChild(s);
+  const lg=document.createElement('div'); lg.className='legend'; lg.innerHTML='<span><span class="swatch" style="background:#9a1b2f"></span>Worldwide revenue ($B) · Q1\'26 +56% YoY · Q2\'25 estimated</span>'; document.getElementById('revchart').appendChild(lg);
+})();
+
+/* ---- MONEY-FLOW DIAGRAM ---- */
+(function(){
+  const W=1000,H=300; const s=svg(W,H);
+  const steps=[
+    {x:20,t:'Discover / design',sub:'R&D, target ID'},
+    {x:158,t:'Manufacture',sub:'peptide / small-mol'},
+    {x:296,t:'Inventory build',sub:'months ahead ⚠'},
+    {x:434,t:'Ship to channel',sub:'WAC / spec pharm'},
+    {x:572,t:'Revenue booked',sub:'net of GTN'},
+    {x:710,t:'Demand creation',sub:'KOL + DTC'},
+    {x:848,t:'Cash conversion',sub:'OCF → capex/return'}
+  ];
+  const bw=124,bh=58,y=70;
+  steps.forEach((st,i)=>{
+    const g=el('g',{});
+    g.appendChild(el('rect',{x:st.x,y:y,width:bw,height:bh,rx:8,fill:i===4?'#9a1b2f':'#fff',stroke:i===4?'#9a1b2f':'#d2cec3','stroke-width':1.4}));
+    const tt=txt(st.x+bw/2,y+25,st.t,{'text-anchor':'middle','font-weight':'600'}); tt.style.fill=i===4?'#fff':'#16181d'; tt.style.font='600 12.5px IBM Plex Sans'; g.appendChild(tt);
+    const su=txt(st.x+bw/2,y+42,st.sub,{'text-anchor':'middle'}); su.style.fill=i===4?'#f3d6db':'#6b7280'; su.style.font='10.5px IBM Plex Sans'; g.appendChild(su);
+    s.appendChild(g);
+    if(i<steps.length-1){ const ax=st.x+bw, nx=steps[i+1].x; s.appendChild(el('line',{x1:ax+2,y1:y+bh/2,x2:nx-2,y2:y+bh/2,stroke:'#b9b3a6','stroke-width':1.4,'marker-end':'url(#arr)'})); }
+  });
+  const defs=el('defs',{}); const mk=el('marker',{id:'arr',markerWidth:8,markerHeight:8,refX:6,refY:3,orient:'auto'}); mk.appendChild(el('path',{d:'M0 0 L6 3 L0 6 Z',fill:'#b9b3a6'})); defs.appendChild(mk); s.appendChild(defs);
+  // risk annotations
+  s.appendChild(txt(296+bw/2,y+bh+34,'Build-ahead → under-absorption / write-off risk',{'text-anchor':'middle',fill:'#b23b3b','font-weight':'600'}));
+  s.appendChild(el('line',{x1:296+bw/2,y1:y+bh+2,x2:296+bw/2,y2:y+bh+20,stroke:'#b23b3b','stroke-dasharray':'3 3'}));
+  s.appendChild(txt(572+bw/2,y-12,'rebates / IRA / PBM deducted here ↓',{'text-anchor':'middle',fill:'#b07a17','font-weight':'600'}));
+  // margin chain row
+  const y2=200;
+  const chain=['Gross margin ~83%','− Gross-to-net rebates','− Freight / cold-chain / FX','= Operating margin','→ Free cash flow'];
+  let cx=40; chain.forEach((c,i)=>{ const w=c.length*6.6+26; s.appendChild(el('rect',{x:cx,y:y2,width:w,height:34,rx:6,fill:'#f7f4ee',stroke:'#e6e3db'})); const t=txt(cx+w/2,y2+21,c,{'text-anchor':'middle'}); t.style.font='600 11px IBM Plex Sans'; t.style.fill='#3a3f47'; s.appendChild(t); if(i<chain.length-1){ s.appendChild(txt(cx+w+9,y2+22,'›',{fill:'#9aa1ab','font-weight':'700'})); } cx+=w+22; });
+  s.appendChild(txt(40,40,'THE LONG LOOP: capital is committed months before the matching revenue exists',{fill:'#16181d'})).style.font='600 13px IBM Plex Sans';
+  document.getElementById('flowchart').appendChild(s);
+})();
+</script>
+</body>
+</html>
