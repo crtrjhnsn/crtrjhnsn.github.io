@@ -1,5 +1,14 @@
 [
     {
+    "id": "lly-ic-memo",
+    "title": "Lilly Overview",
+    "type": "claude",
+    "file": "content/claude/lly-ic-memo.html",
+    "tags": ["New Prompt", "Opus 4.8", "Live Pricing"],
+    "date": "2026-06-29",
+    "description": "Comprehensive overview of LLY's business, key drugs, pricing metrics with primary sources."
+    },
+    {
     "id": "bsx_field_reference",
     "title": "BSX Overview",
     "type": "claude",
